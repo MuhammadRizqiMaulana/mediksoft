@@ -9,6 +9,7 @@ class Agama extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'agama'; // nama tabel 
     protected $primaryKey   = 'idagama'; // primary key tabel 
     protected $fillable     = ['agama']; //field tabel

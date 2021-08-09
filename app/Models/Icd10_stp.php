@@ -9,6 +9,7 @@ class Icd10_stp extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'icd10_stp'; // nama tabel 
     protected $primaryKey   = 'idstp'; // primary key tabel 
     protected $fillable     = ['kodestp', 

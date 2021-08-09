@@ -9,6 +9,7 @@ class Eklaimpendaftaran extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'eklaimpendaftaran'; // nama tabel 
     protected $primaryKey   = 'instalasi'; // primary key tabel 
     protected $fillable     = ['idklaim']; //field tabel

@@ -9,6 +9,7 @@ class Faskes extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'faskes'; // nama tabel 
     protected $primaryKey   = 'kodefaskes'; // primary key tabel 
     protected $fillable     = ['kodedari_bpjs', 
