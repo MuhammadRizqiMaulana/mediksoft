@@ -9,6 +9,7 @@ class Bank extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'bank'; // nama tabel 
     protected $primaryKey   = 'idbank'; // primary key tabel 
     protected $fillable     = ['namabank', 

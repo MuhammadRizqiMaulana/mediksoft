@@ -9,6 +9,7 @@ class Eklaimbpjs extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'eklaimbpjs'; // nama tabel 
     protected $primaryKey   = 'idklaim'; // primary key tabel 
     protected $fillable     = ['nama', 

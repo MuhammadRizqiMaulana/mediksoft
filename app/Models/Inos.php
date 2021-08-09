@@ -9,6 +9,7 @@ class Inos extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'inos'; // nama tabel 
     protected $primaryKey   = 'faktur_rawatinap'; // primary key tabel 
     protected $fillable     = ['norm', 

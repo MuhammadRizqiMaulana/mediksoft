@@ -9,6 +9,7 @@ class Icd9 extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'icd9'; // nama tabel 
     protected $primaryKey   = 'kode'; // primary key tabel 
     protected $fillable     = ['nama']; //field tabel

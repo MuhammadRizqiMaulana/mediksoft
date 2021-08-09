@@ -9,6 +9,7 @@ class Bayar_rjalan_terpisah extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'bayar_rjalan_terpisah'; // nama tabel 
     protected $primaryKey   = 'nobayar'; // primary key tabel 
     protected $fillable     = ['tgltransaksi', 

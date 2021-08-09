@@ -9,6 +9,7 @@ class Applog extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'applog'; // nama tabel 
     protected $primaryKey   = 'aid'; // primary key tabel 
     protected $fillable     = ['aname', 

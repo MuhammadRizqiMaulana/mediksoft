@@ -9,6 +9,7 @@ class Adm extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'adm'; // nama tabel 
     protected $primaryKey   = 'idadm'; // primary key tabel 
     protected $fillable     = ['jenisrawat', 

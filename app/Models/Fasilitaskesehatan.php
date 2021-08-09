@@ -9,6 +9,7 @@ class Fasilitaskesehatan extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'fasilitaskesehatan'; // nama tabel 
     protected $primaryKey   = 'idfaskes'; // primary key tabel 
     protected $fillable     = ['kodefaskes', 

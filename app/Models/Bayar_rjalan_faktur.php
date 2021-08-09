@@ -9,6 +9,7 @@ class Bayar_rjalan_faktur extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table        = 'bayar_rjalan_faktur'; // nama tabel 
     protected $primaryKey   = 'nobayar_rjalan'; // primary key tabel 
     protected $fillable     = ['nourut', 
