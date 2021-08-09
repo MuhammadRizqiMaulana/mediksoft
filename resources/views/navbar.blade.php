@@ -9,7 +9,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="index3.html" class="nav-link">Akses Pengguna</a>
+            <a href="{{url('AksesPengguna')}}" class="nav-link">Akses Pengguna</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">Setup</a>

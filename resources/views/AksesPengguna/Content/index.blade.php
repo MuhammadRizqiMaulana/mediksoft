@@ -5,7 +5,7 @@
 <div class="content-wrapper">
 
     <!-- Menu -->
-    @include('AksesPengguna.menu')
+    @include('AksesPengguna.Layout.menu')
     <!-- /.menu -->
 
     <!-- Main content -->

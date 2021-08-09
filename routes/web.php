@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('AksesPengguna.Content.index');
 });
+
+Route::get('/AksesPengguna', function () {
+    return view('AksesPengguna.Content.index');
+});
