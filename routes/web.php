@@ -20,3 +20,12 @@ Route::get('/', function () {
 Route::get('/AksesPengguna', function () {
     return view('AksesPengguna.Content.index');
 });
+Route::get('/Setup', function () {
+    return view('Setup.Content.index');
+});
+Route::get('/RekamMedis', function () {
+    return view('RekamMedis.Content.index');
+});
+Route::get('/RawatJalan', function () {
+    return view('RawatJalan.Content.index');
+});

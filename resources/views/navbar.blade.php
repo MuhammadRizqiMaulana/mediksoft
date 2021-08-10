@@ -12,13 +12,13 @@
             <a href="{{url('AksesPengguna')}}" class="nav-link">Akses Pengguna</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Setup</a>
+            <a href="{{url('Setup')}}" class="nav-link">Setup</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Rekam Medis</a>
+            <a href="{{url('RekamMedis')}}" class="nav-link">Rekam Medis</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Rawat Jalan</a>
+            <a href="{{url('RawatJalan')}}" class="nav-link">Rawat Jalan</a>
           </li>
         </ul>
 

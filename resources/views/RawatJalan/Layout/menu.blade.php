@@ -2,9 +2,10 @@
 <div class="content-header">
 
       <div class="row mb-2">
+        
           <div class="card card-primary card-sm">
             <div class="card-header">
-              <h5 class="card-title">Pengaturan</h5>
+              <h5 class="card-title">Pendaftaran</h5>
               <div class="card-tools">
                 <!-- Buttons, labels, and many other things can be placed here! -->
                 <!-- Here is a label for example -->
@@ -19,21 +20,22 @@
             <!-- /.card-header -->
             <div class="card-body">
               <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Program
+                <i class="fas fa-edit"></i> Data Pendaftaran
               </a>
               <a class="btn btn-app">
-                <i class="fas fa-edit"></i> DB Akuntansi
+                <i class="fas fa-edit"></i> Update Pendaftaran Online
               </a>
               <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Database
+                <i class="fas fa-edit"></i> Transfer RI
               </a>
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
+        
           <div class="card card-primary card-sm">
             <div class="card-header">
-              <h5 class="card-title">Data Pengguna</h5>
+              <h5 class="card-title">Poliklinik</h5>
               <div class="card-tools">
                 <!-- Buttons, labels, and many other things can be placed here! -->
                 <!-- Here is a label for example -->
@@ -49,49 +51,20 @@
             <!-- /.card-header -->
             <div class="card-body">
               <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Level Pengguna
+                <i class="fas fa-edit"></i> RM Rawat Jalan
               </a>
               <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Pengguna
-              </a>
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Ganti Password
-              </a>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-          <div class="card card-primary card-sm">
-            <div class="card-header">
-              <h5 class="card-title">Login User</h5>
-              <div class="card-tools">
-                <!-- Buttons, labels, and many other things can be placed here! -->
-                <!-- Here is a label for example -->
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <!-- /.card-tools -->
-            </div>
-          
-            <!-- /.card-header -->
-            <div class="card-body">
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Login
-              </a>
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Logout
+                <i class="fas fa-edit"></i> Pelayanan Poli
               </a>
               
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
+        
           <div class="card card-primary card-sm">
             <div class="card-header">
-              <h5 class="card-title"></h5>
+              <h5 class="card-title">Display</h5>
               <div class="card-tools">
                 <!-- Buttons, labels, and many other things can be placed here! -->
                 <!-- Here is a label for example -->
@@ -107,13 +80,40 @@
             <!-- /.card-header -->
             <div class="card-body">
               <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Keluar
+                <i class="fas fa-edit"></i> Kamar Kosong
               </a>
               
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
+        
+          <div class="card card-primary card-sm">
+            <div class="card-header">
+              <h5 class="card-title">Riwayat</h5>
+              <div class="card-tools">
+                <!-- Buttons, labels, and many other things can be placed here! -->
+                <!-- Here is a label for example -->
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-tools -->
+            </div>
+          
+            <!-- /.card-header -->
+            <div class="card-body">
+              <a class="btn btn-app">
+                <i class="fas fa-edit"></i> Penggunaan Obat
+              </a>
+              
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        
         
 
       </div><!-- /.row -->
