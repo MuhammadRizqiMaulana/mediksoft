@@ -53,7 +53,7 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Jaminan
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Pengirim_Faskes')}}">
                 <i class="fas fa-edit"></i> Pengirim / Faskes
               </a>
               <a class="btn btn-app">
