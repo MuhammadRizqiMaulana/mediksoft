@@ -1,6 +1,6 @@
 <!-- Content Header (Page header) -->
 <div class="content-header">
-
+  <div class="container-fluid">
       <div class="row mb-2">
         
           <div class="card card-primary card-sm">
@@ -66,6 +66,7 @@
         
 
       </div><!-- /.row -->
-    
+    </div>
+  <hr>
   </div>
   <!-- /.content-header -->
