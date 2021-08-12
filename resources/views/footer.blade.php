@@ -5,5 +5,15 @@
       Produk Lisensi : PT Global Eushanosoft &copy; gloosoft.com
     </div>
     <!-- Default to the left -->
-    <strong> icon kalender : {{ date('Y-m-d') }}    icon Jam : {{ date('H:i') }}<a href="https://adminlte.io">User Lisensi : PT Global Eushanosoft</a>.</strong>
-  </footer>
+    <div class="row">
+      <div class="col-2">
+            <i class="far fa-calendar-alt"></i> : {{ date('Y-m-d') }}
+      </div>
+      <div class="col-1">
+          <i class="far fa-clock"></i> : {{ date('H:i') }}
+      </div>
+      <div class="col-4">
+        <a href="#">User Lisensi : PT Global Eushanosoft</a>
+      </div>
+    </div>
+</footer>

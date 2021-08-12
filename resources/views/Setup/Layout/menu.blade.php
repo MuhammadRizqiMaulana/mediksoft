@@ -22,7 +22,7 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Dokter
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Karyawan')}}">
                 <i class="fas fa-edit"></i> Karyawan
               </a>
               <a class="btn btn-app">
