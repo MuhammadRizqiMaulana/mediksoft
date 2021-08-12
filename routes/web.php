@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 /* ----- Setup -----*/
 use App\Http\Controllers\Setup\Pengirim_FaskesController;
+use App\Http\Controllers\Setup\KaryawanController;
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
@@ -48,6 +49,13 @@ Route::post('/Pengirim_Faskes/store', [Pengirim_FaskesController::class, 'store'
 Route::get('/Pengirim_Faskes/ubah{kodefaskes}', [Pengirim_FaskesController::class, 'ubah']);
 Route::post('/Pengirim_Faskes/update{kodefaskes}', [Pengirim_FaskesController::class, 'update']);
 Route::get('/Pengirim_Faskes/hapus{kodefaskes}', [Pengirim_FaskesController::class, 'hapus']);
+
+Route::get('/Karyawan', [KaryawanController::class, 'index']);
+//Route::post('/Karyawan/tambah', [KaryawanController::class, 'tambah']);
+Route::post('/Karyawan/store', [KaryawanController::class, 'store']);
+Route::get('/Karyawan/ubah{idkaryawan}', [KaryawanController::class, 'ubah']);
+Route::post('/Karyawan/update{idkaryawan}', [KaryawanController::class, 'update']);
+Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus']);
 
 /* ----- Setup -----*/
 
