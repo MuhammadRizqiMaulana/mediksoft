@@ -43,6 +43,12 @@ Route::get('/Setup', function () {
     return view('Setup.Content.index');
 });
 Route::get('/Pengirim_Faskes', [Pengirim_FaskesController::class, 'index']);
+//Route::post('/Pengirim_Faskes/tambah', [Pengirim_FaskesController::class, 'tambah']);
+Route::post('/Pengirim_Faskes/store', [Pengirim_FaskesController::class, 'store']);
+Route::get('/Pengirim_Faskes/ubah{kodefaskes}', [Pengirim_FaskesController::class, 'ubah']);
+Route::post('/Pengirim_Faskes/update{kodefaskes}', [Pengirim_FaskesController::class, 'update']);
+Route::get('/Pengirim_Faskes/hapus{kodefaskes}', [Pengirim_FaskesController::class, 'hapus']);
+
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
