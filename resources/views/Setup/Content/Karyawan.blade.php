@@ -73,92 +73,415 @@
           </div>
           <!-- /.col -->
           <div class="col-5">
-                @if(isset($ubah) == NULL)
-                <!-- general form elements -->
-                <div class="card card-success card-outline" id="TambahFaskes">
-                  <div class="card-header">
-                    <h4 class="text-success"><i class="fa fa-plus-circle"></i> Tambah</h4>
-                  </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                  <form action="{{url('/Pengirim_Faskes/store')}}" method="post">
-                    {{csrf_field()}}
-                    <div class="card-body">
+            @if(isset($ubah) == NULL)
+            <!-- general form elements -->
+            <div class="card card-success card-outline" id="TambahKaryawan">
+              <div class="card-header">
+                <h4 class="text-success"><i class="fa fa-plus-circle"></i> Tambah</h4>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="{{url('/Karyawan/store')}}" method="post">
+                {{csrf_field()}} 
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <!-- text input -->
                       <div class="form-group">
-                        <label for="nama">Nama Pengirim / Faskes</label>
-                        <input type="text" class="form-control" id="nama" name="namafaskes" placeholder="Nama Pengirim / Faskes">
-                          @if ($errors->has('namafaskes'))
-                            <span class="text-danger"><p class="text-right">* {{ $errors->first('namafaskes') }}</p></span>
-                          @endif
+                        <label>NIK</label>
+                        <input type="text" class="form-control" name="nik" placeholder="NIK">
                       </div>
-                      <div class="form-group">
-                        <label for="alamat">Alamat</label>
-                        <textarea class="form-control" id="alamat"  name="alamat" placeholder="Alamat"></textarea>
-                          @if ($errors->has('alamat'))
-                            <span class="text-danger"><p class="text-right">* {{ $errors->first('alamat') }}</p></span>
-                          @endif
-                      </div>
-                      <div class="form-group">
-                        <label for="fee">Fee</label>
-                        <input type="number" class="form-control" id="fee"  name="fee" placeholder="Fee" min="0">
-                          @if ($errors->has('fee'))
-                            <span class="text-danger"><p class="text-right">* {{ $errors->first('fee') }}</p></span>
-                          @endif
-                      </div>
+                      @if ($errors->has('nik'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('nik') }}</p></span>
+                      @endif
                     </div>
-                    <!-- /.card-body -->
+                    <div class="col-sm-7">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Jabatan</label>
+                        <select class="form-control" name="idjabatan">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                      </div>
+                      @if ($errors->has('idjabatan'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('idjabatan') }}</p></span>
+                        @endif
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" name="nama" class="form-control" placeholder="Nama">
+                      </div>
+                      @if ($errors->has('nama'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('nama') }}</p></span>
+                        @endif
+                    </div>
+                    <div class="col-sm-5">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>No KTP</label>
+                        <input type="text" name="noktp" class="form-control" placeholder="No KTP">
+                      </div>
+                      @if ($errors->has('noktp'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('noktp') }}</p></span>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>No Register</label>
+                        <input type="text" name="noregister" class="form-control" placeholder="NIK">
+                      </div>
+                      @if ($errors->has('noregister'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('noregister') }}</p></span>
+                        @endif
+                    </div>
+                    <div class="col-sm-8">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Masa berlaku</label>
+                          <div class="col">
+                            <div class="row">
+                              <span for="tanggaldari" class="col-form-label">Dari</span>
+                              <div class="col-sm-4">
+                                <input type="date" class="form-control" name="tanggaldari" id="tanggaldari" placeholder="Tanggal">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="row">
+                              <span for="tanggalsampai" class="col-form-label">Sd</span>
+                              <div class="col-sm-4">
+                                <input type="date" class="form-control" name="tanggalsampai" id="tanggalsampai" placeholder="Tanggal">
+                              </div>
+                            </div>
+                          </div>
+                                               
+                      </div>
+                      @if ($errors->has('tanggaldari'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('tanggaldari') }}</p></span>
+                      @endif
+                      @if ($errors->has('tanggalsampai'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('tanggalsampai') }}</p></span>
+                      @endif
 
-                    <div class="card-footer text-right">
+                    </div>
+                  </div>
+
+                  <!-- input states -->
+                  <div class="form-group">
+                    <label class="col-form-label" for="alamatpraktek"> Alamat Praktek</label>
+                    <textarea class="form-control" name="alamatpraktek" id="alamatpraktek" placeholder="Alamat Praktek"></textarea>
+                    @if ($errors->has('alamatpraktek'))
+                      <span class="text-danger"><p class="text-right">* {{ $errors->first('alamatpraktek') }}</p></span>
+                    @endif
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Tempat Lahir</label>
+                        <input type="text" class="form-control" name="tptlahir" placeholder="Tempat Lahir">
+                      </div>
+                      @if ($errors->has('tptlahir'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('tptlahir') }}</p></span>
+                      @endif
+                    </div>
+                    <div class="col-sm-5">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" class="form-control" name="tgllahir" placeholder="Tanggal Lahir">
+                      </div>
+                      @if ($errors->has('tgllahir'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('tgllahir') }}</p></span>
+                      @endif
+                    </div>
+                  </div>
+                  <!-- input states -->
+                  <div class="form-group">
+                    <label class="col-form-label" for="alamat"> Alamat</label>
+                    <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat"></textarea>
+                    @if ($errors->has('alamat'))
+                      <span class="text-danger"><p class="text-right">* {{ $errors->first('alamat') }}</p></span>
+                    @endif
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>No Telepon</label>
+                        <input type="text" class="form-control" name="notelp" placeholder="No Telepon">
+                      </div>
+                      @if ($errors->has('notelp'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('notelp') }}</p></span>
+                      @endif
+                    </div>
+                    <div class="col-sm-4">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select class="form-control" name="jnskelamin">
+                          <option>Laki - laki</option>
+                          <option>Perempuan</option>
+                        </select>
+                      </div>
+                      @if ($errors->has('jnskelamin'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('jnskelamin') }}</p></span>
+                      @endif
+                    </div>
+                    <div class="col-sm-2">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Gol Darah</label>
+                        <select class="form-control" name="goldarah">
+                          <option>A</option>
+                          <option>B</option>
+                          <option>AB</option>
+                          <option>O</option>
+                        </select>
+                      </div>
+                      @if ($errors->has('goldarah'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('goldarah') }}</p></span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <a href="" class="btn btn-outline-secondary btn-sm">Import Data Karyawan dan Dokter</a>
+                      <a href="" class="btn btn-outline-secondary btn-sm">Download Format Data Karyawan dan Dokter</a>
+                    </div>
+                    <div class="col-sm-4 text-right">
                       <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i></button>
-                      <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i></button>
+                      <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i></button>  
                     </div>
-                  </form>
-                </div>
-                <!-- /.card -->
-                  
-              @else
-                <!-- general form elements -->
-                <div class="card card-primary card-outline" id="UbahFaskes">
-                  <div class="card-header">
-                    <h5 class="text-primary"><i class="fa fa-edit"></i> Ubah</h5>
                   </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                  <form action="{{url('/Pengirim_Faskes/update'.$ubah->kodefaskes)}}" method="post">
-                    {{csrf_field()}}
-                    <div class="card-body">
-                      <div class="form-group">
-                        <label for="nama">Nama Pengirim / Faskes</label>
-                        <input type="text" class="form-control" id="nama" name="namafaskes" placeholder="Nama Pengirim / Faskes" value="{{$ubah->namafaskes}}">
-                        @if ($errors->has('namafaskes'))
-                          <span class="text-danger"><p class="text-right">* {{ $errors->first('namafaskes') }}</p></span>
-                        @endif
-                      </div>
-                      <div class="form-group">
-                        <label for="alamat">Alamat</label>
-                        <textarea class="form-control" id="alamat"  name="alamat" placeholder="Alamat">{{$ubah->alamat}}</textarea>
-                        @if ($errors->has('alamat'))
-                          <span class="text-danger"><p class="text-right">* {{ $errors->first('alamat') }}</p></span>
-                        @endif
-                      </div>
-                      <div class="form-group">
-                        <label for="fee">Fee</label>
-                        <input type="number" class="form-control" id="fee" step="any" name="fee" placeholder="Fee" min="0" value="{{$ubah->fee}}">
-                        @if ($errors->has('fee'))
-                          <span class="text-danger"><p class="text-right">* {{ $errors->first('fee') }}</p></span>
-                        @endif
-                      </div>
-                    </div>
-                    <!-- /.card-body -->
-
-                    <div class="card-footer text-right">
-                      <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i></button>
-                      <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i></button>
-                    </div>
-                  </form>
-                </div>
-                <!-- /.card -->
                   
+                </div>
+              </form>
+              <!-- /.form -->
+ 
+            </div>
+            <!-- /.card -->
+
+            @else
+
+              <!-- general form elements -->
+              <div class="card card-primary card-outline" id="UbahKaryawan">
+                <div class="card-header">
+                  <h4 class="text-primary"><i class="fa fa-plus-circle"></i> Ubah</h4>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form action="{{url('/Karyawan/update'.$ubah->idkaryawan)}}" method="post">
+                  {{csrf_field()}}
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-5">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>NIK</label>
+                          <input type="text" class="form-control" name="nik" placeholder="NIK" value="{{$ubah->nik}}">
+                        </div>
+                        @if ($errors->has('nik'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('nik') }}</p></span>
+                        @endif
+                      </div>
+                      <div class="col-sm-7">
+                        <!-- select -->
+                        <div class="form-group">
+                          <label>Jabatan</label>
+                          <select class="form-control" name="idjabatan">
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                            <option>option 5</option>
+                          </select>
+                        </div>
+                        @if ($errors->has('idjabatan'))
+                            <span class="text-danger"><p class="text-right">* {{ $errors->first('idjabatan') }}</p></span>
+                          @endif
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-7">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Nama</label>
+                          <input type="text" name="nama" class="form-control" placeholder="Nama">
+                        </div>
+                        @if ($errors->has('nama'))
+                            <span class="text-danger"><p class="text-right">* {{ $errors->first('nama') }}</p></span>
+                          @endif
+                      </div>
+                      <div class="col-sm-5">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>No KTP</label>
+                          <input type="text" name="noktp" class="form-control" placeholder="No KTP">
+                        </div>
+                        @if ($errors->has('noktp'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('noktp') }}</p></span>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>No Register</label>
+                          <input type="text" name="noregister" class="form-control" placeholder="NIK">
+                        </div>
+                        @if ($errors->has('noregister'))
+                            <span class="text-danger"><p class="text-right">* {{ $errors->first('noregister') }}</p></span>
+                          @endif
+                      </div>
+                      <div class="col-sm-8">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Masa berlaku</label>
+                            <div class="col">
+                              <div class="row">
+                                <span for="tanggaldari" class="col-form-label">Dari</span>
+                                <div class="col-sm-4">
+                                  <input type="date" class="form-control" name="tanggaldari" id="tanggaldari" placeholder="Tanggal">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="row">
+                                <span for="tanggalsampai" class="col-form-label">Sd</span>
+                                <div class="col-sm-4">
+                                  <input type="date" class="form-control" name="tanggalsampai" id="tanggalsampai" placeholder="Tanggal">
+                                </div>
+                              </div>
+                            </div>
+                                                 
+                        </div>
+                        @if ($errors->has('tanggaldari'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('tanggaldari') }}</p></span>
+                        @endif
+                        @if ($errors->has('tanggalsampai'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('tanggalsampai') }}</p></span>
+                        @endif
+  
+                      </div>
+                    </div>
+  
+                    <!-- input states -->
+                    <div class="form-group">
+                      <label class="col-form-label" for="alamatpraktek"> Alamat Praktek</label>
+                      <textarea class="form-control" name="alamatpraktek" id="alamatpraktek" placeholder="Alamat Praktek"></textarea>
+                      @if ($errors->has('alamatpraktek'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('alamatpraktek') }}</p></span>
+                      @endif
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-7">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Tempat Lahir</label>
+                          <input type="text" class="form-control" name="tptlahir" placeholder="Tempat Lahir">
+                        </div>
+                        @if ($errors->has('tptlahir'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('tptlahir') }}</p></span>
+                        @endif
+                      </div>
+                      <div class="col-sm-5">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>Tanggal Lahir</label>
+                          <input type="date" class="form-control" name="tgllahir" placeholder="Tanggal Lahir">
+                        </div>
+                        @if ($errors->has('tgllahir'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('tgllahir') }}</p></span>
+                        @endif
+                      </div>
+                    </div>
+                    <!-- input states -->
+                    <div class="form-group">
+                      <label class="col-form-label" for="alamat"> Alamat</label>
+                      <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat"></textarea>
+                      @if ($errors->has('alamat'))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('alamat') }}</p></span>
+                      @endif
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                          <label>No Telepon</label>
+                          <input type="text" class="form-control" name="notelp" placeholder="No Telepon">
+                        </div>
+                        @if ($errors->has('notelp'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('notelp') }}</p></span>
+                        @endif
+                      </div>
+                      <div class="col-sm-4">
+                        <!-- select -->
+                        <div class="form-group">
+                          <label>Jenis Kelamin</label>
+                          <select class="form-control" name="jnskelamin">
+                            <option>Laki - laki</option>
+                            <option>Perempuan</option>
+                          </select>
+                        </div>
+                        @if ($errors->has('jnskelamin'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('jnskelamin') }}</p></span>
+                        @endif
+                      </div>
+                      <div class="col-sm-2">
+                        <!-- select -->
+                        <div class="form-group">
+                          <label>Gol Darah</label>
+                          <select class="form-control" name="goldarah">
+                            <option>A</option>
+                            <option>B</option>
+                            <option>AB</option>
+                            <option>O</option>
+                          </select>
+                        </div>
+                        @if ($errors->has('goldarah'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('goldarah') }}</p></span>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+
+                  <div class="card-footer">
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <a href="" class="btn btn-outline-secondary btn-sm">Import Data Karyawan dan Dokter</a>
+                        <a href="" class="btn btn-outline-secondary btn-sm">Download Format Data Karyawan dan Dokter</a>
+                      </div>
+                      <div class="col-sm-4 text-right">
+                        <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i></button>
+                        <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i></button>  
+                      </div>
+                    </div>
+                    
+                  </div>
+                </form>
+                <!-- /.form -->
+   
+              </div>
+              <!-- /.card -->
+                              
               @endif
             
           </div>
