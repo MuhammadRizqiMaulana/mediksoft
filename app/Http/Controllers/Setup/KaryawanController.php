@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Karyawan;
+use App\Models\Jabatan;
+
+use Carbon\Carbon;
 
 
 class KaryawanController extends Controller
@@ -13,7 +16,8 @@ class KaryawanController extends Controller
     public function index(){
     	
         $datas = Karyawan::all();
-    	return view('Setup.Content.Karyawan',compact('datas'));
+        $jabatans = Jabatan::all();
+    	return view('Setup.Content.Karyawan',compact('datas','jabatans'));
     }
 
     public function tambah() {
@@ -33,9 +37,7 @@ class KaryawanController extends Controller
             'numeric' => ':attribute harus berupa angka',
             'unique' => ':attribute sudah ada',
             'email' => ':attribute harus berupa email',
-            'image' => ':attribute harus berupa gambar',
-            'fee.digits_between' => ':attribute diisi antara 0 sampai 15 digit',
-            'fee.min' => ':attribute tidak boleh kurang dari 0',
+            'image' => ':attribute harus berupa gambar'
         ];
 
     	$this->validate($request, [
@@ -46,12 +48,13 @@ class KaryawanController extends Controller
             'alamat' => 'required|max:100',
             'notelp' => 'required|max:20',
             'idjabatan' => 'nullable|max:11',
-            'tgledit' => 'required',
             'tptlahir' => 'required|max:30',
             'tgllahir' => 'nullable|date',
             'goldarah' => 'required|max:2',
-            'pengurus' => 'required|max:4',
+            
     	], $messages);
+
+        $now = Carbon::now();
 
         $data = new Karyawan();
         $data->nik = $request->nik;
@@ -61,11 +64,11 @@ class KaryawanController extends Controller
         $data->alamat = $request->alamat;
         $data->notelp = $request->notelp;
         $data->idjabatan = $request->idjabatan;
-        $data->tgledit = $request->tgledit;
+        $data->tgledit = $now;
         $data->tptlahir = $request->tptlahir;
         $data->tgllahir = $request->tgllahir;
         $data->goldarah = $request->goldarah;
-        $data->pengurus = $request->pengurus;
+        
     	$data->save();
 
     	return redirect('/Karyawan')->with('alert-success','Data berhasil ditambahkan!');
@@ -74,7 +77,9 @@ class KaryawanController extends Controller
    	public function ubah($idkaryawan ) {
         $datas = Karyawan::all();
         $ubah = Karyawan::find($idkaryawan);
-        return view('Setup.Content.Karyawan',compact('datas','ubah'));
+        $jabatans = Jabatan::all();
+
+        return view('Setup.Content.Karyawan',compact('datas','ubah','jabatans'));
 
     }
 
@@ -86,21 +91,37 @@ class KaryawanController extends Controller
             'numeric' => ':attribute harus berupa angka',
             'unique' => ':attribute sudah ada',
             'email' => ':attribute harus berupa email',
-            'image' => ':attribute harus berupa gambar',
-            'fee.between' => ':attribute diisi antara 0 sampai 99999999.9999 digit',
-            'fee.min' => ':attribute tidak boleh kurang dari 0',
+            'image' => ':attribute harus berupa gambar'
         ];
 
     	$this->validate($request, [
-    		'namafaskes' => 'required|max:50',
-            'alamat' => 'required|max:200',
-            'fee' => 'required|numeric|between:0.0000,99999999.9999|min:0',
+    		'nik' => 'required|max:20',
+            'noktp' => 'nullable|max:30',
+            'nama' => 'required|max:40',
+            'jnskelamin' => 'required|max:30',
+            'alamat' => 'required|max:100',
+            'notelp' => 'required|max:20',
+            'idjabatan' => 'nullable|max:11',
+            'tptlahir' => 'required|max:30',
+            'tgllahir' => 'nullable|date',
+            'goldarah' => 'required|max:2',
+
     	], $messages);
 
+        $now = Carbon::now();
+
         $data = Karyawan::find($idkaryawan);
-        $data->namafaskes = $request->namafaskes;
+        $data->nik = $request->nik;
+        $data->noktp = $request->noktp;
+        $data->nama = $request->nama;
+        $data->jnskelamin = $request->jnskelamin;
         $data->alamat = $request->alamat;
-        $data->fee = $request->fee;
+        $data->notelp = $request->notelp;
+        $data->idjabatan = $request->idjabatan;
+        $data->tgledit = $now;
+        $data->tptlahir = $request->tptlahir;
+        $data->tgllahir = $request->tgllahir;
+        $data->goldarah = $request->goldarah;
     	$data->save();
 
         return redirect('/Karyawan')->with('alert-success','Data berhasil diubah!');
