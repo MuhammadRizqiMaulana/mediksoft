@@ -17,6 +17,7 @@
           {{Session::get('alert-success')}}
       </div>
     @endif
+    
 
     <!-- Main content -->
     <section class="content">
@@ -100,11 +101,10 @@
                       <div class="form-group">
                         <label>Jabatan</label>
                         <select class="form-control" name="idjabatan">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                          <option value="">Pilih Jabatan</option>
+                          @foreach ($jabatans as $item)
+                            <option value="{{$item->id}}">{{$item->nama}}</option>
+                          @endforeach
                         </select>
                       </div>
                       @if ($errors->has('idjabatan'))
@@ -139,10 +139,10 @@
                       <!-- text input -->
                       <div class="form-group">
                         <label>No Register</label>
-                        <input type="text" name="noregister" class="form-control" placeholder="NIK">
+                        <input type="text" name="" class="form-control" placeholder="Belum Jadi">
                       </div>
-                      @if ($errors->has('noregister'))
-                          <span class="text-danger"><p class="text-right">* {{ $errors->first('noregister') }}</p></span>
+                      @if ($errors->has(''))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('') }}</p></span>
                         @endif
                     </div>
                     <div class="col-sm-8">
@@ -153,7 +153,7 @@
                             <div class="row">
                               <span for="tanggaldari" class="col-form-label">Dari</span>
                               <div class="col-sm-4">
-                                <input type="date" class="form-control" name="tanggaldari" id="tanggaldari" placeholder="Tanggal">
+                                <input type="date" class="form-control" name="" id="tanggaldari" placeholder="Tanggal">
                               </div>
                             </div>
                           </div>
@@ -161,17 +161,17 @@
                             <div class="row">
                               <span for="tanggalsampai" class="col-form-label">Sd</span>
                               <div class="col-sm-4">
-                                <input type="date" class="form-control" name="tanggalsampai" id="tanggalsampai" placeholder="Tanggal">
+                                <input type="date" class="form-control" name="" id="tanggalsampai" placeholder="Tanggal">
                               </div>
                             </div>
                           </div>
                                                
                       </div>
-                      @if ($errors->has('tanggaldari'))
-                        <span class="text-danger"><p class="text-right">* {{ $errors->first('tanggaldari') }}</p></span>
+                      @if ($errors->has(''))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('') }}</p></span>
                       @endif
-                      @if ($errors->has('tanggalsampai'))
-                        <span class="text-danger"><p class="text-right">* {{ $errors->first('tanggalsampai') }}</p></span>
+                      @if ($errors->has(''))
+                        <span class="text-danger"><p class="text-right">* {{ $errors->first('') }}</p></span>
                       @endif
 
                     </div>
@@ -180,9 +180,9 @@
                   <!-- input states -->
                   <div class="form-group">
                     <label class="col-form-label" for="alamatpraktek"> Alamat Praktek</label>
-                    <textarea class="form-control" name="alamatpraktek" id="alamatpraktek" placeholder="Alamat Praktek"></textarea>
-                    @if ($errors->has('alamatpraktek'))
-                      <span class="text-danger"><p class="text-right">* {{ $errors->first('alamatpraktek') }}</p></span>
+                    <textarea class="form-control" name="" id="alamatpraktek" placeholder="Belum Jadi"></textarea>
+                    @if ($errors->has(''))
+                      <span class="text-danger"><p class="text-right">* {{ $errors->first('') }}</p></span>
                     @endif
                   </div>
                   <div class="row">
@@ -216,7 +216,7 @@
                     @endif
                   </div>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                       <!-- text input -->
                       <div class="form-group">
                         <label>No Telepon</label>
@@ -231,23 +231,25 @@
                       <div class="form-group">
                         <label>Jenis Kelamin</label>
                         <select class="form-control" name="jnskelamin">
-                          <option>Laki - laki</option>
-                          <option>Perempuan</option>
+                          <option value="">Jenis Kelamin</option>
+                          <option value="Laki-laki">Laki - laki</option>
+                          <option value="Perempuan">Perempuan</option>
                         </select>
                       </div>
                       @if ($errors->has('jnskelamin'))
                         <span class="text-danger"><p class="text-right">* {{ $errors->first('jnskelamin') }}</p></span>
                       @endif
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                       <!-- select -->
                       <div class="form-group">
                         <label>Gol Darah</label>
                         <select class="form-control" name="goldarah">
-                          <option>A</option>
-                          <option>B</option>
-                          <option>AB</option>
-                          <option>O</option>
+                          <option value="">Gol Darah</option>
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="AB">AB</option>
+                          <option value="O">O</option>
                         </select>
                       </div>
                       @if ($errors->has('goldarah'))
@@ -305,11 +307,10 @@
                         <div class="form-group">
                           <label>Jabatan</label>
                           <select class="form-control" name="idjabatan">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
-                            <option>option 5</option>
+                            <option>Pilih Jabatan</option>
+                            @foreach ($jabatans as $item)
+                              <option value="{{$item->id}}" {{ ($item->id == $ubah->idjabatan) ? 'selected' : ''}}>{{$item->nama}}</option>
+                            @endforeach
                           </select>
                         </div>
                         @if ($errors->has('idjabatan'))
@@ -322,7 +323,7 @@
                         <!-- text input -->
                         <div class="form-group">
                           <label>Nama</label>
-                          <input type="text" name="nama" class="form-control" placeholder="Nama">
+                          <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{$ubah->nama}}">
                         </div>
                         @if ($errors->has('nama'))
                             <span class="text-danger"><p class="text-right">* {{ $errors->first('nama') }}</p></span>
@@ -332,7 +333,7 @@
                         <!-- text input -->
                         <div class="form-group">
                           <label>No KTP</label>
-                          <input type="text" name="noktp" class="form-control" placeholder="No KTP">
+                          <input type="text" name="noktp" class="form-control" placeholder="No KTP" value="{{$ubah->noktp}}">
                         </div>
                         @if ($errors->has('noktp'))
                           <span class="text-danger"><p class="text-right">* {{ $errors->first('noktp') }}</p></span>
@@ -395,7 +396,7 @@
                         <!-- text input -->
                         <div class="form-group">
                           <label>Tempat Lahir</label>
-                          <input type="text" class="form-control" name="tptlahir" placeholder="Tempat Lahir">
+                          <input type="text" class="form-control" name="tptlahir" placeholder="Tempat Lahir" value="{{$ubah->tptlahir}}">
                         </div>
                         @if ($errors->has('tptlahir'))
                           <span class="text-danger"><p class="text-right">* {{ $errors->first('tptlahir') }}</p></span>
@@ -405,7 +406,7 @@
                         <!-- text input -->
                         <div class="form-group">
                           <label>Tanggal Lahir</label>
-                          <input type="date" class="form-control" name="tgllahir" placeholder="Tanggal Lahir">
+                          <input type="date" class="form-control" name="tgllahir" placeholder="Tanggal Lahir" value="{{$ubah->tgllahir}}">
                         </div>
                         @if ($errors->has('tgllahir'))
                           <span class="text-danger"><p class="text-right">* {{ $errors->first('tgllahir') }}</p></span>
@@ -415,7 +416,7 @@
                     <!-- input states -->
                     <div class="form-group">
                       <label class="col-form-label" for="alamat"> Alamat</label>
-                      <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat"></textarea>
+                      <textarea class="form-control" name="alamat" id="alamat" placeholder="Alamat">{{$ubah->alamat}}</textarea>
                       @if ($errors->has('alamat'))
                         <span class="text-danger"><p class="text-right">* {{ $errors->first('alamat') }}</p></span>
                       @endif
@@ -425,7 +426,7 @@
                         <!-- text input -->
                         <div class="form-group">
                           <label>No Telepon</label>
-                          <input type="text" class="form-control" name="notelp" placeholder="No Telepon">
+                          <input type="text" class="form-control" name="notelp" placeholder="No Telepon" value="{{$ubah->notelp}}">
                         </div>
                         @if ($errors->has('notelp'))
                           <span class="text-danger"><p class="text-right">* {{ $errors->first('notelp') }}</p></span>
@@ -436,8 +437,8 @@
                         <div class="form-group">
                           <label>Jenis Kelamin</label>
                           <select class="form-control" name="jnskelamin">
-                            <option>Laki - laki</option>
-                            <option>Perempuan</option>
+                            <option value="Laki-laki" {{ ($ubah->jnskelamin == "Laki-laki") ? 'selected' : ''}}>Laki - laki</option>
+                            <option value="Perempuan" {{ ($ubah->jnskelamin == "Perempuan") ? 'selected' : ''}}>Perempuan</option>
                           </select>
                         </div>
                         @if ($errors->has('jnskelamin'))
@@ -449,10 +450,11 @@
                         <div class="form-group">
                           <label>Gol Darah</label>
                           <select class="form-control" name="goldarah">
-                            <option>A</option>
-                            <option>B</option>
-                            <option>AB</option>
-                            <option>O</option>
+                            <option value="Perempuan" {{ ($ubah->jnskelamin == "Perempuan") ? 'selected' : ''}}>Perempuan</option>
+                            <option value="A" {{ ($ubah->goldarah == "A") ? 'selected' : ''}}>A</option>
+                            <option value="B" {{ ($ubah->goldarah == "B") ? 'selected' : ''}}>B</option>
+                            <option value="AB" {{ ($ubah->goldarah == "AB") ? 'selected' : ''}}>AB</option>
+                            <option value="O" {{ ($ubah->goldarah == "O") ? 'selected' : ''}}>O</option>
                           </select>
                         </div>
                         @if ($errors->has('goldarah'))

@@ -24,4 +24,9 @@ class Karyawan extends Model
                                 'tgllahir',
                                 'goldarah',
                                 'pengurus']; //field tabel
+    
+    public function Jabatan() { //Jabatan dimiliki oleh karyawan
+        return $this->belongsTo(Jabatan::class,'idjabatan');
+        //nama_modelTabelrelasinya,foreignkey di tabel Karyawan
+    }
 }
