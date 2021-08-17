@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 /* ----- Setup -----*/
 use App\Http\Controllers\Setup\Pengirim_FaskesController;
 use App\Http\Controllers\Setup\KaryawanController;
+use App\Http\Controllers\Setup\PoliController;
+use App\Http\Controllers\Setup\RuangController;
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
@@ -49,6 +51,18 @@ Route::post('/Pengirim_Faskes/store', [Pengirim_FaskesController::class, 'store'
 Route::get('/Pengirim_Faskes/ubah{kodefaskes}', [Pengirim_FaskesController::class, 'ubah']);
 Route::post('/Pengirim_Faskes/update{kodefaskes}', [Pengirim_FaskesController::class, 'update']);
 Route::get('/Pengirim_Faskes/hapus{kodefaskes}', [Pengirim_FaskesController::class, 'hapus']);
+
+Route::get('/Poli', [PoliController::class, 'index']);
+Route::post('/Poli/store', [PoliController::class, 'store']);
+Route::get('/Poli/ubah{kode}', [PoliController::class, 'ubah']);
+Route::post('/Poli/update{kode}', [PoliController::class, 'update']);
+Route::get('/Poli/hapus{kode}', [PoliController::class, 'hapus']);
+
+Route::get('/Ruang', [RuangController::class, 'index']);
+Route::post('/Ruang/store', [RuangController::class, 'store']);
+Route::get('/Ruang/ubah{koderuang}', [RuangController::class, 'ubah']);
+Route::post('/Ruang/update{koderuang}', [RuangController::class, 'update']);
+Route::get('/Ruang/hapus{koderuang}', [RuangController::class, 'hapus']);
 
 Route::get('/Karyawan', [KaryawanController::class, 'index']);
 //Route::post('/Karyawan/tambah', [KaryawanController::class, 'tambah']);

@@ -110,13 +110,13 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Poli')}}">
                 <i class="fas fa-edit"></i> Poli
               </a>
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Kelas
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Ruang')}}">
                 <i class="fas fa-edit"></i> Ruang
               </a>
               <a class="btn btn-app">
