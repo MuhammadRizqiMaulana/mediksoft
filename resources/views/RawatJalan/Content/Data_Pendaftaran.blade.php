@@ -89,8 +89,20 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>NIK</th>
-                    <th>Nama</th>
+                    <th>No Faktur</th>
+                    <th>No RM</th>
+                    <th>Pasien</th>
+                    <th>Tgl Masuk</th>
+                    <th>Poli</th>
+                    <th>Dokter</th>
+                    <th>Perusahaan</th>
+                    <th>Faskes</th>
+                    <th>Inap</th>
+                    <th>Status</th>
+                    <th>Alamat</th>
+                    <th>Ayah</th>
+                    <th>Penangung Jawab</th>
+                    <th>Kunjungan Ke</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -102,6 +114,18 @@
                     <tr>
                       <td>{{$no++}}</td>
                       <td>{{$item->nik}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
+                      <td>{{$item->nama}}</td>
                       <td>{{$item->nama}}</td>
                       <td>
                         <a href="/Karyawan/ubah{{$item->idkaryawan}}#UbahKaryawan" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
