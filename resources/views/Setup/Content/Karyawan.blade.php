@@ -8,6 +8,12 @@
     @include('Setup.Layout.menu')
     <!-- /.menu -->
 
+    <div class="container-fluid">
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="mb-0 text-gray-800">Data Karyawan</h4>
+      </div>
+    </div>
+
     @if(\Session::has('alert-success'))
       <div class="alert alert-success alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -27,10 +33,8 @@
             <div class="card">
               <div class="card-header">
                 <div class="row">
-                  <div class="col-sm-6">
-                    <h4>Data Karyawan</h4>
-                  </div>
-                  <div class="col-sm-6 text-right">
+                  
+                  <div class="col-sm-6 text-left">
                     <a class="btn btn-outline-success btn-sm" href="{{url('Karyawan/#TambahKaryawan')}}"><i class="fa fa-plus-circle"></i> Tambah</a>
                     <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak</button>
                   </div>
