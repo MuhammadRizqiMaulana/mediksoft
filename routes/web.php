@@ -16,6 +16,7 @@ use App\Http\Controllers\Setup\RuangController;
 /* ----- RekamMedis -----*/
 
 /* ----- RawatJalan -----*/
+use App\Http\Controllers\RawatJalan\Data_PendaftaranController;
 /* ----- RawatJalan -----*/
 
 
@@ -83,4 +84,6 @@ Route::get('/RekamMedis', function () {
 Route::get('/RawatJalan', function () {
     return view('RawatJalan.Content.index');
 });
+Route::get('/Data_Pendaftaran', [Data_PendaftaranController::class, 'index']);
+
 /* ----- RawatJalan -----*/
