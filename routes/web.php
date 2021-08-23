@@ -10,9 +10,11 @@ use App\Http\Controllers\Setup\Pengirim_FaskesController;
 use App\Http\Controllers\Setup\KaryawanController;
 use App\Http\Controllers\Setup\PoliController;
 use App\Http\Controllers\Setup\RuangController;
+use App\Http\Controllers\Setup\DokterPoliController;
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
+use App\Http\Controllers\RekamMedis\PasienController;
 /* ----- RekamMedis -----*/
 
 /* ----- RawatJalan -----*/
@@ -71,12 +73,22 @@ Route::get('/Karyawan/ubah{idkaryawan}', [KaryawanController::class, 'ubah']);
 Route::post('/Karyawan/update{idkaryawan}', [KaryawanController::class, 'update']);
 Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus']);
 
+Route::get('/DokterPoli', [DokterPoliController::class, 'index']);
+Route::post('/DokterPoli/store', [DokterPoliController::class, 'store']);
+Route::get('/DokterPoli/ubah{kode}', [DokterPoliController::class, 'ubah']);
+Route::post('/DokterPoli/update{kode}', [DokterPoliController::class, 'update']);
+Route::get('/DokterPoli/hapus{kode}', [DokterPoliController::class, 'hapus']);
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
 Route::get('/RekamMedis', function () {
     return view('RekamMedis.Content.index');
 });
+Route::get('/Pasien', [PasienController::class, 'index']);
+Route::post('/Pasien/store', [PasienController::class, 'store']);
+Route::get('/Pasien/ubah{norm}', [PasienController::class, 'ubah']);
+Route::post('/Pasien/update{norm}', [PasienController::class, 'update']);
+Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
 /* ----- RekamMedis -----*/
 
 /* ----- RawatJalan -----*/
