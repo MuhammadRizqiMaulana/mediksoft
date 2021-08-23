@@ -25,6 +25,7 @@
               <a class="btn btn-app" href="{{url('/Karyawan')}}">
                 <i class="fas fa-edit"></i> Karyawan
               </a>
+              
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Jabatan
               </a>
@@ -56,7 +57,7 @@
               <a class="btn btn-app" href="{{url('/Pengirim_Faskes')}}">
                 <i class="fas fa-edit"></i> Pengirim / Faskes
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Bank')}}">
                 <i class="fas fa-edit"></i> Bank
               </a>
             </div>
@@ -113,7 +114,7 @@
               <a class="btn btn-app" href="{{url('/Poli')}}">
                 <i class="fas fa-edit"></i> Poli
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Kelas')}}">
                 <i class="fas fa-edit"></i> Kelas
               </a>
               <a class="btn btn-app" href="{{url('/Ruang')}}">

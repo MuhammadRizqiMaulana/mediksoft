@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Keanggotaan extends Model
 {
+
+    public $timestamps = false;
     
     protected $table='keanggotaan'; 
     protected $primaryKey = 'idkeanggotaan';
     protected $fillable = [
-        'zona1', 'zona1mulai','zona1akhir','zona2','zona2mulai','zona2akhir','zona3','zona3mulai','zona3akhir' 
+        'keanggotaan','zona1', 'zona1mulai','zona1akhir','zona2','zona2mulai','zona2akhir','zona3','zona3mulai','zona3akhir'
     ];
 }

@@ -25,7 +25,7 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Pasien
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Keanggotaan')}}">
                 <i class="fas fa-edit"></i> Keanggotaan
               </a>
             </div>
