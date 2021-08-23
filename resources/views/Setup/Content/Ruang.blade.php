@@ -89,7 +89,7 @@
                       </div>
                       <div class="form-group">
                         <label for="namaruang">Nama Ruang</label>
-                        <textarea class="form-control" id="namaruang"  name="namaruang" placeholder="namaruang"></textarea>
+                        <input type="text" class="form-control" id="namaruang" name="namaruang" placeholder="namaruang">
                           @if ($errors->has('namaruang'))
                             <span class="text-danger"><p class="text-right">* {{ $errors->first('namaruang') }}</p></span>
                           @endif
