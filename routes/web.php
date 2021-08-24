@@ -9,9 +9,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Setup\Pengirim_FaskesController;
 use App\Http\Controllers\Setup\KaryawanController;
 use App\Http\Controllers\Setup\PoliController;
+use App\Http\Controllers\Setup\DokterController;
+use App\Http\Controllers\Setup\JabatanController;
+use App\Http\Controllers\Setup\JaminanController;
 use App\Http\Controllers\Setup\RuangController;
+use App\Http\Controllers\Setup\PerusahaankategoriController;
 use App\Http\Controllers\Setup\KamarController;
 use App\Http\Controllers\Setup\DokterPoliController;
+use App\Http\Controllers\Setup\PerusahaankategoriController;
 
 /* ----- Setup -----*/
 
@@ -62,6 +67,30 @@ Route::post('/Poli/store', [PoliController::class, 'store']);
 Route::get('/Poli/ubah{kode}', [PoliController::class, 'ubah']);
 Route::post('/Poli/update{kode}', [PoliController::class, 'update']);
 Route::get('/Poli/hapus{kode}', [PoliController::class, 'hapus']);
+
+Route::get('/Dokter', [DokterController::class, 'index']);
+Route::post('/Dokter/store', [DokterController::class, 'store']);
+Route::get('/Dokter/ubah{iddokter}', [DokterController::class, 'ubah']);
+Route::post('/Dokter/update{iddokter}', [DokterController::class, 'update']);
+Route::get('/Dokter/hapus{iddokter}', [DokterController::class, 'hapus']);
+
+Route::get('/Jabatan', [JabatanController::class, 'index']);
+Route::post('/Jabatan/store', [JabatanController::class, 'store']);
+Route::get('/Jabatan/ubah{id}', [JabatanController::class, 'ubah']);
+Route::post('/Jabatan/update{id}', [JabatanController::class, 'update']);
+Route::get('/Jabatan/hapus{id}', [JabatanController::class, 'hapus']);
+
+Route::get('/Jaminan', [JaminanController::class, 'index']);
+Route::post('/Jaminan/store', [JaminanController::class, 'store']);
+Route::get('/Jaminan/ubah{idprsh}', [JaminanController::class, 'ubah']);
+Route::post('/Jaminan/update{idprsh}', [JaminanController::class, 'update']);
+Route::get('/Jaminan/hapus{idprsh}', [JaminanController::class, 'hapus']);
+
+Route::get('/Perusahaankategori', [PerusahaankategoriController::class, 'index']);
+Route::post('/Perusahaankategori/store', [PerusahaankategoriController::class, 'store']);
+Route::get('/Perusahaankategori/ubah{idkategori}', [PerusahaankategoriController::class, 'ubah']);
+Route::post('/Perusahaankategori/update{idkategori}', [PerusahaankategoriController::class, 'update']);
+Route::get('/Perusahaankategori/hapus{idkategori}', [PerusahaankategoriController::class, 'hapus']);
 
 Route::get('/Ruang', [RuangController::class, 'index']);
 Route::post('/Ruang/store', [RuangController::class, 'store']);
