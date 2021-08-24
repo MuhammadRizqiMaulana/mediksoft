@@ -10,6 +10,8 @@ use App\Http\Controllers\Setup\Pengirim_FaskesController;
 use App\Http\Controllers\Setup\KaryawanController;
 use App\Http\Controllers\Setup\PoliController;
 use App\Http\Controllers\Setup\RuangController;
+use App\Http\Controllers\Setup\KamarController;
+
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
@@ -64,6 +66,12 @@ Route::post('/Ruang/store', [RuangController::class, 'store']);
 Route::get('/Ruang/ubah{koderuang}', [RuangController::class, 'ubah']);
 Route::post('/Ruang/update{koderuang}', [RuangController::class, 'update']);
 Route::get('/Ruang/hapus{koderuang}', [RuangController::class, 'hapus']);
+
+Route::get('/Kamar', [KamarController::class, 'index']);
+Route::post('/Kamar/store', [KamarController::class, 'store']);
+Route::get('/Kamar/ubah{kodekamar}', [KamarController::class, 'ubah']);
+Route::post('/Kamar/update{kodekamar}', [KamarController::class, 'update']);
+Route::get('/Kamar/hapus{kodekamar}', [KamarController::class, 'hapus']);
 
 Route::get('/Karyawan', [KaryawanController::class, 'index']);
 //Route::post('/Karyawan/tambah', [KaryawanController::class, 'tambah']);
