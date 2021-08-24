@@ -22,7 +22,7 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Pendaftaran
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Pasien')}}">
                 <i class="fas fa-edit"></i> Pasien
               </a>
               <a class="btn btn-app">
