@@ -119,7 +119,7 @@
               <a class="btn btn-app" href="{{url('/Ruang')}}">
                 <i class="fas fa-edit"></i> Ruang
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Kamar')}}">
                 <i class="fas fa-edit"></i> Kamar
               </a>
               
