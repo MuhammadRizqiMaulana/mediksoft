@@ -16,7 +16,7 @@ use App\Http\Controllers\Setup\RuangController;
 use App\Http\Controllers\Setup\PerusahaankategoriController;
 use App\Http\Controllers\Setup\KamarController;
 use App\Http\Controllers\Setup\DokterPoliController;
-use App\Http\Controllers\Setup\PerusahaankategoriController;
+
 
 /* ----- Setup -----*/
 
