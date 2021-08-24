@@ -32,7 +32,7 @@
                   <div class="col-sm-6 text-right">
                     <a class="btn btn-outline-success btn-sm" href="{{url('Poli/#TambahPoli')}}"><i class="fa fa-plus-circle"></i> Tambah</a>
                     <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak</button>
-                  </div>
+                  </div> 
                 </div>
                 
               </div>

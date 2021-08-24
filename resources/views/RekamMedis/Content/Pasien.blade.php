@@ -155,7 +155,7 @@
                       </div>
                       @if ($errors->has('tgllahir'))
                         <span class="text-danger"><p class="text-right">* {{ $errors->first('tgllahir') }}</p></span>
-                      @endif
+                      @endif 
                     </div>
                   </div>
                   <div class="row">
