@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Pasien;
 use App\Models\Lokasi;
 
-
+ 
 
 class PasienController extends Controller
 {
