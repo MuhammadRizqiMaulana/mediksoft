@@ -76,9 +76,9 @@ Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus']);
 
 Route::get('/DokterPoli', [DokterPoliController::class, 'index']);
 Route::post('/DokterPoli/store', [DokterPoliController::class, 'store']);
-Route::get('/DokterPoli/ubah{kode}', [DokterPoliController::class, 'ubah']);
-Route::post('/DokterPoli/update{kode}', [DokterPoliController::class, 'update']);
-Route::get('/DokterPoli/hapus{kode}', [DokterPoliController::class, 'hapus']);
+Route::get('/DokterPoli/ubah{kodepoli}', [DokterPoliController::class, 'ubah']);
+Route::post('/DokterPoli/update{kodepoli}', [DokterPoliController::class, 'update']);
+Route::get('/DokterPoli/hapus{kodepoli}', [DokterPoliController::class, 'hapus']);
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/

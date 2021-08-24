@@ -145,7 +145,7 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/DokterPoli')}}">
                 <i class="fas fa-edit"></i> Dokter Poli
               </a>
               <a class="btn btn-app">
