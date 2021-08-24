@@ -61,7 +61,27 @@
                         <i class="fas fa-landmark"></i> Bank
                     </a>
                 </div>
+
                 <!-- /.card-body -->
+              </div>
+              <!-- /.card-tools -->
+            </div>
+          
+            <!-- /.card-header -->
+            <div class="card-body">
+              <a class="btn btn-app" href="{{url('/Poli')}}">
+                <i class="fas fa-edit"></i> Poli
+              </a>
+              <a class="btn btn-app">
+                <i class="fas fa-edit"></i> Kelas
+              </a>
+              <a class="btn btn-app" href="{{url('/Ruang')}}">
+                <i class="fas fa-edit"></i> Ruang
+              </a>
+              <a class="btn btn-app" href="{{url('/Kamar')}}">
+                <i class="fas fa-edit"></i> Kamar
+              </a>
+
             </div>
             <!-- /.card -->
 
@@ -92,6 +112,7 @@
                 </div>
                 <!-- /.card-body -->
             </div>
+
             <!-- /.card -->
 
             <div class="card card-primary card-sm ml-2">
@@ -126,6 +147,7 @@
 
                 </div>
                 <!-- /.card-body -->
+        
             </div>
             <!-- /.card -->
 

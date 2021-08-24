@@ -39,6 +39,21 @@
               <form action="{{url('/Pengirim_Faskes/store')}}" method="post">
                 {{csrf_field()}}
                 <div class="card-body">
+                  <table>
+                    <tr>
+                      <td>Dari</td>
+                      <td><input type="date" class="form-control"> </td>
+                      <td rowspan="2">
+                        <a class="btn btn-app btn-lg ">
+                          <i class="fas fa-edit"></i> Filter
+                        </a>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td>Sampai</td>
+                      <td><input type="date" class="form-control"></td>
+                    </tr>
+                  </table>
                   <div class="form-group">
                     <label for="nama">Nama Pengirim / Faskes</label>
                     <input type="text" class="form-control" id="nama" name="namafaskes" placeholder="Nama Pengirim / Faskes">

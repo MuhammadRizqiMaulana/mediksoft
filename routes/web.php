@@ -14,9 +14,14 @@ use App\Http\Controllers\Setup\JabatanController;
 use App\Http\Controllers\Setup\JaminanController;
 use App\Http\Controllers\Setup\RuangController;
 use App\Http\Controllers\Setup\PerusahaankategoriController;
+use App\Http\Controllers\Setup\KamarController;
+use App\Http\Controllers\Setup\DokterPoliController;
+use App\Http\Controllers\Setup\PerusahaankategoriController;
+
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
+use App\Http\Controllers\RekamMedis\PasienController;
 /* ----- RekamMedis -----*/
 
 /* ----- RawatJalan -----*/
@@ -93,6 +98,12 @@ Route::get('/Ruang/ubah{koderuang}', [RuangController::class, 'ubah']);
 Route::post('/Ruang/update{koderuang}', [RuangController::class, 'update']);
 Route::get('/Ruang/hapus{koderuang}', [RuangController::class, 'hapus']);
 
+Route::get('/Kamar', [KamarController::class, 'index']);
+Route::post('/Kamar/store', [KamarController::class, 'store']);
+Route::get('/Kamar/ubah{kodekamar}', [KamarController::class, 'ubah']);
+Route::post('/Kamar/update{kodekamar}', [KamarController::class, 'update']);
+Route::get('/Kamar/hapus{kodekamar}', [KamarController::class, 'hapus']);
+
 Route::get('/Karyawan', [KaryawanController::class, 'index']);
 //Route::post('/Karyawan/tambah', [KaryawanController::class, 'tambah']);
 Route::post('/Karyawan/store', [KaryawanController::class, 'store']);
@@ -100,12 +111,22 @@ Route::get('/Karyawan/ubah{idkaryawan}', [KaryawanController::class, 'ubah']);
 Route::post('/Karyawan/update{idkaryawan}', [KaryawanController::class, 'update']);
 Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus']);
 
+Route::get('/DokterPoli', [DokterPoliController::class, 'index']);
+Route::post('/DokterPoli/store', [DokterPoliController::class, 'store']);
+Route::get('/DokterPoli/ubah{kodepoli}', [DokterPoliController::class, 'ubah']);
+Route::post('/DokterPoli/update{kodepoli}', [DokterPoliController::class, 'update']);
+Route::get('/DokterPoli/hapus{kodepoli}', [DokterPoliController::class, 'hapus']);
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
 Route::get('/RekamMedis', function () {
     return view('RekamMedis.Content.index');
 });
+Route::get('/Pasien', [PasienController::class, 'index']);
+Route::post('/Pasien/store', [PasienController::class, 'store']);
+Route::get('/Pasien/ubah{norm}', [PasienController::class, 'ubah']);
+Route::post('/Pasien/update{norm}', [PasienController::class, 'update']);
+Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
 /* ----- RekamMedis -----*/
 
 /* ----- RawatJalan -----*/
