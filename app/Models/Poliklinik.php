@@ -10,6 +10,7 @@ class Poliklinik extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $keyType = 'string';
     protected $table        = 'poliklinik'; // nama tabel 
     protected $primaryKey   = 'kode'; // primary key tabel 
     protected $fillable     = [

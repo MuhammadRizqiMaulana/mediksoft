@@ -106,7 +106,7 @@ class JabatanController extends Controller
         ], $messages);
 
         $now = Carbon::now();
-        $data = new Jabatan();
+        $data = Jabatan::find($id);
         $data->nama = $request->nama;
         $data->tgledit = $now;
         if ($request->medika == null) {

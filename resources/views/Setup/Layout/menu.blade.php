@@ -125,7 +125,7 @@
                     <a class="btn btn-app" href="{{url('/Ruang')}}">
                         <i class="fas fa-edit"></i> Ruang
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Kamar')}}">
                         <i class="fas fa-edit"></i> Kamar
                     </a>
 
@@ -151,7 +151,7 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/DokterPoli')}}">
                         <i class="fas fa-user-md"></i> Dokter Poli
                     </a>
                     <a class="btn btn-app">
