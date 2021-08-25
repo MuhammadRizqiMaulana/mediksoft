@@ -19,11 +19,11 @@ class DokterPoliController extends Controller
 {
     public function index(){
     	
-        $iddokter = Dokter::all();
-        $kode = Poliklinik::all();
-        $idklaim = Eklaimbpjs::all();
+        $dokter = Dokter::all();
+        $poliklinik = Poliklinik::all();
+        $eklaimbpjs = Eklaimbpjs::all();
         $datas = Tarif_dokter_poli::all();
-    	return view('Setup.Content.DokterPoli',compact('iddokter','kode','idklaim','datas'));
+    	return view('Setup.Content.DokterPoli',compact('dokter','poliklinik','eklaimbpjs','datas'));
     }
 
     public function tambah() {
@@ -47,15 +47,12 @@ class DokterPoliController extends Controller
         ];
 
     	$this->validate($request, [
-    		'kodepoli' => 'required|max:20',
+    		'kodepoli' => 'required|max:6|unique:tarif_dokter_poli',
             'iddokter' => 'required|max:30',
             'tarif' => 'required|numeric|between:0.0000,99999999.9999|min:0',
             'untukrs' => 'required|numeric|between:0.0000,99999999.9999|min:0',
             'untukdokter' => 'required|numeric|between:0.0000,99999999.9999|min:0',
             'idklaim' => 'required|max:30',
-            'pemakaitarif' => 'required|max:30',
-
-
             
     	], $messages);
 
@@ -68,7 +65,7 @@ class DokterPoliController extends Controller
         $data->untukrs = $request->untukrs;
         $data->untukdokter = $request->tarif;
         $data->idklaim = $request->idklaim;
-        $data->pemakaitarif = $request->pemakaitarif;
+        $data->pemakaitarif = 0;
         
         
     	$data->save();
@@ -77,13 +74,13 @@ class DokterPoliController extends Controller
     }
 
    	public function ubah($kodepoli) {
-        $iddokter = Dokter::all();
+        $dokter = Dokter::all();
         $ubah = Tarif_dokter_poli::find($kodepoli);
-        $kode = Poliklinik::all();
-        $idklaim = Eklaimbpjs::all();
+        $poliklinik = Poliklinik::all();
+        $eklaimbpjs = Eklaimbpjs::all();
         $datas = Tarif_dokter_poli::all();
 
-        return view('Setup.Content.DokterPoli',compact('iddokter','ubah','kode','idklaim','datas'));
+        return view('Setup.Content.DokterPoli',compact('dokter','ubah','poliklinik','eklaimbpjs','datas'));
 
     }
 
@@ -99,25 +96,24 @@ class DokterPoliController extends Controller
         ];
 
     	$this->validate($request, [
-    		'kodepoli' => 'required|max:20',
+    		'kodepoli' => 'required|max:20|unique:tarif_dokter_poli',
             'iddokter' => 'required|max:30',
             'tarif' => 'required|numeric|between:0.0000,99999999.9999|min:0',
             'untukrs' => 'required|numeric|between:0.0000,99999999.9999|min:0',
             'untukdokter' => 'required|numeric|between:0.0000,99999999.9999|min:0',
             'idklaim' => 'required|max:30',
-            'pemakaitarif' => 'required|max:30',
     	], $messages);
 
         $now = Carbon::now();
 
-        $data = new Tarif_dokter_poli();
+        $data = Tarif_dokter_poli::find($kodepoli);
         $data->kodepoli = $request->kodepoli;
         $data->iddokter = $request->iddokter;
         $data->tarif = $request->tarif;
         $data->untukrs = $request->untukrs;
         $data->untukdokter = $request->tarif;
         $data->idklaim = $request->idklaim;
-        $data->pemakaitarif = $request->pemakaitarif;
+        $data->pemakaitarif = 0;
     	$data->save();
 
         return redirect('/DokterPoli')->with('alert-success','Data berhasil diubah!');

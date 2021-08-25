@@ -2,7 +2,6 @@
 
 <!-- Modal Tabel Kelas -->
 @isset($kelas)
-
 <div class="modal fade" id="modal-kelas">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -49,7 +48,6 @@
 
 <!-- Modal Tabel Ruang -->
 @isset($ruang)
-
 <div class="modal fade" id="modal-ruang">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -98,7 +96,6 @@
 
 <!-- Modal Tabel E-KLAIM BPJS -->
 @isset($eklaimbpjs)
-
 <div class="modal fade" id="modal-eklaimbpjs">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -142,6 +139,105 @@
 </div>
 @endisset
 <!-- Modal Tabel E-KLAIM BPJS -->
+
+<!-- Modal Tabel Poliklinik -->
+@isset($poliklinik)
+<div class="modal fade" id="modal-poliklinik">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Data Poliklinik</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table id="table_modal_poliklinik" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>No</th>
+            <th>Kode</th>
+            <th>Nama Poliklinik</th>
+            <th>Jenis</th>
+            <th>Aksi</th>
+          </tr>
+          </thead>
+          <tbody>
+          @php
+            $no = 1;
+          @endphp
+          @foreach ($poliklinik as $item)
+            <tr>
+              <td>{{$no++}}</td>
+              <td>{{$item->kode}}</td>
+              <td>{{$item->nama}}</td>
+              <td>{{$item->jenispoli}}</td>
+              <td>
+                <button class="btn btn-outline-info btn-sm" onclick="poliklinik('{{$item->kode}}', '{{$item->nama}}');"><i class="fa fa-check"></i> Pilih</button>
+              </td>
+            </tr>
+          @endforeach
+                           
+        </table>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Poliklinik -->
+
+<!-- Modal Tabel Dokter -->
+@isset($dokter)
+<div class="modal fade" id="modal-dokter">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Data Dokter</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table id="table_modal_dokter" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>No</th>
+            <th>ID</th>
+            <th>NIK</th>
+            <th>Nama Dokter</th>
+            <th>Jenis Dokter</th>
+            <th>Aksi</th>
+          </tr>
+          </thead>
+          <tbody>
+          @php
+            $no = 1;
+          @endphp
+          @foreach ($dokter as $item)
+            <tr>
+              <td>{{$no++}}</td>
+              <td>{{$item->iddokter}}</td>
+              <td>{{$item->nikd}}</td>
+              <td>{{$item->nama}}</td>
+              <td>{{$item->jenisdokter}}</td>
+              <td>
+                <button class="btn btn-outline-info btn-sm" onclick="dokter('{{$item->iddokter}}', '{{$item->nama}}');"><i class="fa fa-check"></i> Pilih</button>
+              </td>
+            </tr>
+          @endforeach
+                           
+        </table>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Kelas -->
+
 
 
 
