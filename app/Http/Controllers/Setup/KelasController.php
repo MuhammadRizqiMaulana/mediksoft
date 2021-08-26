@@ -34,16 +34,14 @@ class KelasController extends Controller
     	$this->validate($request, [
     		'kodekelas' => 'required|max:50',
             'nama' => 'required|max:200',
-            'kodekelasbpjs' => 'required',
     	], $messages);
 
         $data = new kelas();
-        $data->kode = $request->kodekelas;
+        $data->kodekelas = $request->kodekelas;
         $data->nama = $request->nama;
-        $data->jenispoli = $request->kodekelasbpjs;
     	$data->save();
 
-    	return redirect('/Poli')->with('alert-success','Data berhasil ditambahkan!');
+    	return redirect('/Kelas')->with('alert-success','Data berhasil ditambahkan!');
     }
     public function ubah($kodekelas) {
         $datas = Kelas::all();
@@ -63,16 +61,12 @@ class KelasController extends Controller
 
     	$this->validate($request, [
     		
-            'Kodekelas' => 'required|max:200',
             'nama' => 'required',
-            'kodekelasbpjs' => 'required',
     	], $messages);
 
         $data = Kelas::find($kodekelas);
    
-        $data->kodekelas = $request->kodekelas;
         $data->nama = $request->nama;
-        $data->kodekelasbpjs = $request->kodekelasbpjs;
     	$data->save();
     	return redirect('/Kelas')->with('alert-success','Data berhasil diubah!');
     }

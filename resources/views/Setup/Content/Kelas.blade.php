@@ -18,6 +18,12 @@
       </div>
     @endif
 
+<ul>
+  @foreach($errors->all() as $error)
+    <li>{{ $error }}<li>
+  @endforeach
+</ul>
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -40,9 +46,8 @@
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Kodekelas</th>
-                    <th>Nama</th>
-                    <th>Kodekelasbpjs</th>
+                    <th>Kode Kelas</th>
+                    <th>Nama Kelas</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -50,10 +55,9 @@
                     <tr>
                       <td>{{$item->kodekelas}}</td>
                       <td>{{$item->nama}}</td>
-                      <td>{{$item->kodekelasbpjs}}</td>
                       <td>
-                        <a href="/Kelas/ubah{{$item->kode}}#UbahFaskes" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
-                        <a href="/Kelas/hapus{{$item->kode}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                        <a href="/Kelas/ubah{{$item->kodekelas}}#UbahFaskes" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                        <a href="/Kelas/hapus{{$item->kodekelas}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
                           <i class="fa fa-minus-circle"></i> Hapus
                         </a>
 
@@ -77,30 +81,24 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form action="{{url('/Poli/store')}}" method="post">
+                  <form action="{{url('/Kelas/store')}}" method="post">
                     {{csrf_field()}}
                     <div class="card-body">
                       <div class="form-group">
-                        <label for="nama">kodekelas</label>
-                        <input type="text" class="form-control" id="kodekelas" name="kodekelas" placeholder="kodekelas">
+                        <label for="kode">Kode kelas</label>
+                        <input type="text" class="form-control" id="kodekelas" name="kodekelas" placeholder="kode kelas">
                           @if ($errors->has('kodekelas'))
                             <span class="text-danger"><p class="text-right">* {{ $errors->first('kodekelas') }}</p></span>
                           @endif
                       </div>
                       <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <textarea class="form-control" id="nama"  name="nama" placeholder="nama"></textarea>
-                          @if ($errors->has('nama'))
-                            <span class="text-danger"><p class="text-right">* {{ $errors->first('nama') }}</p></span>
+                        <label for="nama">Nama Kelas</label>
+                        <textarea class="form-control" id="nama"  name="nama" placeholder="nama kelas"></textarea>
+                          @if ($errors->has('nama kelas'))
+                            <span class="text-danger"><p class="text-right">* {{ $errors->first('nama kelas') }}</p></span>
                           @endif
                       </div>
-                      <div class="form-group">
-                        <label for="kodekelasbpjs">kode kelas bpjs</label>
-                        <input type="text" class="form-control" id="kodekelasbpjs" name="kodekelasbpjs" placeholder="kodekelasbpjs">
-                          @if ($errors->has('kodekelasbpjs'))
-                            <span class="text-danger"><p class="text-right">* {{ $errors->first('kodekelasbpjs') }}</p></span>
-                          @endif
-                      </div>
+                      
                     </div>
                     <!-- /.card-body -->
 
@@ -120,30 +118,22 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form action="{{url('/Poli/update'.$ubah->kode)}}" method="post">
+                  <form action="{{url('/Kelas/update'.$ubah->kodekelas)}}" method="post">
                     {{csrf_field()}}
                     <div class="card-body">
                       <div class="form-group">
-                        <label for="kodekelas">kode Kelas</label>
-                        <input type="text" class="form-control" id="kodekelas" name="kodekelas" placeholder="kodekelas" value="{{$ubah->kodekelas}}" disabled>
+                        <label for="kodekelas">Kode Kelas</label>
+                        <input type="text" class="form-control" id="kodekelas" name="kodekelas" placeholder="kode kelas" value="{{$ubah->kodekelas}}" disabled>
                         @if ($errors->has('kodekelas'))
                           <span class="text-danger"><p class="text-right">* {{ $errors->first('kodekelas') }}</p></span>
                         @endif
                       </div>
                       <div class="form-group">
-                        <label for="nama">nama</label>
-                        <textarea class="form-control" id="nama"  name="nama" placeholder="nama">{{$ubah->nama}}</textarea>
-                        @if ($errors->has('nama'))
-                          <span class="text-danger"><p class="text-right">* {{ $errors->first('nama') }}</p></span>
+                        <label for="nama">Nama Kelas</label>
+                        <textarea class="form-control" id="nama"  name="nama" placeholder="nama kelas">{{$ubah->nama}}</textarea>
+                        @if ($errors->has('nama kelas'))
+                          <span class="text-danger"><p class="text-right">* {{ $errors->first('namakelas') }}</p></span>
                         @endif
-                      </div>
-                      <div class="form-group">
-                        <label for="kodekelas">Kode Kelas BPJS</label>
-                        <input type="text" class="form-control" id="kodekelasbpjs" name="kodekelasbpjs" placeholder="kodekelasbpjs" value="{{$ubah->kodekelasbpjs}}" disabled>
-                        
-                          @if ($errors->has('kodekelasbpjs'))
-                            <span class="text-danger"><p class="text-right">* {{ $errors->first('kodekelasbpjs') }}</p></span>
-                          @endif
                       </div>
                     </div>
                     <!-- /.card-body -->
