@@ -15,7 +15,6 @@ use App\Http\Controllers\Setup\KelasController;
 use App\Http\Controllers\Setup\DokterController;
 use App\Http\Controllers\Setup\JabatanController;
 use App\Http\Controllers\Setup\JaminanController;
-use App\Http\Controllers\Setup\RuangController;
 use App\Http\Controllers\Setup\PerusahaankategoriController;
 use App\Http\Controllers\Setup\KamarController;
 use App\Http\Controllers\Setup\DokterPoliController;
