@@ -22,6 +22,8 @@ use App\Http\Controllers\Setup\DokterPoliController;
 
 /* ----- RekamMedis -----*/
 use App\Http\Controllers\RekamMedis\PasienController;
+use App\Http\Controllers\RekamMedis\Pendaftaran_Rawat_JalanController;
+
 /* ----- RekamMedis -----*/
 
 /* ----- RawatJalan -----*/
@@ -127,6 +129,13 @@ Route::post('/Pasien/store', [PasienController::class, 'store']);
 Route::get('/Pasien/ubah{norm}', [PasienController::class, 'ubah']);
 Route::post('/Pasien/update{norm}', [PasienController::class, 'update']);
 Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
+
+Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index']);
+Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store']);
+Route::get('/Pendaftaran_Rawat_Jalan/ubah{norm}', [Pendaftaran_Rawat_JalanController::class, 'ubah']);
+Route::post('/Pendaftaran_Rawat_Jalan/update{norm}', [Pendaftaran_Rawat_JalanController::class, 'update']);
+Route::get('/Pendaftaran_Rawat_Jalan/hapus{norm}', [Pendaftaran_Rawat_JalanController::class, 'hapus']);
+
 /* ----- RekamMedis -----*/
 
 /* ----- RawatJalan -----*/

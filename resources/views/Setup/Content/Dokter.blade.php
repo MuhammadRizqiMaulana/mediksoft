@@ -244,6 +244,18 @@
                                     </span>
                                     @endif
                                 </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-title">Tanda Tangan</h5>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="card-body"> 
+                                                <input type="file" name="img" class="image-preview-filepond">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="footer text-right">
                                     <button type="submit" class="btn btn-outline-success"><i
                                             class="fa fa-check"></i></button>

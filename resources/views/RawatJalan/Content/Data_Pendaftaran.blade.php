@@ -28,66 +28,126 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-5">
+          <div class="col-4">
             <!-- general form elements -->
             <div class="card card-success card-outline" id="TambahFaskes">
               <div class="card-header">
                 <h4 class="text-success"><i class="fa fa-plus-circle"></i> Tambah</h4>
               </div>
               <!-- /.card-header -->
+              <div class="card-body">
               <!-- form start -->
-              <form action="{{url('/Pengirim_Faskes/store')}}" method="post">
-                {{csrf_field()}}
-                <div class="card-body">
-                  <table>
-                    <tr>
-                      <td>Dari</td>
-                      <td><input type="date" class="form-control"> </td>
-                      <td rowspan="2">
-                        <a class="btn btn-app btn-lg ">
+                <form action="{{url('/Pengirim_Faskes/store')}}" method="post">
+                  {{csrf_field()}}
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="row">
+                        <div class="col-4"><label>Dari</label></div>
+                        <div class="col-8"><input type="date" class="form-control"> </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4"><label>Sampai</label></div>
+                        <div class="col-8"><input type="date" class="form-control"></div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <a class="btn btn-block btn-outline-info btn-lg" >
                           <i class="fas fa-edit"></i> Filter
                         </a>
-                    </td>
-                    </tr>
-                    <tr>
-                      <td>Sampai</td>
-                      <td><input type="date" class="form-control"></td>
-                    </tr>
-                  </table>
-                  <div class="form-group">
-                    <label for="nama">Nama Pengirim / Faskes</label>
-                    <input type="text" class="form-control" id="nama" name="namafaskes" placeholder="Nama Pengirim / Faskes">
-                      @if ($errors->has('namafaskes'))
-                        <span class="text-danger"><p class="text-right">* {{ $errors->first('namafaskes') }}</p></span>
-                      @endif
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label for="alamat">Alamat</label>
-                    <textarea class="form-control" id="alamat"  name="alamat" placeholder="Alamat"></textarea>
-                      @if ($errors->has('alamat'))
-                        <span class="text-danger"><p class="text-right">* {{ $errors->first('alamat') }}</p></span>
-                      @endif
+                  <div class="row">
+                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar"></i></button></div>
+                    <div class="col-6"><button type="button" class="btn btn-block btn-outline-primary"><i class="fas fa-calendar"></i> Bulan ini</button></div>
+                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar"></i></button></div>
                   </div>
-                  <div class="form-group">
-                    <label for="fee">Fee</label>
-                    <input type="number" class="form-control" id="fee"  name="fee" placeholder="Fee" min="0">
-                      @if ($errors->has('fee'))
-                        <span class="text-danger"><p class="text-right">* {{ $errors->first('fee') }}</p></span>
-                      @endif
+                  <div class="row">
+                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar"></i></button></div>
+                    <div class="col-6"><button type="button" class="btn btn-block btn-outline-primary"><i class="fas fa-calendar"></i> Hari ini</button></div>
+                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar"></i></button></div>
+                  </div>
+                </form>
+                <hr>
+                <div class="row">
+                  <div class="col"><a href="{{url('Pendaftaran_Rawat_Jalan')}}" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i>DAFTAR</a></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i>PERIKSA</button></div>
+                </div>
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Ubah Daftar</button></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Ubah Periksa</button></div>
+                </div>
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Lihat Daftar</button></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Lihat Periksa</button></div>
+                </div>
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-plus-circle"></i>Hapus</button></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-plus-circle"></i>Batalkan</button></div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Rekam Medis RJ</button></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Cetak Rekam Medis RJ</button></div>
+                </div>
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Riwayat Resume Medis Pasien</button></div>
+                </div>
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Transfer Rawat Inap</button></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Pengantar Permintaan R I</button></div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Cetak Data Pendaftaran</button></div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <select class="form-control form-control-sm">
+                      <option>Surat Keterangan Sehat</option>
+                      <option>Surat Keterangan Sakit</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <select class="form-control form-control-sm">
+                      <option>Surat Keterangan Sehat</option>
+                      <option>Surat Keterangan Sakit</option>
+                    </select>
                   </div>
                 </div>
-                <!-- /.card-body -->
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group row">
+                      <label for="copycetaklabel" class="col-sm-4 col-form-label"><span>Copy</span></label>
+                      <div class="col-sm-8">
+                        <input type="number" class="form-control form-control-sm" id="copycetaklabel" placeholder="Jumlah Copy">
+                      </div>
+                      <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Cetak Label</button>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group row">
+                      <label for="copycetakgelang" class="col-sm-4 col-form-label"><span>Copy</span></label>
+                      <div class="col-sm-8">
+                        <input type="number" class="form-control form-control-sm" id="copycetakgelang" placeholder="Jumlah Copy">
+                      </div>
+                      <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Cetak Gelang</button>
+                    </div>
+                  </div>
+                </div>
 
-                <div class="card-footer text-right">
-                  <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i></button>
-                  <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i></button>
-                </div>
-              </form>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer text-right">
+                <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i></button>
+                <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i></button>
+              </div>
+              <!-- /.card-footer -->
             </div>
             <!-- /.card -->
           </div>
           <!-- /.col -->
-          <div class="col-7">
+          <div class="col-8">
             <div class="card">
               <div class="card-header">
                 <div class="row">
@@ -128,20 +188,20 @@
                   @foreach ($datas as $item)
                     <tr>
                       <td>{{$no++}}</td>
-                      <td>{{$item->nik}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
-                      <td>{{$item->nama}}</td>
+                      <td>{{$item->faktur_rawatjalan}}</td>
+                      <td>{{$item->norm}}</td>
+                      <td>{{$item->Pasien->namapasien}}</td>
+                      <td>{{$item->tglmasuk}}</td>
+                      <td>{{$item->Poliklinik->nama}}</td>
+                      <td>{{$item->Dokter->nama}}</td>
+                      <td>{{$item->Perusahaan->namaprsh}}</td>
+                      <td>{{$item->Faskes->namafaskes}}</td>
+                      <td><input type="checkbox" {{ ($item->inap == 1) ? 'checked' : ''}} readonly></td>
+                      <td>{{$item->statustransaksi}}</td>
+                      <td>{{$item->Pasien->alamat}}</td>
+                      <td>{{$item->Pasien->namaayah}}</td>
+                      <td>{{$item->Pasien->penanggungjawab}}</td>
+                      <td>{{$item->kunjunganke}}</td>
                       <td>
                         <a href="/Karyawan/ubah{{$item->idkaryawan}}#UbahKaryawan" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
                         <a href="/Karyawan/hapus{{$item->idkaryawan}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">

@@ -19,7 +19,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Pendaftaran_Rawat_Jalan')}}">
                 <i class="fas fa-edit"></i> Pendaftaran
               </a>
               <a class="btn btn-app" href="{{url('/Pasien')}}">
