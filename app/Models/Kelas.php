@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
+    protected $keyType = 'string';
     protected $table='kelas'; 
     protected $keyType = 'string';
     protected $primaryKey = 'kodekelas';

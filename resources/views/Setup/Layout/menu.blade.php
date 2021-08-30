@@ -17,6 +17,7 @@
                     </div>
                     <!-- /.card-tools -->
                 </div>
+
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a class="btn btn-app" href="{{url('/Dokter')}}">
@@ -28,9 +29,11 @@
                     <a class="btn btn-app" href="{{url('/Jabatan')}}">
                         <i class="fas fa-chair"></i> Jabatan
                     </a>
+
                 </div>
                 <!-- /.card-body -->
             </div>
+
             <!-- /.card -->
 
             <div class="card card-primary card-sm ml-2">
@@ -46,6 +49,7 @@
                         </div>
                     </div>
                     <!-- /.card-tools -->
+
                 </div>
 
                 <!-- /.card-header -->
@@ -57,12 +61,11 @@
                     <a class="btn btn-app" href="{{url('/Pengirim_Faskes')}}">
                         <i class="fas fa-user-tie"></i> Pengirim / Faskes
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Bank')}}">
                         <i class="fas fa-landmark"></i> Bank
                     </a>
                 </div>
 
-                <!-- /.card-body -->
             </div>
             <!-- /.card-tools -->
 
@@ -119,7 +122,7 @@
                     <a class="btn btn-app" href="{{url('/Poli')}}">
                         <i class="fas fa-clinic-medical"></i> Poli
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Kelas')}}">
                         <i class="fas fa-procedures"></i> Kelas
                     </a>
                     <a class="btn btn-app" href="{{url('/Ruang')}}">

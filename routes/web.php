@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Setup\Pengirim_FaskesController;
 use App\Http\Controllers\Setup\KaryawanController;
 use App\Http\Controllers\Setup\PoliController;
+use App\Http\Controllers\Setup\BankController;
+use App\Http\Controllers\Setup\RuangController;
+use App\Http\Controllers\Setup\KelasController;
 use App\Http\Controllers\Setup\DokterController;
 use App\Http\Controllers\Setup\JabatanController;
 use App\Http\Controllers\Setup\JaminanController;
@@ -21,6 +24,8 @@ use App\Http\Controllers\Setup\DokterPoliController;
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
+
+use App\Http\Controllers\RekamMedis\KeanggotaanController;
 use App\Http\Controllers\RekamMedis\PasienController;
 use App\Http\Controllers\RekamMedis\Pendaftaran_Rawat_JalanController;
 
@@ -69,6 +74,18 @@ Route::post('/Poli/store', [PoliController::class, 'store']);
 Route::get('/Poli/ubah{kode}', [PoliController::class, 'ubah']);
 Route::post('/Poli/update{kode}', [PoliController::class, 'update']);
 Route::get('/Poli/hapus{kode}', [PoliController::class, 'hapus']);
+
+Route::get('/Kelas', [KelasController::class, 'index']);
+Route::post('/Kelas/store', [KelasController::class, 'store']);
+Route::get('/Kelas/ubah{kodekelas}', [KelasController::class, 'ubah']);
+Route::post('/Kelas/update{kodekelas}', [KelasController::class, 'update']);
+Route::get('/Kelas/hapus{kodekelas}', [KelasController::class, 'hapus']);
+
+Route::get('/Bank', [BankController::class, 'index']);
+Route::post('/Bank/store', [BankController::class, 'store']);
+Route::get('/Bank/ubah{idbank}', [BankController::class, 'ubah']);
+Route::post('/Bank/update{idbank}', [BankController::class, 'update']);
+Route::get('/Bank/hapus{idbank}', [BankController::class, 'hapus']);
 
 Route::get('/Dokter', [DokterController::class, 'index']);
 Route::post('/Dokter/store', [DokterController::class, 'store']);
@@ -124,6 +141,13 @@ Route::get('/DokterPoli/hapus{kodepoli}', [DokterPoliController::class, 'hapus']
 Route::get('/RekamMedis', function () {
     return view('RekamMedis.Content.index');
 });
+
+Route::get('/Keanggotaan', [KeanggotaanController::class, 'index']);
+Route::post('/Keanggotaan/store', [KeanggotaanController::class, 'store']);
+Route::get('/Keanggotaan/ubah{idkeanggotaan}', [KeanggotaanController::class, 'ubah']);
+Route::post('/Keanggotaan/update{idkeanggotaan}', [KeanggotaanController::class, 'update']);
+Route::get('/keanggotaan/hapus{idkeanggotaan}', [KeanggotaanController::class, 'hapus']);
+
 Route::get('/Pasien', [PasienController::class, 'index']);
 Route::post('/Pasien/store', [PasienController::class, 'store']);
 Route::get('/Pasien/ubah{norm}', [PasienController::class, 'ubah']);
