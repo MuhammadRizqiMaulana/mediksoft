@@ -325,7 +325,7 @@
     document.getElementById('kodepoli').value = $kode;
     document.getElementById('namapoli').value = $nama;
     $(".close").click();
-  }
+  } 
 
   function dokter($iddokter,$namadokter){
     document.getElementById('iddokter').value = $iddokter;
