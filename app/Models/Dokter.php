@@ -10,6 +10,7 @@ class Dokter extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $keyType = 'string';
     protected $table        = 'dokter'; // nama tabel 
     protected $primaryKey   = 'iddokter'; // primary key tabel 
     protected $fillable     = ['nama', 
