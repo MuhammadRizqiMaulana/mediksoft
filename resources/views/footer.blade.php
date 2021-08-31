@@ -13,7 +13,7 @@
           <i class="far fa-clock"></i> : {{ date('H:i') }}
       </div>
       <div class="col-4">
-        <a href="#">User Lisensi : PT Global Eushanosoft</a>
+        <i class="fas fa-id-card"></i> User Lisensi : PT Global Eushanosoft
       </div>
     </div>
 </footer>

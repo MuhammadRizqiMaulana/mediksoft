@@ -30,10 +30,7 @@
         <div class="row">
           <div class="col-4">
             <!-- general form elements -->
-            <div class="card card-success card-outline" id="TambahFaskes">
-              <div class="card-header">
-                <h4 class="text-success"><i class="fa fa-plus-circle"></i> Tambah</h4>
-              </div>
+            <div class="card card-success card-outline" id="TambahDataPendaftaran">
               <!-- /.card-header -->
               <div class="card-body">
               <!-- form start -->
@@ -52,89 +49,22 @@
                     </div>
                     <div class="col-3">
                       <a class="btn btn-block btn-outline-info btn-lg" >
-                          <i class="fas fa-edit"></i> Filter
+                          <i class="fas fa-filter"></i> Filter
                         </a>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar"></i></button></div>
+                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar-minus"></i></button></div>
                     <div class="col-6"><button type="button" class="btn btn-block btn-outline-primary"><i class="fas fa-calendar"></i> Bulan ini</button></div>
-                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar"></i></button></div>
+                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar-plus"></i></button></div>
                   </div>
                   <div class="row">
-                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar"></i></button></div>
+                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar-minus"></i></button></div>
                     <div class="col-6"><button type="button" class="btn btn-block btn-outline-primary"><i class="fas fa-calendar"></i> Hari ini</button></div>
-                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar"></i></button></div>
+                    <div class="col-3"><button type="button" class="btn btn-block btn-outline-success"><i class="fas fa-calendar-plus"></i></button></div>
                   </div>
                 </form>
                 <hr>
-                <div class="row">
-                  <div class="col"><a href="{{url('Pendaftaran_Rawat_Jalan')}}" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i>DAFTAR</a></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i>PERIKSA</button></div>
-                </div>
-                <div class="row">
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Ubah Daftar</button></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Ubah Periksa</button></div>
-                </div>
-                <div class="row">
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Lihat Daftar</button></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Lihat Periksa</button></div>
-                </div>
-                <div class="row">
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-plus-circle"></i>Hapus</button></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-plus-circle"></i>Batalkan</button></div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Rekam Medis RJ</button></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Cetak Rekam Medis RJ</button></div>
-                </div>
-                <div class="row">
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Riwayat Resume Medis Pasien</button></div>
-                </div>
-                <div class="row">
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i>Transfer Rawat Inap</button></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Pengantar Permintaan R I</button></div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Cetak Data Pendaftaran</button></div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <select class="form-control form-control-sm">
-                      <option>Surat Keterangan Sehat</option>
-                      <option>Surat Keterangan Sakit</option>
-                    </select>
-                  </div>
-                  <div class="col">
-                    <select class="form-control form-control-sm">
-                      <option>Surat Keterangan Sehat</option>
-                      <option>Surat Keterangan Sakit</option>
-                    </select>
-                  </div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col">
-                    <div class="form-group row">
-                      <label for="copycetaklabel" class="col-sm-4 col-form-label"><span>Copy</span></label>
-                      <div class="col-sm-8">
-                        <input type="number" class="form-control form-control-sm" id="copycetaklabel" placeholder="Jumlah Copy">
-                      </div>
-                      <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Cetak Label</button>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-group row">
-                      <label for="copycetakgelang" class="col-sm-4 col-form-label"><span>Copy</span></label>
-                      <div class="col-sm-8">
-                        <input type="number" class="form-control form-control-sm" id="copycetakgelang" placeholder="Jumlah Copy">
-                      </div>
-                      <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i>Cetak Gelang</button>
-                    </div>
-                  </div>
-                </div>
 
               </div>
               <!-- /.card-body -->
@@ -153,8 +83,8 @@
                 <div class="row">
                   
                   <div class="col-sm-6 text-left">
-                    <a class="btn btn-outline-success btn-sm" href="{{url('Karyawan/#TambahKaryawan')}}"><i class="fa fa-plus-circle"></i> Tambah</a>
-                    <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak</button>
+                    <a class="btn btn-outline-success btn-sm" href="{{url('/Data_Pendaftaran/tambah/#TambahPendaftaranRawatJalan')}}"><i class="fa fa-plus-circle"></i> DAFTAR</a>
+                    <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Data Pendaftaran</button>
                   </div>
                 </div>
                 
@@ -203,11 +133,78 @@
                       <td>{{$item->Pasien->penanggungjawab}}</td>
                       <td>{{$item->kunjunganke}}</td>
                       <td>
-                        <a href="/Karyawan/ubah{{$item->idkaryawan}}#UbahKaryawan" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
-                        <a href="/Karyawan/hapus{{$item->idkaryawan}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
-                          <i class="fa fa-minus-circle"></i> Hapus
-                        </a>
-
+                        <div class="row">
+                          <div class="col"> </div>
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i> PERIKSA</button></div>
+                        </div>
+                        <div class="row">
+                          <div class="col"><a href="/Data_Pendaftaran/ubah{{$item->faktur_rawatjalan}}#UbahKaryawan" class="btn btn-block btn-outline-primary btn-sm"><i class="fa fa-edit"></i> Ubah Daftar</a></div>
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-clipboard-list"></i> Ubah Periksa</button></div>
+                        </div>
+                        <div class="row">
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Daftar</button></div>
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Periksa</button></div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <a href="/Data_Pendaftaran/hapus{{$item->faktur_rawatjalan}}" class="btn btn-block btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                              <i class="fa fa-minus-circle"></i> Hapus
+                            </a> 
+                          </div>
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-minus-circle"></i> Batalkan</button></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i> Rekam Medis RJ</button></div>
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Rekam Medis RJ</button></div>
+                        </div>
+                        <div class="row">
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Riwayat Resume Medis Pasien</button></div>
+                        </div>
+                        <div class="row">
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i> Transfer Rawat Inap</button></div>
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Pengantar Permintaan R I</button></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Data Pendaftaran</button></div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <select class="form-control form-control-sm">
+                              <option>Surat Keterangan Sehat</option>
+                              <option>Surat Keterangan Sakit</option>
+                            </select>
+                          </div>
+                          <div class="col">
+                            <select class="form-control form-control-sm">
+                              <option>Surat Keterangan Sehat</option>
+                              <option>Surat Keterangan Sakit</option>
+                            </select>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group row">
+                              <label for="copycetaklabel" class="col-sm-4 col-form-label"><span>Copy</span></label>
+                              <div class="col-sm-8">
+                                <input type="number" class="form-control form-control-sm" id="copycetaklabel" placeholder="Jumlah Copy">
+                              </div>
+                              <button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Label</button>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group row">
+                              <label for="copycetakgelang" class="col-sm-4 col-form-label"><span>Copy</span></label>
+                              <div class="col-sm-8">
+                                <input type="number" class="form-control form-control-sm" id="copycetakgelang" placeholder="Jumlah Copy">
+                              </div>
+                              <button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Gelang</button>
+                            </div>
+                          </div>
+                        </div>
+        
                       </td>
                     </tr>
                   @endforeach
