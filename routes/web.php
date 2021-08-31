@@ -62,7 +62,7 @@ Route::get('/Setup', function () {
     return view('Setup.Content.index');
 });
 Route::get('/Pengirim_Faskes', [Pengirim_FaskesController::class, 'index']);
-//Route::post('/Pengirim_Faskes/tambah', [Pengirim_FaskesController::class, 'tambah']);
+//Route::get('/Pengirim_Faskes/tambah', [Pengirim_FaskesController::class, 'tambah']);
 Route::post('/Pengirim_Faskes/store', [Pengirim_FaskesController::class, 'store']);
 Route::get('/Pengirim_Faskes/ubah{kodefaskes}', [Pengirim_FaskesController::class, 'ubah']);
 Route::post('/Pengirim_Faskes/update{kodefaskes}', [Pengirim_FaskesController::class, 'update']);
@@ -123,7 +123,7 @@ Route::post('/Kamar/update{kodekamar}', [KamarController::class, 'update']);
 Route::get('/Kamar/hapus{kodekamar}', [KamarController::class, 'hapus']);
 
 Route::get('/Karyawan', [KaryawanController::class, 'index']);
-//Route::post('/Karyawan/tambah', [KaryawanController::class, 'tambah']);
+//Route::get('/Karyawan/tambah', [KaryawanController::class, 'tambah']);
 Route::post('/Karyawan/store', [KaryawanController::class, 'store']);
 Route::get('/Karyawan/ubah{idkaryawan}', [KaryawanController::class, 'ubah']);
 Route::post('/Karyawan/update{idkaryawan}', [KaryawanController::class, 'update']);
@@ -155,9 +155,6 @@ Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
 
 Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index']);
 Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store']);
-Route::get('/Pendaftaran_Rawat_Jalan/ubah{norm}', [Pendaftaran_Rawat_JalanController::class, 'ubah']);
-Route::post('/Pendaftaran_Rawat_Jalan/update{norm}', [Pendaftaran_Rawat_JalanController::class, 'update']);
-Route::get('/Pendaftaran_Rawat_Jalan/hapus{norm}', [Pendaftaran_Rawat_JalanController::class, 'hapus']);
 
 /* ----- RekamMedis -----*/
 
@@ -166,5 +163,11 @@ Route::get('/RawatJalan', function () {
     return view('RawatJalan.Content.index');
 });
 Route::get('/Data_Pendaftaran', [Data_PendaftaranController::class, 'index']);
+Route::get('/Data_Pendaftaran/tambah', [Data_PendaftaranController::class, 'tambah']);
+Route::post('/Data_Pendaftaran/store', [Data_PendaftaranController::class, 'store']);
+Route::get('/Data_Pendaftaran/ubah{faktur_rawatjalan}', [Data_PendaftaranController::class, 'ubah']);
+Route::post('/Data_Pendaftaran/update{faktur_rawatjalan}', [Data_PendaftaranController::class, 'update']);
+Route::get('/Data_Pendaftaran/hapus{faktur_rawatjalan}', [Data_PendaftaranController::class, 'hapus']);
+
 
 /* ----- RawatJalan -----*/

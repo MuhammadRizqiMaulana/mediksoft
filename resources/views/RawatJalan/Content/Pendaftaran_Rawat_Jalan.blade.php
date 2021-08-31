@@ -5,7 +5,7 @@
 <div class="content-wrapper">
 
     <!-- Menu -->
-    @include('RekamMedis.Layout.menu')
+    @include('RawatJalan.Layout.menu')
     <!-- /.menu -->
 
     @if(\Session::has('alert-success'))
