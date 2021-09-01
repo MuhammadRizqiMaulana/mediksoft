@@ -100,14 +100,14 @@ class Data_PendaftaranController extends Controller
     	return redirect('/Data_Pendaftaran')->with('alert-success','Data berhasil ditambahkan!');
     }
 
-   	public function ubah($faktur_rawatjalan ) {
+   	public function ubah($faktur_rawatjalan) {
         $pasien = Pasien::all();
         $poliklinik = Poliklinik::all();
         $dokter = Dokter::all();
         $perusahaan = Perusahaan::all();
         $faskes = Faskes::all();   
         $now = Carbon::now();  
-        $ubah = Pasien::find($norm);
+        $ubah = Rawatjalan::find($faktur_rawatjalan);
         return view('RawatJalan.Content.Pendaftaran_Rawat_Jalan',compact('ubah','pasien','poliklinik','dokter','perusahaan','faskes','now'));
 
     }
@@ -150,13 +150,13 @@ class Data_PendaftaranController extends Controller
 		$data->subtotal = 0; 
 		$data->diskon = 0;
 		$data->inap = 0;  
-		$data->iduserpendaftaran = "";  
-		$data->iduserkasir = "";
+		$data->iduserpendaftaran = NULL;  
+		$data->iduserkasir = NULL;
 		$data->statustransaksi = "proses"; 
-		$data->kunjunganke = "";
+		$data->kunjunganke = $data->kunjunganke;
 		$data->nosep = "";
-		$data->idklaimdokter = "";
-		$data->idklaimadministrasi = "";
+		$data->idklaimdokter = 0;
+		$data->idklaimadministrasi = 0;
 		$data->edukasiawal = "Tidak Disampaikan";
 		$data->edukasiawalket = "";
 		$data->edukasikepada = "Kalangan Pasien";
@@ -171,6 +171,20 @@ class Data_PendaftaranController extends Controller
     	$datas = Rawatjalan::find($faktur_rawatjalan);
     	$datas->delete();
         return redirect('/Data_Pendaftaran')->with('alert-success','Data berhasil dihapus!');
+    }
+
+    public function lihat($faktur_rawatjalan) {
+
+        $pasien = Pasien::all();
+        $poliklinik = Poliklinik::all();
+        $dokter = Dokter::all();
+        $perusahaan = Perusahaan::all();
+        $faskes = Faskes::all();   
+        $now = Carbon::now();
+        $lihat = Rawatjalan::find($faktur_rawatjalan);     
+
+        return view('RawatJalan.Content.Pendaftaran_Rawat_Jalan',compact('pasien','poliklinik','dokter','perusahaan','faskes','now','lihat'));
+        
     }
 }
 

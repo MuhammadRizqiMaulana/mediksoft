@@ -138,11 +138,11 @@
                           <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i> PERIKSA</button></div>
                         </div>
                         <div class="row">
-                          <div class="col"><a href="/Data_Pendaftaran/ubah{{$item->faktur_rawatjalan}}#UbahKaryawan" class="btn btn-block btn-outline-primary btn-sm"><i class="fa fa-edit"></i> Ubah Daftar</a></div>
+                          <div class="col"><a href="/Data_Pendaftaran/ubah{{$item->faktur_rawatjalan}}#UbahPendaftaranRawatJalan" class="btn btn-block btn-outline-primary btn-sm"><i class="fa fa-edit"></i> Ubah Daftar</a></div>
                           <div class="col"><button type="button" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-clipboard-list"></i> Ubah Periksa</button></div>
                         </div>
                         <div class="row">
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Daftar</button></div>
+                          <div class="col"><a href="/Data_Pendaftaran/lihat{{$item->faktur_rawatjalan}}#LihatPendaftaranRawatJalan" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Daftar</a></div>
                           <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Periksa</button></div>
                         </div>
                         <div class="row">
