@@ -27,7 +27,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4>Data Kategori Jaminan</h4>
+                                    <h4>Data Kategori Perusahaan / Jaminan</h4>
                                 </div>
                                 <div class="col-sm-6 text-right">
                                     <a class="btn btn-outline-success btn-sm"
@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <label for="nama">Kode</label>
                                     <input type="text" class="form-control" id="idkategori" name="idkategori"
-                                        placeholder="ID Kategori">
+                                        placeholder="Kode">
                                     @if ($errors->has('idkategori'))
                                     <span class="text-danger">
                                         <p class="text-right">* {{ $errors->first('idkategori') }}</p>
@@ -98,7 +98,7 @@
                                 <div class="form-group">
                                     <label for="nama">Nama Kelas</label>
                                     <input type="text" class="form-control" id="namakategori" name="namakategori"
-                                        placeholder="ID Kategori">
+                                        placeholder="Nama Kelas">
                                     @if ($errors->has('namakategori'))
                                     <span class="text-danger">
                                         <p class="text-right">* {{ $errors->first('namakategori') }}</p>
@@ -129,9 +129,9 @@
                             {{csrf_field()}}
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="idkategori">KODE</label>
+                                    <label for="idkategori">Kode</label>
                                     <input type="text" class="form-control" id="idkategori" name="idkategori"
-                                        placeholder="KODE" value="{{$ubah->idkategori}}">
+                                        placeholder="Kode" value="{{$ubah->idkategori}}">
                                     @if ($errors->has('idkategori'))
                                     <span class="text-danger">
                                         <p class="text-right">* {{ $errors->first('idkategori') }}</p>
@@ -141,7 +141,7 @@
                                 <div class="form-group">
                                     <label for="nama">Nama Kelas</label>
                                     <input type="text" class="form-control" id="namakategori" name="namakategori"
-                                        placeholder="KODE" value="{{$ubah->namakategori}}">
+                                        placeholder="Nama Kelas" value="{{$ubah->namakategori}}">
                                     @if ($errors->has('namakategori'))
                                     <span class="text-danger">
                                         <p class="text-right">* {{ $errors->first('namakategori') }}</p>

@@ -32,11 +32,12 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4>Jabatan</h4>
+                                    <h4 class="fas fa-chair"> Jabatan</h4>
                                 </div>
                                 <div class="col-sm-6 text-right">
-                                    <a class="btn btn-outline-success btn-sm" href="{{url('Dokter/#TambahJabatan')}}"><i
-                                            class="fa fa-plus-circle"></i> Tambah</a>
+                                    <a class="btn btn-outline-success btn-sm"
+                                        href="{{url('Jabatan/#TambahJabatan')}}"><i class="fa fa-plus-circle"></i>
+                                        Tambah</a>
                                     <button type="button" class="btn btn-outline-secondary btn-sm"><i
                                             class="fa fa-print"></i> Cetak</button>
                                 </div>
