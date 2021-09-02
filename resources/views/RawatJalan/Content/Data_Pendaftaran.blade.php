@@ -155,7 +155,11 @@
                         </div>
                         <br>
                         <div class="row">
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i> Rekam Medis RJ</button></div>
+                          <div class="col">
+                            <a href="/Rekam_Medis_Rawat_Jalan/index{{$item->faktur_rawatjalan}}" class="btn btn-block btn-outline-success btn-sm">
+                              <i class="fa fa-plus-circle"></i> Rekam Medis RJ
+                            </a> 
+                            <button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i> Rekam Medis RJ</button></div>
                           <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Rekam Medis RJ</button></div>
                         </div>
                         <div class="row">

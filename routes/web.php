@@ -32,6 +32,8 @@ use App\Http\Controllers\RekamMedis\Pendaftaran_Rawat_JalanController;
 
 /* ----- RawatJalan -----*/
 use App\Http\Controllers\RawatJalan\Data_PendaftaranController;
+use App\Http\Controllers\RawatJalan\Rekam_Medis_Rawat_JalanController;
+
 /* ----- RawatJalan -----*/
 
 
@@ -169,6 +171,8 @@ Route::get('/Data_Pendaftaran/ubah{faktur_rawatjalan}', [Data_PendaftaranControl
 Route::post('/Data_Pendaftaran/update{faktur_rawatjalan}', [Data_PendaftaranController::class, 'update']);
 Route::get('/Data_Pendaftaran/hapus{faktur_rawatjalan}', [Data_PendaftaranController::class, 'hapus']);
 Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'lihat']);
+
+Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
 
 
 /* ----- RawatJalan -----*/
