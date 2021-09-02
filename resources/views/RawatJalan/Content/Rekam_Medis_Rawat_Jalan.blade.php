@@ -93,8 +93,6 @@
                     </div>
                   </div>
                 </div>
-                
-                
                 <!---ANAMNESA--->.
               </div>
               <div class="tab-pane fade" id="pemeriksaan-gt-fisik" role="tabpanel" aria-labelledby="pemeriksaan-gt-fisik-tab">
