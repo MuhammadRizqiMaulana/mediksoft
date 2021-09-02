@@ -32,7 +32,6 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-sm-6">
-
                                     <h4 class="fas fa-user-nurse"> Data Dokter</h4>
                                 </div>
                                 <div class="col-sm-6 text-right">
@@ -52,7 +51,6 @@
                                         <th>NIK</th>
                                         <th>Nama Dokter</th>
                                         <th>Jenis Dokter</th>
-                                        <th>Tanda Tangan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -63,7 +61,6 @@
                                         <td>{{$item->nikd}}</td>
                                         <td>{{$item->nama}}</td>
                                         <td>{{$item->jenisdokter}}</td>
-                                        <td>{{$item->img}}</td>
                                         <td>
                                             <a href="/Dokter/ubah{{$item->iddokter}}#UbahDokter"
                                                 class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
