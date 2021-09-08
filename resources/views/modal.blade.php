@@ -1,5 +1,32 @@
 <!-- Modal -->
 
+<!-- Modal Surat keterangan Sakit -->
+@isset($suratketerangansakit)
+<div class="modal fade" id="modal-suratketerangansakit">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">SURAT KETERANGAN SAKIT</h4>
+        <h4 class="modal-title text-center">NOMOR : 0112/VIII</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Yang bertanda tangan dibawah ini dokter</h6>
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Surat keterangan Sakit -->
+
+
 <!-- Modal Tabel Kelas -->
 @isset($kelas)
 <div class="modal fade" id="modal-kelas">

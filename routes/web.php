@@ -174,5 +174,9 @@ Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranContro
 
 Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
 
+Route::get('/Data_Pendaftaran/suratketerangansakit{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansakit']);
+Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansehat']);
+
+
 
 /* ----- RawatJalan -----*/
