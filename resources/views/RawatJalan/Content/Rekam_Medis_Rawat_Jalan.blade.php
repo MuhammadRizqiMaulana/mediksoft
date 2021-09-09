@@ -1254,49 +1254,47 @@
           <!-- card Footer -->
           <div class="card-footer">
             <div class="row">
-              <div class="col-sm-4 border">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col">
+              <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-5">
                       <label for="karyawan">Nama Asisten Dosen</label>
                     </div>
-                    <div class="col">
+                    <div class="col-5">
                       <input type="text" class="form-control" id="karyawan" name="kodekaryawan" placeholder="Karyawan" hidden>
                       <input type="text" class="form-control" id="namakaryawan" name="namakaryawan" placeholder="Nama Asisten Dokter">
                     </div>
-                    <div class="col">
+                    <div class="col-1">
                       <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-karyawan">
                         <i class="fa fa-search"></i>
                       </button>
                     </div>
-                  </div>
+                  
                     @if ($errors->has('kodekaryawan'))
                       <span class="text-danger"><p class="text-right">* {{ $errors->first('kodekaryawan') }}</p></span>
                     @endif
                 </div>
               </div>
-              <div class="col-sm-3 border">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col">
+              <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-3">
                       <label for="dokter">Nama Dokter</label>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                       <input type="text" class="form-control" id="dokter" name="kodedokter" placeholder="Dokter" hidden>
                       <input type="text" class="form-control" id="namadokter" name="namadokter" placeholder="Nama Dokter">
                     </div>
-                    <div class="col">
+                    <div class="col-1">
                       <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-dokter">
                         <i class="fa fa-search"></i>
                       </button>
                     </div>
-                  </div>
+                  
                     @if ($errors->has('kodedokter'))
                       <span class="text-danger"><p class="text-right">* {{ $errors->first('kodedokter') }}</p></span>
                     @endif
                 </div>
               </div>
-              <div class="col-sm-3 border">
+              <div class="col-sm-4 text-right">
                 <div class="row">
                   <div class="col-12">
                     <button type="button" class="btn btn-outline-primary">Simpan & Cetak Resep</button>
@@ -1304,7 +1302,6 @@
                     <button type="reset" class="btn btn-outline-danger">Batal</button>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
