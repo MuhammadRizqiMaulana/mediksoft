@@ -167,11 +167,11 @@
                           <div class="col-3">
                             <label>Pemeriksaan  HbsAg</label>
                             <div class="form-check">
-                            <input class="form-check-input" type="radio" name="jenis_kelamin" value=" " />
+                            <input class="form-check-input" type="radio" name="Positif" value=" " />
                             <label class="form-check-label">Positif</label>
                             </div>
                             <div class="form-check">
-                            <input class="form-check-input" type="radio" name="jenis_kelamin" value=" " />
+                            <input class="form-check-input" type="radio" name="Negatif" value=" " />
                             <label class="form-check-label">Negatif</label>
                           </div>
                           </div>
