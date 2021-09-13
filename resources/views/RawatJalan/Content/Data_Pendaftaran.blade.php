@@ -171,7 +171,9 @@
                         </div>
                         <br>
                         <div class="row">
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Data Pendaftaran</button></div>
+                          <a href="/Data_Pendaftaran/cetakdatapendaftaran" class="btn btn-block btn-outline-secondary btn-sm">
+                            <i class="fa fa-print"></i> Cetak Data Pendaftaran
+                          </a> 
                         </div>
                         <div class="row">
                           <div class="col">
