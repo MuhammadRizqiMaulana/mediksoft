@@ -89,10 +89,10 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Icd10')}}">
                         <i class="fas fa-user"></i> ICD 10
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Icd9')}}">
                         <i class="far fa-user"></i> ICD 9
                     </a>
 
