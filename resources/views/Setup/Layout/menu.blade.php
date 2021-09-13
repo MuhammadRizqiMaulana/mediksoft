@@ -157,16 +157,16 @@
                     <a class="btn btn-app" href="{{url('/DokterPoli')}}">
                         <i class="fas fa-user-md"></i> Dokter Poli
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/DokterKonsultasi')}}">
                         <i class="fas fa-notes-medical"></i> Dokter Konsultasi
                     </a>
-                    <a class="btn btn-app">
+                     <a class="btn btn-app" href="{{url('/DokterVisit')}}">
                         <i class="fas fa-briefcase-medical"></i> Dokter Visit
                     </a>
                     <a class="btn btn-app">
                         <i class="fas fa-syringe"></i> Tindakan Poli
                     </a>
-                    <a class="btn btn-app">
+                   <a class="btn btn-app" href="{{url('/TindakanInap')}}">
                         <i class="fas fa-procedures"></i> Tindakan Inap
                     </a>
                     <a class="btn btn-app">

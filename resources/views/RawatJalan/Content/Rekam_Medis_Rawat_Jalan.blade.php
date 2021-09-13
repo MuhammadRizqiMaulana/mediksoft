@@ -60,6 +60,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="pemeriksaan-penunjang-diagnostik-tab" data-toggle="pill" href="#pemeriksaan-penunjang-diagnostik" role="tab" aria-controls="pemeriksaan-penunjang-diagnostik" aria-selected="false">PEMERIKSAAN PENUNJANG / DIAGNOSTIK</a>
+
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="tindakan-prosedur-diagnosa-tab" data-toggle="pill" href="#tindakan-prosedur-diagnosa" role="tab" aria-controls="tindakan-prosedur-diagnosa" aria-selected="false">TINDAKAN (PROSEDUR / DIAGNOSA)</a>
@@ -1237,6 +1238,117 @@
               </div>
               <div class="tab-pane fade" id="pemeriksaan-penunjang-diagnostik" role="tabpanel" aria-labelledby="pemeriksaan-penunjang-diagnostik">
                 PEMERIKSAAN PENUNJANG / DIAGNOSTIK.
+                <div class="form-group">
+                        <h3>Pemeriksaan Laboratorium</h3>
+                        <div class="row">
+                          <div class="col-2">
+                            <label>Hemoglobin</label>
+                            <input type="text" class="form-control" name="Hemoglobin" placeholder="Hemoglobin">
+                          </div>
+                          <div class="col-2">
+                            <label>Leukosit</label>
+                            <input type="text" class="form-control" name="Leukosit" placeholder="Leukosit">
+                          </div>
+                          <div class="col-2">
+                            <label>Trombosit</label>
+                            <input type="text" class="form-control" name="Trombosit" placeholder="Trombosit">
+                          </div>
+                          <div class="col-2">
+                            <label>Hematokrit</label>
+                            <input type="text" class="form-control" name="Hematokrit" placeholder="Hematokrit">
+                          </div>
+                          <div class="col-2">
+                            <label>Golongan Darah</label>
+                            <input type="text" class="form-control" name="Golongan Darah" placeholder="Golongan Darah">
+                          </div>
+                          <div class="col-2">
+                            <label>Widal</label>
+                            <input type="text" class="form-control" name="Widal" placeholder="Widal">
+                          </div>
+                        </div>
+                        </div> 
+
+                    <div class="form-group">
+
+                      <h3>Pemeriksaan Kimia</h3>
+
+                        <div class="row">
+                          <div class="col-2">
+                            <label>Gula darah sewaktu</label>
+                            <input type="text" class="form-control" name="Gula darah sewaktu" placeholder="Gula darah sewaktu">
+                          </div>
+                          <div class="col-2">
+                            <label>Asam Urat</label>
+                            <input type="text" class="form-control" name="asamurat" placeholder="asamurat">
+                          </div>
+                          <div class="col-2">
+                            <label>Kolesterol</label>
+                            <input type="text" class="form-control" name="Kolesterol" placeholder="Kolesterol">
+                          </div>
+                          <div class="col-2">
+                            <label>TRigliserida</label>
+                            <input type="text" class="form-control" name="TRigliserida" placeholder="TRigliserida">
+                          </div>
+                        </div>
+                        </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-4">
+                            <label>Pemeriksaan Rapid Test</label>
+                            <input type="text" class="form-control" name="pemeriksaanrapidtest" placeholder="pemeriksaanrapidtest">
+                          </div>
+                          <div class="col-3">
+                            <label>Pemeriksaan  HIV</label>
+                            <input type="text" class="form-control" name="pemeriksaanhiv" placeholder="pemeriksaanhiv">
+                          </div>
+                          <div class="col-3">
+                            <label>Pemeriksaan  HbsAg</label>
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Positif" value=" " />
+                            <label class="form-check-label">Positif</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Negatif" value=" " />
+                            <label class="form-check-label">Negatif</label>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-7">
+                            <label>Pemeriksaan  EKG</label>
+                            <input type="text" class="form-control" name="pemeriksaanekg" placeholder="pemeriksaanekg">
+                          </div>                          
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-7">
+                            <label>Pemeriksaan  RONTGEN</label>
+                            <input type="text" class="form-control" name="pemeriksaanrontgen" placeholder="pemeriksaanrontgen">
+                          </div>                          
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-7">
+                            <label>Pemeriksaan  USG</label>
+                            <input type="text" class="form-control" name="pemeriksaanusg" placeholder="pemeriksaanusg">
+                          </div>                          
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-7">
+                            <label>Hasil Pemeriksaan Penunjang Lain</label>
+                            <input type="text" class="form-control" name="hasilpenunjanglain" placeholder="hasilpenunjanglain">
+                          </div>                          
+                        </div>
+                      </div>
+
+                   
+                    
               </div>
               <div class="tab-pane fade" id="tindakan-prosedur-diagnosa" role="tabpanel" aria-labelledby="tindakan-prosedur-diagnosa-tab">
                 TINDAKAN (PROSEDUR / DIAGNOSA).
@@ -1245,8 +1357,41 @@
                 TERAPI.
               </div>
               <div class="tab-pane fade" id="edukasi" role="tabpanel" aria-labelledby="edukasi-tab">
-                EDUKASI.
+                <h3>EDUKASI.</h3>
+                    <input type="checkbox" id="vehicle3" name="vehicle3" value="vehicle3">
+                    <label for="vehicle3"> Istirahat Cukup</label><br>
+                    <input type="checkbox" id=" vehicle3" name=" vehicle3" value="vehicle3 ">
+                    <label for="vehicle3 "> Menghindari Stres</label><br>
+                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                    <label for="vehicle3"> Pola Makan Yang teratur dan Sehat</label><br>
+                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                    <label for="vehicle3"> Diet rendah minyak</label><br>
+                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                    <label for="vehicle3">Diet rendah purin</label><br>
+                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                    <label for="vehicle3"> Diet rendah gula</label><br>
+                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                    <label for="vehicle3"> Olahraga</label><br>
+
+                  <table border="1" class="table table-bordered table-hover text-center" >
+                   <thead>
+                    <tr>
+                      <th>Edukasi Tambbahan</th>
+                    </tr>
+                   </thead>
+                   <tbody>
+                    <tr>
+                       <td>
+                       
+                     </td>
+                    </tr>
+                    
+                   </tbody>
+                     
+                   
+                  </table>
               </div>
+            
               
             </div>
           </div>
