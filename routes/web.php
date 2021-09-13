@@ -18,6 +18,8 @@ use App\Http\Controllers\Setup\JaminanController;
 use App\Http\Controllers\Setup\PerusahaankategoriController;
 use App\Http\Controllers\Setup\KamarController;
 use App\Http\Controllers\Setup\DokterPoliController;
+use App\Http\Controllers\Setup\Icd10Controller;
+use App\Http\Controllers\Setup\Icd9Controller;
 use App\Http\Controllers\Setup\DokterKonsultasiController;
 use App\Http\Controllers\Setup\DokterVisitController;
 use App\Http\Controllers\Setup\TindakanInapController;
@@ -98,6 +100,18 @@ Route::post('/Dokter/store', [DokterController::class, 'store']);
 Route::get('/Dokter/ubah{iddokter}', [DokterController::class, 'ubah']);
 Route::post('/Dokter/update{iddokter}', [DokterController::class, 'update']);
 Route::get('/Dokter/hapus{iddokter}', [DokterController::class, 'hapus']);
+
+Route::get('/Icd10', [Icd10Controller::class, 'index']);
+Route::post('/Icd10/store', [Icd10Controller::class, 'store']);
+Route::get('/Icd10/ubah{kode}', [Icd10Controller::class, 'ubah']);
+Route::post('/Icd10/update{kode}', [Icd10Controller::class, 'update']);
+Route::get('/Icd10/hapus{kode}', [Icd10Controller::class, 'hapus']);
+
+Route::get('/Icd9', [Icd9Controller::class, 'index']);
+Route::post('/Icd9/store', [Icd9Controller::class, 'store']);
+Route::get('/Icd9/ubah{kode}', [Icd9Controller::class, 'ubah']);
+Route::post('/Icd9/update{kode}', [Icd9Controller::class, 'update']);
+Route::get('/Icd9/hapus{kode}', [Icd9Controller::class, 'hapus']);
 
 Route::get('/Jabatan', [JabatanController::class, 'index']);
 Route::post('/Jabatan/store', [JabatanController::class, 'store']);
