@@ -14,4 +14,12 @@ class Tarif_tindakan_inap extends Model
     protected $fillable     = ['kodekategori', 
     							'namatindakan',
                                 'idklaim']; //field tabel
+
+       
+        public function Kategoritransaksi() { 
+            return $this->belongsTo(Kategoritransaksi::class,'kodekategori');
+  		}      
+        public function Eklaimbpjs() {
+            return $this->belongsTo(Eklaimbpjs::class,'idklaim');
+   		}
 }

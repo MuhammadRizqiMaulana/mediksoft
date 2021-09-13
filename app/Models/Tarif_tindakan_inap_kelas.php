@@ -16,4 +16,10 @@ class Tarif_tindakan_inap_kelas extends Model
                                 'untukrs',
                                 'untukdokter',
                                 'untukparamedis']; //field tabel
+
+
+         public function Kelas() { //Kelas dimiliki oleh Tarif_dokter_poli
+            return $this->belongsTo(Kelas::class,'kodekelas');
+ 		    //nama_modelTabelrelasinya,foreignkey di tabel Tarif_dokter_poli
+		}
 }

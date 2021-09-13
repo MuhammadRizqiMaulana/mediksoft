@@ -16,4 +16,14 @@ class Tarif_dokter_konsultasi extends Model
                                 'untukrs',
                                 'untukdokter',
                                 'idklam']; //field tabel
+        public function Kelas() { //Kelas dimiliki oleh Tarif_dokter_poli
+            return $this->belongsTo(Kelas::class,'kodekelas');
+ 		    //nama_modelTabelrelasinya,foreignkey di tabel Tarif_dokter_poli
+		}
+        public function Dokter() { 
+            return $this->belongsTo(Dokter::class,'iddokter');
+  		}      
+        public function Eklaimbpjs() {
+            return $this->belongsTo(Eklaimbpjs::class,'idklaim');
+   		}
 }
