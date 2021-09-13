@@ -1,5 +1,32 @@
 <!-- Modal -->
 
+<!-- Modal Surat keterangan Sakit -->
+@isset($suratketerangansakit)
+<div class="modal fade" id="modal-suratketerangansakit">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">SURAT KETERANGAN SAKIT</h4>
+        <h4 class="modal-title text-center">NOMOR : 0112/VIII</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Yang bertanda tangan dibawah ini dokter</h6>
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Surat keterangan Sakit -->
+
+
 <!-- Modal Tabel Kelas -->
 @isset($kelas)
 <div class="modal fade" id="modal-kelas">
@@ -377,6 +404,51 @@
 </div>
 @endisset
 <!-- Modal Tabel Faskes -->
+
+
+<!-- Modal Detail Alergi Pasien -->
+<div class="modal fade" id="modal-detailalergipasien">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detail Alergi Pasien</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Jenis</th>
+            <th>Keterangan</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <select id="tempjenisalergi" name="tempjenisalergi" class="form-control">
+                  <option value="Makanan">Makanan</option>
+                  <option value="Obat-obatan">Obat-obatan</option>
+                  <option value="Lingkungan">Lingkungan</option>
+                  <option value="Lain-Lain">Lain-Lain</option>
+                </select>
+              </td>
+              <td><input type="text" class="form-control" id="tempketeranganalergi" name="tempketeranganalergi" placeholder="Keterangan"></td>
+            </tr> 
+          </tbody>                         
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-info" onclick="detailalergipasien();"><i class="fa fa-save"></i> Simpan</button>
+        <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-check"></i> Batal</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- Modal Modal Detail Alergi Pasien -->
 
 
 

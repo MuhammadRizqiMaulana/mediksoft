@@ -186,5 +186,21 @@ class Data_PendaftaranController extends Controller
         return view('RawatJalan.Content.Pendaftaran_Rawat_Jalan',compact('pasien','poliklinik','dokter','perusahaan','faskes','now','lihat'));
         
     }
+
+    public function suratketerangansakit($faktur_rawatjalan) {
+
+        $datas = Rawatjalan::find($faktur_rawatjalan);     
+
+        return view('RawatJalan.Content.Surat_Keterangan_Sakit',compact('datas'));
+        
+    }
+
+    public function suratketerangansehat($faktur_rawatjalan) {
+
+        $datas = Rawatjalan::find($faktur_rawatjalan);     
+
+        return view('RawatJalan.Content.Surat_Keterangan_Sehat',compact('datas'));
+        
+    }
 }
 

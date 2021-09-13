@@ -159,7 +159,7 @@
                             <a href="/Rekam_Medis_Rawat_Jalan/index{{$item->faktur_rawatjalan}}" class="btn btn-block btn-outline-success btn-sm">
                               <i class="fa fa-plus-circle"></i> Rekam Medis RJ
                             </a> 
-                            <button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i> Rekam Medis RJ</button></div>
+                          </div>
                           <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Rekam Medis RJ</button></div>
                         </div>
                         <div class="row">
@@ -175,9 +175,10 @@
                         </div>
                         <div class="row">
                           <div class="col">
-                            <select class="form-control form-control-sm">
-                              <option>Surat Keterangan Sehat</option>
-                              <option>Surat Keterangan Sakit</option>
+                            <select class="form-control form-control-sm" onchange="location = this.value;">
+                              <option>Silahkan Pilih</option>
+                              <option value="/Data_Pendaftaran/suratketerangansehat{{$item->faktur_rawatjalan}}">Surat Keterangan Sehat</option>
+                              <option value="/Data_Pendaftaran/suratketerangansakit{{$item->faktur_rawatjalan}}">Surat Keterangan Sakit</option>
                             </select>
                           </div>
                           <div class="col">
