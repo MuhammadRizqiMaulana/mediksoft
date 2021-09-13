@@ -11,7 +11,6 @@ class Kelas extends Model
     public $timestamps = false;
     
     protected $table='kelas'; 
-    protected $keyType = 'string';
     protected $primaryKey = 'kodekelas';
     protected $fillable = [
         'nama', 'kodekelasbpjs' 

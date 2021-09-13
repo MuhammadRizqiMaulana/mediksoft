@@ -36,6 +36,8 @@ use App\Http\Controllers\RekamMedis\Pendaftaran_Rawat_JalanController;
 use App\Http\Controllers\RawatJalan\Data_PendaftaranController;
 use App\Http\Controllers\RawatJalan\Rekam_Medis_Rawat_JalanController;
 use App\Http\Controllers\RawatJalan\PenggunaanObatController;
+use App\Http\Controllers\RawatJalan\Pelayanan_PoliController;
+use App\Http\Controllers\RawatJalan\Transfer_RiController;
 
 /* ----- RawatJalan -----*/
 
@@ -196,6 +198,14 @@ Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranContro
 Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
 
 Route::get('/PenggunaanObat', [PenggunaanObatController::class, 'index']);
+
+Route::get('/Data_Pendaftaran/suratketerangansakit{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansakit']);
+Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansehat']);
+
+Route::get('/Pelayanan_Rawat_Jalan', [Pelayanan_PoliController::class, 'index']);
+
+Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
+
 
 
 /* ----- RawatJalan -----*/

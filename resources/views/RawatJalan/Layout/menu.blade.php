@@ -25,7 +25,7 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Update Pendaftaran Online
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Pendaftaran_Rawat_Inap')}}">
                 <i class="fas fa-edit"></i> Transfer RI
               </a>
             </div>
@@ -53,7 +53,7 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> RM Rawat Jalan
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Pelayanan_Rawat_Jalan')}}">
                 <i class="fas fa-edit"></i> Pelayanan Poli
               </a>
               

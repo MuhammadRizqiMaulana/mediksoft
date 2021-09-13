@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Pasien;
+use App\Models\Agama;
+use App\Models\Icd10;
+use App\Models\Keanggotaan;
 use App\Models\Lokasi;
 
  
@@ -15,8 +18,11 @@ class PasienController extends Controller
     public function index(){
     	
         $datas = Pasien::all();
+        $agama = Agama::all();
+        $icd10 = Icd10::all();
+        $keanggotaan = Keanggotaan::all();
        
-    	return view('RekamMedis.Content.Pasien',compact('datas',));
+    	return view('RekamMedis.Content.Pasien',compact('datas','agama','icd10','keanggotaan'));
     }
 
     public function tambah() {
@@ -125,9 +131,12 @@ class PasienController extends Controller
     }
 
    	public function ubah($norm ) {
-        $datas = Pasien::all();
         $ubah = Pasien::find($norm);
-        return view('RekamMedis.Content.Pasien',compact('datas','ubah'));
+        $datas = Pasien::all();
+        $agama = Agama::all();
+        $icd10 = Icd10::all();
+        $keanggotaan = Keanggotaan::all();
+        return view('RekamMedis.Content.Pasien',compact('datas','ubah','agama','icd10','keanggotaan'));
 
     }
 
