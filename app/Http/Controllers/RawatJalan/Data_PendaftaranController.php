@@ -187,6 +187,13 @@ class Data_PendaftaranController extends Controller
         
     }
 
+    public function cetakdatapendaftaran(){
+
+        $datas = Rawatjalan::all();
+           
+        return view('RawatJalan.Content.Cetak_Data_Pendaftaran',compact('datas'));
+    }
+
     public function suratketerangansakit($faktur_rawatjalan) {
 
         $datas = Rawatjalan::find($faktur_rawatjalan);     
