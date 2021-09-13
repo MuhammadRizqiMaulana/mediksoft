@@ -167,7 +167,6 @@
           </div>
           <div class="card-footer">
             <div class="row">
-              <div class="col"><span class="text-danger">qwerty</span></div>
               <div class="col text-right">
                 <button type="submit" class="btn btn-outline-primary"><i
                   class="fa fa-save"></i> Simpan
