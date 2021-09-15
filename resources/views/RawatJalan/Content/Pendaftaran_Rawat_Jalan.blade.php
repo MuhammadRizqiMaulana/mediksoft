@@ -75,7 +75,7 @@
                                             <input type="text" class="form-control" id="namapasien" name="namapasien"
                                                 placeholder="Nama Pasien">
                                         </div>
-                                        <div class="col-2 text-right">
+                                        <div class="col-2 text-right align-self-end">
                                             <button type="button" class="btn btn-outline-info align-bottom"
                                                 data-toggle="modal" data-target="#modal-pasien">
                                                 <i class="fa fa-search"></i>
@@ -251,7 +251,7 @@
                                                 placeholder="Nama Pasien" value="{{$ubah->Pasien->namapasien}}"
                                                 readonly>
                                         </div>
-                                        <div class="col-2 text-right">
+                                        <div class="col-2 text-right align-self-end">
                                             <button type="button" class="btn btn-outline-info align-bottom"
                                                 data-toggle="modal" data-target="#modal-pasien" disabled>
                                                 <i class="fa fa-search"></i>
@@ -428,7 +428,7 @@
                                                 placeholder="Nama Pasien" value="{{$lihat->Pasien->namapasien}}"
                                                 disabled>
                                         </div>
-                                        <div class="col-2 text-right">
+                                        <div class="col-2 text-right align-self-end">
                                             <button type="button" class="btn btn-outline-info align-bottom"
                                                 data-toggle="modal" data-target="#modal-pasien" disabled>
                                                 <i class="fa fa-search"></i>

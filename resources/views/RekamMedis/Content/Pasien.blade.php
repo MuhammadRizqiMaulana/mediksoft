@@ -8,6 +8,12 @@
     @include('RekamMedis.Layout.menu')
     <!-- /.menu -->
 
+    <div class="container-fluid">
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="mb-0 text-gray-800">Data Pasien</h4>
+      </div>
+    </div>
+
     @if(\Session::has('alert-success'))
       <div class="alert alert-success alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -15,6 +21,15 @@
           </button>
           <h6><i class="fas fa-sign-out-alt"></i><b> Success!!</b></h6>
           {{Session::get('alert-success')}}
+      </div>
+    @endif
+    @if(\Session::has('alert-danger'))
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h6><i class="fas fa-sign-out-alt"></i><b> Gagal!!</b></h6>
+          {{Session::get('alert-danger')}}
       </div>
     @endif
 
@@ -29,18 +44,6 @@
         <div class="row">
           <div class="col-7">
             <div class="card">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <h4>Data Pasien</h4>
-                  </div>
-                  <div class="col-sm-6 text-right">
-                    <a class="btn btn-outline-success btn-sm" href="{{url('Pasien/#TambahPasien')}}"><i class="fa fa-plus-circle"></i> Tambah</a>
-                    <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak</button>
-                  </div>
-                </div>
-                
-              </div>
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
@@ -53,16 +56,14 @@
                   </thead>
                   <tbody>
                   @foreach ($datas as $item)
-                    <tr>
+                    <tr onclick="tombol({{$item->norm}})">
                       <td>{{$item->norm}}</td>
                       <td>{{$item->namapasien}}</td>
                       <td>{{$item->alamat}}</td>
                       <td>
-                        <a href="/Pasien/ubah{{$item->norm}}#UbahPasien" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
-                        <a href="/Pasien/hapus{{$item->norm}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
-                          <i class="fa fa-minus-circle"></i> Hapus
-                        </a>
-
+                        <button class="btn btn-outline-info btn-sm" onclick="tombol({{$item->norm}})">
+                          <i class="fa fa-check"></i> Pilih
+                        </button>
                       </td>
                     </tr>
                   @endforeach
@@ -79,7 +80,22 @@
                 <!-- general form elements -->
                 <div class="card card-success card-outline" id="TambahPasien">
                   <div class="card-header">
-                    <h4 class="text-success"><i class="fa fa-plus-circle"></i> Tambah</h4>
+                    <div class="row">
+                      <div class="col">
+                        <a class="btn btn-outline-success btn-block btn-sm" href="{{url('Pasien/#TambahPasien')}}"><i class="fa fa-plus-circle"></i> Tambah</a>
+                      </div>
+                      <div class="col">
+                        <a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolubah" class="btn btn-outline-info btn-block btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                      </div>
+                      <div class="col">
+                        <a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolhapus" class="btn btn-outline-danger btn-block btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                          <i class="fa fa-minus-circle"></i> Hapus
+                        </a>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-outline-secondary btn-block btn-sm"><i class="fa fa-print"></i> Cetak</button>
+                      </div>
+                    </div>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -376,7 +392,8 @@
                         <div class="row">
                           <div class="col-10">
                             <label>DIAGNOSA</label>
-                            <input type="text" id="diagnosa1" name="diagnosa1" class="form-control" placeholder="DIAGNOSA 1">
+                            <input type="text" id="kodediagnosa1" name="kodediagnosa1" class="form-control" placeholder="DIAGNOSA 1" hidden>
+                            <input type="text" id="namadiagnosa1" name="namadiagnosa1" class="form-control" placeholder="DIAGNOSA 1">
                           </div>
                           <div class="col-1 align-self-end">
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-diagnosa1">
@@ -405,7 +422,8 @@
                         <div class="row">
                           <div class="col-10">
                             <label>DIAGNOSA</label>
-                            <input type="text" id="diagnosa2" name="diagnosa2" class="form-control" placeholder="DIAGNOSA 2">
+                            <input type="text" id="kodediagnosa2" name="kodediagnosa2" class="form-control" placeholder="DIAGNOSA 2" hidden>
+                            <input type="text" id="namadiagnosa2" name="namadiagnosa2" class="form-control" placeholder="DIAGNOSA 2">
                           </div>
                           <div class="col-1 align-self-end">
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-diagnosa2">
@@ -434,7 +452,8 @@
                         <div class="row">
                           <div class="col-10">
                             <label>DIAGNOSA</label>
-                            <input type="text" id="diagnosa3" name="diagnosa3" class="form-control" placeholder="DIAGNOSA 3">
+                            <input type="text" id="kodediagnosa3" name="kodediagnosa3" class="form-control" placeholder="DIAGNOSA 3" hidden>
+                            <input type="text" id="namadiagnosa3" name="namadiagnosa3" class="form-control" placeholder="DIAGNOSA 3">
                           </div>
                           <div class="col-1 align-self-end">
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-diagnosa3">
@@ -461,7 +480,22 @@
                 <!-- general form elements -->
                 <div class="card card-primary card-outline" id="UbahPasien">
                   <div class="card-header">
-                    <h5 class="text-primary"><i class="fa fa-edit"></i> Ubah</h5>
+                    <div class="row">
+                      <div class="col">
+                        <a class="btn btn-outline-success btn-block btn-sm" href="{{url('Pasien/#TambahPasien')}}"><i class="fa fa-plus-circle"></i> Tambah</a>
+                      </div>
+                      <div class="col">
+                        <a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolubah" class="btn btn-outline-info btn-block btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                      </div>
+                      <div class="col">
+                        <a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolhapus" class="btn btn-outline-danger btn-block btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                          <i class="fa fa-minus-circle"></i> Hapus
+                        </a>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-outline-secondary btn-block btn-sm"><i class="fa fa-print"></i> Cetak</button>
+                      </div>
+                    </div>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -852,12 +886,37 @@
 
 <!-- Script Modal -->
 <script type="text/javascript">
+
+  function tombol($norm){
+    $("a#tombolubah").attr("href", "/Pasien/ubah"+ $norm +"#UbahPasien");
+    $("a#tombolhapus").attr("href", "/Pasien/hapus"+ $norm);
+  }
+
   function detailalergipasien(){
     var tempjenisalergi = $("select#tempjenisalergi").val();
     var tempketeranganalergi = $("input#tempketeranganalergi").val();
 
     document.getElementById("jenisalergi").value = tempjenisalergi;
     document.getElementById("keterangan").value = tempketeranganalergi;
+    $(".close").click();
+    
+  }
+
+  function diagnosa1($kode, $nama){
+    document.getElementById("kodediagnosa1").value = $kode;
+    document.getElementById("namadiagnosa1").value = $nama;
+    $(".close").click();
+  }
+
+  function diagnosa2($kode, $nama){
+    document.getElementById("kodediagnosa2").value = $kode;
+    document.getElementById("namadiagnosa2").value = $nama;
+    $(".close").click();
+  }
+
+  function diagnosa3($kode, $nama){
+    document.getElementById("kodediagnosa3").value = $kode;
+    document.getElementById("namadiagnosa3").value = $nama;
     $(".close").click();
   }
 </script>

@@ -20,9 +20,10 @@ class PasienController extends Controller
         $datas = Pasien::all();
         $agama = Agama::all();
         $icd10 = Icd10::all();
+        $diagnosa = Icd10::all();
         $keanggotaan = Keanggotaan::all();
        
-    	return view('RekamMedis.Content.Pasien',compact('datas','agama','icd10','keanggotaan'));
+    	return view('RekamMedis.Content.Pasien',compact('datas','agama','icd10','keanggotaan','diagnosa'));
     }
 
     public function tambah() {
