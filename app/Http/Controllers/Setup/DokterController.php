@@ -43,11 +43,13 @@ class DokterController extends Controller
             'img' => 'nullable|image',
             'nikd' => 'required|max:13',
         ], $messages);
-
-        $file = $request->file('img'); // menyimpan data gambar yang diupload ke variabel $file
-        $nama_file = time()."_".$file->getClientOriginalName();
-        $file->move('images/Ttd_Dokter',$nama_file); // isi dengan nama folder tempat kemana file diupload
-
+        
+        if (isset($request->img)) {
+            $file = $request->file('img'); // menyimpan data gambar yang diupload ke variabel $file
+            $nama_file = time()."_".$file->getClientOriginalName();
+            $file->move('images/Ttd_Dokter',$nama_file); // isi dengan nama folder tempat kemana file diupload
+        }
+        
         $invoice = Dokter::selectRaw('LPAD(CONVERT(COUNT("iddokter") , char(5)) , 5,"0") as invoice')->first();
 
         $data = new Dokter();
@@ -58,8 +60,13 @@ class DokterController extends Controller
         $data->telepon = $request->telepon;
         $data->jenisdokter = $request->jenisdokter;
         $data->tgl_aktif = $request->tgl_aktif;
-        $data->img = $nama_file;
         $data->nikd = $request->nikd;
+        if ($request->img == null) {
+            $data->img = $data->img;
+        }else{
+            $data->img = $nama_file;
+        }
+        
         $data->save();
 
         return redirect('/Dokter')->with('alert-success', 'Data berhasil ditambahkan!');

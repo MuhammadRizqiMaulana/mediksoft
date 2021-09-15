@@ -23,12 +23,15 @@
           {{Session::get('alert-success')}}
       </div>
     @endif
-
-    <ul>
-      @foreach ($errors as $error)
-        <li>{{$error}}</li>
-      @endforeach
-    </ul>
+    @if(\Session::has('alert-danger'))
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h6><i class="fas fa-sign-out-alt"></i><b> Gagal!!</b></h6>
+          {{Session::get('alert-danger')}}
+      </div>
+    @endif
 
     <!-- Main content -->
     <section class="content">
@@ -36,15 +39,6 @@
         <div class="row">
           <div class="col-8">
             <div class="card">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-sm-6 text-left">
-                    <a class="btn btn-outline-success btn-sm" href="{{url('Kamar/#TambahKamar')}}"><i class="fa fa-plus-circle"></i> Tambah</a>
-                    <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak</button>
-                  </div>
-                </div>
-                
-              </div>
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
@@ -60,7 +54,7 @@
                   </thead>
                   <tbody>
                   @foreach ($datas as $item)
-                    <tr>
+                    <tr onclick="tombol({{$item->kodekamar}})">
                       <td>{{$item->kodekamar}}</td>
                       <td>
                         @if(isset($item->keterangan)){{$item->keterangan}}@endif
@@ -76,11 +70,9 @@
                         @if(isset($item->Eklaimbpjs)){{$item->Eklaimbpjs->nama}}@endif
                       </td>
                       <td>
-                        <a href="/Kamar/ubah{{$item->kodekamar}}#UbahKamar" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
-                        <a href="/Kamar/hapus{{$item->kodekamar}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
-                          <i class="fa fa-minus-circle"></i> Hapus
-                        </a>
-
+                        <button class="btn btn-outline-info btn-sm" onclick="tombol({{$item->kodekamar}})">
+                          <i class="fa fa-check"></i> Pilih
+                        </button>
                       </td>
                     </tr>
                   @endforeach
@@ -97,7 +89,22 @@
                 <!-- general form elements -->
                 <div class="card card-success card-outline" id="TambahKamar">
                   <div class="card-header">
-                    <h4 class="text-success"><i class="fa fa-plus-circle"></i> Tambah</h4>
+                    <div class="row">
+                      <div class="col">
+                        <a class="btn btn-outline-success btn-block btn-sm" href="{{url('Kamar/#TambahKamar')}}"><i class="fa fa-plus-circle"></i> Tambah</a>
+                      </div>
+                      <div class="col">
+                        <a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolubah" class="btn btn-outline-info btn-block btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                      </div>
+                      <div class="col">
+                        <a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolhapus" class="btn btn-outline-danger btn-block btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                          <i class="fa fa-minus-circle"></i> Hapus
+                        </a>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-outline-secondary btn-block btn-sm"><i class="fa fa-print"></i> Cetak</button>
+                      </div>
+                    </div>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -116,7 +123,7 @@
                         <div class="row">
                           <div class="col-10">
                             <input type="text" class="form-control" id="kelas" name="kodekelas" placeholder="Kelas" hidden>
-                            <input type="text" class="form-control" id="namakelas" name="namakelas" placeholder="Kelas">
+                            <input type="text" class="form-control" id="namakelas" name="namakelas" placeholder="Kelas" readonly>
                           </div>
                           <div class="col-2 text-right">
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-kelas">
@@ -133,7 +140,7 @@
                         <div class="row">
                           <div class="col-10">
                             <input type="text" class="form-control" id="ruang" name="koderuang" placeholder="Ruang" hidden>
-                            <input type="text" class="form-control" id="namaruang" name="namaruang" placeholder="Ruang">
+                            <input type="text" class="form-control" id="namaruang" name="namaruang" placeholder="Ruang" readonly>
                           </div>
                           <div class="col-2 text-right">
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-ruang">
@@ -229,7 +236,22 @@
                 <!-- general form elements -->
                 <div class="card card-primary card-outline" id="UbahKamar">
                   <div class="card-header">
-                    <h5 class="text-primary"><i class="fa fa-edit"></i> Ubah</h5>
+                    <div class="row">
+                      <div class="col">
+                        <a class="btn btn-outline-success btn-block btn-sm" href="{{url('Kamar/#TambahKamar')}}"><i class="fa fa-plus-circle"></i> Tambah</a>
+                      </div>
+                      <div class="col">
+                        <a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolubah" class="btn btn-outline-info btn-block btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                      </div>
+                      <div class="col">
+                        <a href="javascript:alert('Pilih baris data yang akan dihapus!');" id="tombolhapus" class="btn btn-outline-danger btn-block btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                          <i class="fa fa-minus-circle"></i> Hapus
+                        </a>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-outline-secondary btn-block btn-sm"><i class="fa fa-print"></i> Cetak</button>
+                      </div>
+                    </div>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
@@ -248,7 +270,7 @@
                           <div class="row">
                             <div class="col-10">
                               <input type="text" class="form-control" id="kelas" name="kodekelas" placeholder="Kelas" value="{{$ubah->kodekelas}}" hidden>
-                              <input type="text" class="form-control" id="namakelas" name="namakelas" placeholder="Kelas" value="@if(isset($ubah->Kelas)){{$ubah->Kelas->nama}}@endif">
+                              <input type="text" class="form-control" id="namakelas" name="namakelas" placeholder="Kelas" value="@if(isset($ubah->Kelas)){{$ubah->Kelas->nama}}@endif" readonly>
                             </div>
                             <div class="col-2 text-right">
                               <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-kelas">
@@ -265,7 +287,7 @@
                           <div class="row">
                             <div class="col-10">
                               <input type="text" class="form-control" id="ruang" name="koderuang" placeholder="Ruang" value="{{$ubah->koderuang}}" hidden>
-                              <input type="text" class="form-control" id="namaruang" name="namaruang" placeholder="Ruang" value="@if(isset($ubah->Ruang)){{$ubah->Ruang->namaruang}}@endif">
+                              <input type="text" class="form-control" id="namaruang" name="namaruang" placeholder="Ruang" value="@if(isset($ubah->Ruang)){{$ubah->Ruang->namaruang}}@endif" readonly>
                             </div>
                             <div class="col-2 text-right">
                               <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-ruang">
@@ -372,6 +394,12 @@
 
   <!-- Script Modal -->
   <script type="text/javascript">
+
+    function tombol($kodekamar){
+      $("a#tombolubah").attr("href", "/Kamar/ubah"+ $kodekamar +"#UbahKamar");
+      $("a#tombolhapus").attr("href", "/Kamar/hapus"+ $kodekamar);
+    }
+       
     function eklaimbpjs($idklaim){
       document.getElementById("eklaimbpjs").value = $idklaim;
       $(".close").click();

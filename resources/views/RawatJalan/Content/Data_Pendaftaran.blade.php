@@ -66,6 +66,85 @@
                 </form>
                 <hr>
 
+                <div class="row">
+                  <div class="col"><a class="btn btn-block btn-outline-success" href="{{url('/Data_Pendaftaran/tambah/#TambahPendaftaranRawatJalan')}}"><i class="fa fa-plus-circle"></i> DAFTAR</a></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i> PERIKSA</button></div>
+                </div>
+                <div class="row">
+                  <div class="col"><a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolubah" class="btn btn-block btn-outline-primary btn-sm"><i class="fa fa-edit"></i> Ubah Daftar</a></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-clipboard-list"></i> Ubah Periksa</button></div>
+                </div>
+                <div class="row">
+                  <div class="col"><a href="javascript:alert('Pilih baris data yang akan dilihat!');" id="tombollihat" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Daftar</a></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Periksa</button></div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <a href="javascript:alert('Pilih baris data yang akan dihapus!');" id="tombolhapus" class="btn btn-block btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                      <i class="fa fa-minus-circle"></i> Hapus
+                    </a> 
+                  </div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-minus-circle"></i> Batalkan</button></div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <a href="javascript:alert('Silahkan pilih baris data!');" id="tombolrekammedisrj" class="btn btn-block btn-outline-success btn-sm">
+                      <i class="fa fa-plus-circle"></i> Rekam Medis RJ
+                    </a> 
+                  </div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Rekam Medis RJ</button></div>
+                </div>
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Riwayat Resume Medis Pasien</button></div>
+                </div>
+                <div class="row">
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i> Transfer Rawat Inap</button></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Pengantar Permintaan R I</button></div>
+                </div>
+                <br>
+                <div class="row">
+                  <a href="/Data_Pendaftaran/cetakdatapendaftaran" class="btn btn-block btn-outline-secondary btn-sm">
+                    <i class="fa fa-print"></i> Cetak Data Pendaftaran
+                  </a> 
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <select class="form-control form-control-sm" onchange="location = this.value;">
+                      <option>Silahkan Pilih</option>
+                      <option id="tombolsuratketerangansehat" value="">Surat Keterangan Sehat</option>
+                      <option id="tombolsuratketerangansakit" value="">Surat Keterangan Sakit</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <select class="form-control form-control-sm">
+                      <option>Surat Keterangan Sehat</option>
+                      <option>Surat Keterangan Sakit</option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group row">
+                      <label for="copycetaklabel" class="col-sm-4 col-form-label"><span>Copy</span></label>
+                      <div class="col-sm-8">
+                        <input type="number" class="form-control form-control-sm" id="copycetaklabel" placeholder="Jumlah Copy">
+                      </div>
+                      <button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Label</button>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group row">
+                      <label for="copycetakgelang" class="col-sm-4 col-form-label"><span>Copy</span></label>
+                      <div class="col-sm-8">
+                        <input type="number" class="form-control form-control-sm" id="copycetakgelang" placeholder="Jumlah Copy">
+                      </div>
+                      <button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Gelang</button>
+                    </div>
+                  </div>
+                </div>
+
               </div>
               <!-- /.card-body -->
               <div class="card-footer text-right">
@@ -79,16 +158,7 @@
           <!-- /.col -->
           <div class="col-8">
             <div class="card">
-              <div class="card-header">
-                <div class="row">
-                  
-                  <div class="col-sm-6 text-left">
-                    <a class="btn btn-outline-success btn-sm" href="{{url('/Data_Pendaftaran/tambah/#TambahPendaftaranRawatJalan')}}"><i class="fa fa-plus-circle"></i> DAFTAR</a>
-                    <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Data Pendaftaran</button>
-                  </div>
-                </div>
-                
-              </div>
+              
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
@@ -116,7 +186,7 @@
                     $no=1;   
                   @endphp
                   @foreach ($datas as $item)
-                    <tr>
+                    <tr onclick="tombol({{$item->faktur_rawatjalan}})">
                       <td>{{$no++}}</td>
                       <td>{{$item->faktur_rawatjalan}}</td>
                       <td>{{$item->norm}}</td>
@@ -133,85 +203,7 @@
                       <td>{{$item->Pasien->penanggungjawab}}</td>
                       <td>{{$item->kunjunganke}}</td>
                       <td>
-                        <div class="row">
-                          <div class="col"> </div>
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i> PERIKSA</button></div>
-                        </div>
-                        <div class="row">
-                          <div class="col"><a href="/Data_Pendaftaran/ubah{{$item->faktur_rawatjalan}}#UbahPendaftaranRawatJalan" class="btn btn-block btn-outline-primary btn-sm"><i class="fa fa-edit"></i> Ubah Daftar</a></div>
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-clipboard-list"></i> Ubah Periksa</button></div>
-                        </div>
-                        <div class="row">
-                          <div class="col"><a href="/Data_Pendaftaran/lihat{{$item->faktur_rawatjalan}}#LihatPendaftaranRawatJalan" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Daftar</a></div>
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Periksa</button></div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <a href="/Data_Pendaftaran/hapus{{$item->faktur_rawatjalan}}" class="btn btn-block btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
-                              <i class="fa fa-minus-circle"></i> Hapus
-                            </a> 
-                          </div>
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-minus-circle"></i> Batalkan</button></div>
-                        </div>
-                        <br>
-                        <div class="row">
-                          <div class="col">
-                            <a href="/Rekam_Medis_Rawat_Jalan/index{{$item->faktur_rawatjalan}}" class="btn btn-block btn-outline-success btn-sm">
-                              <i class="fa fa-plus-circle"></i> Rekam Medis RJ
-                            </a> 
-                          </div>
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Rekam Medis RJ</button></div>
-                        </div>
-                        <div class="row">
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Riwayat Resume Medis Pasien</button></div>
-                        </div>
-                        <div class="row">
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-success btn-sm"><i class="fa fa-plus-circle"></i> Transfer Rawat Inap</button></div>
-                          <div class="col"><button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Pengantar Permintaan R I</button></div>
-                        </div>
-                        <br>
-                        <div class="row">
-                          <a href="/Data_Pendaftaran/cetakdatapendaftaran" class="btn btn-block btn-outline-secondary btn-sm">
-                            <i class="fa fa-print"></i> Cetak Data Pendaftaran
-                          </a> 
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <select class="form-control form-control-sm" onchange="location = this.value;">
-                              <option>Silahkan Pilih</option>
-                              <option value="/Data_Pendaftaran/suratketerangansehat{{$item->faktur_rawatjalan}}">Surat Keterangan Sehat</option>
-                              <option value="/Data_Pendaftaran/suratketerangansakit{{$item->faktur_rawatjalan}}">Surat Keterangan Sakit</option>
-                            </select>
-                          </div>
-                          <div class="col">
-                            <select class="form-control form-control-sm">
-                              <option>Surat Keterangan Sehat</option>
-                              <option>Surat Keterangan Sakit</option>
-                            </select>
-                          </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group row">
-                              <label for="copycetaklabel" class="col-sm-4 col-form-label"><span>Copy</span></label>
-                              <div class="col-sm-8">
-                                <input type="number" class="form-control form-control-sm" id="copycetaklabel" placeholder="Jumlah Copy">
-                              </div>
-                              <button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Label</button>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="form-group row">
-                              <label for="copycetakgelang" class="col-sm-4 col-form-label"><span>Copy</span></label>
-                              <div class="col-sm-8">
-                                <input type="number" class="form-control form-control-sm" id="copycetakgelang" placeholder="Jumlah Copy">
-                              </div>
-                              <button type="button" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak Gelang</button>
-                            </div>
-                          </div>
-                        </div>
-        
+                        <button class="btn btn-outline-info" onclick="tombol({{$item->faktur_rawatjalan}})">Pilih</button>       
                       </td>
                     </tr>
                   @endforeach
@@ -231,5 +223,14 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+<script>
+  function tombol($faktur_rawatjalan){
+    $("a#tombolubah").attr("href", "/Data_Pendaftaran/ubah"+ $faktur_rawatjalan +"#UbahPendaftaranRawatJalan");
+    $("a#tombollihat").attr("href", "/Data_Pendaftaran/lihat"+ $faktur_rawatjalan +"#LihatPendaftaranRawatJalan");
+    $("a#tombolhapus").attr("href", "/Data_Pendaftaran/hapus"+ $faktur_rawatjalan);
+    $("a#tombolrekammedisrj").attr("href", "/Rekam_Medis_Rawat_Jalan/index"+ $faktur_rawatjalan);
+    $("option#tombolsuratketerangansehat").attr("value", "/Data_Pendaftaran/suratketerangansehat"+ $faktur_rawatjalan);
+    $("option#tombolsuratketerangansakit").attr("value", "/Data_Pendaftaran/suratketerangansakit"+ $faktur_rawatjalan);
+  }
+</script>
 @endsection
