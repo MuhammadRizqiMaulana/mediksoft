@@ -185,6 +185,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             "autoWidth": false,
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
+        $('#table_modal_Icd9').DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
         $('#table_modal_diagnosa1').DataTable({
             "responsive": true,
             "lengthChange": false,
@@ -210,7 +216,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
         
-
         //Initialize Select2 Elements
         $('.select2').select2()
     });

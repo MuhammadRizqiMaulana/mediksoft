@@ -3,25 +3,25 @@
 <!-- Modal Surat keterangan Sakit -->
 @isset($suratketerangansakit)
 <div class="modal fade" id="modal-suratketerangansakit">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title text-center">SURAT KETERANGAN SAKIT</h4>
-        <h4 class="modal-title text-center">NOMOR : 0112/VIII</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h6>Yang bertanda tangan dibawah ini dokter</h6>
-      </div>
-      <div class="modal-footer">
-        
-      </div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">SURAT KETERANGAN SAKIT</h4>
+                <h4 class="modal-title text-center">NOMOR : 0112/VIII</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h6>Yang bertanda tangan dibawah ini dokter</h6>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
+    <!-- /.modal-dialog -->
 </div>
 @endisset
 <!-- Modal Surat keterangan Sakit -->
@@ -420,6 +420,52 @@
 </div>
 @endisset
 <!-- Modal Tabel Faskes -->
+<!-- Modal Tabel ICD 9 -->
+@isset($Icd9)
+<div class="modal fade" id="modal-Icd9">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ICD 9</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_Icd9" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Kode</th>
+                            <th>Nama</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $no = 1;
+                        @endphp
+                        @foreach ($Icd9 as $item)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$kode}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="Icd9('{{$item->kode}}', '{{$item->nama}}');"><i class="fa fa-check"></i>
+                                    Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel ICD 9 -->
 
 <!-- Modal Tabel Fasilitaskesehatan -->
 @isset($fasilitaskesehatan)
@@ -605,10 +651,9 @@
         <button class="btn btn-outline-info" onclick="detailalergipasien();"><i class="fa fa-save"></i> Simpan</button>
         <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-check"></i> Batal</button>
       </div>
+
     </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
+    <!-- /.modal-dialog -->
 </div>
 <!-- Modal Modal Detail Alergi Pasien -->
 
