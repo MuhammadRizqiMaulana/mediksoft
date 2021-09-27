@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Operasi_transaksi extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $table='operasi_transaksi'; 
     protected $primaryKey = 'nooperasi';
     protected $fillable = [

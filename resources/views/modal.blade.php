@@ -64,7 +64,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -112,7 +112,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -160,7 +160,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -210,7 +210,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -262,7 +262,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -310,7 +310,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -360,7 +360,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -410,7 +410,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -460,7 +460,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -509,7 +509,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -556,7 +556,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -590,13 +590,13 @@
             <tr>
               <td>
                 <select id="tempjenisalergi" name="tempjenisalergi" class="form-control">
-                  <option value="Makanan">Makanan</option>
-                  <option value="Obat-obatan">Obat-obatan</option>
-                  <option value="Lingkungan">Lingkungan</option>
-                  <option value="Lain-Lain">Lain-Lain</option>
+                  <option value="Makanan" @isset($alergi) {{($alergi->jenisalergi == 'Makanan') ? 'selected' : ''}}  @endisset>Makanan</option>
+                  <option value="Obat-obatan" @isset($alergi) {{($alergi->jenisalergi == 'Obat-obatan') ? 'selected' : ''}}  @endisset>Obat-obatan</option>
+                  <option value="Lingkungan" @isset($alergi) {{($alergi->jenisalergi == 'Lingkungan') ? 'selected' : ''}}  @endisset>Lingkungan</option>
+                  <option value="Lain-Lain" @isset($alergi) {{($alergi->jenisalergi == 'Lain-Lain') ? 'selected' : ''}}  @endisset>Lain-Lain</option>
                 </select>
               </td>
-              <td><input type="text" class="form-control" id="tempketeranganalergi" name="tempketeranganalergi" placeholder="Keterangan"></td>
+              <td><input type="text" class="form-control" id="tempketeranganalergi" name="tempketeranganalergi" placeholder="Keterangan" value="{{isset($alergi->keterangan) ? $alergi->keterangan : '' }}"></td>
             </tr> 
           </tbody>                         
         </table>
@@ -648,7 +648,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -693,7 +693,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -738,7 +738,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -748,6 +748,50 @@
 </div>
 @endisset
 <!-- Modal Tabel DIAGNOSA3 -->
+
+<!-- Modal Tabel Lokasi -->
+@isset($lokasi)
+<div class="modal fade" id="modal-lokasi">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Lokasi</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_lokasi" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Provinsi</th>
+                            <th>Kabupaten</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($lokasi as $item)
+                            <tr>
+                                <td>{{$item->lokasi_propinsi}}</td>
+                                <td>{{$item->lokasi_nama}}</td>
+                                <td>
+                                    <button class="btn btn-outline-info btn-sm"
+                                        onclick="lokasi('{{$item->idlokasi}}', '{{$item->lokasi_nama}}');"><i
+                                            class="fa fa-check"></i> Pilih
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Lokasi -->
 
 
 

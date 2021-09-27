@@ -183,7 +183,6 @@
                   </script>
                 <!---RUJUKAN UNIT--->
               </div>
-              
               <div class="tab-pane fade" id="anamnesa" role="tabpanel" aria-labelledby="anamnesa-tab">
                 <!---ANAMNESA--->
                 <div class="row">
@@ -1730,8 +1729,6 @@
                    
                   </table>
               </div>
-            
-              
             </div>
           </div>
 
