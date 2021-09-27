@@ -64,7 +64,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -112,7 +112,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -160,7 +160,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -210,7 +210,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -262,7 +262,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -310,7 +310,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -360,7 +360,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -410,7 +410,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -506,7 +506,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -555,7 +555,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -566,7 +566,7 @@
 @endisset
 <!-- Modal Tabel ICD 10 Mordabitas -->
 
-<!-- Modal Tabel ICD 10 Mordabitas -->
+<!-- Modal Tabel ICD 10 STP -->
 @isset($Icd10_stp)
 <div class="modal fade" id="modal-Icd10_stp">
     <div class="modal-dialog modal-lg">
@@ -602,7 +602,7 @@
                             </td>
                         </tr>
                         @endforeach
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -616,50 +616,227 @@
 
 <!-- Modal Detail Alergi Pasien -->
 <div class="modal fade" id="modal-detailalergipasien">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detail Alergi Pasien</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Jenis</th>
+            <th>Keterangan</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <select id="tempjenisalergi" name="tempjenisalergi" class="form-control">
+                  <option value="Makanan" @isset($alergi) {{($alergi->jenisalergi == 'Makanan') ? 'selected' : ''}}  @endisset>Makanan</option>
+                  <option value="Obat-obatan" @isset($alergi) {{($alergi->jenisalergi == 'Obat-obatan') ? 'selected' : ''}}  @endisset>Obat-obatan</option>
+                  <option value="Lingkungan" @isset($alergi) {{($alergi->jenisalergi == 'Lingkungan') ? 'selected' : ''}}  @endisset>Lingkungan</option>
+                  <option value="Lain-Lain" @isset($alergi) {{($alergi->jenisalergi == 'Lain-Lain') ? 'selected' : ''}}  @endisset>Lain-Lain</option>
+                </select>
+              </td>
+              <td><input type="text" class="form-control" id="tempketeranganalergi" name="tempketeranganalergi" placeholder="Keterangan" value="{{isset($alergi->keterangan) ? $alergi->keterangan : '' }}"></td>
+            </tr> 
+          </tbody>                         
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-info" onclick="detailalergipasien();"><i class="fa fa-save"></i> Simpan</button>
+        <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-check"></i> Batal</button>
+      </div>
+
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Modal Modal Detail Alergi Pasien -->
+
+<!-- Modal Tabel DIAGNOSA 1 -->
+@isset($diagnosa)
+<div class="modal fade" id="modal-diagnosa1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Detail Alergi Pasien</h4>
+                <h4 class="modal-title">Data ICD 10</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table table-bordered table-hover">
+                <table id="table_modal_diagnosa1" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Jenis</th>
-                            <th>Keterangan</th>
+                            <th>Kode ICD</th>
+                            <th>Nama Diagnosa</th>
+                            <th>Gol Sebab Sakit</th>
+                            <th>Nama STP</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($diagnosa as $item)
                         <tr>
+                            <td>{{$item->kode}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{isset($item->Icd10_mordibitas) ? $item->Icd10_mordibitas->golsebabsakit : '' }}</td>
+                            <td>{{isset($item->Icd10_stp) ? $item->Icd10_stp->namastp : '' }}</td>
                             <td>
-                                <select id="tempjenisalergi" name="tempjenisalergi" class="form-control">
-                                    <option value="Makanan">Makanan</option>
-                                    <option value="Obat-obatan">Obat-obatan</option>
-                                    <option value="Lingkungan">Lingkungan</option>
-                                    <option value="Lain-Lain">Lain-Lain</option>
-                                </select>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="diagnosa1('{{$item->kode}}', '{{$item->nama}}');"><i
+                                        class="fa fa-check"></i> Pilih</button>
                             </td>
-                            <td><input type="text" class="form-control" id="tempketeranganalergi"
-                                    name="tempketeranganalergi" placeholder="Keterangan"></td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline-info" onclick="detailalergipasien();"><i class="fa fa-save"></i>
-                    Simpan</button>
-                <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="Close"><i
-                        class="fa fa-check"></i> Batal</button>
             </div>
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!-- Modal Modal Detail Alergi Pasien -->
+<!-- Modal Tabel DIAGNOSA1 -->
+
+<!-- Modal Tabel DIAGNOSA 2 -->
+<div class="modal fade" id="modal-diagnosa2">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data ICD 10</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_diagnosa2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Kode ICD</th>
+                            <th>Nama Diagnosa</th>
+                            <th>Gol Sebab Sakit</th>
+                            <th>Nama STP</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($diagnosa as $item)
+                        <tr>
+                            <td>{{$item->kode}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{isset($item->Icd10_mordibitas) ? $item->Icd10_mordibitas->golsebabsakit : '' }}</td>
+                            <td>{{isset($item->Icd10_stp) ? $item->Icd10_stp->namastp : '' }}</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="diagnosa2('{{$item->kode}}', '{{$item->nama}}');"><i
+                                        class="fa fa-check"></i> Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Modal Tabel DIAGNOSA2 -->
+
+<!-- Modal Tabel DIAGNOSA 3 -->
+<div class="modal fade" id="modal-diagnosa3">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data ICD 10</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_diagnosa3" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Kode ICD</th>
+                            <th>Nama Diagnosa</th>
+                            <th>Gol Sebab Sakit</th>
+                            <th>Nama STP</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($diagnosa as $item)
+                        <tr>
+                            <td>{{$item->kode}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{isset($item->Icd10_mordibitas) ? $item->Icd10_mordibitas->golsebabsakit : '' }}</td>
+                            <td>{{isset($item->Icd10_stp) ? $item->Icd10_stp->namastp : '' }}</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="diagnosa3('{{$item->kode}}', '{{$item->nama}}');"><i
+                                        class="fa fa-check"></i> Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel DIAGNOSA3 -->
+
+<!-- Modal Tabel Lokasi -->
+@isset($lokasi)
+<div class="modal fade" id="modal-lokasi">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Lokasi</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_lokasi" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Provinsi</th>
+                            <th>Kabupaten</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($lokasi as $item)
+                            <tr>
+                                <td>{{$item->lokasi_propinsi}}</td>
+                                <td>{{$item->lokasi_nama}}</td>
+                                <td>
+                                    <button class="btn btn-outline-info btn-sm"
+                                        onclick="lokasi('{{$item->idlokasi}}', '{{$item->lokasi_nama}}');"><i
+                                            class="fa fa-check"></i> Pilih
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Lokasi -->
 
 
 

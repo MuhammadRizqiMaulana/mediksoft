@@ -58,8 +58,8 @@
                                     <tr>
                                         <td>{{$item->kode}}</td>
                                         <td>{{$item->nama}}</td>
-                                        <td>{{$item->idmordibitas}}</td>
-                                        <td>@isset($item->Icd10_stp->namastp)@endisset</td>
+                                        <td>{{isset($item->Icd10_mordibitas) ? $item->Icd10_mordibitas->golsebabsakit : '' }}</td>
+                                        <td>{{isset($item->Icd10_stp) ? $item->Icd10_stp->namastp : '' }}</td>
                                         <td>
                                             <a href="/Icd10/ubah{{$item->kode}}#UbahIcd10"
                                                 class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
