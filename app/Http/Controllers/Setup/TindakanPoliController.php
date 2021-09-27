@@ -4,31 +4,28 @@ namespace App\Http\Controllers\Setup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-use App\Models\Kelas;
-use App\Models\Kategoritransaksi;
+use carbon\Carbon;
 use App\Models\Eklaimbpjs;
 use App\Models\Icd9;
-use App\Models\Tarif_tindakan_inap;
+use App\Models\Poliklinik;
+use App\Models\Tarif_tindakan_poli;
 
-class TindakanInapController extends Controller
+class TindakanPoliController extends Controller
 {
     public function index()
     {
-
-        $kategori = Kategoritransaksi::all();
-        $kelas = Kelas::all();
+        $poliklinik = Poliklinik::all();
         $icd9 = Icd9::all();
         $eklaimbpjs = Eklaimbpjs::all();
-        $datas = Tarif_tindakan_inap::all();
-        return view('Setup.Content.TindakanInap', compact('kategori', 'kelas', 'icd9', 'eklaimbpjs', 'datas'));
+        $datas = Tarif_tindakan_poli::all();
+        return view('Setup.Content.TindakanPoli', compact('poliklinik', 'icd9', 'eklaimbpjs', 'datas'));
     }
     public function tambah()
     {
 
-        $datas = Tarif_tindakan_inap::all();
+        $datas = Tarif_tindakan_poli::all();
 
-        return view('Setup.Content.TindakanInap', compact('datas'));
+        return view('Setup.Content.TindakanPoli', compact('datas'));
     }
     public function store(Request $request)
     {
@@ -44,39 +41,44 @@ class TindakanInapController extends Controller
         ];
 
         $this->validate($request, [
-            'idtindakan' => 'required|max:30',
-            'kodekategori' => 'required|',
             'namatindakan' => 'required|',
             'idklaim' => 'required|max:30',
 
         ], $messages);
 
         $now = Carbon::now();
-
-        $data = new Tarif_tindakan_inap();
-        $data->idtindakan = $request->idtindakan;
-        $data->kodekategori = $request->kodekategori;
+        $count = Tarif_tindakan_poli::all()->count();
+        $data = new Tarif_tindakan_poli();
+        if ($count >= 1) {
+            $data->idtindakan = $count++;
+        } else {
+            $data->idtindakan = 1;
+        }
+        $data->kodepoli = $request->kodepoli;
         $data->namatindakan = $request->namatindakan;
+        $data->tarif = $request->tarif;
+        $data->untukrs = $request->untukrs;
+        $data->untukdokter = $request->untukdokter;
+        $data->untukparamedis = $request->untukparamedis;
         $data->idklaim = $request->idklaim;
-
-
+        $data->pemakaitarif = 0;
 
         $data->save();
 
-        return redirect('/TindakanInap')->with('alert-success', 'Data berhasil ditambahkan!');
+        return redirect('/TindakanPoli')->with('alert-success', 'Data berhasil ditambahkan!');
     }
     public function ubah($idtindakan)
     {
         $kategori = Kategoritransaksi::all();
-        $ubah = Tarif_tindakan_inap::find($iddokter);
-        $kelas = Kelas::all();
+        $ubah = Tarif_tindakan_poli::find($idtindakan);
+        $poliklinik = Poliklinik::all();
         $icd9 = Icd9::all();
         $eklaimbpjs = Eklaimbpjs::all();
-        $datas = Tarif_tindakan_inap::all();
+        $datas = Tarif_tindakan_poli::all();
 
-        return view('Setup.Content.TindakanInap', compact('kategori', 'ubah', 'kelas', 'icd9', 'eklaimbpjs', 'datas'));
+        return view('Setup.Content.TindakanPoli', compact('kategori', 'ubah', 'poliklinik', 'icd9', 'eklaimbpjs', 'datas'));
     }
-    public function update($iddokter, Request $request)
+    public function update($idtindakan, Request $request)
     {
         $messages = [
             'required' => ':attribute masih kosong',
@@ -96,7 +98,7 @@ class TindakanInapController extends Controller
         ], $messages);
 
         $now = Carbon::now();
-        $data = new Tarif_tindakan_inap();
+        $data = new Tarif_tindakan_poli();
         $data->idtindakan = $request->idtindakan;
         $data->kodekategori = $request->kodekategori;
         $data->namatindakan = $request->namatindakan;
@@ -105,12 +107,12 @@ class TindakanInapController extends Controller
 
         $data->save();
 
-        return redirect('/TindakanInap')->with('alert-success', 'Data berhasil diubah!');
+        return redirect('/TindakanPoli')->with('alert-success', 'Data berhasil diubah!');
     }
     public function hapus($idtindakan)
     {
-        $datas = Tarif_tindakan_inap::find($idtindakan);
+        $datas = Tarif_tindakan_poli::find($idtindakan);
         $datas->delete();
-        return redirect('/DokterKonsultasi')->with('alert-success', 'Data berhasil dihapus!');
+        return redirect('/TindakanPoli')->with('alert-success', 'Data berhasil dihapus!');
     }
 }

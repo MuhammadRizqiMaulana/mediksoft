@@ -23,6 +23,7 @@ use App\Http\Controllers\Setup\Icd9Controller;
 use App\Http\Controllers\Setup\DokterKonsultasiController;
 use App\Http\Controllers\Setup\DokterVisitController;
 use App\Http\Controllers\Setup\TindakanInapController;
+use App\Http\Controllers\Setup\TindakanPoliController;
 
 /* ----- Setup -----*/
 
@@ -173,6 +174,13 @@ Route::post('/TindakanInap/store', [TindakanInapController::class, 'store']);
 Route::get('/TindakanInap/ubah{idtindakan}', [TindakanInapController::class, 'ubah']);
 Route::post('/TindakanInap/update{idtindakan}', [TindakanInapController::class, 'update']);
 Route::get('/TindakanInap/hapus{idtindakan}', [TindakanInapController::class, 'hapus']);
+
+Route::get('/TindakanPoli', [TindakanPoliController::class, 'index']);
+Route::post('/TindakanPoli/store', [TindakanPoliController::class, 'store']);
+Route::get('/TindakanPoli/ubah{idtindakan}', [TindakanPoliController::class, 'ubah']);
+Route::post('/TindakanPoli/update{idtindakan}', [TindakanPoliController::class, 'update']);
+Route::get('/TindakanPoli/hapus{idtindakan}', [TindakanPoliController::class, 'hapus']);
+
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
