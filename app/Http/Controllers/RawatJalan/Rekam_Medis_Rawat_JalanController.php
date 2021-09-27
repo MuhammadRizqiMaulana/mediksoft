@@ -32,7 +32,7 @@ class Rekam_Medis_Rawat_JalanController extends Controller
         return view('RawatJalan.Content.Rekam_Medis_Rawat_Jalan',compact('pasien','poliklinik','dokter','perusahaan','faskes','now','rawatjalan'));
     }
 
-    public function store( Request $request) {
+    public function store($faktur_rawatjalan, Request $request) {
 
         $messages = [
             'required' => ':attribute masih kosong',
@@ -45,16 +45,109 @@ class Rekam_Medis_Rawat_JalanController extends Controller
 
     	$this->validate($request, [
     		
-            'namabank' => 'required|max:200',
-            'alamat' => 'required|max:200',
-            'telp' => 'required|max:200',
-            'keterangan' => 'required|max:200',
-          
+            'faktur_rawatjalan' => 'nullable|max:50',
+            'norm' => 'nullable|max:50',
+            'idperawat' => 'nullable|max:11',
+            'nyeri' => 'nullable|max:1',
+            'trauma_ya' => 'nullable|max:1',
+            'trauma_tidak' => 'nullable|max:1',
+            'kualitas_tekanan' => 'nullable|max:1',
+            'kualitas_terbakar' => 'nullable|max:1',
+            'kualitas_tusukan' => 'nullable|max:1',
+            'kualitas_diiris' => 'nullable|max:1',
+            'kualitas_mencengkeram' => 'nullable|max:1',
+            'kualitas_melilit' => 'nullable|max:1',
+            'lokasi' => 'nullable|max:200',
+            'skala' => 'nullable|max:200',
+            'metode_nrs' => 'nullable|max:1',
+            'metode_wong_faces' => 'nullable|max:1',
+            'metode_nips' => 'nullable|max:1',
+            'metode_cpot' => 'nullable|max:1',
+            'waktu_intermiten' => 'nullable|max:1',
+            'waktu_terusmenerus' => 'nullable|max:1',
+            'waktu_saattertentu' => 'nullable|max:1',
+            'alatbantu_kruk' => 'nullable|max:1',
+            'alatbantu_tongkat' => 'nullable|max:1',
+            'alatbantu_kursiroda' => 'nullable|max:1',
+            'gaya_lemah' => 'nullable|max:1',
+            'gaya_sempoyongan' => 'nullable|max:1',
+            'gaya_limbung' => 'nullable|max:1',
+            'gangguanlihat' => 'nullable|max:1',
+            'kesimpulan' => 'nullable|max:1',
+            'bb' => 'nullable|max:1',
+            'tb' => 'nullable|max:11',
+            'gi_tidakada' => 'nullable|max:1',
+            'gi_mual' => 'nullable|max:1',
+            'gi_muntah' => 'nullable|max:1',
+            'gi_anoreksida' => 'nullable|max:1',
+            'gi_disfagia' => 'nullable|max:1',
+            'gi_lain' => 'nullable|max:200',
+            'namaalatbantu' => 'nullable|max:1',
+            'cacattubuh' => 'nullable|max:1',
+            'adl_mandiri' => 'nullable|max:1',
+            'adl_dibantu' => 'nullable|max:1',
+            'keadaan_baik' => 'nullable|max:1',
+            'keadaan_sedang' => 'nullable|max:1',
+            'keadaan_lemah' => 'nullable|max:1',
+            'keadaan_gelisah' => 'nullable|max:1',
+            'td' => 'nullable|max:100',
+            'rr' => 'nullable|max:25',
+            'nadi' => 'nullable|max:25',
+            'suhu' => 'nullable|max:25',
+            'gcs_e' => 'nullable|max:25',
+            'gcs_m' => 'nullable|max:25',
+            'gcs_v' => 'nullable|max:25',
+            'airway_bebas' => 'nullable|max:1',
+            'airway_bendaasing' => 'nullable|max:1',
+            'airway_sputum' => 'nullable|max:1',
+            'airway_darah' => 'nullable|max:1',
+            'airway_lidah' => 'nullable|max:1',
+            'nafas_vesikuler' => 'nullable|max:1',
+            'nafas_vesikuler_minplus' => 'nullable|max:1',
+            'nafas_wheezing' => 'nullable|max:1',
+            'nafas_wheezing_minplus' => 'nullable|max:1',
+            'nafas_rhonchi' => 'nullable|max:1',
+            'nafas_rhonchi_minplus' => 'nullable|max:1',
+            'nafas_keterangan' => 'nullable|max:200',
+            'pupil_ukuran' => 'nullable|max:1',
+            'pupil_ukuran_minplus' => 'nullable|max:1',
+            'pupil_reflexcahaya' => 'nullable|max:1',
+            'pupil_reflexcahaya_minplus' => 'nullable|max:1',
+            'pupil_isocore' => 'nullable|max:1',
+            'pupil_isocore_minplus' => 'nullable|max:1',
+            'pupil_unisocore' => 'nullable|max:1',
+            'pupil_unisocore_minplus' => 'nullable|max:1',
+            'extremitas_akralhangat' => 'nullable|max:1',
+            'extremitas_akraldingin' => 'nullable|max:1',
+            'extremitas_pucat' => 'nullable|max:1',
+            'extremitas_sianosis' => 'nullable|max:1',
+            'extremitas_endema' => 'nullable|max:1',
+            'extremitas_keterangan' => 'nullable|max:200',
+            'crt_kurang2' => 'nullable|max:1',
+            'crt_lebih2' => 'nullable|max:1',
+            'muskuloskeletal_normal' => 'nullable|max:1',
+            'muskuloskeletal_kerusakan' => 'nullable|max:1',
+            'muskuloskeletal_luas' => 'nullable|max:1',
+            'muskuloskeletal_lokasi' => 'nullable|max:1',
+            'muskuloskeletal_pus' => 'nullable|max:1',
+            'muskuloskeletal_keterangan' => 'nullable|max:200',
+            'oksigenasi' => 'nullable|max:200',
+            'lanjut_pulang' => 'nullable|max:1',
+            'lanjut_aps' => 'nullable|max:1',
+            'lanjut_ri' => 'nullable|max:1',
+            'lanjut_rujuk' => 'nullable|max:1',
+            'lanjut_meninggal' => 'nullable|max:1',
+            'aps_keterangan' => 'nullable|max:200',
+            'anamnesa' => 'nullable|max:200',            
+            
     	], $messages);
+
+        $rawatjalan = Rawatjalan::find($faktur_rawatjalan);
 
         $data = new Rawatjalan_skrening();
        
-        $data->norm = $request->norm;
+        $data->faktur_rawatjalan = $faktur_rawatjalan;
+        $data->norm = $rawatjalan->norm;
         $data->idperawat = $request->idperawat;
         $data->nyeri = $request->nyeri;
         $data->trauma_ya = $request->trauma_ya;
@@ -123,6 +216,8 @@ class Rekam_Medis_Rawat_JalanController extends Controller
         $data->pupil_reflexcahaya_minplus = $request->pupil_reflexcahaya_minplus;
         $data->pupil_isocore = $request->pupil_isocore;
         $data->pupil_isocore_minplus = $request->pupil_isocore_minplus;
+        $data->pupil_unisocore = $request->pupil_unisocore;
+        $data->pupil_unisocore_minplus = $request->pupil_unisocore_minplus;
         $data->extremitas_akralhangat = $request->extremitas_akralhangat;
         $data->extremitas_akraldingin = $request->extremitas_akraldingin;
         $data->extremitas_pucat = $request->extremitas_pucat;

@@ -43,6 +43,11 @@ use App\Http\Controllers\RawatJalan\Transfer_RiController;
 
 /* ----- RawatJalan -----*/
 
+/* ----- RawatInap -----*/
+
+/* ----- RawatInap -----*/
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -222,5 +227,11 @@ Route::get('/Pelayanan_Rawat_Jalan', [Pelayanan_PoliController::class, 'index'])
 Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
 
 
-
 /* ----- RawatJalan -----*/
+
+
+/* ----- RawatInap -----*/
+Route::get('/RawatInap', function () {
+    return view('RawatInap.Content.index');
+});
+/* ----- RawatInap -----*/

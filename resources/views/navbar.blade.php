@@ -20,6 +20,9 @@
           <li class="nav-item">
             <a href="{{url('RawatJalan')}}" class="nav-link">Rawat Jalan</a>
           </li>
+          <li class="nav-item">
+            <a href="{{url('RawatInap')}}" class="nav-link">Rawat Inap</a>
+          </li>
         </ul>
 
       </div>
