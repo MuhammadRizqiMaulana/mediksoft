@@ -9,7 +9,9 @@ class Macamrawat extends Model
 {
     use HasFactory;
 
-    protected $table='macamrawat'; 
+    public $timestamps = false;
+    protected $keyType = 'string';
+    protected $table = 'macamrawat';
     protected $primaryKey = 'kode';
     protected $fillable = [
         'macamrawat'
