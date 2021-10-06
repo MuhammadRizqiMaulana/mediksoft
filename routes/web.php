@@ -45,9 +45,13 @@ use App\Http\Controllers\RawatJalan\Transfer_RiController;
 /* ----- RawatJalan -----*/
 
 /* ----- RawatInap -----*/
-
+use App\Http\Controllers\RawatInap\CariPasienController;
+use App\Http\Controllers\RawatInap\MacamRawatController;
 /* ----- RawatInap -----*/
 
+/* ----- Operasi -----*/
+use App\Http\Controllers\Operasi\GolonganOperasiController;
+/* ----- Operasi -----*/
 
 
 /*
@@ -242,4 +246,21 @@ Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
 Route::get('/RawatInap', function () {
     return view('RawatInap.Content.index');
 });
+
+Route::get('/CariPasien', [CariPasienController::class, 'index']);
+Route::post('/CariPasien/store', [CariPasienController::class, 'store']);
+
+Route::get('/MacamRawat', [MacamRawatController::class, 'index']);
+Route::post('/MacamRawat/store', [MacamRawatController::class, 'store']);
+Route::get('/MacamRawat/ubah{kode}', [MacamRawatController::class, 'ubah']);
+Route::post('/MacamRawat/update{kode}', [MacamRawatController::class, 'update']);
+Route::get('/MacamRawat/hapus{kode}', [MacamRawatController::class, 'hapus']);
 /* ----- RawatInap -----*/
+
+/* ----- Operasi -----*/
+Route::get('/Operasi', function () {
+    return view('Operasi.Content.index');
+});
+
+Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
+/* ----- Operasi -----*/
