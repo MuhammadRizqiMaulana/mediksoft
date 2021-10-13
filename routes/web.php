@@ -23,6 +23,7 @@ use App\Http\Controllers\Setup\Icd9Controller;
 use App\Http\Controllers\Setup\DokterKonsultasiController;
 use App\Http\Controllers\Setup\DokterVisitController;
 use App\Http\Controllers\Setup\TindakanInapController;
+use App\Http\Controllers\Setup\TindakanPoliController;
 
 /* ----- Setup -----*/
 
@@ -48,9 +49,13 @@ use App\Http\Controllers\RawatJalan\Update_Data_Pendaftaran_Pasien_OnlineControl
 use App\Http\Controllers\RawatInap\Data_Pendaftaran_Rawat_InapController;
 use App\Http\Controllers\RawatInap\Ruang_PerawatanController;
 use App\Http\Controllers\RawatInap\Ubah_KamarController;
-
+use App\Http\Controllers\RawatInap\CariPasienController;
+use App\Http\Controllers\RawatInap\MacamRawatController;
 /* ----- RawatInap -----*/
 
+/* ----- Operasi -----*/
+use App\Http\Controllers\Operasi\GolonganOperasiController;
+/* ----- Operasi -----*/
 
 
 /*
@@ -182,6 +187,13 @@ Route::post('/TindakanInap/store', [TindakanInapController::class, 'store']);
 Route::get('/TindakanInap/ubah{idtindakan}', [TindakanInapController::class, 'ubah']);
 Route::post('/TindakanInap/update{idtindakan}', [TindakanInapController::class, 'update']);
 Route::get('/TindakanInap/hapus{idtindakan}', [TindakanInapController::class, 'hapus']);
+
+Route::get('/TindakanPoli', [TindakanPoliController::class, 'index']);
+Route::post('/TindakanPoli/store', [TindakanPoliController::class, 'store']);
+Route::get('/TindakanPoli/ubah{idtindakan}', [TindakanPoliController::class, 'ubah']);
+Route::post('/TindakanPoli/update{idtindakan}', [TindakanPoliController::class, 'update']);
+Route::get('/TindakanPoli/hapus{idtindakan}', [TindakanPoliController::class, 'hapus']);
+
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
@@ -251,4 +263,21 @@ Route::get('/Ubah_Kamar', [Ubah_KamarController::class, 'index']);
 
 Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
 
+Route::get('/CariPasien', [CariPasienController::class, 'index']);
+Route::post('/CariPasien/store', [CariPasienController::class, 'store']);
+
+Route::get('/MacamRawat', [MacamRawatController::class, 'index']);
+Route::post('/MacamRawat/store', [MacamRawatController::class, 'store']);
+Route::get('/MacamRawat/ubah{kode}', [MacamRawatController::class, 'ubah']);
+Route::post('/MacamRawat/update{kode}', [MacamRawatController::class, 'update']);
+Route::get('/MacamRawat/hapus{kode}', [MacamRawatController::class, 'hapus']);
+
 /* ----- RawatInap -----*/
+
+/* ----- Operasi -----*/
+Route::get('/Operasi', function () {
+    return view('Operasi.Content.index');
+});
+
+Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
+/* ----- Operasi -----*/
