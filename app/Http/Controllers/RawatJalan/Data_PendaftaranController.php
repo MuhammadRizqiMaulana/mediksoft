@@ -62,11 +62,11 @@ class Data_PendaftaranController extends Controller
 
     	], $messages);
 
-        $invoice = Rawatjalan::selectRaw('LPAD(CONVERT(COUNT("faktur_rawatjalan") , char(15)) , 15,"0") as invoice')->first();
+        $invoice = Rawatjalan::selectRaw('LPAD(CONVERT((COUNT("faktur_rawatjalan") + 1) , char(13)) , 13,"0") as invoice')->first();
         $kunjungan = Rawatjalan::where('norm',$request->norm)->count();
 
         $data = new Rawatjalan();
-        $data->faktur_rawatjalan  = $invoice->invoice;
+        $data->faktur_rawatjalan  = "RJ".$invoice->invoice;
         $data->norm = $request->norm;
         $data->tglmasuk = $request->tglmasuk;
         $data->kodepoli = $request->kodepoli;

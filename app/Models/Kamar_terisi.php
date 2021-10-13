@@ -10,8 +10,9 @@ class Kamar_terisi extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $keyType = 'string';
     protected $table        = 'kamar_terisi'; // nama tabel 
-    protected $primaryKey   = '	kodekamar'; // primary key tabel 
-    protected $fillable     = ['faktur_rawatinap', 
+    protected $primaryKey   = 'faktur_rawatinap'; // primary key tabel 
+    protected $fillable     = ['kodekamar', 
     							'tglmasukkamar']; //field tabel
 }

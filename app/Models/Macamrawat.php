@@ -11,7 +11,7 @@ class Macamrawat extends Model
 
     public $timestamps = false;
     protected $keyType = 'string';
-    protected $table = 'macamrawat';
+    protected $table='macamrawat';
     protected $primaryKey = 'kode';
     protected $fillable = [
         'macamrawat'

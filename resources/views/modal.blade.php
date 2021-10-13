@@ -26,6 +26,69 @@
 @endisset
 <!-- Modal Surat keterangan Sakit -->
 
+<!-- Modal Tabel Kamar -->
+@isset($kamar)
+<div class="modal fade" id="modal-kamar">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data Kamar</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_kamar" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode</th>
+                            <th>Keterangan</th>
+                            <th>Kelas</th>
+                            <th>Ruang</th>
+                            <th>Tarif</th>
+                            <th>E-Klaim BPJS</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $no = 1;
+                        @endphp
+                        @foreach ($kamar as $item)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$item->kodekamar}}</td>
+                            <td>
+                                @if(isset($item->keterangan)){{$item->keterangan}}@endif
+                            </td>
+                            <td>
+                                @if(isset($item->Kelas)){{$item->Kelas->nama}}@endif
+                            </td>
+                            <td>
+                                @if(isset($item->Ruang)){{$item->Ruang->namaruang}}@endif  
+                            </td>
+                            <td>{{$item->tarif}}</td>
+                            <td>
+                                @if(isset($item->Eklaimbpjs)){{$item->Eklaimbpjs->nama}}@endif
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="kamar('{{$item->kodekamar}}', '{{$item->keterangan}}', '{{$item->Kelas->nama}}', '{{$item->Ruang->namaruang}}');"><i
+                                        class="fa fa-check"></i> Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Kamar -->
 
 <!-- Modal Tabel Kelas -->
 @isset($kelas)
@@ -517,6 +580,53 @@
 @endisset
 <!-- Modal Tabel Faskes -->
 
+<!-- Modal Tabel ICD 10 -->
+@isset($icd10)
+<div class="modal fade" id="modal-icd10">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data ICD 10</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_icd10" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Kode ICD</th>
+                            <th>Nama Diagnosa</th>
+                            <th>Gol Sebab Sakit</th>
+                            <th>Nama STP</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($icd10 as $item)
+                        <tr>
+                            <td>{{$item->kode}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{isset($item->Icd10_mordibitas) ? $item->Icd10_mordibitas->golsebabsakit : '' }}</td>
+                            <td>{{isset($item->Icd10_stp) ? $item->Icd10_stp->namastp : '' }}</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="icd10('{{$item->kode}}', '{{$item->nama}}');"><i
+                                        class="fa fa-check"></i> Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel ICD 10 -->
+
 <!-- Modal Tabel ICD 10 Mordabitas -->
 @isset($Icd10_mordabitas)
 <div class="modal fade" id="modal-Icd10_mordabitas">
@@ -837,6 +947,76 @@
 </div>
 @endisset
 <!-- Modal Tabel Lokasi -->
+
+<!-- Modal Tabel Data Pendaftaran Rawat jalan -->
+@isset($rawatjalan)
+<div class="modal fade" id="modal-rawatjalan">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data Pendaftaran Rawat jalan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_rawatjalan" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>No Faktur</th>
+                            <th>No RM</th>
+                            <th>Pasien</th>
+                            <th>Tgl Masuk</th>
+                            <th>Poli</th>
+                            <th>Dokter</th>
+                            <th>Perusahaan</th>
+                            <th>Faskes</th>
+                            <th>Inap</th>
+                            <th>Status</th>
+                            <th>Alamat</th>
+                            <th>Ayah</th>
+                            <th>Penangung Jawab</th>
+                            <th>Kunjungan Ke</th>
+                            <th>Aksi</th>
+                          </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                          $no=1;   
+                        @endphp
+                        @foreach ($rawatjalan as $item)
+                          <tr onclick="rawatjalan('{{$item->faktur_rawatjalan}}','{{$item->norm}}','{{$item->Pasien->namapasien}}','{{$item->tglmasuk}}');">
+                            <td>{{$no++}}</td>
+                            <td>{{$item->faktur_rawatjalan}}</td>
+                            <td>{{$item->norm}}</td>
+                            <td>{{$item->Pasien->namapasien}}</td>
+                            <td>{{$item->tglmasuk}}</td>
+                            <td>{{$item->Poliklinik->nama}}</td>
+                            <td>{{$item->Dokter->nama}}</td>
+                            <td>{{$item->Perusahaan->namaprsh}}</td>
+                            <td>{{$item->Faskes->namafaskes}}</td>
+                            <td><input type="checkbox" {{ ($item->inap == 1) ? 'checked' : ''}} readonly></td>
+                            <td>{{$item->statustransaksi}}</td>
+                            <td>{{$item->Pasien->alamat}}</td>
+                            <td>{{$item->Pasien->namaayah}}</td>
+                            <td>{{$item->Pasien->penanggungjawab}}</td>
+                            <td>{{$item->kunjunganke}}</td>
+                            <td>
+                              <button class="btn btn-outline-info" onclick="rawatjalan('{{$item->faktur_rawatjalan}}','{{$item->norm}}','{{$item->Pasien->namapasien}}','{{$item->tglmasuk}}');">Pilih</button>       
+                            </td>
+                          </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Data Pendaftaran Rawat jalan -->
 
 
 

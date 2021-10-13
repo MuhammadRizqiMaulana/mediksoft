@@ -27,6 +27,7 @@
                 </div>
                 <!-- /.card-body -->
             </div>
+
             <!-- /.card -->
             <div class="card card-primary card-sm">
                 <div class="card-header">
@@ -45,11 +46,11 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Pendaftaran
+                    <a class="btn btn-app" href="{{url('/Data_Pendaftaran_Rawat_Inap/tambah')}}">
+                      <i class="fas fa-edit"></i> Pendaftaran
                     </a>
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Data Pendaftaran
+                    <a class="btn btn-app" href="{{url('/Data_Pendaftaran_Rawat_Inap')}}">
+                      <i class="fas fa-edit"></i> Data Pendaftaran
                     </a>
                 </div>
                 <!-- /.card-body -->
@@ -78,7 +79,7 @@
                     <a class="btn btn-app">
                         <i class="fas fa-edit"></i> Rute Obat
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Ruang_Perawatan')}}">
                         <i class="fas fa-edit"></i> Ruang Perawatan
                     </a>
                     <a class="btn btn-app">
