@@ -50,7 +50,7 @@ class DokterController extends Controller
             $file->move('images/Ttd_Dokter',$nama_file); // isi dengan nama folder tempat kemana file diupload
         }
         
-        $invoice = Dokter::selectRaw('LPAD(CONVERT(COUNT("iddokter") , char(5)) , 5,"0") as invoice')->first();
+        $invoice = Dokter::selectRaw('LPAD(CONVERT((COUNT("iddokter") + 1) , char(5)) , 5,"0") as invoice')->first();
 
         $data = new Dokter();
         $data->iddokter = $invoice->invoice;

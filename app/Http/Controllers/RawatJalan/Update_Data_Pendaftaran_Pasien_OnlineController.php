@@ -4,34 +4,19 @@ namespace App\Http\Controllers\RawatJalan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-use App\Models\Rawatinap;
 use App\Models\Pasien;
-use App\Models\Poliklinik;
-use App\Models\Dokter;
-use App\Models\Perusahaan;
-use App\Models\Faskes;
-use App\Models\Kamar;
 use App\Models\Rawatjalan;
-use App\Models\Icd10;
-use App\Models\Macamrawat;
-use App\Models\Jenismasuk;
 
 use Carbon\Carbon;
 
-class Transfer_RiController extends Controller
+class Update_Data_Pendaftaran_Pasien_OnlineController extends Controller
 {
     public function index(){
-        $rawatjalan = Rawatjalan::all();
-        $kamar = Kamar::all();
-        $dokter = Dokter::all();
-        $perusahaan = Perusahaan::all();
-        $pasien = Pasien::all();
-        //$icd10 = Icd10::all();
-        $macamrawat = Macamrawat::all();
-        $jenismasuk = Jenismasuk::all();
+        $datas = Rawatjalan::select('norm')->distinct()->get();
            
-        return view('RawatJalan.Content.Pendaftaran_Rawat_Inap', compact('rawatjalan','kamar','dokter','perusahaan','pasien','macamrawat','jenismasuk'));
+        return view('RawatJalan.Content.Update_Data_Pendaftaran_Pasien_Online', compact('datas'));
     }
 
     public function store( Request $request) {

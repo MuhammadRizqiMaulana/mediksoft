@@ -45,10 +45,10 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Data_Pendaftaran_Rawat_Inap/tambah')}}">
                 <i class="fas fa-edit"></i> Pendaftaran
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Data_Pendaftaran_Rawat_Inap')}}">
                 <i class="fas fa-edit"></i> Data Pendaftaran
               </a>
             </div>
@@ -78,7 +78,7 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Rute Obat
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/Ruang_Perawatan')}}">
                 <i class="fas fa-edit"></i> Ruang Perawatan
               </a>
               <a class="btn btn-app">
