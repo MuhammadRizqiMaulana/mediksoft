@@ -9,6 +9,7 @@ use App\Models\Kamar;
 use App\Models\Eklaimbpjs;
 use App\Models\Kelas;
 use App\Models\Ruang;
+use App\Models\Kamarkosong_temp;
 
 
 class KamarController extends Controller
@@ -73,6 +74,19 @@ class KamarController extends Controller
         $data->idklaim = $request->idklaim;
         $data->pemakaitarif = "belum";
     	$data->save();
+
+        $selectkamar = Kamar::find($request->kodekamar);
+
+        //Insert Kamar Kosong
+        $kamarkosong = new Kamarkosong_temp();
+        $kamarkosong->keterangan = $selectkamar->kodekamar;
+        $kamarkosong->keterangan2 = "";
+        $kamarkosong->namakelas = $selectkamar->Kelas->nama;
+        $kamarkosong->namaruang = $selectkamar->Ruang->namaruang;
+        $kamarkosong->sisakamar = $selectkamar->jumlahbed;
+        $kamarkosong->kodekelas = $selectkamar->kodekelas;
+        $kamarkosong->namakamar = $selectkamar->keterangan;
+        $kamarkosong->save();
 
     	return redirect('/Kamar')->with('alert-success','Data berhasil ditambahkan!');
     }
@@ -144,6 +158,10 @@ class KamarController extends Controller
             
             $datas = Kamar::find($kodekamar);
             $datas->delete();
+            
+            $kamarkosong = Kamarkosong_temp::where('keterangan', $kodekamar)->first();
+            $kamarkosong->delete();
+
             return redirect('/Kamar')->with('alert-success','Data berhasil dihapus!');
 
         }catch(\Exception $e){
@@ -151,5 +169,9 @@ class KamarController extends Controller
             return redirect('/Kamar')->with('alert-danger','Data gagal dihapus!');
         }
     	
+    }
+
+    public function kamar_kosong(){
+        
     }
 }

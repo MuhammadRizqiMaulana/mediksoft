@@ -5,7 +5,7 @@
 <div class="content-wrapper">
 
     <!-- Menu -->
-    @include('Setup.Layout.menu')
+    @include('RekamMedis.Layout.menu')
     <!-- /.menu -->
 
     @if(\Session::has('alert-success'))
