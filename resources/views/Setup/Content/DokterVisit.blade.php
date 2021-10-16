@@ -34,7 +34,7 @@
                     <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Cetak</button>
                   </div> 
                 </div>
-                
+                 
               </div>
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover">
@@ -120,11 +120,12 @@
                                 <tr>
                                   <td style="text-align:center">{{$item->nama}}</td>
                                   <td>{{$item->tarif}}
-                                  <input type="number" class="form-control" id="tarif" name="tarif" placeholder="" min="0" ></td></td>
+                                  <input type="number" class="form-control" id="tarif" name="tarif" placeholder="tarif" min="0" readonly >
+                                </td>
                                   <td>{{$item->untukdokter}}
-                                    <input type="number" class="form-control" id="tarif" name="tarif" placeholder="" min="0" ></td>
+                                    <input type="number" class="form-control" id="untukdokter" name="untukdokter" placeholder="" min="0" oninput="tambahtarif()" ></td>
                                   <td>{{$item->untukrs}}
-                                  <input type="number" class="form-control" id="tarif" name="tarif" placeholder="" min="0" ></td></td>
+                                  <input type="number" class="form-control" id="untukrs" name="untukrs" placeholder="" min="0" oninput="tambahtarif()"></td></td>
                                   <td>
 
                                   </td>

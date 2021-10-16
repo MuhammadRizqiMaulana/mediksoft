@@ -62,7 +62,7 @@ class DokterVisitController extends Controller
         
         
     	$data->save();
-
+ 
     	return redirect('/DokterVisit')->with('alert-success','Data berhasil ditambahkan!');
     }
     public function ubah($iddokter) {

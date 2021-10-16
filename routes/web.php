@@ -46,6 +46,8 @@ use App\Http\Controllers\RawatJalan\Update_Data_Pendaftaran_Pasien_OnlineControl
 /* ----- RawatJalan -----*/
 
 /* ----- RawatInap -----*/
+use App\Http\Controllers\RawatInap\PenggunaanObatRIController;
+use App\Http\Controllers\RawatInap\RuteObatController;
 use App\Http\Controllers\RawatInap\Data_Pendaftaran_Rawat_InapController;
 use App\Http\Controllers\RawatInap\Ruang_PerawatanController;
 use App\Http\Controllers\RawatInap\Ubah_KamarController;
@@ -254,6 +256,8 @@ Route::get('/RawatInap', function () {
     return view('RawatInap.Content.index');
 });
 
+Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
+Route::get('/RuteObat', [RuteObatController::class, 'index']);
 Route::get('/Data_Pendaftaran_Rawat_Inap', [Data_Pendaftaran_Rawat_InapController::class, 'index']);
 Route::get('/Data_Pendaftaran_Rawat_Inap/tambah', [Data_Pendaftaran_Rawat_InapController::class, 'tambah']);
 Route::post('/Data_Pendaftaran_Rawat_Inap/store', [Data_Pendaftaran_Rawat_InapController::class, 'store']);

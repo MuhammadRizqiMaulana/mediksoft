@@ -43,7 +43,7 @@
                     </div>
                     <!-- /.card-tools -->
                 </div>
-
+                
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a class="btn btn-app" href="{{url('/Data_Pendaftaran_Rawat_Inap/tambah')}}">
@@ -52,9 +52,11 @@
                     <a class="btn btn-app" href="{{url('/Data_Pendaftaran_Rawat_Inap')}}">
                       <i class="fas fa-edit"></i> Data Pendaftaran
                     </a>
+
                 </div>
                 <!-- /.card-body -->
             </div>
+
             <!-- /.card -->
             <div class="card card-primary card-sm">
                 <div class="card-header">
@@ -76,7 +78,7 @@
                     <a class="btn btn-app" href="{{url('/MacamRawat')}}">
                         <i class="fas fa-edit"></i> Macam rawat
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/RuteObat')}}">
                         <i class="fas fa-edit"></i> Rute Obat
                     </a>
                     <a class="btn btn-app" href="{{url('/Ruang_Perawatan')}}">
@@ -97,6 +99,7 @@
 
                 </div>
                 <!-- /.card-body -->
+
             </div>
             <!-- /.card -->
             <div class="card card-primary card-sm">
@@ -115,7 +118,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/PenggunaanObatRI')}}">
                         <i class="fas fa-edit"></i> Penggunaan Obat
                     </a>
                 </div>
