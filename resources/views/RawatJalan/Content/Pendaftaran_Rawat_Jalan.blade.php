@@ -37,7 +37,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('/Pendaftaran_Rawat_Jalan/store')}}" method="post">
+                        <form action="{{url('/Data_Pendaftaran/store')}}" method="post">
                             {{csrf_field()}}
                             <div class="card-body">
 

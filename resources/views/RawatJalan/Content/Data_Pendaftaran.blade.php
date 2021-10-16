@@ -34,7 +34,7 @@
               <!-- /.card-header -->
               <div class="card-body">
               <!-- form start -->
-                <form action="{{url('/Pengirim_Faskes/store')}}" method="post">
+                <form action="" method="post">
                   {{csrf_field()}}
                   <div class="row">
                     <div class="col-9">
@@ -147,11 +147,6 @@
 
               </div>
               <!-- /.card-body -->
-              <div class="card-footer text-right">
-                <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i></button>
-                <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i></button>
-              </div>
-              <!-- /.card-footer -->
             </div>
             <!-- /.card -->
           </div>

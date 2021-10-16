@@ -9,9 +9,10 @@ class Op_golongan extends Model
 {
     use HasFactory;
 
-    protected $table='op_golongan'; 
+    public $timestamps = false;
+    protected $table = 'op_golongan';
     protected $primaryKey = 'idgoloperasi';
     protected $fillable = [
-        'goloperasi', 
+        'goloperasi',
     ];
 }
