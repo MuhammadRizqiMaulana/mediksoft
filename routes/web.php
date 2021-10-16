@@ -272,6 +272,9 @@ Route::get('/MacamRawat/ubah{kode}', [MacamRawatController::class, 'ubah']);
 Route::post('/MacamRawat/update{kode}', [MacamRawatController::class, 'update']);
 Route::get('/MacamRawat/hapus{kode}', [MacamRawatController::class, 'hapus']);
 
+Route::get('/Status_Pulang', function () {
+    return view('RawatInap.Content.Status_Pulang');
+});
 /* ----- RawatInap -----*/
 
 /* ----- Operasi -----*/
