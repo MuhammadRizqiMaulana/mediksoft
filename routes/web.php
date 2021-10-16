@@ -45,7 +45,8 @@ use App\Http\Controllers\RawatJalan\Transfer_RiController;
 /* ----- RawatJalan -----*/
 
 /* ----- RawatInap -----*/
-
+use App\Http\Controllers\RawatInap\PenggunaanObatRIController;
+use App\Http\Controllers\RawatInap\RuteObatController;
 /* ----- RawatInap -----*/
 
 
@@ -242,4 +243,8 @@ Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
 Route::get('/RawatInap', function () {
     return view('RawatInap.Content.index');
 });
+
+Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
+
+Route::get('/RuteObat', [RuteObatController::class, 'index']);
 /* ----- RawatInap -----*/

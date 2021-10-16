@@ -75,7 +75,7 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Macam rawat
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/RuteObat')}}">
                 <i class="fas fa-edit"></i> Rute Obat
               </a>
               <a class="btn btn-app">
@@ -114,7 +114,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/PenggunaanObatRI')}}">
                 <i class="fas fa-edit"></i> Penggunaan Obat
               </a>
             </div>
