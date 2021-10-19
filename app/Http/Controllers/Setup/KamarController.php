@@ -159,7 +159,7 @@ class KamarController extends Controller
             $datas = Kamar::find($kodekamar);
             $datas->delete();
             
-            $kamarkosong = Kamarkosong_temp::where('keterangan', $kodekamar)->first();
+            $kamarkosong = Kamarkosong_temp::find($kodekamar);
             $kamarkosong->delete();
 
             return redirect('/Kamar')->with('alert-success','Data berhasil dihapus!');

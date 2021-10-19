@@ -156,7 +156,60 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
         }
     }
 
+    public function ubah($faktur_rawatinap){
+
+        $ubah = Rawatinap::find($faktur_rawatinap);
+        $kamar = Kamar::all();
+        $dokter = Dokter::all();
+        $perusahaan = Perusahaan::all();
+        $pasien = Pasien::all();
+        //$icd10 = Icd10::all();
+        $macamrawat = Macamrawat::all();
+        $jenismasuk = Jenismasuk::all();
+           
+        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('ubah','kamar','dokter','perusahaan','pasien','macamrawat','jenismasuk'));
+    }
+
+    public function hapus($faktur_rawatinap) {
+        try{
+            
+            $datas = Rawatinap::find($faktur_rawatinap);//mencari data rawatinap
+            $kodekamar = $datas->kodekamar;
+            
+            $kamarkosong = Kamarkosong_temp::where('keterangan', $kodekamar)->first();
+            $kamarkosong->sisakamar = $kamarkosong->sisakamar + 1;//menambahkan kembali kamar kosong
+            $kamarkosong->save();
+            
+            //kamar_terisi
+            $kamarterisi = Kamar_terisi::where('faktur_rawatinap', $faktur_rawatinap)->first();
+            $kamarterisi->delete();
+
+            $datas->delete();//hapus rawatinap
+
+            return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-success','Data berhasil dihapus!');
+
+        }catch(\Exception $e){
+
+            return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-danger', $e);
+        }
+    	
+    }
+
     public function detaildiagnosa($faktur_rawatinap){
+
+        $lihat = Rawatinap::find($faktur_rawatinap);
+        $kamar = Kamar::all();
+        $dokter = Dokter::all();
+        $perusahaan = Perusahaan::all();
+        $pasien = Pasien::all();
+        //$icd10 = Icd10::all();
+        $macamrawat = Macamrawat::all();
+        $jenismasuk = Jenismasuk::all();
+           
+        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('lihat','kamar','dokter','perusahaan','pasien','macamrawat','jenismasuk'));
+    }
+
+    public function detailpendaftaran($faktur_rawatinap){
 
         $lihat = Rawatinap::find($faktur_rawatinap);
         $kamar = Kamar::all();

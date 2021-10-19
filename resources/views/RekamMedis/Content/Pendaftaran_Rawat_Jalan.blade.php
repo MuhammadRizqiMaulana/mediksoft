@@ -62,11 +62,11 @@
                         <div class="row">
                           <div class="col-4">
                             <label for="norm">No Rekam Medis</label>
-                            <input type="text" class="form-control" id="norm" name="norm" placeholder="No Rekam Medis">
+                            <input type="text" class="form-control" id="norm" name="norm" placeholder="No Rekam Medis" readonly>
                           </div>
                           <div class="col-6">
                             <label for="namapasien">Nama Pasien</label>
-                            <input type="text" class="form-control" id="namapasien" name="namapasien" placeholder="Nama Pasien" >
+                            <input type="text" class="form-control" id="namapasien" name="namapasien" placeholder="Nama Pasien" readonly>
                           </div>
                           <div class="col-2 text-right align-self-end" >
                             <button type="button" class="btn btn-outline-info align-bottom" data-toggle="modal" data-target="#modal-pasien">
@@ -83,7 +83,7 @@
                         <div class="row">
                           <div class="col-10">
                             <input type="text" class="form-control" id="poliklinik" name="kodepoli" placeholder="Kode Poli" hidden>
-                            <input type="text" class="form-control" id="namapoli" name="namapoli" placeholder="Nama Poli" >
+                            <input type="text" class="form-control" id="namapoli" name="namapoli" placeholder="Nama Poli" readonly>
                           </div>
                           <div class="col-2 text-right">
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-poliklinik">
@@ -100,7 +100,7 @@
                         <div class="row">
                           <div class="col-10">
                             <input type="text" class="form-control" id="dokter" name="iddokter" placeholder="Dokter"  hidden>
-                            <input type="text" class="form-control" id="namadokter" name="namadokter" placeholder="Nama Dokter" >
+                            <input type="text" class="form-control" id="namadokter" name="namadokter" placeholder="Nama Dokter" readonly>
                           </div>
                           <div class="col-2 text-right">
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-dokter">
@@ -117,7 +117,7 @@
                         <div class="row">
                           <div class="col-10">
                             <input type="text" class="form-control" id="perusahaan" name="idprsh" placeholder="Perusahaan"  hidden>
-                            <input type="text" class="form-control" id="namaprsh" name="namaprsh" placeholder="Nama Perusahaan" >
+                            <input type="text" class="form-control" id="namaprsh" name="namaprsh" placeholder="Nama Perusahaan" readonly>
                           </div>
                           <div class="col-2 text-right">
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-perusahaan">
@@ -134,7 +134,7 @@
                         <div class="row">
                           <div class="col-10">
                             <input type="text" class="form-control" id="faskes" name="kodefaskespengirim" placeholder="Pengirim"  hidden>
-                            <input type="text" class="form-control" id="namafaskes" name="namafaskes" placeholder="Nama Pengirim" >
+                            <input type="text" class="form-control" id="namafaskes" name="namafaskes" placeholder="Nama Pengirim" readonly>
                           </div>
                           <div class="col-2 text-right">
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-faskes">

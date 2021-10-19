@@ -41,7 +41,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        @if(isset($lihat) == NULL)
+        @if(isset($ubah) == NULL & isset($lihat) == NULL)
           <div class="card">
             <form action="{{url('/Data_Pendaftaran_Rawat_Inap/store')}}" method="post">
               {{csrf_field()}}
@@ -202,7 +202,165 @@
             </div>
             </form>
           </div>
-        @else
+        @elseif(isset($ubah) == !NULL)
+          <div class="card">
+            
+            <div class="card-body">
+              <div class="row">
+                  <div class="col-3">
+                    <h6>Rawat Jalan</h6>
+                  </div>
+                  <div class="col-8">
+                    <input type="text" class="form-control" id="faktur_rawatjalan" name="faktur_rawatjalan" placeholder="Rawat Jalan" value="{{$ubah->faktur_rawatjalan}}" disabled >
+                  </div>
+                  <div class="col-1 text-right">
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-rawatjalan" disabled>
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-3">
+                    <h6>Nomor Rekam Medis</h6>
+                    <input type="text" class="form-control" id="norm" name="norm" placeholder="Nomor Rekam Medis" value="{{$ubah->norm}}" disabled>
+                  </div>
+                  <div class="col-4">
+                    <h6>Pasien</h6>
+                    <input type="text" class="form-control" id="namapasien" name="namapasien" placeholder="Nama Pasien" value="{{$ubah->Pasien->namapasien}}" disabled>
+                  </div>
+                  <div class="col-4">
+                    <h6>Tanggal Masuk</h6>
+                    <input type="text" class="form-control" id="tglmasuk" name="tglmasuk" placeholder="Tanggal Masuk" value="{{$ubah->tglmasuk}}" disabled>                 
+                  </div>
+                  <div class="col-1 align-self-end text-right">
+                    <button type="button" onclick="tanggalsekarang();" class="btn btn-outline-info" disabled>
+                      <i class="fas fa-sync"></i>
+                    </button>
+                  </div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col">
+                    <h6>Kode Kamar</h6>
+                    <input type="text" class="form-control" id="kodekamar" name="kodekamar" placeholder="Kode Kamar" value="{{$ubah->kodekamar}}" disabled >
+                  </div>
+                  <div class="col">
+                    <h6>Kamar</h6>
+                    <input type="text" class="form-control" id="namakamar" name="namakamar"  placeholder="Kamar" value="{{$ubah->Kamar->keterangan}}" disabled>                 
+                  </div>
+                  <div class="col">
+                    <h6>Kelas</h6>
+                    <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Kelas" value="{{$ubah->kelas}}" disabled>                                  
+                  </div>
+                  <div class="col-3">
+                    <h6>Ruang</h6>
+                    <input type="text" class="form-control" id="ruang" name="ruang" placeholder="Ruang" value="{{$ubah->ruang}}" disabled>                  
+                  </div>
+                  <div class="col-1 text-right align-self-end">
+                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-kamar" disabled>
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <h6>Macam Rawat</h6>
+                  <select class="form-control" name="macamrawat" disabled>
+                    <option value="">Pilih Macam Rawat</option>
+                    @foreach ($macamrawat as $item)
+                      <option value="{{$item->kode}}" {{($ubah->macamrawat == $item->kode) ? "selected":""}}>{{$item->macamrawat}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="col">
+                  <h6>Perusahaan / jaminan</h6>
+                  <input type="text" id="idprsh" name="idprsh" value="{{$ubah->idprsh}}" disabled hidden>
+                  <input type="text" class="form-control" id="namaperusahaan" name="namaperusahaan" placeholder="Perusahaan / jaminan" value="{{$ubah->Perusahaan->namaprsh}}" disabled >
+                </div>
+                <div class="col-1 text-right align-self-end">
+                  <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-perusahaan" disabled>
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <h6>Cara Masuk</h6>
+                  <select class="form-control" name="kodemasuk" disabled>
+                    <option value="">Pilih Cara Masuk</option>
+                    @foreach ($jenismasuk as $item)
+                      <option value="{{$item->kodemasuk}}" {{($ubah->kodemasuk == $item->kodemasuk) ? "selected":""}}>{{$item->jenismasuk}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="col">
+                  <h6>Dokter Penanggung Jawab</h6>
+                  <input type="text" id="iddokter" name="iddokter" value="{{$ubah->iddokter}}" disabled hidden>
+                  <input type="text" class="form-control" id="namadokter" name="namadokter" placeholder="Dokter Penanggung Jawab" value="{{$ubah->Dokter->nama}}" disabled >
+                </div>
+                <div class="col-1 text-right align-self-end">
+                  <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-dokter" disabled>
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <h6>Diagnosa Awal</h6>
+                  <input type="text" id="diagnosaawal" name="diagnosaawal" value="{{$ubah->diagnosaawal}}" disabled hidden>
+                  <input type="text" class="form-control" id="namadiagnosaawal" name="namadiagnosaawal" placeholder="Diagnosa Awal"  value="{{$ubah->namadiagnosaawal}}" disabled>
+                </div>
+                <div class="col-1 text-right align-self-end">
+                  <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-icd10" disabled>
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <h6>Penanggung Jawab</h6>
+                  <input type="text" class="form-control" name="penanggungjawab" placeholder="Penanggung Jawab"  value="{{$ubah->penanggungjawab}}" disabled>
+                </div>
+                <div class="col">
+                  <h6>Hubungan Penanggung Jawab</h6>
+                  <input type="text" class="form-control" name="hubungan_pj" placeholder="Hubungan Penanggung Jawab"  value="{{$ubah->hubungan_pj}}" disabled>
+                </div>
+                <div class="col">
+                  <h6>Telp Penanggung Jawab</h6>
+                  <input type="text" class="form-control" name="telp_pj" placeholder="Telp Penanggung Jawab"  value="{{$ubah->telp_pj}}" disabled>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <h6>Alamat Penanggung Jawab</h6>
+                  <input type="text" class="form-control" name="alamat_pj" placeholder="Alamat Penanggung Jawab"  value="{{$ubah->alamat_pj}}" disabled>
+                </div>
+                <div class="col-4">
+                  <h6>Biaya Administrasi</h6>
+                  <input type="text" class="form-control" name="administrasi" placeholder="Biaya Administrasi"  value="{{$ubah->administrasi}}" disabled>
+                </div>
+              </div>
+              
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col text-right">
+                  <a href=""></a>
+                  <button type="reset" onclick="window.location.href='{{url('Data_Pendaftaran_Rawat_Inap')}}'"
+                    class="btn btn-outline-danger"><i class="fa fa-times"></i> Tutup
+                  </button>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+        @elseif(isset($lihat) == !NULL)
           <div class="card">
             
             <div class="card-body">

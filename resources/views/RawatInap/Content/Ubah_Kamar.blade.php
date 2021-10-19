@@ -37,105 +37,114 @@
     <section class="content">
       <div class="container-fluid">
         <div class="card">
-          <div class="card-body">
-            <!-- Baris ke 1-->
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >No Pendaftaran</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
+          <form action="{{url('/Ubah_Kamar/update'.$ubah->faktur_rawatinap)}}" method="post">
+            {{csrf_field()}}
+            <div class="card-body">
+              <!-- Baris ke 1-->
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >No Pendaftaran</label></div>
+                      <div class="col-9"><input type="text" class="form-control" value="{{$ubah->faktur_rawatinap}}" readonly></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Pasien</label></div>
+                      <div class="col-9"><input type="text" class="form-control" value="{{$ubah->Pasien->namapasien}}" readonly></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Kode Kamar</label></div>
+                      <div class="col-9"><input type="text" class="form-control" value="{{$ubah->kodekamar}}" readonly></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Ruang</label></div>
+                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Tanggal Masuk Kamar</label></div>
+                      <div class="col-9"><input type="datetime" class="form-control" value="{{$ubah->tglmasuk}}" readonly></div>
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Pasien</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
+                <!-- /.col -->
+                <div class="col">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Kelas Kamar</label></div>
+                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Tarif Kamar</label></div>
+                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Kode Kamar</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Ruang</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Tanggal Masuk Kamar</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
-                  </div>
-                </div>
+                <!-- /.col -->
               </div>
-              <!-- /.col -->
-              <div class="col">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Kelas Kamar</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
+              <br>
+              <!-- /.row -->
+              <!-- Baris ke 2-->
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Ubah ke kamar</label></div>
+                      <div class="col-9">
+                        <select name="kodekamar" class="form-control">
+                          @foreach ($kamar as $item)
+                              <option value="{{$item->kodekamar}}">{{$item->kodekamar}} | {{$item->Ruang->namaruang}} | {{$item->Kelas->nama}} | {{$item->tarif}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Kelas Kamar</label></div>
+                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Ruang</label></div>
+                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Tarif Kamar</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
+                <!-- /.col -->
+                <div class="col">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-3 text-right"><label >Tarif</label></div>
+                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                    </div>
                   </div>
                 </div>
+                <!-- /.col -->
               </div>
-              <!-- /.col -->
+              <!-- /.row -->
             </div>
-            <br>
-            <!-- /.row -->
-            <!-- Baris ke 2-->
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Ubah ke kamar</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
-                  </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col text-right">
+                  <button type="submit" class="btn btn-outline-primary"><i class="fa fa-save"></i> Simpan</button>
+                  <button type="reset" onclick="window.location.href='{{url('Data_Pendaftaran_Rawat_Inap')}}'"
+                    class="btn btn-outline-danger"><i class="fa fa-times"></i> Batal
+                  </button>
                 </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Kelas Kamar</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Ruang</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col -->
-              <div class="col">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-3 text-right"><label >Tarif</label></div>
-                    <div class="col-9"><input type="text" class="form-control"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.col -->
-            </div>
-            <!-- /.row -->
-          </div>
-          <div class="card-footer">
-            <div class="row">
-              <div class="col text-right">
-                <button type="submit" class="btn btn-outline-primary"><i class="fa fa-save"></i> Simpan</button>
-                <button type="reset" onclick="window.location.href='{{url('Data_Pendaftaran_Rawat_Inap')}}'"
-                  class="btn btn-outline-danger"><i class="fa fa-times"></i> Batal
-                </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
         
       </div>

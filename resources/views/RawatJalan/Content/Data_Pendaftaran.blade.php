@@ -181,7 +181,7 @@
                     $no=1;   
                   @endphp
                   @foreach ($datas as $item)
-                    <tr onclick="tombol({{$item->faktur_rawatjalan}})">
+                    <tr onclick="tombol('{{$item->faktur_rawatjalan}}')">
                       <td>{{$no++}}</td>
                       <td>{{$item->faktur_rawatjalan}}</td>
                       <td>{{$item->norm}}</td>
@@ -198,7 +198,7 @@
                       <td>{{$item->Pasien->penanggungjawab}}</td>
                       <td>{{$item->kunjunganke}}</td>
                       <td>
-                        <button class="btn btn-outline-info" onclick="tombol({{$item->faktur_rawatjalan}})">Pilih</button>       
+                        <button class="btn btn-outline-info" onclick="tombol('{{$item->faktur_rawatjalan}}')">Pilih</button>       
                       </td>
                     </tr>
                   @endforeach

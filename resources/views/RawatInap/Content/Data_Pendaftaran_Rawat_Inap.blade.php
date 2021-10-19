@@ -72,18 +72,18 @@
                 </div>
                 <div class="row">
                   <div class="col"><a href="" id="" class="btn btn-block btn-outline-primary btn-sm"><i class=""></i> Cari Pasien RI</a></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-clipboard-list"></i> Ubah</button></div>
+                  <div class="col"><a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolubah" class="btn btn-block btn-outline-primary btn-sm"><i class="fa fa-print"></i> Ubah</a></div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    <a href="" id="tombolhapus" class="btn btn-block btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                    <a href="javascript:alert('Pilih baris data yang akan dihapus!');" id="tombolhapus" class="btn btn-block btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
                       <i class="fa fa-minus-circle"></i> Hapus
                     </a> 
                   </div>
                   <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-minus-circle"></i> Batalkan</button></div>
                 </div>
                 <div class="row">
-                  <div class="col"><a href="{{url('/Ubah_Kamar')}}" id="" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Ubah Kamar</a></div>
+                  <div class="col"><a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tombolubahkamar" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Ubah Kamar</a></div>
                   <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Pindah Kamar</button></div>
                 </div>
                 <br>
@@ -103,7 +103,7 @@
                 </div>
                 <br>
                 <div class="row">
-                  <div class="col"><a href="" id="" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Detail Pendaftaran</a></div>
+                  <div class="col"><a href="javascript:alert('Pilih baris data yang akan diubah!');" id="tomboldetailpendaftaran" class="btn btn-block btn-outline-secondary btn-sm"><i class="fa fa-print"></i> Detail Pendaftaran</a></div>
                   <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fas fa-clipboard-list"></i> Lihat Perawatan</button></div>
                 </div>
                 <div class="row">
@@ -203,10 +203,11 @@
   <!-- /.content-wrapper -->
 <script>
   function tombol($faktur_rawatinap){
-    //$("a#tombolubah").attr("href", "/Data_Pendaftaran/ubah"+ $faktur_rawatinap +"#UbahPendaftaranRawatJalan");
+    $("a#tombolubah").attr("href", "/Data_Pendaftaran_Rawat_Inap/ubah"+ $faktur_rawatinap);
     $("a#tomboldetaildiagnosa").attr("href", "/Data_Pendaftaran_Rawat_Inap/detaildiagnosa"+ $faktur_rawatinap);
-    //$("a#tombolhapus").attr("href", "/Data_Pendaftaran/hapus"+ $faktur_rawatinap);
-    //$("a#tombolrekammedisrj").attr("href", "/Rekam_Medis_Rawat_Jalan/index"+ $faktur_rawatinap);
+    $("a#tomboldetailpendaftaran").attr("href", "/Data_Pendaftaran_Rawat_Inap/detailpendaftaran"+ $faktur_rawatinap);
+    $("a#tombolhapus").attr("href", "/Data_Pendaftaran_Rawat_Inap/hapus"+ $faktur_rawatinap);
+    $("a#tombolubahkamar").attr("href", "/Ubah_Kamar"+ $faktur_rawatinap);
     //$("option#tombolsuratketerangansehat").attr("value", "/Data_Pendaftaran/suratketerangansehat"+ $faktur_rawatinap);
     //$("option#tombolsuratketerangansakit").attr("value", "/Data_Pendaftaran/suratketerangansakit"+ $faktur_rawatinap);
   }

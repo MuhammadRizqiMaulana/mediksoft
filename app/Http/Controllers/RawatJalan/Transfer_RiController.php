@@ -16,6 +16,8 @@ use App\Models\Rawatjalan;
 use App\Models\Icd10;
 use App\Models\Macamrawat;
 use App\Models\Jenismasuk;
+use App\Models\Kamar_terisi;
+use App\Models\Kamarkosong_temp;
 
 use Carbon\Carbon;
 
@@ -120,7 +122,18 @@ class Transfer_RiController extends Controller
 
             $data->save();
 
-            return redirect('/Pendaftaran_Rawat_Inap')->with('alert-success','Data berhasil ditambahkan!');
+            //kamar_terisi
+            $kamarterisi = new Kamar_terisi();
+            $kamarterisi->kodekamar = $request->kodekamar;
+            $kamarterisi->faktur_rawatinap = "RI".$invoice->invoice;
+            $kamarterisi->tglmasukkamar = $request->tglmasuk;
+            $kamarterisi->save();
+
+            //kamar_kosong
+            $kamarkosong = Kamarkosong_temp::find($request->kodekamar);
+            $kamarkosong->sisakamar = $kamarkosong->sisakamar - 1;
+            $kamarkosong->save();
+            return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-success','Data berhasil ditambahkan!');
         }
          catch(\Exception $e){
             
