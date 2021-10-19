@@ -723,7 +723,6 @@
 @endisset
 <!-- Modal Tabel ICD 10 STP -->
 
-
 <!-- Modal Detail Alergi Pasien -->
 <div class="modal fade" id="modal-detailalergipasien">
   <div class="modal-dialog modal-lg">
@@ -764,6 +763,7 @@
 
     </div>
     <!-- /.modal-dialog -->
+  </div>
 </div>
 <!-- Modal Modal Detail Alergi Pasien -->
 
@@ -979,7 +979,7 @@
                             <th>Penangung Jawab</th>
                             <th>Kunjungan Ke</th>
                             <th>Aksi</th>
-                          </tr>
+                        </tr>
                     </thead>
                     <tbody>
                         @php
@@ -1017,7 +1017,5 @@
 </div>
 @endisset
 <!-- Modal Tabel Data Pendaftaran Rawat jalan -->
-
-
 
 <!-- /.modal -->

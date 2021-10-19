@@ -261,9 +261,13 @@ Route::get('/RuteObat', [RuteObatController::class, 'index']);
 Route::get('/Data_Pendaftaran_Rawat_Inap', [Data_Pendaftaran_Rawat_InapController::class, 'index']);
 Route::get('/Data_Pendaftaran_Rawat_Inap/tambah', [Data_Pendaftaran_Rawat_InapController::class, 'tambah']);
 Route::post('/Data_Pendaftaran_Rawat_Inap/store', [Data_Pendaftaran_Rawat_InapController::class, 'store']);
+Route::get('/Data_Pendaftaran_Rawat_Inap/ubah{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'ubah']);
 Route::get('/Data_Pendaftaran_Rawat_Inap/detaildiagnosa{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detaildiagnosa']);
+Route::get('/Data_Pendaftaran_Rawat_Inap/detailpendaftaran{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detailpendaftaran']);
+Route::get('/Data_Pendaftaran_Rawat_Inap/hapus{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'hapus']);
 
-Route::get('/Ubah_Kamar', [Ubah_KamarController::class, 'index']);
+Route::get('/Ubah_Kamar{faktur_rawatinap}', [Ubah_KamarController::class, 'index']);
+Route::post('/Ubah_Kamar/update{faktur_rawatinap}', [Ubah_KamarController::class, 'update']);
 
 Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
 
