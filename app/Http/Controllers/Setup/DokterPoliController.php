@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Setup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Poliklinik;
 use App\Models\Dokter;
 use App\Models\Eklaimbpjs;
 use App\Models\Tarif_dokter_poli;
-
-
 
 use Carbon\Carbon;
  
@@ -47,7 +46,7 @@ class DokterPoliController extends Controller
         ];
 
     	$this->validate($request, [
-    		'kodepoli' => 'required|max:6|unique:tarif_dokter_poli',
+    		'kodepoli' => 'required|max:6',
             'iddokter' => 'required|max:30',
             'tarif' => 'required|numeric|between:0.0000,99999999.9999|min:0',
             'untukrs' => 'required|numeric|between:0.0000,99999999.9999|min:0',
@@ -57,25 +56,33 @@ class DokterPoliController extends Controller
     	], $messages);
 
         $now = Carbon::now();
-
-        $data = new Tarif_dokter_poli();
-        $data->kodepoli = $request->kodepoli;
-        $data->iddokter = $request->iddokter;
-        $data->tarif = $request->tarif;
-        $data->untukrs = $request->untukrs;
-        $data->untukdokter = $request->tarif;
-        $data->idklaim = $request->idklaim;
-        $data->pemakaitarif = 0;
+        $caridatayangsama = Tarif_dokter_poli::where('kodepoli', $request->kodepoli)->where('iddokter', $request->iddokter)->count();
         
-        
-    	$data->save();
+        if ($caridatayangsama == 0) {
 
-    	return redirect('/DokterPoli')->with('alert-success','Data berhasil ditambahkan!');
+            $data = new Tarif_dokter_poli();
+            $data->kodepoli = $request->kodepoli;
+            $data->iddokter = $request->iddokter;
+            $data->tarif = $request->tarif;
+            $data->untukrs = $request->untukrs;
+            $data->untukdokter = $request->tarif;
+            $data->idklaim = $request->idklaim;
+            $data->pemakaitarif = 0;
+            
+            $data->save();
+
+            return redirect('/DokterPoli')->with('alert-success','Data berhasil ditambahkan!');
+
+        }else{
+            return redirect('/DokterPoli')->with('alert-danger','Data sudah tersedia!');
+        }
+
+        
     }
 
-   	public function ubah($kodepoli) {
+   	public function ubah($kodepoli, $iddokter) {
         $dokter = Dokter::all();
-        $ubah = Tarif_dokter_poli::find($kodepoli);
+        $ubah = Tarif_dokter_poli::where('kodepoli', $kodepoli)->where('iddokter', $iddokter)->first();
         $poliklinik = Poliklinik::all();
         $eklaimbpjs = Eklaimbpjs::all();
         $datas = Tarif_dokter_poli::all();
@@ -84,7 +91,7 @@ class DokterPoliController extends Controller
 
     }
 
-    public function update($kodepoli, Request $request) {
+    public function update($kodepoli, $iddokter, Request $request) {
         $messages = [
             'required' => ':attribute masih kosong',
             'min' => ':attribute diisi minimal :min karakter',
@@ -105,23 +112,23 @@ class DokterPoliController extends Controller
     	], $messages);
 
         $now = Carbon::now();
-
-        $data = Tarif_dokter_poli::find($kodepoli);
-        $data->kodepoli = $request->kodepoli;
-        $data->iddokter = $request->iddokter;
-        $data->tarif = $request->tarif;
-        $data->untukrs = $request->untukrs;
-        $data->untukdokter = $request->tarif;
-        $data->idklaim = $request->idklaim;
-        $data->pemakaitarif = 0;
-    	$data->save();
-
+        DB::table('tarif_dokter_poli')->where('kodepoli', $kodepoli)->where('iddokter', $iddokter)->update([
+            'kodepoli' => $request->kodepoli,
+            'iddokter' => $request->iddokter,
+            'tarif' => $request->tarif,
+            'untukrs' => $request->untukrs,
+            'untukdokter' => $request->tarif,
+            'idklaim' => $request->idklaim,
+            'pemakaitarif' => 0,
+        ]);
+        
         return redirect('/DokterPoli')->with('alert-success','Data berhasil diubah!');
     }
 
-    public function hapus($kodepoli) {
-    	$datas = Tarif_dokter_poli::find($kodepoli);
-    	$datas->delete();
+    public function hapus($kodepoli, $iddokter) {
+
+        DB::table('tarif_dokter_poli')->where('kodepoli', $kodepoli)->where('iddokter', $iddokter)->delete();
+
         return redirect('/DokterPoli')->with('alert-success','Data berhasil dihapus!');
     }
 }

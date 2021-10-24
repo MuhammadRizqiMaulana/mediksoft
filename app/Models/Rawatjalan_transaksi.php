@@ -9,11 +9,12 @@ class Rawatjalan_transaksi extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $keyType = 'string';
     protected $table        = 'rawatjalan_transaksi'; // nama tabel 
-    protected $primaryKey   = 'faktur_rawatjalan'; // primary key tabel 
-    protected $fillable     = ['notransaksi', 
+    protected $primaryKey   = 'notransaksi'; // primary key tabel 
+    protected $fillable     = ['faktur_rawatjalan', 
     							'kode_kategori ',
-                                'id_tindakan',
+                                'idtindakan',
                                 'nama_transaksi',
                                 'jumlah',
                                 'tarif',
@@ -24,4 +25,9 @@ class Rawatjalan_transaksi extends Model
                                 'tarif_rs',
                                 'tarif_paramedis',
                                 'tglpelayanan' ]; //field tabel
+    
+    public function Tariftindakanpoli() { //Jabatan dimiliki oleh karyawan
+        return $this->belongsTo(Tarif_tindakan_poli::class,'idtindakan');
+        //nama_modelTabelrelasinya,foreignkey di tabel Karyawan
+    }
 }

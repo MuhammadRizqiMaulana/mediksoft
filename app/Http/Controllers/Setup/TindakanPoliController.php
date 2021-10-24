@@ -47,13 +47,11 @@ class TindakanPoliController extends Controller
         ], $messages);
 
         $now = Carbon::now();
+        $invoice = Tarif_tindakan_poli::selectRaw('LPAD(CONVERT((COUNT("idtindakan") + 1) , char(5)) , 5,"0") as invoice')->first();
+
         $count = Tarif_tindakan_poli::all()->count();
         $data = new Tarif_tindakan_poli();
-        if ($count >= 1) {
-            $data->idtindakan = $count++;
-        } else {
-            $data->idtindakan = 1;
-        }
+        $data->idtindakan = "TRJ".$invoice->invoice;
         $data->kodepoli = $request->kodepoli;
         $data->namatindakan = $request->namatindakan;
         $data->tarif = $request->tarif;
@@ -76,7 +74,7 @@ class TindakanPoliController extends Controller
         $eklaimbpjs = Eklaimbpjs::all();
         $datas = Tarif_tindakan_poli::all();
 
-        return view('Setup.Content.TindakanPoli', compact('kategori', 'ubah', 'poliklinik', 'icd9', 'eklaimbpjs', 'datas'));
+        return view('Setup.Content.TindakanPoli', compact('kategori', 'ubah', 'icd9', 'poliklinik', 'eklaimbpjs', 'datas'));
     }
     public function update($idtindakan, Request $request)
     {
@@ -98,13 +96,15 @@ class TindakanPoliController extends Controller
         ], $messages);
 
         $now = Carbon::now();
-        $data = new Tarif_tindakan_poli();
-        $data->idtindakan = $request->idtindakan;
-        $data->kodekategori = $request->kodekategori;
+        $data = Tarif_tindakan_poli::find($idtindakan);
+        $data->kodepoli = $request->kodepoli;
         $data->namatindakan = $request->namatindakan;
+        $data->tarif = $request->tarif;
+        $data->untukrs = $request->untukrs;
+        $data->untukdokter = $request->untukdokter;
+        $data->untukparamedis = $request->untukparamedis;
         $data->idklaim = $request->idklaim;
-
-
+        $data->pemakaitarif = 0;
         $data->save();
 
         return redirect('/TindakanPoli')->with('alert-success', 'Data berhasil diubah!');

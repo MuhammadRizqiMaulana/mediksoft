@@ -168,9 +168,9 @@ Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus']);
 
 Route::get('/DokterPoli', [DokterPoliController::class, 'index']);
 Route::post('/DokterPoli/store', [DokterPoliController::class, 'store']);
-Route::get('/DokterPoli/ubah{kodepoli}', [DokterPoliController::class, 'ubah']);
-Route::post('/DokterPoli/update{kodepoli}', [DokterPoliController::class, 'update']);
-Route::get('/DokterPoli/hapus{kodepoli}', [DokterPoliController::class, 'hapus']);
+Route::get('/DokterPoli/ubah{kodepoli},{iddokter}', [DokterPoliController::class, 'ubah']);
+Route::post('/DokterPoli/update{kodepoli},{iddokter}', [DokterPoliController::class, 'update']);
+Route::get('/DokterPoli/hapus{kodepoli},{iddokter}', [DokterPoliController::class, 'hapus']);
 
 Route::get('/DokterKonsultasi', [DokterKonsultasiController::class, 'index']);
 Route::post('/DokterKonsultasi/store', [DokterKonsultasiController::class, 'store']);
@@ -241,6 +241,8 @@ Route::get('/Data_Pendaftaran/suratketerangansakit{faktur_rawatjalan}', [Data_Pe
 Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansehat']);
 
 Route::get('/Pelayanan_Rawat_Jalan', [Pelayanan_PoliController::class, 'index']);
+Route::get('/Pelayanan_Rawat_Jalan/select{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'selectrawatjalan']);
+Route::post('/Pelayanan_Rawat_Jalan/store', [Pelayanan_PoliController::class, 'store']);
 
 Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
 Route::post('/Pendaftaran_Rawat_Inap/store', [Transfer_RiController::class, 'store']);

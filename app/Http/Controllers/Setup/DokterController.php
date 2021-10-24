@@ -49,11 +49,11 @@ class DokterController extends Controller
             $nama_file = time()."_".$file->getClientOriginalName();
             $file->move('images/Ttd_Dokter',$nama_file); // isi dengan nama folder tempat kemana file diupload
         }
-        
-        $invoice = Dokter::selectRaw('LPAD(CONVERT((COUNT("iddokter") + 1) , char(5)) , 5,"0") as invoice')->first();
+
+        $invoice = Dokter::selectRaw('LPAD(CONVERT((COUNT("iddokter") + 1) , char(3)) , 3,"0") as invoice')->first();
 
         $data = new Dokter();
-        $data->iddokter = $invoice->invoice;
+        $data->iddokter = "DR".$invoice->invoice;
         $data->nama = $request->nama;
         $data->alamat = $request->alamat;
         $data->jeniskelamin = $request->jeniskelamin;

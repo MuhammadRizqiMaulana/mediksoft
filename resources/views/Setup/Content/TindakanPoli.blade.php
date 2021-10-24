@@ -64,10 +64,10 @@
                                     @foreach ($datas as $item)
                                     <tr>
                                         <td>{{$item->Poliklinik->nama}}</td>
-                                        <td>{{$item->namatindakanpoli}}</td>
+                                        <td>{{$item->namatindakan}}</td>
                                         <td>{{$item->tarif}}</td>
                                         <td>{{$item->Eklaimbpjs->nama}}</td>
-                                        <<td>{{$item->Icd9->kode}}</td>
+                                        <td></td>
                                             <td>
                                                 <a href="/TindakanPoli/ubah{{$item->kodepoli}}#UbahTindakanPoli"
                                                     class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i>
@@ -252,7 +252,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('/TindakanPoli/update'.$ubah->kodepoli)}}" method="post">
+                        <form action="{{url('/TindakanPoli/update'.$ubah->idtindakan)}}" method="post">
                             {{csrf_field()}}
                             <div class="card-body">
                                 <div class="form-group">
@@ -344,6 +344,7 @@
                                     <div class="row">
                                         <div class="col-10">
                                             <select class="form-control" width="100%" name="kode" id="icd9">
+                                                <option value=""></option>
                                                 @foreach ($icd9 as $item)
                                                 <option value="{{$item->nama}}">{{$item->nama}}</option>
                                                 @endforeach

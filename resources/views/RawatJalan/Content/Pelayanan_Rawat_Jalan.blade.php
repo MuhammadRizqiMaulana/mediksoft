@@ -22,6 +22,15 @@
           {{Session::get('alert-success')}}
       </div>
     @endif
+    @if(\Session::has('alert-danger'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h6><i class="fas fa-sign-out-alt"></i><b> gagal!!</b></h6>
+        {{Session::get('alert-danger')}}
+    </div>
+  @endif
     
 
     <!-- Main content -->
@@ -32,13 +41,12 @@
             <div class="row">
               <!-- Form Atas Kolom 1-->
               <div class="col ml-2 mr-2">
-                <div class="row">
-
+                <div class="row">    
                   <div class="col-3 text-right">
                     <label>Faktur Rawat Jalan</label>
                   </div>
                   <div class="col-8">
-                    <input type="text" class="form-control" placeholder="Faktur Rawat Jalan" readonly >
+                    <input type="text" name="faktur_rawatjalan" id="faktur_rawatjalan" class="form-control" placeholder="Faktur Rawat Jalan" value="@isset($datas) {{$datas->faktur_rawatjalan}} @endisset" readonly >
                   </div>
                   <div class="col-1">
                     <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-rawatjalan">
@@ -51,7 +59,7 @@
                     <label>Tanggal Masuk</label>
                   </div>
                   <div class="col-8">
-                    <input type="date" class="form-control" placeholder="Tanggal Masuk" readonly >
+                    <input type="datetime" class="form-control" placeholder="Tanggal Masuk" value="@isset($datas) {{$datas->tglmasuk}} @endisset" readonly >
                   </div>
                 </div>
                 <div class="row">
@@ -59,10 +67,10 @@
                     <label>No.RM / Nama</label>
                   </div>
                   <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Nomor RM" readonly >
+                    <input type="text" class="form-control" placeholder="Nomor RM" value="@isset($datas) {{$datas->norm}} @endisset" readonly >
                   </div>
                   <div class="col-5">
-                    <input type="text" class="form-control" placeholder="Nama" readonly >
+                    <input type="text" class="form-control" placeholder="Nama" value="@isset($datas) {{$datas->Pasien->namapasien}} @endisset" readonly >
                   </div>
                 </div>
 
@@ -74,7 +82,7 @@
                     <label>Poliklinik</label>
                   </div>
                   <div class="col-8">
-                    <input type="text" class="form-control" placeholder="Poliklinik" readonly >
+                    <input type="text" class="form-control" placeholder="Poliklinik" value="@isset($datas) {{$datas->Poliklinik->nama}} @endisset" readonly >
                   </div>
                 </div>
                 <div class="row">
@@ -82,7 +90,7 @@
                     <label>Dokter</label>
                   </div>
                   <div class="col-8">
-                    <input type="text" class="form-control" placeholder="Dokter" readonly >
+                    <input type="text" class="form-control" placeholder="Dokter" value="@isset($datas) {{$datas->Dokter->nama}} @endisset" readonly >
                   </div>
                 </div>
                 <div class="row">
@@ -90,7 +98,7 @@
                     <label>Tgl Pelayanan</label>
                   </div>
                   <div class="col-8">
-                    <input type="date" class="form-control" placeholder="Tanggal Pelayanan" readonly >
+                    <input type="datetime" class="form-control" placeholder="Tanggal Pelayanan" value="{{$now}}" readonly >
                   </div>
                 </div>
               </div>
@@ -104,33 +112,45 @@
               <span class="text-danger">* khusus untuk pemeriksaan lab/rad tanpa melalui pendaftaran, pilih transaksi laboratorium / radiologi</span>
             </div>
             <br>
-            <div class="row">
-              <div class="col-3">
-                <h6>Transaksi</h6>
-                <select name="transaksi" class="form-control" disabled>
-                  <option value="" selected>Poliklinik</option>
-                </select>
-                <div class="row">
-                  <div class="col">Jumlah </div>
-                  <div class="col"><input type="number" class="form-control" value="1" min="1"></div>
+            <form action="{{url('/Pelayanan_Rawat_Jalan/store')}}" method="post">
+              {{csrf_field()}}
+              <input type="text" name="faktur_rawatjalan" id="faktur_rawatjalan" placeholder="Faktur Rawat Jalan" value="@isset($datas) {{$datas->faktur_rawatjalan}} @endisset" readonly hidden >
+              <div class="row">
+                <div class="col-3">
+                  <h6>Transaksi</h6>
+                  <select name="transaksi" class="form-control" disabled>
+                    <option value="" selected>Poliklinik</option>
+                  </select>
+                  <div class="row">
+                    <input type="number" name="tariftersembunyi" id="tariftersembunyi" hidden>
+                    <div class="col-3">Jumlah </div>
+                    <div class="col-9"><input type="number" name="jumlah" id="jumlah" class="form-control" value="1" min="1" oninput="tambahtarif()"></div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <h6>Kode</h6>
+                  <div class="row">
+                    <div class="col-10"><input type="text" class="form-control" name="idtindakan" id="idtindakan"></div>
+                    <div class="col-2">
+                      <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modal-tariftindakanpoli">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3">Tarif </div>
+                    <div class="col-9"><input type="number" name="tarif" id="tarif" class="form-control" value="0" min="0"></div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <h6>Nama Tindakan</h6>
+                  <input type="text" name="namatransaksi" id="namatransaksi" class="form-control">
+                  <button type="submit" class="btn btn-outline-success"><i
+                    class="fa fa-plus-circle"></i> Tambah
+                  </button>
                 </div>
               </div>
-              <div class="col-3">
-                <h6>Kode [F1]</h6>
-                <input type="text" class="form-control">
-                <div class="row">
-                  <div class="col">Tarif </div>
-                  <div class="col"><input type="number" class="form-control" value="1" min="0"></div>
-                </div>
-              </div>
-              <div class="col-6">
-                <h6>Nama Tindakan</h6>
-                <input type="text" class="form-control">
-                <button type="submit" class="btn btn-outline-success"><i
-                  class="fa fa-plus-circle"></i> Simpan
-                </button>
-              </div>
-            </div>
+            </form>
 
             <br>
             <hr>
@@ -151,13 +171,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
+                        @isset($rawatjalantransaksi)
+                          @foreach ($rawatjalantransaksi as $item)
+                            <tr>
+                              <td>{{$item->kodekategori}}</td>
+                              <td>{{$item->namatransaksi}}</td>
+                              <td>{{$item->jumlah}}</td>
+                              <td>{{$item->Tariftindakanpoli->tarif}}</td>
+                              <td>{{$item->tarif}}</td>
+                            </tr>
+                          @endforeach
+                        @endisset
                       </tbody>
                       <tfoot>
                         <tr>
@@ -165,7 +189,7 @@
                           <th></th>
                           <th></th>
                           <th></th>
-                          <th>0.00</th>
+                          <th>@isset($totalharga){{$totalharga}}@endisset</th>
                         </tr>
                       </tfoot>
                     </table>
@@ -217,5 +241,28 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <script type="text/javascript">
+    function rawatjalan($faktur_rawatjalan) {
+      document.getElementById("faktur_rawatjalan").value = $faktur_rawatjalan;
+      $(".close").click();
+      window.location.href = "/Pelayanan_Rawat_Jalan/select"+ $faktur_rawatjalan;
+    }
+
+    function tariftindakanpoli($idtindakan, $namatindakan, $tarif) {
+      document.getElementById("idtindakan").value = $idtindakan;
+      document.getElementById("namatransaksi").value = $namatindakan;
+      document.getElementById("tarif").value = $tarif;
+      document.getElementById("tariftersembunyi").value = $tarif;
+      $(".close").click();
+    }
+    
+    function tambahtarif() {
+      var angka1 = parseFloat(document.getElementById('tariftersembunyi').value);
+      var angka2 = parseFloat(document.getElementById('jumlah').value);
+      var hasil = angka1 * angka2;
+      document.getElementById('tarif').value = hasil;
+    }
+  </script>
 
 @endsection
