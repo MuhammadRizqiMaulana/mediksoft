@@ -9,6 +9,7 @@ class Tarif_tindakan_poli extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $keyType = 'string';
     protected $table        = 'tarif_tindakan_poli'; // nama tabel 
     protected $primaryKey   = 'idtindakan'; // primary key tabel 
     protected $fillable     = [
