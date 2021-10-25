@@ -48,7 +48,7 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/DokterBedah')}}">
                         <i class="fas fa-edit"></i> Dokter Bedah
                     </a>
                     <a class="btn btn-app">

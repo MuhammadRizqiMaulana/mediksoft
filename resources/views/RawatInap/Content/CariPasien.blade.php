@@ -43,6 +43,7 @@
                             <table id="example1" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>No. Rawat Inap</th>
                                         <th>No RM</th>
                                         <th>Nama Pasien</th>
@@ -56,19 +57,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    @php
+                                    $no=1;
+                                    @endphp
+                                    @foreach ($rawatinap as $item)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{$no++}}</td>
+                                        <td>{{$item->faktur_rawatinap}}</td>
+                                        <td>{{$item->norm}}</td>
+                                        <td>{{$item->Pasien->namapasien}}</td>
+                                        <td>{{$item->Kamar->kodekamar}}</td>
+                                        <td>{{$item->Kelas}}</td>
+                                        <td>{{$item->Ruang}}</td>
+                                        <td>{{$item->Pasien->jeniskelamin}}</td>
+                                        <td>{{$item->Perusahaan->namaprsh}}</td>
+                                        <td>{{$item->Pasien->alamat}}</td>
                                         <td></td>
                                     </tr>
-
+                                    @endforeach
 
                             </table>
                         </div>

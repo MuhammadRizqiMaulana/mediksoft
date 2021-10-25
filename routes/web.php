@@ -32,6 +32,7 @@ use App\Http\Controllers\Setup\TindakanPoliController;
 use App\Http\Controllers\RekamMedis\KeanggotaanController;
 use App\Http\Controllers\RekamMedis\PasienController;
 use App\Http\Controllers\RekamMedis\Pendaftaran_Rawat_JalanController;
+use App\Http\Controllers\RekamMedis\RawatInapController;
 use App\Http\Controllers\RekamMedis\KamarKosongController;
 
 /* ----- RekamMedis -----*/
@@ -54,11 +55,14 @@ use App\Http\Controllers\RawatInap\Ruang_PerawatanController;
 use App\Http\Controllers\RawatInap\Ubah_KamarController;
 use App\Http\Controllers\RawatInap\CariPasienController;
 use App\Http\Controllers\RawatInap\MacamRawatController;
+use App\Http\Controllers\RawatInap\PindahKamarController;
 use App\Http\Controllers\RawatInap\INOSController;
+
 /* ----- RawatInap -----*/
 
 /* ----- Operasi -----*/
 use App\Http\Controllers\Operasi\GolonganOperasiController;
+use App\Http\Controllers\Operasi\DokterBedahController;
 /* ----- Operasi -----*/
 
 
@@ -219,7 +223,8 @@ Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
 
 Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index']);
 Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store']);
-
+Route::get('/RM_RawatInap', [RawatInapController::class, 'index']);
+Route::post('/RM_RawatInap/store', [RawatInapController::class, 'store']);
 Route::get('/KamarKosong', [KamarKosongController::class, 'index']);
 
 /* ----- RekamMedis -----*/
@@ -277,6 +282,8 @@ Route::get('/Data_Pendaftaran_Rawat_Inap/hapus{faktur_rawatinap}', [Data_Pendaft
 Route::get('/Ubah_Kamar{faktur_rawatinap}', [Ubah_KamarController::class, 'index']);
 Route::post('/Ubah_Kamar/update{faktur_rawatinap}', [Ubah_KamarController::class, 'update']);
 
+Route::get('/PindahKamar', [PindahKamarController::class, 'index']);
+
 Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
 
 Route::get('/CariPasien', [CariPasienController::class, 'index']);
@@ -302,4 +309,5 @@ Route::get('/Operasi', function () {
 });
 
 Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
+Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
 /* ----- Operasi -----*/
