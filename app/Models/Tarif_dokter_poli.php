@@ -9,9 +9,7 @@ class Tarif_dokter_poli extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $keyType = 'string';
     protected $table        = 'tarif_dokter_poli'; // nama tabel 
-    protected $primaryKey   = 'kodepoli'; // primary key tabel 
     protected $fillable     = ['iddokter',
                                 'tarif', 
     							'untukrs',

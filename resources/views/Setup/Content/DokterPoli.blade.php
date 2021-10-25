@@ -23,6 +23,15 @@
           {{Session::get('alert-success')}}
       </div>
     @endif
+    @if(\Session::has('alert-danger'))
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h6><i class="fas fa-sign-out-alt"></i><b> Gagal!!</b></h6>
+          {{Session::get('alert-danger')}}
+      </div>
+    @endif
 
     <ul>
             @foreach($errors->all() as $error)
@@ -64,8 +73,8 @@
                       <td>{{$item->tarif}}</td>
                       <td>{{$item->Eklaimbpjs->nama}}</td>
                       <td>
-                        <a href="/DokterPoli/ubah{{$item->kodepoli}}#UbahDokterPoli" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
-                        <a href="/DokterPoli/hapus{{$item->kodepoli}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                        <a href="/DokterPoli/ubah{{$item->kodepoli}},{{$item->iddokter}}#UbahDokterPoli" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                        <a href="/DokterPoli/hapus{{$item->kodepoli}},{{$item->iddokter}}" class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
                           <i class="fa fa-minus-circle"></i> Hapus
                         </a>
 
@@ -81,7 +90,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-                @if(isset($ubah) == NULL)
+              @if(isset($ubah) == NULL)
                 <!-- general form elements -->
                 <div class="card card-success card-outline" id="TambahDokterPoli">
                   <div class="card-header">
@@ -193,7 +202,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form action="{{url('/DokterPoli/update'.$ubah->kodepoli)}}" method="post">
+                  <form action="{{url('/DokterPoli/update'.$ubah->kodepoli.','.$ubah->iddokter)}}" method="post">
                     {{csrf_field()}}
                     <div class="card-body">
                       <div class="form-group">

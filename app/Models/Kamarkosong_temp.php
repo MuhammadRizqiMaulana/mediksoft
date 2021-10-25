@@ -19,4 +19,4 @@ class Kamarkosong_temp extends Model
                                 'sisakamar',
                                 'kodekelas',
                                 'namakamar']; //field tabel
-}
+} 

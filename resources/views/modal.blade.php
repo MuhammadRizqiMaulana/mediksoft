@@ -1018,4 +1018,53 @@
 @endisset
 <!-- Modal Tabel Data Pendaftaran Rawat jalan -->
 
+<!-- Modal Tabel Data Tarif Tindakan Poli -->
+@isset($tariftindakanpoli)
+<div class="modal fade" id="modal-tariftindakanpoli">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data Tarif Tindakan Poli</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_tariftindakanpoli" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Poli</th>
+                            <th>Nama Tindakan Poli</th>
+                            <th>Tarif</th>
+                            <th>E-Klaim BPJS</th>
+                            <th>Kode_Icd9</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($tariftindakanpoli as $item)
+                        <tr onclick="tariftindakanpoli('{{$item->idtindakan}}', '{{$item->namatindakan}}', '{{$item->tarif}}');">
+                            <td>{{$item->Poliklinik->nama}}</td>
+                            <td>{{$item->namatindakan}}</td>
+                            <td>{{$item->tarif}}</td>
+                            <td>{{$item->Eklaimbpjs->nama}}</td>
+                            <td></td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="tariftindakanpoli('{{$item->idtindakan}}', '{{$item->namatindakan}}', '{{$item->tarif}}');"><i
+                                        class="fa fa-check"></i> Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Poliklinik -->
+
 <!-- /.modal -->

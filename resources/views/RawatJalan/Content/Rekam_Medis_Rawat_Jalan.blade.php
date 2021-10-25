@@ -34,13 +34,13 @@
                 <div class="form-group row">
                   <label for="Tanggal" class="col-sm-3 col-form-label">Tanggal</label>
                   <div class="col-sm-9">
-                    <input type="datetime" class="form-control" id="Tanggal" placeholder="Tanggal" value="{{$rawatjalan->tglmasuk}}">
+                    <input type="datetime" class="form-control" id="Tanggal" placeholder="Tanggal" value="{{$selectrawatjalan->tglmasuk}}">
                   </div>
                 </div>
               </div>
               <div class="col-3"><button class="btn btn-outline-primary">Riwayat Medis Pasien</button></div>
-              <div class="col-3"><label class="col-form-label">NO RM : <span class="text-info">{{$rawatjalan->norm}} </span></label></div>
-              <div class="col-3"><label class="col-form-label">NAMA : <span class="text-info">{{$rawatjalan->Pasien->namapasien}} [ {{$rawatjalan->Perusahaan->namaprsh}} ] </span></label></div>
+              <div class="col-3"><label class="col-form-label">NO RM : <span class="text-info">{{$selectrawatjalan->norm}} </span></label></div>
+              <div class="col-3"><label class="col-form-label">NAMA : <span class="text-info">{{$selectrawatjalan->Pasien->namapasien}} [ {{$selectrawatjalan->Perusahaan->namaprsh}} ] </span></label></div>
             </div>
           </div>          
         </div>
