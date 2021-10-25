@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\RawatInap;
+namespace App\Http\Controllers\RekamMedis;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models;
 use App\Models\Pasien;
 use App\Models\Rawatinap;
 
-
-class CariPasienController extends Controller
+class RawatInapController extends Controller
 {
     public function index()
     {
+        $datas = RawatInap::all();
         $rawatinap = RawatInap::all();
         $pasien = Pasien::all();
-        return view('RawatInap.Content.CariPasien', compact('pasien', 'rawatinap'));
+        return view('RekamMedis.Content.RM_RawatInap', compact('pasien', 'rawatinap', 'datas'));
     }
 }

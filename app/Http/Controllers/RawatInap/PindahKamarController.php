@@ -4,17 +4,15 @@ namespace App\Http\Controllers\RawatInap;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models;
 use App\Models\Pasien;
-use App\Models\Rawatinap;
+use App\Models\Kamar;
 
-
-class CariPasienController extends Controller
+class PindahKamarController extends Controller
 {
     public function index()
     {
-        $rawatinap = RawatInap::all();
+        $kamar = Kamar::all();
         $pasien = Pasien::all();
-        return view('RawatInap.Content.CariPasien', compact('pasien', 'rawatinap'));
+        return view('RawatInap.Content.PindahKamar', compact('pasien', 'kamar'));
     }
 }
