@@ -131,10 +131,10 @@
                                         <td>{{$item->Pasien->jeniskelamin}}</td>
                                         <td>{{$item->Pasien->namapasien}}</td>
                                         <td>{{$item->Pasien->alamat}}</td>
-                                        <td>{{$item->RawatInap->diagnosaawal}}</td>
-                                        <td>{{$item->RawatInap->diagnosaakhir}}</td>
-                                        <td>{{$item->RawatInap->tglmasuk}}</td>
-                                        <td>{{$item->RawatInap->tglkeluar}}</td>
+                                        <td>{{$item->diagnosaawal}}</td>
+                                        <td>{{$item->diagnosaakhir}}</td>
+                                        <td>{{$item->tglmasuk}}</td>
+                                        <td>{{$item->tglkeluar}}</td>
                                     </tr>
                                     @endforeach
 

@@ -11,8 +11,8 @@ class RawatInapController extends Controller
 {
     public function index()
     {
-        $datas = RawatInap::all();
-        $rawatinap = RawatInap::all();
+        $datas = Rawatinap::all();
+        $rawatinap = Rawatinap::all();
         $pasien = Pasien::all();
         return view('RekamMedis.Content.RM_RawatInap', compact('pasien', 'rawatinap', 'datas'));
     }
