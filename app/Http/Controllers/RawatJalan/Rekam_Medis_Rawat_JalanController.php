@@ -27,9 +27,9 @@ class Rekam_Medis_Rawat_JalanController extends Controller
         $perusahaan = Perusahaan::all();
         $faskes = Faskes::all();   
         $now = Carbon::now();
-        $rawatjalan = Rawatjalan::find($faktur_rawatjalan);   
+        $selectrawatjalan = Rawatjalan::find($faktur_rawatjalan);   
 
-        return view('RawatJalan.Content.Rekam_Medis_Rawat_Jalan',compact('pasien','poliklinik','dokter','perusahaan','faskes','now','rawatjalan'));
+        return view('RawatJalan.Content.Rekam_Medis_Rawat_Jalan',compact('pasien','poliklinik','dokter','perusahaan','faskes','now','selectrawatjalan'));
     }
 
     public function store($faktur_rawatjalan, Request $request) {

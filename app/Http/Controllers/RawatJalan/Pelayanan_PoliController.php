@@ -87,12 +87,14 @@ class Pelayanan_PoliController extends Controller
                 return redirect('/Pelayanan_Rawat_Jalan/select'.$request->faktur_rawatjalan)->with('alert-success','Data berhasil ditambahkan!');
             }else{
                 $data = Rawatjalan_transaksi::where('faktur_rawatjalan', $request->faktur_rawatjalan)->where('idtindakan', $request->idtindakan)->where('kodekategori', 1)->first();
-                $data->jumlah = $data->jumlah + $request->jumlah;
-                $data->tarif = $data->tarif + ($datatariftindakanpoli->tarif * $request->jumlah);
-                $data->tarif_rs = $data->tarif_rs + ($datatariftindakanpoli->untukrs * $request->jumlah);
-                $data->tarif_dokter = $data->tarif_dokter + ($datatariftindakanpoli->untukdokter * $request->jumlah);
-                $data->tarif_paramedis = $data->tarif_paramedis + ($datatariftindakanpoli->untukparamedis * $request->jumlah);
+                $data->jumlah = $request->jumlah;
+                $data->tarif = $datatariftindakanpoli->tarif * $request->jumlah;
+                $data->idklaim = $datatariftindakanpoli->idklaim;
+                $data->tarif_rs = $datatariftindakanpoli->untukrs * $request->jumlah;
+                $data->tarif_dokter = $datatariftindakanpoli->untukdokter * $request->jumlah;
+                $data->tarif_paramedis = $datatariftindakanpoli->untukparamedis * $request->jumlah;
                 $data->tglpelayanan = $now;
+
                 $data->save();
 
                 return redirect('/Pelayanan_Rawat_Jalan/select'.$request->faktur_rawatjalan)->with('alert-success','Data berhasil ditambahkan!');
@@ -106,5 +108,60 @@ class Pelayanan_PoliController extends Controller
             return redirect('/Pelayanan_Rawat_Jalan/select'.$request->faktur_rawatjalan)->with('alert-danger', $e);
             
         }
+    }
+
+    public function update($notransaksi, Request $request) {
+        $messages = [
+            'required' => ':attribute masih kosong',
+            'min' => ':attribute diisi minimal :min karakter',
+            'max' => ':attribute diisi maksimal :max karakter',
+            'numeric' => ':attribute harus berupa angka',
+            'unique' => ':attribute sudah ada',
+            'email' => ':attribute harus berupa email',
+            'image' => ':attribute harus berupa gambar',
+            'between' => ':attribute diisi antara 0 sampai XXXXXXXX.XXXX digit',
+            'min' => ':attribute tidak boleh kurang dari 0',
+        ];
+
+    	$this->validate($request, [
+    		'ubahjumlah' => 'required|max:11',
+    	], $messages);
+
+        try{
+            $now = Carbon::now();
+            $ubah = Rawatjalan_transaksi::find($notransaksi); //select rawatjalan transaksi
+            $datatariftindakanpoli = Tarif_tindakan_poli::find($ubah->idtindakan); //cari tarif tindakan poli
+
+            $ubah->jumlah = $request->ubahjumlah;
+            $ubah->tarif = $datatariftindakanpoli->tarif * $request->ubahjumlah;
+            $ubah->tarif_rs = $datatariftindakanpoli->untukrs * $request->ubahjumlah;
+            $ubah->tarif_dokter = $datatariftindakanpoli->untukdokter * $request->ubahjumlah;
+            $ubah->tarif_paramedis = $datatariftindakanpoli->untukparamedis * $request->ubahjumlah;
+            $ubah->tglpelayanan = $now;
+            $ubah->save();
+
+            return redirect('/Pelayanan_Rawat_Jalan/select'.$ubah->faktur_rawatjalan)->with('alert-success','Data berhasil diubah!');
+         }
+         catch(\Exception $e){
+            // do task when error
+            return redirect('/Pelayanan_Rawat_Jalan/select'.$ubah->faktur_rawatjalan)->with('alert-danger',$e);
+            
+         }
+   
+    }
+
+    public function hapus($notransaksi, $faktur_rawatjalan) {
+        try{
+            
+            $datas = Rawatjalan_transaksi::find($notransaksi);
+            $datas->delete();
+            
+            return redirect('/Pelayanan_Rawat_Jalan/select'.$faktur_rawatjalan)->with('alert-success','Data berhasil dihapus!');
+
+        }catch(\Exception $e){
+
+            return redirect('/Pelayanan_Rawat_Jalan/select'.$faktur_rawatjalan)->with('alert-danger','Data gagal dihapus!');
+        }
+    	
     }
 }

@@ -247,6 +247,8 @@ Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_Pe
 Route::get('/Pelayanan_Rawat_Jalan', [Pelayanan_PoliController::class, 'index']);
 Route::get('/Pelayanan_Rawat_Jalan/select{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'selectrawatjalan']);
 Route::post('/Pelayanan_Rawat_Jalan/store', [Pelayanan_PoliController::class, 'store']);
+Route::post('/Pelayanan_Rawat_Jalan/update{notransaksi}', [Pelayanan_PoliController::class, 'update']);
+Route::get('/Pelayanan_Rawat_Jalan/hapus{notransaksi},{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'hapus']);
 
 Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
 Route::post('/Pendaftaran_Rawat_Inap/store', [Transfer_RiController::class, 'store']);
