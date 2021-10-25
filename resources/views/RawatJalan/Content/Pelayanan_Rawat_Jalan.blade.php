@@ -168,6 +168,7 @@
                           <th>Jumlah</th>
                           <th>Tarif</th>
                           <th>Total</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -176,9 +177,18 @@
                             <tr>
                               <td>{{$item->kodekategori}}</td>
                               <td>{{$item->namatransaksi}}</td>
-                              <td>{{$item->jumlah}}</td>
+                              <td width="10" ><input type="text" class="form-control form-control-border" value="{{$item->jumlah}}"> </td>
                               <td>{{$item->Tariftindakanpoli->tarif}}</td>
                               <td>{{$item->tarif}}</td>
+                              <td width="100">
+                                <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-ubahtindakanpoli" onclick="ubahtindakanpoli('{{$item->notransaksi}}','{{$item->namatransaksi}}','{{$item->jumlah}}','{{$item->Tariftindakanpoli->tarif}}','{{$item->tarif}}')">
+                                  <i class="fa fa-edit"></i>
+                                </button>
+                                <a href="/Pelayanan_Rawat_Jalan/hapus{{$item->notransaksi}},{{$item->faktur_rawatjalan}}"
+                                  class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                                  <i class="fa fa-minus-circle"></i>
+                              </a>
+                              </td>
                             </tr>
                           @endforeach
                         @endisset
@@ -190,6 +200,7 @@
                           <th></th>
                           <th></th>
                           <th>@isset($totalharga){{$totalharga}}@endisset</th>
+                          <th></th>
                         </tr>
                       </tfoot>
                     </table>
@@ -241,6 +252,55 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <!-- Modal Detail Alergi Pasien -->
+<div class="modal fade" id="modal-ubahtindakanpoli">
+  <div class="modal-dialog modal-lg">
+    <form id="form-ubahtindakanpoli" method="post">
+      {{csrf_field()}}
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Ubah Tindakan Poli</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Tindakan</th>
+            <th>Jumlah</th>
+            <th>Tarif</th>
+            <th>Total</th>
+          </tr>
+          </thead>
+          <tbody>
+            <form>
+            <tr>
+              <td><input type="text" id="ubahtindakan" name="ubahtindakan" class="form-control form-control-border" readonly></td>
+              <td><input type="text" id="ubahjumlah" name="ubahjumlah" class="form-control form-control-border" oninput="ubahtambahtarif()"></td>   
+              <td>
+                <input type="text" id="ubahtarif" name="ubahtarif" class="form-control form-control-border" readonly>
+                <input type="text" id="ubahtariftersembunyi" name="ubahtariftersembunyi" class="form-control form-control-border" hidden>
+              </td>
+              <td><input type="text" id="ubahtotal" name="ubahtotal" class="form-control form-control-border" readonly></td>
+            </tr> 
+            
+          </tbody>                         
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-info"><i class="fa fa-save"></i> Simpan</button>
+        <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-minus-circle"></i> Batal</button>
+      </div>
+    </div>
+    <!-- /.modal-dialog -->
+    </form>
+  </div>
+</div>
+<!-- Modal Modal Detail Alergi Pasien -->
+
 
   <script type="text/javascript">
     function rawatjalan($faktur_rawatjalan) {
@@ -262,6 +322,22 @@
       var angka2 = parseFloat(document.getElementById('jumlah').value);
       var hasil = angka1 * angka2;
       document.getElementById('tarif').value = hasil;
+    }
+
+    function ubahtindakanpoli($notransaksi, $namatransaksi, $jumlah, $tariftindakanpoli, $tarif) {
+      $("#form-ubahtindakanpoli").attr("action", "/Pelayanan_Rawat_Jalan/update" + $notransaksi);
+      document.getElementById("ubahtindakan").value = $namatransaksi;
+      document.getElementById("ubahjumlah").value = $jumlah;
+      document.getElementById("ubahtarif").value = $tariftindakanpoli;
+      document.getElementById("ubahtotal").value = $tarif;
+      document.getElementById("ubahtariftersembunyi").value = $tariftindakanpoli;
+    }
+
+    function ubahtambahtarif() {
+      var angka1 = parseFloat(document.getElementById('ubahtariftersembunyi').value);
+      var angka2 = parseFloat(document.getElementById('ubahjumlah').value);
+      var hasil = angka1 * angka2;
+      document.getElementById('ubahtotal').value = hasil;
     }
   </script>
 
