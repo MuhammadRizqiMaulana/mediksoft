@@ -32,6 +32,7 @@ use App\Http\Controllers\Setup\TindakanPoliController;
 use App\Http\Controllers\RekamMedis\KeanggotaanController;
 use App\Http\Controllers\RekamMedis\PasienController;
 use App\Http\Controllers\RekamMedis\Pendaftaran_Rawat_JalanController;
+use App\Http\Controllers\RekamMedis\KamarKosongController;
 
 /* ----- RekamMedis -----*/
 
@@ -53,6 +54,7 @@ use App\Http\Controllers\RawatInap\Ruang_PerawatanController;
 use App\Http\Controllers\RawatInap\Ubah_KamarController;
 use App\Http\Controllers\RawatInap\CariPasienController;
 use App\Http\Controllers\RawatInap\MacamRawatController;
+use App\Http\Controllers\RawatInap\INOSController;
 /* ----- RawatInap -----*/
 
 /* ----- Operasi -----*/
@@ -218,6 +220,8 @@ Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
 Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index']);
 Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store']);
 
+Route::get('/KamarKosong', [KamarKosongController::class, 'index']);
+
 /* ----- RekamMedis -----*/
 
 /* ----- RawatJalan -----*/
@@ -282,9 +286,12 @@ Route::get('/MacamRawat/ubah{kode}', [MacamRawatController::class, 'ubah']);
 Route::post('/MacamRawat/update{kode}', [MacamRawatController::class, 'update']);
 Route::get('/MacamRawat/hapus{kode}', [MacamRawatController::class, 'hapus']);
 
+Route::get('/INOS', [INOSController::class, 'index']);
+
 Route::get('/Status_Pulang', function () {
     return view('RawatInap.Content.Status_Pulang');
 });
+
 /* ----- RawatInap -----*/
 
 /* ----- Operasi -----*/
