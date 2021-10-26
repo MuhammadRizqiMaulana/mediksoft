@@ -146,7 +146,7 @@
                   <thead>
                   <tr>
                     <th rowspan="2">No</th>
-                    <th colspan="2">Faktur</th>
+                    <th colspan="2" style="text-align:center">Faktur</th>
                     <th rowspan="2">No RM</th>
                     <th rowspan="2">Pasien</th>
                     <th rowspan="2">Kode Kamar</th>
