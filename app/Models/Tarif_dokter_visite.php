@@ -9,6 +9,7 @@ class tarif_dokter_visite extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $keyType = 'string';
     protected $table        = 'tarif_dokter_visite'; // nama tabel 
     protected $fillable     = ['iddokter',
                                 'kodekelas', 

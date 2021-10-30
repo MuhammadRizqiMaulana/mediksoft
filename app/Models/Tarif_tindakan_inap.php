@@ -9,6 +9,7 @@ class Tarif_tindakan_inap extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $keyType = 'string';
     protected $table        = 'tarif_tindakan_inap'; // nama tabel 
     protected $primaryKey   = 'idtindakan'; // primary key tabel 
     protected $fillable     = ['kodekategori', 
@@ -18,7 +19,8 @@ class Tarif_tindakan_inap extends Model
        
         public function Kategoritransaksi() { 
             return $this->belongsTo(Kategoritransaksi::class,'kodekategori');
-  		}      
+  		}  
+          
         public function Eklaimbpjs() {
             return $this->belongsTo(Eklaimbpjs::class,'idklaim');
    		}
