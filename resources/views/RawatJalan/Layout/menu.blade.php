@@ -79,7 +79,7 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/KamarKosong')}}">
                 <i class="fas fa-edit"></i> Kamar Kosong
               </a>
               
