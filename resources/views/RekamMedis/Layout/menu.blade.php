@@ -53,10 +53,10 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> RM Rawat Jalan
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/RM_RawatInap')}}">
                 <i class="fas fa-edit"></i> RM Rawat Inap
               </a>
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/KamarKosong')}}">
                 <i class="fas fa-edit"></i> Kamar Kosong
               </a>
             </div>

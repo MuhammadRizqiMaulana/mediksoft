@@ -18,7 +18,12 @@ use App\Http\Controllers\Setup\JaminanController;
 use App\Http\Controllers\Setup\PerusahaankategoriController;
 use App\Http\Controllers\Setup\KamarController;
 use App\Http\Controllers\Setup\DokterPoliController;
-
+use App\Http\Controllers\Setup\Icd10Controller;
+use App\Http\Controllers\Setup\Icd9Controller;
+use App\Http\Controllers\Setup\DokterKonsultasiController;
+use App\Http\Controllers\Setup\DokterVisitController;
+use App\Http\Controllers\Setup\TindakanInapController;
+use App\Http\Controllers\Setup\TindakanPoliController;
 
 
 /* ----- Setup -----*/
@@ -28,6 +33,8 @@ use App\Http\Controllers\Setup\DokterPoliController;
 use App\Http\Controllers\RekamMedis\KeanggotaanController;
 use App\Http\Controllers\RekamMedis\PasienController;
 use App\Http\Controllers\RekamMedis\Pendaftaran_Rawat_JalanController;
+use App\Http\Controllers\RekamMedis\RawatInapController;
+use App\Http\Controllers\RekamMedis\KamarKosongController;
 
 /* ----- RekamMedis -----*/
 
@@ -35,9 +42,30 @@ use App\Http\Controllers\RekamMedis\Pendaftaran_Rawat_JalanController;
 use App\Http\Controllers\RawatJalan\Data_PendaftaranController;
 use App\Http\Controllers\RawatJalan\Rekam_Medis_Rawat_JalanController;
 use App\Http\Controllers\RawatJalan\Riwayat_Resume_Medis_PasienController;
-use App\Http\Controllers\RawatJalan\Update_Pendaftaran_OnlineController;
+use App\Http\Controllers\RawatJalan\PenggunaanObatController;
+use App\Http\Controllers\RawatJalan\Pelayanan_PoliController;
+use App\Http\Controllers\RawatJalan\Transfer_RiController;
+use App\Http\Controllers\RawatJalan\Update_Data_Pendaftaran_Pasien_OnlineController;
 
 /* ----- RawatJalan -----*/
+
+/* ----- RawatInap -----*/
+use App\Http\Controllers\RawatInap\PenggunaanObatRIController;
+use App\Http\Controllers\RawatInap\RuteObatController;
+use App\Http\Controllers\RawatInap\Data_Pendaftaran_Rawat_InapController;
+use App\Http\Controllers\RawatInap\Ruang_PerawatanController;
+use App\Http\Controllers\RawatInap\Ubah_KamarController;
+use App\Http\Controllers\RawatInap\CariPasienController;
+use App\Http\Controllers\RawatInap\MacamRawatController;
+use App\Http\Controllers\RawatInap\PindahKamarController;
+use App\Http\Controllers\RawatInap\INOSController;
+
+/* ----- RawatInap -----*/
+
+/* ----- Operasi -----*/
+use App\Http\Controllers\Operasi\GolonganOperasiController;
+use App\Http\Controllers\Operasi\DokterBedahController;
+/* ----- Operasi -----*/
 
 
 /*
@@ -97,6 +125,18 @@ Route::get('/Dokter/ubah{iddokter}', [DokterController::class, 'ubah']);
 Route::post('/Dokter/update{iddokter}', [DokterController::class, 'update']);
 Route::get('/Dokter/hapus{iddokter}', [DokterController::class, 'hapus']);
 
+Route::get('/Icd10', [Icd10Controller::class, 'index']);
+Route::post('/Icd10/store', [Icd10Controller::class, 'store']);
+Route::get('/Icd10/ubah{kode}', [Icd10Controller::class, 'ubah']);
+Route::post('/Icd10/update{kode}', [Icd10Controller::class, 'update']);
+Route::get('/Icd10/hapus{kode}', [Icd10Controller::class, 'hapus']);
+
+Route::get('/Icd9', [Icd9Controller::class, 'index']);
+Route::post('/Icd9/store', [Icd9Controller::class, 'store']);
+Route::get('/Icd9/ubah{kode}', [Icd9Controller::class, 'ubah']);
+Route::post('/Icd9/update{kode}', [Icd9Controller::class, 'update']);
+Route::get('/Icd9/hapus{kode}', [Icd9Controller::class, 'hapus']);
+
 Route::get('/Jabatan', [JabatanController::class, 'index']);
 Route::post('/Jabatan/store', [JabatanController::class, 'store']);
 Route::get('/Jabatan/ubah{id}', [JabatanController::class, 'ubah']);
@@ -136,9 +176,34 @@ Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus']);
 
 Route::get('/DokterPoli', [DokterPoliController::class, 'index']);
 Route::post('/DokterPoli/store', [DokterPoliController::class, 'store']);
-Route::get('/DokterPoli/ubah{kodepoli}', [DokterPoliController::class, 'ubah']);
-Route::post('/DokterPoli/update{kodepoli}', [DokterPoliController::class, 'update']);
-Route::get('/DokterPoli/hapus{kodepoli}', [DokterPoliController::class, 'hapus']);
+Route::get('/DokterPoli/ubah{kodepoli},{iddokter}', [DokterPoliController::class, 'ubah']);
+Route::post('/DokterPoli/update{kodepoli},{iddokter}', [DokterPoliController::class, 'update']);
+Route::get('/DokterPoli/hapus{kodepoli},{iddokter}', [DokterPoliController::class, 'hapus']);
+
+Route::get('/DokterKonsultasi', [DokterKonsultasiController::class, 'index']);
+Route::post('/DokterKonsultasi/store', [DokterKonsultasiController::class, 'store']);
+Route::get('/DokterKonsultasi/ubah{iddokter}', [DokterKonsultasiController::class, 'ubah']);
+Route::post('/DokterKonsultasi/update{iddokter}', [DokterKonsultasiController::class, 'update']);
+Route::get('/DokterKonsultasi/hapus{iddokter}', [DokterKonsultasiController::class, 'hapus']);
+
+Route::get('/DokterVisit', [DokterVisitController::class, 'index']);
+Route::post('/DokterVisit/store', [DokterVisitController::class, 'store']);
+Route::get('/DokterVisit/ubah{iddokter}', [DokterVisitController::class, 'ubah']);
+Route::post('/DokterVisit/update{iddokter}', [DokterVisitController::class, 'update']);
+Route::get('/DokterVisit/hapus{iddokter}', [DokterVisitController::class, 'hapus']);
+
+Route::get('/TindakanInap', [TindakanInapController::class, 'index']);
+Route::post('/TindakanInap/store', [TindakanInapController::class, 'store']);
+Route::get('/TindakanInap/ubah{idtindakan}', [TindakanInapController::class, 'ubah']);
+Route::post('/TindakanInap/update{idtindakan}', [TindakanInapController::class, 'update']);
+Route::get('/TindakanInap/hapus{idtindakan}', [TindakanInapController::class, 'hapus']);
+
+Route::get('/TindakanPoli', [TindakanPoliController::class, 'index']);
+Route::post('/TindakanPoli/store', [TindakanPoliController::class, 'store']);
+Route::get('/TindakanPoli/ubah{idtindakan}', [TindakanPoliController::class, 'ubah']);
+Route::post('/TindakanPoli/update{idtindakan}', [TindakanPoliController::class, 'update']);
+Route::get('/TindakanPoli/hapus{idtindakan}', [TindakanPoliController::class, 'hapus']);
+
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
@@ -160,6 +225,9 @@ Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
 
 Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index']);
 Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store']);
+Route::get('/RM_RawatInap', [RawatInapController::class, 'index']);
+Route::post('/RM_RawatInap/store', [RawatInapController::class, 'store']);
+Route::get('/KamarKosong', [KamarKosongController::class, 'index']);
 
 /* ----- RekamMedis -----*/
 
@@ -175,9 +243,75 @@ Route::post('/Data_Pendaftaran/update{faktur_rawatjalan}', [Data_PendaftaranCont
 Route::get('/Data_Pendaftaran/hapus{faktur_rawatjalan}', [Data_PendaftaranController::class, 'hapus']);
 Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'lihat']);
 Route::get('/Riwayat_Resume_Medis_Pasien', [Riwayat_Resume_Medis_PasienController::class, 'index']);
+
+Route::get('/Data_Pendaftaran/cetakdatapendaftaran', [Data_PendaftaranController::class, 'cetakdatapendaftaran']);
+
 Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
 
-Route::get('/Update_Pendaftaran_Online', [Update_Pendaftaran_OnlineController::class, 'index']);
+Route::get('/PenggunaanObat', [PenggunaanObatController::class, 'index']);
+
+Route::get('/Data_Pendaftaran/suratketerangansakit{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansakit']);
+Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansehat']);
+
+Route::get('/Pelayanan_Rawat_Jalan', [Pelayanan_PoliController::class, 'index']);
+Route::get('/Pelayanan_Rawat_Jalan/select{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'selectrawatjalan']);
+Route::post('/Pelayanan_Rawat_Jalan/store', [Pelayanan_PoliController::class, 'store']);
+Route::post('/Pelayanan_Rawat_Jalan/update{notransaksi}', [Pelayanan_PoliController::class, 'update']);
+Route::get('/Pelayanan_Rawat_Jalan/hapus{notransaksi},{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'hapus']);
+
+Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
+Route::post('/Pendaftaran_Rawat_Inap/store', [Transfer_RiController::class, 'store']);
+
+Route::get('/Update_Data_Pendaftaran_Pasien_Online', [Update_Data_Pendaftaran_Pasien_OnlineController::class, 'index']);
 
 
 /* ----- RawatJalan -----*/
+
+
+/* ----- RawatInap -----*/
+Route::get('/RawatInap', function () {
+    return view('RawatInap.Content.index');
+});
+
+Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
+Route::get('/RuteObat', [RuteObatController::class, 'index']);
+Route::get('/Data_Pendaftaran_Rawat_Inap', [Data_Pendaftaran_Rawat_InapController::class, 'index']);
+Route::get('/Data_Pendaftaran_Rawat_Inap/tambah', [Data_Pendaftaran_Rawat_InapController::class, 'tambah']);
+Route::post('/Data_Pendaftaran_Rawat_Inap/store', [Data_Pendaftaran_Rawat_InapController::class, 'store']);
+Route::get('/Data_Pendaftaran_Rawat_Inap/ubah{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'ubah']);
+Route::get('/Data_Pendaftaran_Rawat_Inap/detaildiagnosa{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detaildiagnosa']);
+Route::get('/Data_Pendaftaran_Rawat_Inap/detailpendaftaran{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detailpendaftaran']);
+Route::get('/Data_Pendaftaran_Rawat_Inap/hapus{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'hapus']);
+
+Route::get('/Ubah_Kamar{faktur_rawatinap}', [Ubah_KamarController::class, 'index']);
+Route::post('/Ubah_Kamar/update{faktur_rawatinap}', [Ubah_KamarController::class, 'update']);
+
+Route::get('/PindahKamar', [PindahKamarController::class, 'index']);
+
+Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
+
+Route::get('/CariPasien', [CariPasienController::class, 'index']);
+Route::post('/CariPasien/store', [CariPasienController::class, 'store']);
+
+Route::get('/MacamRawat', [MacamRawatController::class, 'index']);
+Route::post('/MacamRawat/store', [MacamRawatController::class, 'store']);
+Route::get('/MacamRawat/ubah{kode}', [MacamRawatController::class, 'ubah']);
+Route::post('/MacamRawat/update{kode}', [MacamRawatController::class, 'update']);
+Route::get('/MacamRawat/hapus{kode}', [MacamRawatController::class, 'hapus']);
+
+Route::get('/INOS', [INOSController::class, 'index']);
+
+Route::get('/Status_Pulang', function () {
+    return view('RawatInap.Content.Status_Pulang');
+});
+
+/* ----- RawatInap -----*/
+
+/* ----- Operasi -----*/
+Route::get('/Operasi', function () {
+    return view('Operasi.Content.index');
+});
+
+Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
+Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
+/* ----- Operasi -----*/

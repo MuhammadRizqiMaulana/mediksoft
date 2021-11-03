@@ -12,9 +12,12 @@ class Icd10_mordibitas extends Model
     public $timestamps = false;
     protected $table        = 'icd10_mordibitas'; // nama tabel 
     protected $primaryKey   = 'idmordibitas'; // primary key tabel 
-    protected $fillable     = ['nodtd', 
-    							'noterinci',
-                                'golsebabsakit',
-                                'surveilans',
-                                'sebabluar']; //field tabel
+    protected $fillable     = [
+        'nodtd',
+        'noterinci',
+        'golsebabsakit',
+        'surveilans',
+        'sebabluar'
+    ]; //field tabel
+
 }

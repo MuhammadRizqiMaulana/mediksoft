@@ -89,10 +89,10 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Icd10')}}">
                         <i class="fas fa-user"></i> ICD 10
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Icd9')}}">
                         <i class="far fa-user"></i> ICD 9
                     </a>
 
@@ -128,7 +128,7 @@
                     <a class="btn btn-app" href="{{url('/Ruang')}}">
                         <i class="fas fa-edit"></i> Ruang
                     </a>
-                    <a class="btn btn-app" href="{{url('/Kamar')}}">
+                    <a class="btn btn-app" onclick="kamar();">
                         <i class="fas fa-edit"></i> Kamar
                     </a>
 
@@ -157,16 +157,16 @@
                     <a class="btn btn-app" href="{{url('/DokterPoli')}}">
                         <i class="fas fa-user-md"></i> Dokter Poli
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/DokterKonsultasi')}}">
                         <i class="fas fa-notes-medical"></i> Dokter Konsultasi
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/DokterVisit')}}">
                         <i class="fas fa-briefcase-medical"></i> Dokter Visit
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/TindakanPoli')}}">
                         <i class="fas fa-syringe"></i> Tindakan Poli
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/TindakanInap')}}">
                         <i class="fas fa-procedures"></i> Tindakan Inap
                     </a>
                     <a class="btn btn-app">
@@ -209,3 +209,11 @@
     <hr>
 </div>
 <!-- /.content-header -->
+<script>
+    function kamar(){
+      $.get("{{url('/Kamar')}}", {}, function(data, status){
+        $(".wrapper").html(data);
+        window.history.pushState('/Kamar');
+      });
+    }
+</script>

@@ -9,6 +9,7 @@ use App\Models\Kamar;
 use App\Models\Eklaimbpjs;
 use App\Models\Kelas;
 use App\Models\Ruang;
+use App\Models\Kamarkosong_temp;
 
 
 class KamarController extends Controller
@@ -74,6 +75,19 @@ class KamarController extends Controller
         $data->pemakaitarif = "belum";
     	$data->save();
 
+        $selectkamar = Kamar::find($request->kodekamar);
+
+        //Insert Kamar Kosong
+        $kamarkosong = new Kamarkosong_temp();
+        $kamarkosong->keterangan = $selectkamar->kodekamar;
+        $kamarkosong->keterangan2 = "";
+        $kamarkosong->namakelas = $selectkamar->Kelas->nama;
+        $kamarkosong->namaruang = $selectkamar->Ruang->namaruang;
+        $kamarkosong->sisakamar = $selectkamar->jumlahbed;
+        $kamarkosong->kodekelas = $selectkamar->kodekelas;
+        $kamarkosong->namakamar = $selectkamar->keterangan;
+        $kamarkosong->save();
+
     	return redirect('/Kamar')->with('alert-success','Data berhasil ditambahkan!');
     }
 
@@ -113,25 +127,51 @@ class KamarController extends Controller
             'idklaim' => 'required|max:11'
     	], $messages);
 
-        $data = Kamar::find($kodekamar);
-        $data->kodekelas = $request->kodekelas;
-        $data->koderuang = $request->koderuang;
-        $data->keterangan = $request->keterangan;
-        $data->tarif = $request->tarif;
-        $data->jasaperawat = $request->jasaperawat;
-        $data->tglaktif = $request->tglaktif;
-        $data->jumlahbed = $request->jumlahbed;
-        $data->dikirimkebpjs = "1";
-        $data->idklaim = $request->idklaim;
-        $data->pemakaitarif = "belum";
-    	$data->save();
+        try{
+            $data = Kamar::find($kodekamar);
+            $data->kodekelas = $request->kodekelas;
+            $data->koderuang = $request->koderuang;
+            $data->keterangan = $request->keterangan;
+            $data->tarif = $request->tarif;
+            $data->jasaperawat = $request->jasaperawat;
+            $data->tglaktif = $request->tglaktif;
+            $data->jumlahbed = $request->jumlahbed;
+            $data->dikirimkebpjs = "1";
+            $data->idklaim = $request->idklaim;
+            $data->pemakaitarif = "belum";
+            $data->save();
 
-        return redirect('/Kamar')->with('alert-success','Data berhasil diubah!');
+            return redirect('/Kamar')->with('alert-success','Data berhasil diubah!');
+         }
+         catch(\Exception $e){
+            // do task when error
+            return redirect('/Kamar')->with('alert-danger','Data gagal diubah diubah!');
+            echo $e->getMessage();   // insert query
+            
+         }
+
+        
     }
 
     public function hapus($kodekamar) {
-    	$datas = Kamar::find($kodekamar);
-    	$datas->delete();
-        return redirect('/Kamar')->with('alert-success','Data berhasil dihapus!');
+        try{
+            
+            $datas = Kamar::find($kodekamar);
+            $datas->delete();
+            
+            $kamarkosong = Kamarkosong_temp::find($kodekamar);
+            $kamarkosong->delete();
+
+            return redirect('/Kamar')->with('alert-success','Data berhasil dihapus!');
+
+        }catch(\Exception $e){
+
+            return redirect('/Kamar')->with('alert-danger','Data gagal dihapus!');
+        }
+    	
+    }
+
+    public function kamar_kosong(){
+        
     }
 }

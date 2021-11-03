@@ -12,6 +12,7 @@ use App\Models\Perusahaan;
 use App\Models\Faskes;
 use App\Models\Lokasi;
 use App\Models\Rawatjalan;
+use App\Models\Tarif_dokter_poli;
 
 use Carbon\Carbon;
 
@@ -62,24 +63,27 @@ class Data_PendaftaranController extends Controller
 
     	], $messages);
 
-        $invoice = Rawatjalan::selectRaw('LPAD(CONVERT(COUNT("faktur_rawatjalan") , char(15)) , 15,"0") as invoice')->first();
-        $kunjungan = Rawatjalan::where('norm',$request->norm)->count();
+        $invoice = Rawatjalan::selectRaw('LPAD(CONVERT((COUNT("faktur_rawatjalan") + 1) , char(13)) , 13,"0") as invoice')->first();//membuat nomer urut
+        $kunjungan = Rawatjalan::where('norm',$request->norm)->count(); //kunjungan ke berapa?
+
+        $tarifdokter = Tarif_dokter_poli::where('kodepoli', $request->kodepoli)->where('iddokter', $request->iddokter)->first();//mencari tarifdokterpoli
 
         $data = new Rawatjalan();
-        $data->faktur_rawatjalan  = $invoice->invoice;
+        $data->faktur_rawatjalan  = "RJ".$invoice->invoice;
         $data->norm = $request->norm;
         $data->tglmasuk = $request->tglmasuk;
         $data->kodepoli = $request->kodepoli;
         $data->iddokter = $request->iddokter;
         $data->idprsh = $request->idprsh;
         $data->kodefaskespengirim = $request->kodefaskespengirim;
+
         $data->administrasi = $request->administrasi;
+        $data->tarifdokter = $tarifdokter->tarif;
+        $data->subtotal = $request->administrasi + $tarifdokter->tarif;
 
         $data->diagnosaawal = "";
         $data->diagnosaakhir = "";
         $data->prosedur1 = "";
-        $data->tarifdokter = 0;
-		$data->subtotal = 0; 
 		$data->diskon = 0;
 		$data->inap = 0;  
 		$data->iduserpendaftaran = NULL;  
@@ -184,6 +188,29 @@ class Data_PendaftaranController extends Controller
         $lihat = Rawatjalan::find($faktur_rawatjalan);     
 
         return view('RawatJalan.Content.Pendaftaran_Rawat_Jalan',compact('pasien','poliklinik','dokter','perusahaan','faskes','now','lihat'));
+        
+    }
+
+    public function cetakdatapendaftaran(){
+
+        $datas = Rawatjalan::all();
+           
+        return view('RawatJalan.Content.Cetak_Data_Pendaftaran',compact('datas'));
+    }
+
+    public function suratketerangansakit($faktur_rawatjalan) {
+
+        $datas = Rawatjalan::find($faktur_rawatjalan);     
+
+        return view('RawatJalan.Content.Surat_Keterangan_Sakit',compact('datas'));
+        
+    }
+
+    public function suratketerangansehat($faktur_rawatjalan) {
+
+        $datas = Rawatjalan::find($faktur_rawatjalan);     
+
+        return view('RawatJalan.Content.Surat_Keterangan_Sehat',compact('datas'));
         
     }
 }

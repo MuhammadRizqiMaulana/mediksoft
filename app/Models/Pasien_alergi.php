@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pasien_alergi extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $table='pasien_alergi';
+    protected $primaryKey = 'norm';
     protected $fillable = [
-        'norm','jenisalergi','keterangan'
-    ]
+        'jenisalergi','keterangan'
+    ];
 }

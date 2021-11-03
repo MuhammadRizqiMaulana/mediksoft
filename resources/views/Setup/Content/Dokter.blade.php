@@ -407,11 +407,11 @@
                                     <label for="jeniskelamin">Jenis Kelamin</label>
                                     <select class="form-control" name="jeniskelamin">
                                         <option value="">-Pilih Jenis Kelamin-</option>
-                                        <option value="Laki-laki"
-                                            {{ ($ubah->jeniskelamin == "Laki-laki") ? 'selected' : ''}}>Laki -
+                                        <option value="laki-laki"
+                                            {{ ($ubah->jeniskelamin == "laki-laki") ? 'selected' : ''}}>Laki -
                                             laki</option>
-                                        <option value="Perempuan"
-                                            {{ ($ubah->jeniskelamin == "Perempuan") ? 'selected' : ''}}>Perempuan
+                                        <option value="perempuan"
+                                            {{ ($ubah->jeniskelamin == "perempuan") ? 'selected' : ''}}>Perempuan
                                         </option>
                                     </select>
                                     @if ($errors->has('jeniskelamin'))

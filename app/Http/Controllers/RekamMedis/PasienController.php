@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Pasien;
+use App\Models\Pasien_alergi;
+use App\Models\Agama;
+use App\Models\Icd10;
+use App\Models\Keanggotaan;
 use App\Models\Lokasi;
 
  
@@ -15,8 +19,14 @@ class PasienController extends Controller
     public function index(){
     	
         $datas = Pasien::all();
-       
-    	return view('RekamMedis.Content.Pasien',compact('datas',));
+        $agama = Agama::all();
+        $icd10 = Icd10::all();
+        $diagnosa = Icd10::all();
+        $keanggotaan = Keanggotaan::all();
+        //$lokasi_propinsis = Lokasi::orderBy('lokasi_kode')->distinct('lokasi_propinsi')->get();
+        $lokasi = Lokasi::orderBy('lokasi_kode')->get();
+        
+        return view('RekamMedis.Content.Pasien',compact('datas','agama','icd10','keanggotaan','diagnosa','lokasi'));
     }
 
     public function tambah() {
@@ -40,7 +50,7 @@ class PasienController extends Controller
         ];
 
     	$this->validate($request, [
-    		'norm' => 'required|max:20',
+    		'norm' => 'required|max:10|unique:pasien',
             'namapasien' => 'nullable|max:50',
             'alamat' => 'nullable|max:40',
             'jeniskelamin' => 'nullable|max:30',
@@ -54,7 +64,7 @@ class PasienController extends Controller
             'pekerjaan' => 'nullable|max:50',
             'namaayah' => 'nullable|max:50',
             'tglawal' => 'nullable|max:50',
-            'tg;akhir' => 'nullable|max:50',
+            'tglakhir' => 'nullable|max:50',
             'penanggungjawab' => 'nullable|max:50',
             'statuskeluarga' => 'nullable|max:50',
             'alergi' => 'nullable|max:50',
@@ -67,18 +77,18 @@ class PasienController extends Controller
             'kartu_bpjs' => 'required|max:50',
             'telepon' => 'nullable',
             'statusalergi' => 'required|max:50',
-            'updateonline' => 'required|max:50',
-            'keanggotaan1' => 'required|max:50',
-            'keanggotaan2' => 'required|max:50',
-            'keanggotaan3' => 'required|max:50',
+            'updateonline' => 'nullable|max:50',
+            'keanggotaan1' => 'nullable|max:50',
+            'keanggotaan2' => 'nullable|max:50',
+            'keanggotaan3' => 'nullable|max:50',
             'tkeanggotaan1' => 'nullable',
             'tkeanggotaan2' => 'nullable',
             'tkeanggotaan3' => 'nullable',
             'diagnosa1' => 'nullable',
             'diagnosa2' => 'nullable',
             'diagnosa3' => 'nullable',
-
-
+            'jenisalergi' => 'nullable',
+            'keterangan' => 'nullable',
     	], $messages);
 
         $data = new pasien();
@@ -95,24 +105,45 @@ class PasienController extends Controller
         $data->statuskawin = $request->statuskawin;
 		$data->pekerjaan = $request->pekerjaan; 
 		$data->namaayah = $request->namaayah;
-		$data->tglawal = $request->tglawal;  
-		$data->tglakhir = $request->tglakhir;   
+		$data->tglawal = null;  
+		$data->tglakhir = null;   
 		$data->penanggungjawab = $request->penanggungjawab; 
 		$data->statuskeluarga = $request->statuskeluarga; 
-		$data->alergi = $request->alergi;
+		$data->alergi = $request->jenisalergi . ", " . $request->keterangan;
 		$data->riwayatpenyakit = $request->riwayatpenyakit;
-		$data->nonaktif = $request->nonaktif;
-		$data->iduser = $request->iduser;
+
+        if ($request->nonaktif == null) {
+            $data->nonaktif = 0;
+        }else{
+            $data->nonaktif = $request->nonaktif;
+        }
+
+		$data->iduser = null;
 		$data->namaibu = $request->namaibu;
 		$data->namapasangan = $request->namapasangan;
-		$data->saldodeposit = $request->saldodeposit;
+		$data->saldodeposit = null;
 		$data->kartu_bpjs = $request->kartu_bpjs;
-		$data->telepon = $request->telepon;
+		$data->telepon = null;
 		$data->statusalergi = $request->statusalergi;
-		$data->updateonline = $request->updateonline;
-		$data->keanggotaan1 = $request->keanggotaan1;
-		$data->keanggotaan2 = $request->keanggotaan2;
-		$data->keanggotaan3 = $request->keanggotaan3;
+		$data->updateonline = 1;
+
+        if ($request->keanggotaan1 == null) {
+            $data->keanggotaan1 = 0;
+        }else{
+            $data->keanggotaan1 = $request->keanggotaan1;
+        }
+
+        if ($request->keanggotaan2 == null) {
+            $data->keanggotaan2 = 0;
+        }else{
+            $data->keanggotaan2 = $request->keanggotaan2;
+        }
+
+        if ($request->keanggotaan3 == null) {
+            $data->keanggotaan3 = 0;
+        }else{
+            $data->keanggotaan3 = $request->keanggotaan3;
+        }
 		$data->tkeanggotaan1 = $request->tkeanggotaan1;
 		$data->tkeanggotaan2 = $request->tkeanggotaan2;
 		$data->tkeanggotaan3 = $request->tkeanggotaan3;
@@ -121,13 +152,25 @@ class PasienController extends Controller
 		$data->diagnosa3 = $request->diagnosa3;
     	$data->save();
 
+        $alergi = new Pasien_alergi();
+        $alergi->norm = $request->norm;
+        $alergi->jenisalergi = $request->jenisalergi;
+        $alergi->keterangan = $request->keterangan;
+        $alergi->save();
+
     	return redirect('/Pasien')->with('alert-success','Data berhasil ditambahkan!');
     }
 
    	public function ubah($norm ) {
-        $datas = Pasien::all();
         $ubah = Pasien::find($norm);
-        return view('RekamMedis.Content.Pasien',compact('datas','ubah'));
+        $alergi = Pasien_alergi::find($norm);
+        $datas = Pasien::all();
+        $agama = Agama::all();
+        $icd10 = Icd10::all();
+        $diagnosa = Icd10::all();
+        $keanggotaan = Keanggotaan::all();
+        $lokasi = Lokasi::orderBy('lokasi_propinsi', 'ASC')->get();
+        return view('RekamMedis.Content.Pasien',compact('datas','ubah','agama','icd10','keanggotaan','diagnosa','alergi','lokasi'));
 
     }
 
@@ -143,47 +186,48 @@ class PasienController extends Controller
         ];
 
     	$this->validate($request, [
-    		'norm' => 'required|max:20',
-            'namapasien' => 'required|max:50',
-            'alamat' => 'required|max:40',
-            'jeniskelamin' => 'required|max:30',
-            'idkota' => 'required|max:100',
-            'tptlahir' => 'required|max:50',
-            'tgllahir' => 'required|max:50',
-            'notelp' => 'required|max:30',
-            'agama' => 'required|max:50',
-            'goldarah' => 'required|max:50',
-            'statuskawin' => 'required|max:50',
-            'pekerjaan' => 'required|max:50',
-            'namaayah' => 'required|max:50',
-            'tglawal' => 'required|max:50',
-            'tg;akhir' => 'required|max:50',
-            'penanggungjawab' => 'required|max:50',
-            'statuskeluarga' => 'required|max:50',
-            'alergi' => 'required|max:50',
-            'riwayatpenyakit' => 'required|max:50',
-            'nonaktif' => 'required|',
-            'iduser' => 'required|max:50',
-            'namaibu' => 'required|max:50',
-            'namapasangan' => 'required|max:50',
+            'norm' => 'required|max:10',
+            'namapasien' => 'nullable|max:50',
+            'alamat' => 'nullable|max:40',
+            'jeniskelamin' => 'nullable|max:30',
+            'idkota' => 'nullable|max:100',
+            'tptlahir' => 'nullable|max:50',
+            'tgllahir' => 'nullable|max:50',
+            'notelp' => 'nullable|max:30',
+            'agama' => 'nullable|max:50',
+            'goldarah' => 'nullable|max:50',
+            'statuskawin' => 'nullable|max:50',
+            'pekerjaan' => 'nullable|max:50',
+            'namaayah' => 'nullable|max:50',
+            'tglawal' => 'nullable|max:50',
+            'tglakhir' => 'nullable|max:50',
+            'penanggungjawab' => 'nullable|max:50',
+            'statuskeluarga' => 'nullable|max:50',
+            'alergi' => 'nullable|max:50',
+            'riwayatpenyakit' => 'nullable|max:50',
+            'nonaktif' => 'nullable|',
+            'iduser' => 'nullable|max:50',
+            'namaibu' => 'nullable|max:50',
+            'namapasangan' => 'nullable|max:50',
             'saldodeposit' => 'nullable',
             'kartu_bpjs' => 'required|max:50',
             'telepon' => 'nullable',
             'statusalergi' => 'required|max:50',
-            'updateonline' => 'required|max:50',
-            'keanggotaan1' => 'required|max:50',
-            'keanggotaan2' => 'required|max:50',
-            'keanggotaan3' => 'required|max:50',
+            'updateonline' => 'nullable|max:50',
+            'keanggotaan1' => 'nullable|max:50',
+            'keanggotaan2' => 'nullable|max:50',
+            'keanggotaan3' => 'nullable|max:50',
             'tkeanggotaan1' => 'nullable',
             'tkeanggotaan2' => 'nullable',
             'tkeanggotaan3' => 'nullable',
             'diagnosa1' => 'nullable',
             'diagnosa2' => 'nullable',
             'diagnosa3' => 'nullable',
+            'jenisalergi' => 'nullable',
+            'keterangan' => 'nullable',
     	], $messages);
 
         $data = Pasien::find($norm);
-        $data->norm = $request->norm;
         $data->namapasien = $request->namapasien;
         $data->jeniskelamin = $request->jeniskelamin;
         $data->alamat = $request->alamat;
@@ -196,24 +240,45 @@ class PasienController extends Controller
         $data->statuskawin = $request->statuskawin;
 		$data->pekerjaan = $request->pekerjaan; 
 		$data->namaayah = $request->namaayah;
-		$data->tglawal = $request->tglawal;  
-		$data->tglakhir = $request->tglakhir;   
+		$data->tglawal = null;  
+		$data->tglakhir = null;   
 		$data->penanggungjawab = $request->penanggungjawab; 
 		$data->statuskeluarga = $request->statuskeluarga; 
-		$data->alergi = $request->alergi;
+		$data->alergi = $request->jenisalergi . ", " . $request->keterangan;
 		$data->riwayatpenyakit = $request->riwayatpenyakit;
-		$data->nonaktif = $request->nonaktif;
-		$data->iduser = $request->iduser;
+
+        if ($request->nonaktif == null) {
+            $data->nonaktif = 0;
+        }else{
+            $data->nonaktif = $request->nonaktif;
+        }
+
+		$data->iduser = null;
 		$data->namaibu = $request->namaibu;
 		$data->namapasangan = $request->namapasangan;
-		$data->saldodeposit = $request->saldodeposit;
+		$data->saldodeposit = null;
 		$data->kartu_bpjs = $request->kartu_bpjs;
-		$data->telepon = $request->telepon;
+		$data->telepon = null;
 		$data->statusalergi = $request->statusalergi;
-		$data->updateonline = $request->updateonline;
-		$data->keanggotaan1 = $request->keanggotaan1;
-		$data->keanggotaan2 = $request->keanggotaan2;
-		$data->keanggotaan3 = $request->keanggotaan3;
+		$data->updateonline = 1;
+
+        if ($request->keanggotaan1 == null) {
+            $data->keanggotaan1 = 0;
+        }else{
+            $data->keanggotaan1 = $request->keanggotaan1;
+        }
+
+        if ($request->keanggotaan2 == null) {
+            $data->keanggotaan2 = 0;
+        }else{
+            $data->keanggotaan2 = $request->keanggotaan2;
+        }
+
+        if ($request->keanggotaan3 == null) {
+            $data->keanggotaan3 = 0;
+        }else{
+            $data->keanggotaan3 = $request->keanggotaan3;
+        }
 		$data->tkeanggotaan1 = $request->tkeanggotaan1;
 		$data->tkeanggotaan2 = $request->tkeanggotaan2;
 		$data->tkeanggotaan3 = $request->tkeanggotaan3;
@@ -222,12 +287,21 @@ class PasienController extends Controller
 		$data->diagnosa3 = $request->diagnosa3;
     	$data->save();
 
+        $alergi = Pasien_alergi::find($norm);
+        $alergi->jenisalergi = $request->jenisalergi;
+        $alergi->keterangan = $request->keterangan;
+        $alergi->save();
+
         return redirect('/Pasien')->with('alert-success','Data berhasil diubah!');
     }
 
     public function hapus($norm) {
     	$datas = Pasien::find($norm);
     	$datas->delete();
+
+        $alergi = Pasien_alergi::find($norm);
+    	$alergi->delete();
+
         return redirect('/Pasien')->with('alert-success','Data berhasil dihapus!');
     }
 }
