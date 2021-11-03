@@ -84,16 +84,108 @@
                     <div class="form-group">
                       <label for="keluhanutama">Keluhan Utama</label>
                       <textarea  class="form-control" id="keluhanutama" placeholder="Keluhan Utama"></textarea>
-                    </div>
+                      <label for="lokasi">Lokasi</label>
+                      <textarea  class="form-control" id="lokasi" placeholder="Lokasi"></textarea>
+                      <label for="kualitas">Kualitas/Keparahan</label>
+                      <div class="card">
+                    </div> 
+                        <div class=" form-check">
+                            <input class="form-check-input" type="checkbox" name="Tekanan" value=" " />
+                            <label class="form-check-label">Tekanan</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Terbakar" value=" " />
+                            <label class="form-check-label">Terbakar</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Tajam Tusukan" value=" " />
+                            <label class="form-check-label">Tajam Tusukan</label>
+                            </div>
+                            <div class="form-check  ">
+                            <input class="form-check-input" type="checkbox" name="Tajam Diiris" value=" " />
+                            <label class="form-check-label">Tajam Diiris</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Mencengkram" value=" " />
+                            <label class="form-check-label">Mencengkram</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Melilit" value=" " />
+                            <label class="form-check-label">Melilit</label>
+                            </div>
+                 </div>
+                      
+                    <label for="onset">Onset</label>
+                    <textarea  class="form-control" id="onset" placeholder="Onset"></textarea>
+                    <label for="waktu">Waktu</label>
+                      <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Intermiten" value=" " />
+                            <label class="form-check-label">Intermiten</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Terus menerus" value=" " />
+                            <label class="form-check-label">Terus Menerus</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="saat tertentu" value=" " />
+                            <label class="form-check-label">Saat Tertentu</label>
+                            </div>
+                    <label for="faktor">Faktor Memperinggan</label>
+                    <textarea  class="form-control" id="faktor" placeholder="Faktor Memperinggan"></textarea>
+                    <label for="faktormemperberat">Faktor Memperberat</label>
+                    <textarea  class="form-control" id="faktormemperberat" placeholder="Faktor Memperberat"></textarea>
                   </div>
                   <div class="col">
                     <div class="form-group">
-                      <label for="keluhanutama">Keluhan Utama</label>
-                      <textarea  class="form-control" id="keluhanutama" placeholder="Keluhan Utama"></textarea>
+                      <label for="gejalayangmeyertai">A. Gejala yang meyertai</label>
+                      <textarea  class="form-control" id="gejalayangmeyertai" placeholder="Gejala yang meyertai"></textarea>
+                      <label for="riwayatpenyakit">B. Riwayat penyakit dahulu</label>
+                      <textarea  class="form-control" id="riwayatpenyakit" placeholder="Riwayat penyakit dahulu"></textarea>
+                      <label for="riwayatpenyakitkeluarga">C. Riwayat penyakit keluarga</label>
+                      <textarea  class="form-control" id="riwayatpenyakitkeluarga" placeholder="Riwayat penyakit Keluarga"></textarea>
+                      <label for="riwayatalergri">D. Riwayat Alergri</label>
+                      <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Makanan" value=" " />
+                            <label class="form-check-label">Makanan</label>
+                      </div>
+                      <textarea  class="form-control" id="riwayatalergi" placeholder=""></textarea>
+                      <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Obat" value=" " />
+                            <label class="form-check-label">Obat-obatan</label>
+                      </div>
+                      <textarea  class="form-control" id="riwayatalergi" placeholder=""></textarea>
+                      <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Lingkungan" value=" " />
+                            <label class="form-check-label">Lingkungan</label>
+                      </div>
+                      <textarea  class="form-control" id="riwayatalergi" placeholder=""></textarea>
+                      <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Lain" value=" " />
+                            <label class="form-check-label">Lain-lain</label>
+                      </div>
+                      <textarea  class="form-control" id="riwayatalergi" placeholder=""></textarea>
+                      <label for="riwayatpengobatan">E. Riwayat Pengobatan Penyakit</label>
+                      <textarea  class="form-control" id="riwayatpengobatan" placeholder="Riwayat Pengobatan"></textarea>
+                      <label for="status">F. Status Merokok</label>
+                      <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Akif" value=" " />
+                            <label class="form-check-label">Aktif</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Pasif" value=" " />
+                            <label class="form-check-label">Pasif</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="Tidak Merokok" value=" " />
+                            <label class="form-check-label">Tidak Merokok</label>
+                            </div>
+                            <label for="riwayatobat">G. Riwayat Penggunaan Obat Psikotropik</label>
+                      <textarea  class="form-control" id="riwayatobat" placeholder="Riwayat Penggunaan Obat Psikotropik"></textarea>
                     </div>
                   </div>
                 </div>
-                <!---ANAMNESA--->.
+                
+                <!---ANAMNESA--->
               </div>
               <div class="tab-pane fade" id="pemeriksaan-gt-fisik" role="tabpanel" aria-labelledby="pemeriksaan-gt-fisik-tab">
                 PEMERIKSAAN GT / FISIK.
@@ -102,8 +194,39 @@
                 PEMERIKSAAN PENUNJANG / DIAGNOSTIK.
               </div>
               <div class="tab-pane fade" id="tindakan-prosedur-diagnosa" role="tabpanel" aria-labelledby="tindakan-prosedur-diagnosa-tab">
-                TINDAKAN (PROSEDUR / DIAGNOSA).
+                <label >Diagnosa</label>
+
+                <div class="row">
+                  <div class="col">
+                  <label >Diagnosa</label>
+                    <table  class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                      <th>Kode </th>
+                      <th>Diagnosa</th>
+                    </tr>
+                    </thead>
+                    </table>
+                  </div>
+                  
+                  <div class="col">
+                  <label>Tindakan</label>
+                    <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                      <th rowspan="2">Tindakan Lokal </th>
+                      <th colspan="2">ICD IX</th>
+                    </tr>
+                    <tr>
+                      <th align=center>Kode</th>
+                      <th>Tindakan</th>
+                    </tr>
+                    </thead>
+                    </table>
+                  </div>
+                </div> 
               </div>
+              
               <div class="tab-pane fade" id="terapi" role="tabpanel" aria-labelledby="terapi-tab">
                 TERAPI.
               </div>
