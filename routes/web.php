@@ -25,6 +25,7 @@ use App\Http\Controllers\Setup\DokterVisitController;
 use App\Http\Controllers\Setup\TindakanInapController;
 use App\Http\Controllers\Setup\TindakanPoliController;
 
+
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
@@ -40,6 +41,7 @@ use App\Http\Controllers\RekamMedis\KamarKosongController;
 /* ----- RawatJalan -----*/
 use App\Http\Controllers\RawatJalan\Data_PendaftaranController;
 use App\Http\Controllers\RawatJalan\Rekam_Medis_Rawat_JalanController;
+use App\Http\Controllers\RawatJalan\Riwayat_Resume_Medis_PasienController;
 use App\Http\Controllers\RawatJalan\PenggunaanObatController;
 use App\Http\Controllers\RawatJalan\Pelayanan_PoliController;
 use App\Http\Controllers\RawatJalan\Transfer_RiController;
@@ -240,6 +242,8 @@ Route::get('/Data_Pendaftaran/ubah{faktur_rawatjalan}', [Data_PendaftaranControl
 Route::post('/Data_Pendaftaran/update{faktur_rawatjalan}', [Data_PendaftaranController::class, 'update']);
 Route::get('/Data_Pendaftaran/hapus{faktur_rawatjalan}', [Data_PendaftaranController::class, 'hapus']);
 Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'lihat']);
+Route::get('/Riwayat_Resume_Medis_Pasien', [Riwayat_Resume_Medis_PasienController::class, 'index']);
+
 Route::get('/Data_Pendaftaran/cetakdatapendaftaran', [Data_PendaftaranController::class, 'cetakdatapendaftaran']);
 
 Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
