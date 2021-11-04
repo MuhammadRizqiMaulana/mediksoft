@@ -324,3 +324,31 @@ Route::get('/Billing', function () {
 Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
 
 /* ----- Billing -----*/
+
+/* ----- Laporan -----*/
+Route::get('/Laporan', function () {
+    return view('Laporan.Content.index');
+});
+
+/* ----- Laporan -----*/
+
+/* ----- BPJS -----*/
+Route::get('/BPJS', function () {
+    return view('BPJS.Content.index');
+});
+
+/* ----- BPJS -----*/
+
+/* ----- Akuntansi -----*/
+Route::get('/Akuntansi', function () {
+    return view('Akuntansi.Content.index');
+});
+
+/* ----- Akuntansi -----*/
+
+/* ----- Panduan -----*/
+Route::get('/Panduan', function () {
+    return view('Panduan.Content.index');
+});
+
+/* ----- Panduan -----*/
