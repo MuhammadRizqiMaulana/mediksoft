@@ -65,6 +65,10 @@ use App\Http\Controllers\Operasi\GolonganOperasiController;
 use App\Http\Controllers\Operasi\DokterBedahController;
 /* ----- Operasi -----*/
 
+/* ----- Billing -----*/
+use App\Http\Controllers\Billing\Tagihan_RJController;
+/* ----- Billing -----*/
+
 
 /*
 |--------------------------------------------------------------------------
@@ -311,3 +315,12 @@ Route::get('/Operasi', function () {
 Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
 Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
 /* ----- Operasi -----*/
+
+/* ----- Billing -----*/
+Route::get('/Billing', function () {
+    return view('Billing.Content.index');
+});
+
+Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
+
+/* ----- Billing -----*/

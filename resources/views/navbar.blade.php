@@ -10,7 +10,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item {{ Request::is('AksesPengguna')? "active":""}}">
-                <a href="{{url('AksesPengguna')}}" class="nav-link">Akses Pengguna</a>
+                <a href="{{url('AksesPengguna')}}" class="nav-link"><img src="{{asset('images/icon/aksespengguna.png')}}">&nbsp;&nbsp;Akses Pengguna</a>
             </li>
             <li class="nav-item {{ Request::is('Setup')? "active":""}}">
                 <a href="{{url('Setup')}}" class="nav-link">Setup</a>
@@ -26,6 +26,9 @@
             </li>
             <li class="nav-item {{ Request::is('Operasi')? "active":""}}">
                 <a href="{{url('Operasi')}}" class="nav-link">Operasi</a>
+            </li>
+            <li class="nav-item {{ Request::is('Billing')? "active":""}}">
+                <a href="{{url('Billing')}}" class="nav-link">Billing</a>
             </li>
         </ul>
 

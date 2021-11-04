@@ -172,24 +172,28 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @php 
+                          $totalseluruh = 0;
+                        @endphp
                         @isset($rawatjalantransaksi)
                           @foreach ($rawatjalantransaksi as $item)
                             <tr>
                               <td>{{$item->kodekategori}}</td>
                               <td>{{$item->namatransaksi}}</td>
                               <td width="10" ><input type="text" class="form-control form-control-border" value="{{$item->jumlah}}"> </td>
-                              <td>{{$item->Tariftindakanpoli->tarif}}</td>
-                              <td>{{$item->tarif}}</td>
+                              <td>@rupiah($item->tarif)</td>
+                              <td>@rupiah($item->tarif * $item->jumlah)</td>
                               <td width="100">
                                 <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-ubahtindakanpoli" onclick="ubahtindakanpoli('{{$item->notransaksi}}','{{$item->namatransaksi}}','{{$item->jumlah}}','{{$item->Tariftindakanpoli->tarif}}','{{$item->tarif}}')">
                                   <i class="fa fa-edit"></i>
                                 </button>
                                 <a href="/Pelayanan_Rawat_Jalan/hapus{{$item->notransaksi}},{{$item->faktur_rawatjalan}}"
                                   class="btn btn-outline-danger btn-sm" onclick="return confirm('Anda yakin mau menghapus item ini ?')">
-                                  <i class="fa fa-minus-circle"></i>
+                                  <i class="fa fa-trash"></i>
                               </a>
                               </td>
                             </tr>
+                            {{$totalseluruh = $totalseluruh + ($item->tarif * $item->jumlah)}}
                           @endforeach
                         @endisset
                       </tbody>
@@ -199,7 +203,7 @@
                           <th></th>
                           <th></th>
                           <th></th>
-                          <th>@isset($totalharga){{$totalharga}}@endisset</th>
+                          <th>@rupiah($totalseluruh)</th>
                           <th></th>
                         </tr>
                       </tfoot>
