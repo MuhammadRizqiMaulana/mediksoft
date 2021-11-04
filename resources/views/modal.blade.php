@@ -68,7 +68,7 @@
                             <td>
                                 @if(isset($item->Ruang)){{$item->Ruang->namaruang}}@endif  
                             </td>
-                            <td>{{$item->tarif}}</td>
+                            <td>@rupiah($item->tarif)</td>
                             <td>
                                 @if(isset($item->Eklaimbpjs)){{$item->Eklaimbpjs->nama}}@endif
                             </td>
@@ -465,7 +465,7 @@
                             <td>{{$no++}}</td>
                             <td>{{$item->kodefaskes}}</td>
                             <td>{{$item->namafaskes}}</td>
-                            <td>{{$item->fee}}</td>
+                            <td>@rupiah($item->fee)</td>
                             <td>
                                 <button class="btn btn-outline-info btn-sm"
                                     onclick="faskes('{{$item->kodefaskes}}', '{{$item->namafaskes}}');"><i
@@ -1046,7 +1046,7 @@
                         <tr onclick="tariftindakanpoli('{{$item->idtindakan}}', '{{$item->namatindakan}}', '{{$item->tarif}}');">
                             <td>{{$item->Poliklinik->nama}}</td>
                             <td>{{$item->namatindakan}}</td>
-                            <td>{{$item->tarif}}</td>
+                            <td>@rupiah($item->tarif)</td>
                             <td>{{$item->Eklaimbpjs->nama}}</td>
                             <td></td>
                             <td>
