@@ -25,6 +25,7 @@ use App\Http\Controllers\Setup\DokterVisitController;
 use App\Http\Controllers\Setup\TindakanInapController;
 use App\Http\Controllers\Setup\TindakanPoliController;
 
+
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
@@ -40,6 +41,7 @@ use App\Http\Controllers\RekamMedis\KamarKosongController;
 /* ----- RawatJalan -----*/
 use App\Http\Controllers\RawatJalan\Data_PendaftaranController;
 use App\Http\Controllers\RawatJalan\Rekam_Medis_Rawat_JalanController;
+use App\Http\Controllers\RawatJalan\Riwayat_Resume_Medis_PasienController;
 use App\Http\Controllers\RawatJalan\PenggunaanObatController;
 use App\Http\Controllers\RawatJalan\Pelayanan_PoliController;
 use App\Http\Controllers\RawatJalan\Transfer_RiController;
@@ -64,6 +66,10 @@ use App\Http\Controllers\RawatInap\INOSController;
 use App\Http\Controllers\Operasi\GolonganOperasiController;
 use App\Http\Controllers\Operasi\DokterBedahController;
 /* ----- Operasi -----*/
+
+/* ----- Billing -----*/
+use App\Http\Controllers\Billing\Tagihan_RJController;
+/* ----- Billing -----*/
 
 
 /*
@@ -240,6 +246,8 @@ Route::get('/Data_Pendaftaran/ubah{faktur_rawatjalan}', [Data_PendaftaranControl
 Route::post('/Data_Pendaftaran/update{faktur_rawatjalan}', [Data_PendaftaranController::class, 'update']);
 Route::get('/Data_Pendaftaran/hapus{faktur_rawatjalan}', [Data_PendaftaranController::class, 'hapus']);
 Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'lihat']);
+Route::get('/Riwayat_Resume_Medis_Pasien', [Riwayat_Resume_Medis_PasienController::class, 'index']);
+
 Route::get('/Data_Pendaftaran/cetakdatapendaftaran', [Data_PendaftaranController::class, 'cetakdatapendaftaran']);
 
 Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
@@ -311,3 +319,40 @@ Route::get('/Operasi', function () {
 Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
 Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
 /* ----- Operasi -----*/
+
+/* ----- Billing -----*/
+Route::get('/Billing', function () {
+    return view('Billing.Content.index');
+});
+
+Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
+
+/* ----- Billing -----*/
+
+/* ----- Laporan -----*/
+Route::get('/Laporan', function () {
+    return view('Laporan.Content.index');
+});
+
+/* ----- Laporan -----*/
+
+/* ----- BPJS -----*/
+Route::get('/BPJS', function () {
+    return view('BPJS.Content.index');
+});
+
+/* ----- BPJS -----*/
+
+/* ----- Akuntansi -----*/
+Route::get('/Akuntansi', function () {
+    return view('Akuntansi.Content.index');
+});
+
+/* ----- Akuntansi -----*/
+
+/* ----- Panduan -----*/
+Route::get('/Panduan', function () {
+    return view('Panduan.Content.index');
+});
+
+/* ----- Panduan -----*/

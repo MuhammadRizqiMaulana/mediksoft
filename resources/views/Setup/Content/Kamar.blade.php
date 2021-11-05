@@ -54,7 +54,7 @@
                   </thead>
                   <tbody>
                   @foreach ($datas as $item)
-                    <tr onclick="tombol({{$item->kodekamar}})">
+                    <tr onclick="tombol('{{$item->kodekamar}}')">
                       <td>{{$item->kodekamar}}</td>
                       <td>
                         @if(isset($item->keterangan)){{$item->keterangan}}@endif
@@ -70,7 +70,7 @@
                         @if(isset($item->Eklaimbpjs)){{$item->Eklaimbpjs->nama}}@endif
                       </td>
                       <td>
-                        <button class="btn btn-outline-info btn-sm" onclick="tombol({{$item->kodekamar}})">
+                        <button class="btn btn-outline-info btn-sm" onclick="tombol('{{$item->kodekamar}}')">
                           <i class="fa fa-check"></i> Pilih
                         </button>
                       </td>

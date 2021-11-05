@@ -68,7 +68,7 @@
                             <td>
                                 @if(isset($item->Ruang)){{$item->Ruang->namaruang}}@endif  
                             </td>
-                            <td>{{$item->tarif}}</td>
+                            <td>@rupiah($item->tarif)</td>
                             <td>
                                 @if(isset($item->Eklaimbpjs)){{$item->Eklaimbpjs->nama}}@endif
                             </td>
@@ -465,7 +465,7 @@
                             <td>{{$no++}}</td>
                             <td>{{$item->kodefaskes}}</td>
                             <td>{{$item->namafaskes}}</td>
-                            <td>{{$item->fee}}</td>
+                            <td>@rupiah($item->fee)</td>
                             <td>
                                 <button class="btn btn-outline-info btn-sm"
                                     onclick="faskes('{{$item->kodefaskes}}', '{{$item->namafaskes}}');"><i
@@ -1046,7 +1046,7 @@
                         <tr onclick="tariftindakanpoli('{{$item->idtindakan}}', '{{$item->namatindakan}}', '{{$item->tarif}}');">
                             <td>{{$item->Poliklinik->nama}}</td>
                             <td>{{$item->namatindakan}}</td>
-                            <td>{{$item->tarif}}</td>
+                            <td>@rupiah($item->tarif)</td>
                             <td>{{$item->Eklaimbpjs->nama}}</td>
                             <td></td>
                             <td>
@@ -1065,6 +1065,49 @@
     <!-- /.modal-dialog -->
 </div>
 @endisset
-<!-- Modal Tabel Poliklinik -->
+<!-- Modal Tabel Data Tarif Tindakan Poli -->
+
+<!-- Modal Tabel Data Kategori Transaksi -->
+@isset($kategoritransaksi)
+<div class="modal fade" id="modal-kategoritransaksi">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data Kategori Transaksi Rawat Inap</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_kategoritransaksi" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Kode</th>
+                            <th>Kategori</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($kategoritransaksi as $item)
+                        <tr onclick="kategoritransaksi('{{$item->kode}}', '{{$item->kategori}}');">
+                            <td>{{$item->kode}}</td>
+                            <td>{{$item->kategori}}</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="kategoritransaksi('{{$item->kode}}', '{{$item->kategori}}');"><i
+                                        class="fa fa-check"></i> Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Data Kategori Transaksi -->
 
 <!-- /.modal -->

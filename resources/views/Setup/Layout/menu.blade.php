@@ -128,7 +128,7 @@
                     <a class="btn btn-app" href="{{url('/Ruang')}}">
                         <i class="fas fa-edit"></i> Ruang
                     </a>
-                    <a class="btn btn-app" href="{{url('/Kamar')}}">
+                    <a class="btn btn-app" onclick="kamar();">
                         <i class="fas fa-edit"></i> Kamar
                     </a>
 
@@ -209,3 +209,11 @@
     <hr>
 </div>
 <!-- /.content-header -->
+<script>
+    function kamar(){
+      $.get("{{url('/Kamar')}}", {}, function(data, status){
+        $(".wrapper").html(data);
+        window.history.pushState('/Kamar');
+      });
+    }
+</script>

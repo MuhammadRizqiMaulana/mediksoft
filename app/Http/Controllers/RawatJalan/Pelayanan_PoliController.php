@@ -75,24 +75,19 @@ class Pelayanan_PoliController extends Controller
                 $data->idtindakan = $request->idtindakan;
                 $data->namatransaksi = $request->namatransaksi;
                 $data->jumlah = $request->jumlah;
-                $data->tarif = $datatariftindakanpoli->tarif * $request->jumlah;
+                $data->tarif = $datatariftindakanpoli->tarif;
                 $data->diskon = 0;
                 $data->idklaim = $datatariftindakanpoli->idklaim;
-                $data->tarif_rs = $datatariftindakanpoli->untukrs * $request->jumlah;
-                $data->tarif_dokter = $datatariftindakanpoli->untukdokter * $request->jumlah;
-                $data->tarif_paramedis = $datatariftindakanpoli->untukparamedis * $request->jumlah;
+                $data->tarif_rs = $datatariftindakanpoli->untukrs;
+                $data->tarif_dokter = $datatariftindakanpoli->untukdokter;
+                $data->tarif_paramedis = $datatariftindakanpoli->untukparamedis;
                 $data->tglpelayanan = $now;
                 $data->save();
 
                 return redirect('/Pelayanan_Rawat_Jalan/select'.$request->faktur_rawatjalan)->with('alert-success','Data berhasil ditambahkan!');
             }else{
                 $data = Rawatjalan_transaksi::where('faktur_rawatjalan', $request->faktur_rawatjalan)->where('idtindakan', $request->idtindakan)->where('kodekategori', 1)->first();
-                $data->jumlah = $request->jumlah;
-                $data->tarif = $datatariftindakanpoli->tarif * $request->jumlah;
-                $data->idklaim = $datatariftindakanpoli->idklaim;
-                $data->tarif_rs = $datatariftindakanpoli->untukrs * $request->jumlah;
-                $data->tarif_dokter = $datatariftindakanpoli->untukdokter * $request->jumlah;
-                $data->tarif_paramedis = $datatariftindakanpoli->untukparamedis * $request->jumlah;
+                $data->jumlah = $data->jumlah + $request->jumlah;
                 $data->tglpelayanan = $now;
 
                 $data->save();
@@ -133,10 +128,6 @@ class Pelayanan_PoliController extends Controller
             $datatariftindakanpoli = Tarif_tindakan_poli::find($ubah->idtindakan); //cari tarif tindakan poli
 
             $ubah->jumlah = $request->ubahjumlah;
-            $ubah->tarif = $datatariftindakanpoli->tarif * $request->ubahjumlah;
-            $ubah->tarif_rs = $datatariftindakanpoli->untukrs * $request->ubahjumlah;
-            $ubah->tarif_dokter = $datatariftindakanpoli->untukdokter * $request->ubahjumlah;
-            $ubah->tarif_paramedis = $datatariftindakanpoli->untukparamedis * $request->ubahjumlah;
             $ubah->tglpelayanan = $now;
             $ubah->save();
 

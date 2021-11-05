@@ -116,7 +116,7 @@
                       </div>
                       <div class="form-group">
                         <label for="nama">Tarif Visite</label>
-                        <table border="2">
+                        <table border="2" class="table table-bordered table-hover">
                           <thead>
                             <tr>
                               <th rowspan="2" style="text-align:center">Kelas</th>
@@ -152,7 +152,7 @@
                         <div class="row">
                           <div class="col-10">
                             <select class="form-control" width="100%" name="idklaim" id="eklaimbpjs">
-                              <option value=""></option>
+                              <option value="">Silahkan Pilih</option>
                               @foreach ($eklaimbpjs as $item)
                                 <option value="{{$item->idklaim}}">{{$item->nama}}</option>
                               @endforeach
@@ -224,7 +224,7 @@
                       </div>
                       <div class="form-group">
                         <label for="nama">Tarif Visite</label>
-                        <table border="2">
+                        <table border="2" class="table table-bordered table-hover">
                           <thead>
                             <tr>
                               <th rowspan="2" style="text-align:center">Kelas</th>
@@ -260,7 +260,7 @@
                         <div class="row">
                           <div class="col-10">
                             <select class="form-control" width="100%" name="idklaim" id="eklaimbpjs">
-                              <option value=""></option>
+                              <option value="">Silahkan Pilih</option>
                                 @foreach ($eklaimbpjs as $item)
                                   <option value="{{$item->idklaim}}" {{ ($item->idklaim == $ubah->idklaim) ? 'selected' : ''}}>{{$item->nama}}</option>
                                 @endforeach

@@ -4,7 +4,7 @@
       <div class="row mb-2">
           <div class="card card-primary card-sm">
             <div class="card-header">
-              <h5 class="card-title">Pengaturan</h5>
+              <h5 class="card-title">Rumah Sakit</h5>
               <div class="card-tools">
                 <!-- Buttons, labels, and many other things can be placed here! -->
                 <!-- Here is a label for example -->
@@ -21,17 +21,43 @@
               <button class="btn btn-default text-center">
                 <a class="users-list-name" href="">
                   <img src="{{asset('images/icon/program.png')}}"><br>
-                  Program</a>
+                  Management</a>
               </button>
               <button class="btn btn-default text-center">
                 <a class="users-list-name" href="">
                   <img src="{{asset('images/icon/database.png')}}"><br>
-                  DB Akuntansi</a>
+                  Indikator RS</a>
+              </button>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+          <div class="card card-primary card-sm">
+            <div class="card-header">
+              <h5 class="card-title">Pasien</h5>
+              <div class="card-tools">
+                <!-- Buttons, labels, and many other things can be placed here! -->
+                <!-- Here is a label for example -->
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-tools -->
+            </div>
+          
+            <!-- /.card-header -->
+            <div class="card-body">
+              <button class="btn btn-default text-center">
+                <a class="users-list-name" href="">
+                  <img src="{{asset('images/icon/database.png')}}"><br>
+                  Statistik</a>
               </button>
               <button class="btn btn-default text-center">
                 <a class="users-list-name" href="">
                   <img src="{{asset('images/icon/database.png')}}"><br>
-                  Database</a>
+                  Riwayat</a>
               </button>
             </div>
             <!-- /.card-body -->
@@ -39,7 +65,7 @@
           <!-- /.card -->
           <div class="card card-primary card-sm">
             <div class="card-header">
-              <h5 class="card-title">Data Pengguna</h5>
+              <h5 class="card-title">Pelayanan</h5>
               <div class="card-tools">
                 <!-- Buttons, labels, and many other things can be placed here! -->
                 <!-- Here is a label for example -->
@@ -54,73 +80,25 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Level Pengguna
-              </a>
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Pengguna
-              </a>
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Ganti Password
-              </a>
+              <button class="btn btn-default text-center">
+                <a class="users-list-name" href="">
+                  <img src="{{asset('images/icon/database.png')}}"><br>
+                  Perawatan</a>
+              </button>
+              <button class="btn btn-default text-center">
+                <a class="users-list-name" href="">
+                  <img src="{{asset('images/icon/database.png')}}"><br>
+                  Kecepatan Pelayanan</a>
+              </button>
+              <button class="btn btn-default text-center">
+                <a class="users-list-name" href="">
+                  <img src="{{asset('images/icon/database.png')}}"><br>
+                  Tindakan Dokter</a>
+              </button>
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-          <div class="card card-primary card-sm">
-            <div class="card-header">
-              <h5 class="card-title">Login User</h5>
-              <div class="card-tools">
-                <!-- Buttons, labels, and many other things can be placed here! -->
-                <!-- Here is a label for example -->
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <!-- /.card-tools -->
-            </div>
-          
-            <!-- /.card-header -->
-            <div class="card-body">
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Login
-              </a>
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Logout
-              </a>
-              
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-          <div class="card card-primary card-sm">
-            <div class="card-header">
-              <h5 class="card-title"></h5>
-              <div class="card-tools">
-                <!-- Buttons, labels, and many other things can be placed here! -->
-                <!-- Here is a label for example -->
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <!-- /.card-tools -->
-            </div>
-          
-            <!-- /.card-header -->
-            <div class="card-body">
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Keluar
-              </a>
-              
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        
 
       </div><!-- /.row -->
     </div>
