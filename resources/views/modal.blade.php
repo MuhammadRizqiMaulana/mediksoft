@@ -336,6 +336,55 @@
 @endisset
 <!-- Modal Tabel Dokter -->
 
+<!-- Modal Tabel Karyawan -->
+@isset($karyawan)
+<div class="modal fade" id="modal-karyawan">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data Karyawan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_karyawan" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>NIK</th>
+                            <th>Nama</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $no = 1;
+                        @endphp
+                        @foreach ($karyawan as $item)
+                        <tr onclick="karyawan('{{$item->idkaryawan}}', '{{$item->nama}}');">
+                            <td>{{$no++}}</td>
+                            <td>{{$item->nik}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="karyawan('{{$item->idkaryawan}}', '{{$item->nama}}');"><i
+                                        class="fa fa-check"></i> Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Karyawan -->
+
+
 <!-- Modal Tabel Perusahaan -->
 @isset($perusahaan)
 <div class="modal fade" id="modal-perusahaan">

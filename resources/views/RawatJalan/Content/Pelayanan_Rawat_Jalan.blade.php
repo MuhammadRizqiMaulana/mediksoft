@@ -193,7 +193,9 @@
                               </a>
                               </td>
                             </tr>
-                            {{$totalseluruh = $totalseluruh + ($item->tarif * $item->jumlah)}}
+                            @php
+                                $totalseluruh = $totalseluruh + ($item->tarif * $item->jumlah);
+                            @endphp
                           @endforeach
                         @endisset
                       </tbody>
@@ -296,7 +298,7 @@
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-outline-info"><i class="fa fa-save"></i> Simpan</button>
-        <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-minus-circle"></i> Batal</button>
+        <button class="btn btn-outline-danger" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i> Batal</button>
       </div>
     </div>
     <!-- /.modal-dialog -->

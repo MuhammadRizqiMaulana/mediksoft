@@ -326,6 +326,9 @@ Route::get('/Billing', function () {
 });
 
 Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
+Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'selectnorm']);
+Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
+
 
 /* ----- Billing -----*/
 
