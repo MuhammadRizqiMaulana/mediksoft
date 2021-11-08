@@ -27,7 +27,7 @@
                   <img src="{{asset('images/icon/tagihanrj.png')}}"><br>
                   Tagihan RJ</a>
               </button>
-              <a class="btn btn-app" href="">
+              <a class="btn btn-app" href="{{url('/PembayaranRJ')}}">
                 <i class="fas fa-edit"></i> Pembayaran RJ
               </a>
               <a class="btn btn-app" href="">
