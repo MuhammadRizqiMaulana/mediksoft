@@ -15,7 +15,9 @@
                 </a>
             </li>
             <li class="nav-item {{ Request::is('Setup')? "active":""}}">
-                <a href="{{url('Setup')}}" class="nav-link">Setup</a>
+                <a href="{{url('Setup')}}" class="nav-link">
+                    <img src="{{asset('images/icon/setup.png')}}">&nbsp;&nbsp;Setup
+                </a>
             </li>
             <li class="nav-item {{ Request::is('RekamMedis')? "active":""}}">
                 <a href="{{url('RekamMedis')}}" class="nav-link">Rekam Medis</a>
