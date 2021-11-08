@@ -2,7 +2,7 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">Setup</h5>
                     <div class="card-tools">
@@ -31,7 +31,7 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">Tarif</h5>
                     <div class="card-tools">
@@ -58,7 +58,7 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">Data Operasi</h5>
                     <div class="card-tools">

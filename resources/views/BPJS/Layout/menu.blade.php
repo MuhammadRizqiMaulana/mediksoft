@@ -2,10 +2,9 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-
             <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
-                    <h5 class="card-title">Pendataan Rekam Medis</h5>
+                    <h5 class="card-title"> Laporan</h5>
                     <div class="card-tools">
                         <!-- Buttons, labels, and many other things can be placed here! -->
                         <!-- Here is a label for example -->
@@ -19,23 +18,31 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/Pendaftaran_Rawat_Jalan')}}">
-                        <i class="fas fa-edit"></i> Pendaftaran
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Referensi
                     </a>
-                    <a class="btn btn-app" href="{{url('/Pasien')}}">
-                        <i class="fas fa-edit"></i> Pasien
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Peserta
                     </a>
-                    <a class="btn btn-app" href="{{url('/Keanggotaan')}}">
-                        <i class="fas fa-edit"></i> Keanggotaan
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> SEP (Surat Eligibilitas Peserta)
+                    </a>
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Rujukan
+                    </a>
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Fasilitas Kesehatan
+                    </a>
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Server BPJS
                     </a>
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
             <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
-                    <h5 class="card-title">Data Rekam Medis</h5>
+                    <h5 class="card-title">E-Klaim BPJS</h5>
                     <div class="card-tools">
                         <!-- Buttons, labels, and many other things can be placed here! -->
                         <!-- Here is a label for example -->
@@ -51,20 +58,13 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> RM Rawat Jalan
-                    </a>
-                    <a class="btn btn-app" href="{{url('/RM_RawatInap')}}">
-                        <i class="fas fa-edit"></i> RM Rawat Inap
-                    </a>
-                    <a class="btn btn-app" href="{{url('/KamarKosong')}}">
-                        <i class="fas fa-edit"></i> Kamar Kosong
+                        <i class="fas fa-edit"></i> E-Klaim BPJS
                     </a>
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
-
+            <!-- /.card -->
         </div><!-- /.row -->
     </div>
     <hr>

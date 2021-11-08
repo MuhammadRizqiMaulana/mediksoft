@@ -10,11 +10,18 @@ class Tarif_dokter_bedah extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table        = 'tarif_dokter_bedah'; // nama tabel 
-    protected $primaryKey   = 'iddokter'; // primary key tabel 
-    protected $fillable     = ['jenisrawat', 
-    							'kodekelas',
-                                'idgoloperasi',
-                                'tarif',
-                                'untukrs',
-                                'untukdokter']; //field tabel
+    protected $fillable     = [
+        'iddokter',
+        'jenisrawat',
+        'kodekelas',
+        'idgoloperasi',
+        'tarif',
+        'untukrs',
+        'untukdokter'
+    ]; //field tabel
+
+    public function Dokter()
+    {
+        return $this->belongsTo(Dokter::class, 'iddokter');
+    }
 }

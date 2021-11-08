@@ -2,10 +2,9 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-
             <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
-                    <h5 class="card-title">Pendaftaran</h5>
+                    <h5 class="card-title">Rawat Jalan - Pembayaran</h5>
                     <div class="card-tools">
                         <!-- Buttons, labels, and many other things can be placed here! -->
                         <!-- Here is a label for example -->
@@ -19,23 +18,25 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/Data_Pendaftaran')}}">
-                        <i class="fas fa-edit"></i> Data Pendaftaran
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Bayar RJ Terpisah
                     </a>
-                    <a class="btn btn-app" href="{{url('/Update_Data_Pendaftaran_Pasien_Online')}}">
-                        <i class="fas fa-edit"></i> Update Pendaftaran Online
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Tagihan RJ
                     </a>
-                    <a class="btn btn-app" href="{{url('/Pendaftaran_Rawat_Inap')}}">
-                        <i class="fas fa-edit"></i> Transfer RI
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Pembayaran RJ
+                    </a>
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Data Pembayaran RJ
                     </a>
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
             <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
-                    <h5 class="card-title">Poliklinik</h5>
+                    <h5 class="card-title">Rawat Inap - Pembayaran</h5>
                     <div class="card-tools">
                         <!-- Buttons, labels, and many other things can be placed here! -->
                         <!-- Here is a label for example -->
@@ -51,20 +52,21 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> RM Rawat Jalan
+                        <i class="fas fa-edit"></i> Rekening RI
                     </a>
-                    <a class="btn btn-app" href="{{url('/Pelayanan_Rawat_Jalan')}}">
-                        <i class="fas fa-edit"></i> Pelayanan Poli
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Data Rekening RI
                     </a>
-
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Pembayaran RI
+                    </a>
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
             <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
-                    <h5 class="card-title">Display</h5>
+                    <h5 class="card-title">Deposito</h5>
                     <div class="card-tools">
                         <!-- Buttons, labels, and many other things can be placed here! -->
                         <!-- Here is a label for example -->
@@ -80,17 +82,18 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Kamar Kosong
+                        <i class="fas fa-edit"></i> Deposit
+                    </a>
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Data Deposito
                     </a>
 
                 </div>
                 <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-
-            <div class="card card-primary card-sm ml-2">
+            <div class="card card-primary card-sm">
                 <div class="card-header">
-                    <h5 class="card-title">Riwayat</h5>
+                    <h5 class="card-title">Keuangan Kasir</h5>
                     <div class="card-tools">
                         <!-- Buttons, labels, and many other things can be placed here! -->
                         <!-- Here is a label for example -->
@@ -105,17 +108,17 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/PenggunaanObat')}}">
-                        <i class="fas fa-edit"></i> Penggunaan Obat
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Kas Harian
+                    </a>
+                    <a class="btn btn-app">
+                        <i class="fas fa-edit"></i> Ganti Shift
                     </a>
 
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
-
-
         </div><!-- /.row -->
     </div>
     <hr>

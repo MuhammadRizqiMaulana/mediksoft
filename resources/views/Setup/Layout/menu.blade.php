@@ -169,7 +169,7 @@
                     <a class="btn btn-app" href="{{url('/TindakanInap')}}">
                         <i class="fas fa-procedures"></i> Tindakan Inap
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Administrasi')}}">
                         <i class="fas fa-clipboard"></i> Administrasi
                     </a>
 

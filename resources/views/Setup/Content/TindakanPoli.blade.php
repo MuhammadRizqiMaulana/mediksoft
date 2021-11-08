@@ -68,17 +68,17 @@
                                         <td>{{$item->tarif}}</td>
                                         <td>{{$item->Eklaimbpjs->nama}}</td>
                                         <td></td>
-                                            <td>
-                                                <a href="/TindakanPoli/ubah{{$item->kodepoli}}#UbahTindakanPoli"
-                                                    class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i>
-                                                    Ubah</a>
-                                                <a href="/TindakanPoli/hapus{{$item->kodepoli}}"
-                                                    class="btn btn-outline-danger btn-sm"
-                                                    onclick="return confirm('Anda yakin mau menghapus item ini ?')">
-                                                    <i class="fa fa-minus-circle"></i> Hapus
-                                                </a>
+                                        <td>
+                                            <a href="/TindakanPoli/ubah{{$item->idtindakan}}#UbahTindakanPoli"
+                                                class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i>
+                                                Ubah</a>
+                                            <a href="/TindakanPoli/hapus{{$item->idtindakan}}"
+                                                class="btn btn-outline-danger btn-sm"
+                                                onclick="return confirm('Anda yakin mau menghapus item ini ?')">
+                                                <i class="fa fa-minus-circle"></i> Hapus
+                                            </a>
 
-                                            </td>
+                                        </td>
                                     </tr>
                                     @endforeach
 
@@ -283,7 +283,7 @@
                                         <div class="col-10">
                                             <input type="text" class="form-control" id="namatindakanpoli"
                                                 name="namatindakanpoli" placeholder="Nama Tindakan Poli"
-                                                value="{{$ubah->namatindakanpoli}}" hidden>
+                                                value="{{$ubah->namatindakanpoli}}">
                                         </div>
                                     </div>
                                     @if ($errors->has('namatindakanpoli'))
@@ -352,7 +352,7 @@
                                         </div>
                                         <div class="col-2 text-right">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
-                                                data-target="#modal-Icd9">
+                                                data-target="#modal-tariftindakanpoli">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>

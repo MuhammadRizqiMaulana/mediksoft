@@ -27,6 +27,18 @@
             <li class="nav-item {{ Request::is('Operasi')? "active":""}}">
                 <a href="{{url('Operasi')}}" class="nav-link">Operasi</a>
             </li>
+            <li class="nav-item {{ Request::is('Billing')? "active":""}}">
+                <a href="{{url('Billing')}}" class="nav-link">Billing</a>
+            </li>
+            <li class="nav-item {{ Request::is('Laporan')? "active":""}}">
+                <a href="{{url('Laporan')}}" class="nav-link">Laporan</a>
+            </li>
+            <li class="nav-item {{ Request::is('BPJS')? "active":""}}">
+                <a href="{{url('BPJS')}}" class="nav-link">BPJS</a>
+            </li>
+            <li class="nav-item {{ Request::is('Akuntansi')? "active":""}}">
+                <a href="{{url('Akuntansi')}}" class="nav-link">Akuntansi</a>
+            </li>
         </ul>
 
     </div>
