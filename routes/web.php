@@ -69,6 +69,7 @@ use App\Http\Controllers\Operasi\DokterBedahController;
 
 /* ----- Billing -----*/
 use App\Http\Controllers\Billing\Tagihan_RJController;
+use App\Http\Controllers\Billing\PembayaranRJController;
 /* ----- Billing -----*/
 
 
@@ -326,6 +327,7 @@ Route::get('/Billing', function () {
 });
 
 Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
+Route::get('/PembayaranRJ', [PembayaranRJController::class, 'index']);
 
 /* ----- Billing -----*/
 
