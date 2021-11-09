@@ -11,12 +11,12 @@
     <!-- Main content -->
     <div class="content">
         <div background="" class="row">
-            <img src="{{('images/bg.jpg')}}" width="100%">
+          <img src="{{('images/bg.jpg')}}" width="100%">
         </div>
         <!-- /.row -->
     </div>
     <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+  </div>
+  <!-- /.content-wrapper -->
 
 @endsection

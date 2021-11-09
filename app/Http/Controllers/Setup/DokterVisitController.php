@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Setup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Kelas;
 use App\Models\Dokter;
@@ -17,7 +18,7 @@ class DokterVisitController extends Controller
         $dokter = Dokter::all();
         $kelas = Kelas::all();
         $eklaimbpjs = Eklaimbpjs::all();
-        $datas = Tarif_dokter_visite::all();
+        $datas = Tarif_dokter_visite::select('iddokter','idklaim')->distinct()->get();
     	return view('Setup.Content.DokterVisit',compact('dokter','kelas','eklaimbpjs','datas'));
     }
     public function tambah() {
@@ -41,38 +42,44 @@ class DokterVisitController extends Controller
 
     	$this->validate($request, [
             'iddokter' => 'required|max:30',
-            'kodekelas' => 'required|',
-            'tarif' => 'required|numeric|between:0.0000,99999999.9999|min:0',
-            'untukrs' => 'required|numeric|between:0.0000,99999999.9999|min:0',
-            'untukdokter' => 'required|numeric|between:0.0000,99999999.9999|min:0',
             'idklaim' => 'required|max:30',
             
     	], $messages);
 
-        $now = Carbon::now();
+        try{
+            $kelas = Kelas::all();
 
-        $data = new Tarif_dokter_visite();
-        $data->iddokter = $request->iddokter;
-        $data->kodekelas = $request->kodekelas;
-        $data->tarif = $request->tarif;
-        $data->untukrs = $request->untukrs;
-        $data->untukdokter = $request->tarif;
-        $data->idklaim = $request->idklaim;
+            foreach ($kelas as $key => $item) {
 
+                $data = new Tarif_dokter_visite();
+                $data->iddokter = $request->iddokter;
+                $data->kodekelas = $item->kodekelas;
+                $data->tarif = $request->tarif[$key];
+                $data->untukrs = $request->untukrs[$key];
+                $data->untukdokter = $request->untukdokter[$key];
+                $data->idklaim = $request->idklaim;
+                $data->pemakaitarif = 0;
+                $data->save();
+
+            }
+            
+            return redirect('/DokterVisit')->with('alert-success','Data berhasil ditambahkan!');
+        }
+        catch(\Exception $e){
+            // do task when error
+            return redirect('/DokterVisit')->with('alert-danger','Data gagal ditambahkan!');
+            
+        }
         
-        
-    	$data->save();
- 
-    	return redirect('/DokterVisit')->with('alert-success','Data berhasil ditambahkan!');
     }
     public function ubah($iddokter) {
         $dokter = Dokter::all();
-        $ubah = Tarif_dokter_visite::find($iddokter);
-        $kelas = Kelas::all();
+        $ubah = Tarif_dokter_visite::where('iddokter', $iddokter)->first();
+        $kelas = Tarif_dokter_visite::where('iddokter', $iddokter)->get();
         $eklaimbpjs = Eklaimbpjs::all();
-        $datas = Tarif_dokter_poli::all();
+        $datas = Tarif_dokter_visite::select('iddokter','idklaim')->distinct()->get();
 
-        return view('Setup.Content.DokterPoli',compact('dokter','ubah','kelas','eklaimbpjs','datas'));
+        return view('Setup.Content.DokterVisit',compact('dokter','ubah','kelas','eklaimbpjs','datas'));
 
     }
      public function update($iddokter, Request $request) {
@@ -88,30 +95,42 @@ class DokterVisitController extends Controller
 
     	$this->validate($request, [
     		'iddokter' => 'required|max:30',
-            'kodekelas' => 'required|',
-            'tarif' => 'required|numeric|between:0.0000,99999999.9999|min:0',
-            'untukrs' => 'required|numeric|between:0.0000,99999999.9999|min:0',
-            'untukdokter' => 'required|numeric|between:0.0000,99999999.9999|min:0',
             'idklaim' => 'required|max:30',
     	], $messages);
 
-        $now = Carbon::now();
-		$data = new Tarif_dokter_visite();
-        $data->iddokter = $request->iddokter;
-        $data->kodekelas = $request->kodekelas;
-        $data->tarif = $request->tarif;
-        $data->untukrs = $request->untukrs;
-        $data->untukdokter = $request->tarif;
-        $data->idklaim = $request->idklaim;
+        try{
+            $kelas = Kelas::all();
 
-    	$data->save();
+            foreach ($kelas as $key => $item) {
+                DB::table('tarif_dokter_visite')->where('iddokter', $iddokter)->where('kodekelas', $item->kodekelas)->update([
+                    'tarif' => $request->tarif[$key],
+                    'untukrs' => $request->untukrs[$key],
+                    'untukdokter' => $request->untukdokter[$key],
+                ]);
 
-        return redirect('/DokterVisit')->with('alert-success','Data berhasil diubah!');
+            }
+            
+            return redirect('/DokterVisit')->with('alert-success','Data berhasil diubah!');
+        }
+        catch(\Exception $e){
+            // do task when error
+            return redirect('/DokterVisit')->with('alert-danger',$e);
+            
+        }
     }
-     public function hapus($iddokter) {
-    	$datas = Tarif_dokter_visite::find($iddokter);
-    	$datas->delete();
-        return redirect('/DokterVisit')->with('alert-success','Data berhasil dihapus!');
+    
+    public function hapus($iddokter) {
+        try{
+            
+            $datas = Tarif_dokter_visite::where('iddokter', $iddokter);
+    	    $datas->delete();
+            
+            return redirect('/DokterVisit')->with('alert-success','Data berhasil dihapus!');
+        }catch(\Exception $e){
+
+            return redirect('/DokterVisit')->with('alert-danger',$e);
+        }
+
     }
 
 }
