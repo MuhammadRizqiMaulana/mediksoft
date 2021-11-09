@@ -319,6 +319,10 @@ Route::get('/Operasi', function () {
 
 Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
 Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
+Route::post('/DokterBedah/store', [DokterBedahController::class, 'store']);
+Route::get('/DokterBedah/ubah{iddokter},{jenisrawat}', [DokterBedahController::class, 'ubah']);
+Route::post('/DokterBedah/update{iddokter},{jenisrawat}', [DokterBedahController::class, 'update']);
+Route::get('/DokterBedah/hapus{iddokter},{jenisrawat}', [DokterBedahController::class, 'hapus']);
 /* ----- Operasi -----*/
 
 /* ----- Billing -----*/

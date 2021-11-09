@@ -55,10 +55,13 @@
                                 <tbody>
 
                                     @foreach ($datas as $item)
-                                    <tr>
-                                        <td>{{$item->kode}}</td>
+                                    <tr
+                                        onclick="ubahIcd10('{{$item->kode}}','{{$item->nama}}','@isset({{$item->idmordibitas}}){{$item->idmordibitas}}@endisset','@isset({{$item->Icd10_mordibitas}}){{$item->Icd10_mordibitas->golsebabsakit}}@endisset','{{$item->idstp}}')">
+
+                                        <td>{{$item-> kode}}</td>
                                         <td>{{$item->nama}}</td>
-                                        <td>{{isset($item->Icd10_mordibitas) ? $item->Icd10_mordibitas->golsebabsakit : '' }}</td>
+                                        <td>{{isset($item->Icd10_mordibitas) ? $item->Icd10_mordibitas->golsebabsakit : '' }}
+                                        </td>
                                         <td>{{isset($item->Icd10_stp) ? $item->Icd10_stp->namastp : '' }}</td>
                                         <td>
                                             <a href="/Icd10/ubah{{$item->kode}}#UbahIcd10"
@@ -80,10 +83,6 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-5">
-                    @if(isset($ubah) == NULL)
-
-
-                    @else
                     <!-- general form elements -->
                     <div class="card card-primary card-outline" id="UbahIcd10">
                         <div class="card-header">
@@ -91,13 +90,13 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('/Icd10/update'.$ubah->kode)}}" method="post">
+                        <form id="form-ubahIcd10" method="post">
                             {{csrf_field()}}
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="kode">Kode ICD</label>
                                     <input type="text" class="form-control" id="kode" name="kode"
-                                        placeholder="Kode ICD " value="{{$ubah->kode}}">
+                                        placeholder="Kode ICD " value="@isset($ubah){{$ubah->kode}}@endisset">
                                     @if ($errors->has('kode'))
                                     <span class="text-danger">
                                         <p class="text-right">* {{ $errors->first('kode') }}</p>
@@ -106,11 +105,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nama">Nama Diagnosa</label>
-                                    <input type="text" class="form-control" id="nama" name="nama"
-                                        placeholder="Nama Diagnosa" value="{{$ubah->nama}}">
-                                    @if ($errors->has('nama'))
+                                    <input type="text" class="form-control" id="namadiagnosa" name="namadiagnosa"
+                                        placeholder="Nama Diagnosa" value="@isset($ubah){{$ubah->nama}}@endisset">
+                                    @if ($errors->has('namadiagnosa'))
                                     <span class="text-danger">
-                                        <p class="text-right">* {{ $errors->first('nama') }}</p>
+                                        <p class="text-right">* {{ $errors->first('namadiagnosa') }}</p>
                                     </span>
                                     @endif
                                 </div>
@@ -120,7 +119,7 @@
                                         <div class="col-10">
                                             <input type="text" class="form-control" id="idmordibitas"
                                                 name="idmordibitas" placeholder="Nama Diagnosa"
-                                                value="{{$ubah->idmordibitas}}" hidden>
+                                                value="@isset($ubah){{$ubah->idmordibitas}}@endisset" hidden>
                                             <select class="form-control" width="100%" id="icd10_mordibitas">
                                                 @foreach ($icd10_mordibitas as $item)
                                                 <option value="{{$item->nodtd}}">{{$item->nodtd}}</option>
@@ -133,13 +132,13 @@
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="form-control" id="nama" name="nama"
+                                        <input type="text" class="form-control" id="golsebabsakit" name="golsebabsakit"
                                             placeholder="Nama Diagnosa"
-                                            value="{{$ubah->Icd10_mordibitas->golsebabsakit}}">
+                                            value="@isset($ubah){{$ubah->Icd10_mordibitas->golsebabsakit}}@endisset">
                                     </div>
-                                    @if ($errors->has('idmordibitas'))
+                                    @if ($errors->has('golsebabsakit'))
                                     <span class="text-danger">
-                                        <p class="text-right">* {{ $errors->first('idmordibitas') }}</p>
+                                        <p class="text-right">* {{ $errors->first('golsebabsakit') }}</p>
                                     </span>
                                     @endif
                                 </div>
@@ -149,7 +148,9 @@
                                         <div class="col-10">
                                             <select class="form-control" width="100%" id="Icd10_stp">
                                                 @foreach ($Icd10_stp as $item)
-                                                <option value="{{$item->kodestp}}" ->{{$item->kodestp}}</option>
+                                                <option value="@isset($ubah){{$item->idstp}}@endisset" ->
+                                                    {{$item->namastp}}
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -177,7 +178,6 @@
                     </div>
                     <!-- /.card -->
 
-                    @endif
 
                 </div>
             </div>
@@ -188,5 +188,16 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script type="text/javascript">
+function ubahIcd10($kode, $nama, $idmordibitas, $golsebabsakit, $idstp) {
+    $("#form-ubahIcd10").attr("action", "/Icd10/update" + $kode);
+    document.getElementById("kode").value = $kode;
+    document.getElementById("namadiagnosa").value = $nama;
+    document.getElementById("icd10_mordibitas").value = $tariftindakanpoli;
+    document.getElementById("golsebabsakit").value = $golsebabsakit;
+    document.getElementById("Icd10_stp").value = $idstp;
+}
+</script>
 
 @endsection
