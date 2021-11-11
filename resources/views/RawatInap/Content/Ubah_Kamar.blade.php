@@ -70,7 +70,13 @@
                   <div class="form-group">
                     <div class="row">
                       <div class="col-3 text-right"><label >Tanggal Masuk Kamar</label></div>
-                      <div class="col-9"><input type="datetime" class="form-control" value="{{$ubah->tglmasuk}}" readonly></div>
+                      <div class="col-9">
+                        <div class="input-group date" name="tglmasuk" id="tglmasuk" data-target-input="nearest">
+                          <input type="text" class="form-control datetimepicker-input" data-target="#tglmasuk" value="{{$ubah->tglmasuk}}" disabled/>
+                          <div class="input-group-append" data-target="#tglmasuk" data-toggle="datetimepicker">
+                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                          </div>
+                        </div>
                     </div>
                   </div>
                 </div>

@@ -37,4 +37,8 @@ class Rawatjalan extends Model
         return $this->belongsTo(Faskes::class,'kodefaskespengirim');
         //nama_modelTabelrelasinya,foreignkey di tabel Karyawan
     }
+    public function Rawatjalan_transaksi() { //Jabatan dimiliki oleh karyawan
+        return $this->HasMany(Rawatjalan_transaksi::class,'faktur_rawatjalan');
+        //nama_modelTabelrelasinya,foreignkey di tabel Karyawan
+    }
 }

@@ -50,13 +50,18 @@ class Tagihan_RJController extends Controller
         
         $rawatjalansatu = Rawatjalan::where('norm', $norm)->first();
         $rawatjalanbanyak = Rawatjalan::where('norm', $norm)->get();
-        $rawatjalantransaksi = Rawatjalan_transaksi::where('faktur_rawatjalan',$rawatjalansatu->faktur_rawatjalan)->get();//perbedaan untuk mencari faktur rawatinap
+
+        /*$rawatjalantransaksi = DB::table('rawatjalan_transaksi')
+                    ->join('rawatjalan', 'rawatjalan.faktur_rawatjalan', '=', 'rawatjalan_transaksi.faktur_rawatjalan')
+                    ->where('rawatjalan.norm', '=', $norm)
+                    ->select('rawatjalan_transaksi.*')
+                    ->get();*/
 
         //$bayar_rjalan = Bayar_rjalan::where('norm', $norm)->first();
         //$datas = Rawatjalan::find($faktur_rawatjalan);
         //$totalharga = Rawatjalan_transaksi::where('faktur_rawatjalan',$faktur_rawatjalan)->sum('tarif');
            
-        return view('Billing.Content.Tagihan_RJ',compact('now','statuspulang','karyawan','pasien','rawatjalansatu','rawatjalanbanyak','rawatjalantransaksi'));
+        return view('Billing.Content.Tagihan_RJ',compact('now','statuspulang','karyawan','pasien','rawatjalansatu','rawatjalanbanyak'));
     }
 
     public function selectfakturrj($faktur_rawatjalan) { //select berdasarkan faktur
@@ -73,12 +78,17 @@ class Tagihan_RJController extends Controller
         
         $rawatjalansatu = Rawatjalan::find($faktur_rawatjalan);
         $rawatjalanbanyak = Rawatjalan::where('norm', $rawatjalansatu->norm)->get();
-        $rawatjalantransaksi = Rawatjalan_transaksi::where('faktur_rawatjalan',$faktur_rawatjalan)->get();//perbedaan untuk mencari faktur rawatinap
+
+        /*$rawatjalantransaksi = DB::table('rawatjalan_transaksi')
+                    ->join('rawatjalan', 'rawatjalan.faktur_rawatjalan', '=', 'rawatjalan_transaksi.faktur_rawatjalan')
+                    ->where('rawatjalan.norm', '=', $rawatjalansatu->norm)
+                    ->select('rawatjalan_transaksi.*')
+                    ->get();*/
 
         //$bayar_rjalan = Bayar_rjalan::where('norm', $norm)->first();
         //$datas = Rawatjalan::find($faktur_rawatjalan);
         //$totalharga = Rawatjalan_transaksi::where('faktur_rawatjalan',$faktur_rawatjalan)->sum('tarif');
            
-        return view('Billing.Content.Tagihan_RJ',compact('now','statuspulang','karyawan','pasien','rawatjalansatu','rawatjalanbanyak','rawatjalantransaksi'));
+        return view('Billing.Content.Tagihan_RJ',compact('now','statuspulang','karyawan','pasien','rawatjalansatu','rawatjalanbanyak'));
     }
 }
