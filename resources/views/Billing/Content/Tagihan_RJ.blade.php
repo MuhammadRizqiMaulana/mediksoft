@@ -5,7 +5,7 @@
 <div class="content-wrapper">
 
     <!-- Menu -->
-    @include('RawatJalan.Layout.menu')
+    @include('Billing.Layout.menu')
     <!-- /.menu -->
     <div class="container-fluid">
       <div class="d-sm-flex align-items-center mb-4">
@@ -49,7 +49,12 @@
                       <div class="form-group row">
                         <label for="tanggal" class="col-sm-4 col-form-label text-right">Tanggal</label>
                         <div class="col-sm-8">
-                          <input type="datetime" class="form-control" id="tanggal" placeholder="Tanggal sekarang" value="{{ date('d/m/Y H.i') }}">
+                          <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime" value="{{ date('d/m/Y H.i') }}"/>
+                            <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="form-group row">
@@ -157,19 +162,27 @@
                             $norj=1;   
                           @endphp
                           @isset($rawatjalanbanyak)
-                            @foreach ($rawatjalanbanyak as $item)
-                              <tr onclick="selectfakturrj('{{$item->faktur_rawatjalan}}');">
+                            @foreach ($rawatjalanbanyak as $urutanrjb => $item)
+                              @php
+                                  $biayatransaksi = 0;
+                                  foreach ($item->Rawatjalan_transaksi as $key => $itemrjt) {
+                                    $biayatransaksi = $biayatransaksi + ($itemrjt->tarif * $itemrjt->jumlah);
+                                  }
+                                  $biaya = $biayatransaksi + ($item->tarifdokter*1) + ($item->administrasi*1);
+                              @endphp
+                            
+                              <tr>
                                 <td>{{$norj++}}</td>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" name="chekbiaya" value="{{$biaya}}" checked onclick="hitungsubtotalbiaya('chekbiaya');"></td>
                                 <td>{{$item->faktur_rawatjalan}}</td>
                                 <td>{{$item->tglmasuk}}</td>
                                 <td>{{$item->Poliklinik->nama}}</td>
                                 <td>{{$item->Dokter->nama}}</td>
                                 <td>{{$item->Perusahaan->namaprsh}}</td>
-                                <td>Biaya</td>
+                                <td class="text-right">@rupiah($biaya)</td>
                                 <td>
                                   <button class="btn btn-outline-info btn-sm"
-                                  onclick="selectfakturrj('{{$item->faktur_rawatjalan}}');"><i
+                                  onclick="selecttransaksirj('{{$item->faktur_rawatjalan}}');"><i
                                       class="fa fa-check"></i> Lihat Transaksi</button></td>
                               </tr>
                             @endforeach
@@ -187,146 +200,146 @@
                         <div class="form-group row">
                           <label for="subtotal" class="col-sm-4 col-form-label text-right">Sub Total</label>
                           <div class="col-sm-8">
-                            <input type="number" class="form-control bg-primary" id="subtotal" value="0" readonly>
+                            <input type="number" class="form-control bg-primary text-right" id="subtotal" value="0" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="diskpersen" class="col-sm-4 col-form-label text-right">Disk. Persen</label>
                           <div class="col-sm-2">
-                            <input type="number" class="form-control" id="diskpersen" maxlength="3" value="0">
+                            <input type="number" class="form-control text-right" id="diskpersen" maxlength="3" value="0">
                           </div>
                           <div class="col-sm-1">
                             <label class="col-form-label">%</label>
                           </div>
                           <div class="col-sm-5">
-                            <input type="number" class="form-control bg-light" id="diskpersenhasil" value="0" readonly>
+                            <input type="number" class="form-control bg-light text-right" id="diskpersenhasil" value="0" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="disknilai" class="col-sm-4 col-form-label text-right">Disk. Nilai</label>
                           <div class="col-sm-8">
-                            <input type="number" class="form-control" id="disknilai" value="0">
+                            <input type="number" class="form-control text-right" id="disknilai" value="0">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="pembulatandiskon" class="col-sm-4 col-form-label text-right">Pembulatan Diskon</label>
                           <div class="col-sm-2">
-                            <input type="number" class="form-control bg-light" id="pembulatandiskon" maxlength="3" value="0" readonly>
+                            <input type="number" class="form-control bg-light text-right" id="pembulatandiskon" maxlength="3" value="0" readonly>
                           </div>
                           <div class="col-sm-1">
                             <label class="col-form-label">+</label>
                           </div>
                           <div class="col-sm-5">
-                            <input type="number" class="form-control bg-light" id="pembulatandiskonhasil" value="0" readonly>
+                            <input type="number" class="form-control bg-light text-right" id="pembulatandiskonhasil" value="0" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="totaltagihan" class="col-sm-4 col-form-label text-right">Total Tagihan</label>
                           <div class="col-sm-8">
-                            <input type="number" class="form-control bg-primary" id="totaltagihan" value="0" readonly>
+                            <input type="number" class="form-control bg-primary text-right" id="totaltagihan" value="0" readonly>
                           </div>
                         </div>
                       </div>
                     </div>
                     <hr>
-                      <div class="row">
-                        <div class="col">
-                          <table class="table table-bordered table-hover">
-                            <thead>
+                    @php
+                      $norjb=1;   
+                    @endphp
+                    
+                    <div class="row">
+                      <div class="col">
+                        <table class="table table-bordered table-hover">
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Kategori</th>
+                              <th>No Transaksi</th>
+                              <th>Transaksi</th>
+                              <th>Tarif</th>
+                              <th>Jumlah</th>
+                              <th>Subtotal</th>
+                            </tr>
+                          </thead>
+                          @php
+                            $noitem=1;  
+                            $totaltransaksi = 0; 
+                            $totaltarif = 0;
+                            $totaljumlah = 0;
+                          @endphp
+                          @isset($rawatjalansatu)
+                            <tbody>
                               <tr>
-                                <th>No</th>
-                                <th>Kategori</th>
-                                <th>No Transaksi</th>
-                                <th>Transaksi</th>
-                                <th>Tarif</th>
-                                <th>Jumlah</th>
-                                <th>Subtotal</th>
+                                <td colspan="7">Kategori : ADMINISTRASI (1)</td>
                               </tr>
-                              </thead>
-                              <tbody>
-                                @php
-                                  $noitem=1;  
-                                  $totaltransaksi = 0; 
-                                  $totaltarif = 0;
-                                  $totaljumlah = 0;
-                                @endphp
-                                @isset($rawatjalansatu)
-                                    <tr>
-                                      <td colspan="7">Kategori : ADMINISTRASI (1)</td>
-                                    </tr>
-                                    <tr>
-                                      <td>{{$noitem++}}</td>
-                                      <td>ADMINISTRASI</td>
-                                      <td>{{$rawatjalansatu->faktur_rawatjalan}}</td>
-                                      <td>Biaya Administrasi</td>
-                                      <td><input type="number" class="form-control bg-white form-control-border" value="@rupiah($rawatjalansatu->administrasi)" readonly></td>
-                                      <td width="10"><input type="number" class="form-control bg-white form-control-border" value="1" readonly></td>
-                                      <td><input type="number" class="form-control bg-white form-control-border" value="@rupiah($rawatjalansatu->administrasi * 1)" readonly></td>                                  
-                                    </tr>
-                                    <tr>
-                                      <td colspan="7">Kategori : BIAYA DOKTER (1)</td>
-                                    </tr>
-                                    <tr>
-                                      <td>{{$noitem++}}</td>
-                                      <td>BIAYA DOKTER</td>
-                                      <td>{{$rawatjalansatu->faktur_rawatjalan}}</td>
-                                      <td>Biaya Dokter</td>
-                                      <td><input type="number" class="form-control bg-white form-control-border" value="@rupiah($rawatjalansatu->tarifdokter)" readonly></td>
-                                      <td width="10"><input type="number" class="form-control bg-white form-control-border" value="1" readonly></td>
-                                      <td><input type="number" class="form-control bg-white form-control-border" value="@rupiah($rawatjalansatu->tarifdokter * 1)" readonly></td>                                  
-                                    </tr>
-                                    @php
-                                      $totaltarif = $totaltarif + ($rawatjalansatu->administrasi + $rawatjalansatu->tarifdokter);
-                                      $totaljumlah = $totaljumlah + (1+1);
-                                      $totaltransaksi = $totaltransaksi + (($rawatjalansatu->administrasi * 1)+($rawatjalansatu->tarifdokter * 1));
-                                    @endphp
-                                    
-                                    @isset($rawatjalantransaksi)
-                                      @if (count($rawatjalantransaksi) > 0)
-                                        <tr>
-                                          <td colspan="7">Kategori : TINDAKAN POLI ({{count($rawatjalantransaksi)}})</td>
-                                        </tr>
-                                      @endif
-                                      @foreach ($rawatjalantransaksi as $itemrawatjalantransaksi)
-                                        <tr>
-                                          <td>{{$noitem++}}</td>
-                                          <td>TINDAKAN POLI</td>
-                                          <td>{{$itemrawatjalantransaksi->notransaksi}}</td>
-                                          <td>{{$itemrawatjalantransaksi->namatransaksi}}</td>
-                                          <td><input type="number" class="form-control bg-white form-control-border" value="@rupiah($itemrawatjalantransaksi->tarif)" readonly></td>
-                                          <td width="10"><input type="number" class="form-control bg-white form-control-border" value="{{$itemrawatjalantransaksi->jumlah}}" readonly></td>
-                                          <td><input type="number" class="form-control bg-white form-control-border" value="@rupiah($itemrawatjalantransaksi->tarif * $itemrawatjalantransaksi->jumlah)" readonly></td>                                  
-                                        </tr>
-                                        @php
-                                            $totaltarif = $totaltarif + $itemrawatjalantransaksi->tarif;
-                                            $totaljumlah = $totaljumlah + $itemrawatjalantransaksi->jumlah;
-                                            $totaltransaksi = $totaltransaksi + ($itemrawatjalantransaksi->tarif * $itemrawatjalantransaksi->jumlah);
-                                        @endphp
-                                      @endforeach
-                                    @endisset
-
-                                  @endisset
-                                
-                                  
-                                
-                              </tbody>
-                              <tfoot>
-                                <tr><th colspan="7"></th></tr>
+                              <tr>
+                                <td>{{$noitem++}}</td>
+                                <td>ADMINISTRASI</td>
+                                <td>{{$rawatjalansatu->faktur_rawatjalan}}</td>
+                                <td>Biaya Administrasi</td>
+                                <td><input type="number" class="form-control bg-white form-control-border text-right" value="@rupiah($rawatjalansatu->administrasi)" readonly></td>
+                                <td width="10"><input type="number" class="form-control bg-white form-control-border text-right" value="1" readonly></td>
+                                <td><input type="number" class="form-control bg-white form-control-border text-right" value="@rupiah($rawatjalansatu->administrasi * 1)" readonly></td>                                  
+                              </tr>
+                              <tr>
+                                <td colspan="7">Kategori : BIAYA DOKTER (1)</td>
+                              </tr>
+                              <tr>
+                                <td>{{$noitem++}}</td>
+                                <td>BIAYA DOKTER</td>
+                                <td>{{$rawatjalansatu->faktur_rawatjalan}}</td>
+                                <td>Biaya Dokter</td>
+                                <td><input type="number" class="form-control bg-white form-control-border text-right" value="@rupiah($rawatjalansatu->tarifdokter)" readonly></td>
+                                <td width="10"><input type="number" class="form-control bg-white form-control-border text-right" value="1" readonly></td>
+                                <td><input type="number" class="form-control bg-white form-control-border text-right" value="@rupiah($rawatjalansatu->tarifdokter * 1)" readonly></td>                                  
+                              </tr>
+                              @php
+                                $totaltarif = $totaltarif + ($rawatjalansatu->administrasi + $rawatjalansatu->tarifdokter);
+                                $totaljumlah = $totaljumlah + (1+1);
+                                $totaltransaksi = $totaltransaksi + (($rawatjalansatu->administrasi * 1)+($rawatjalansatu->tarifdokter * 1));
+                              @endphp
+                              
+                              @if (count($rawatjalansatu->Rawatjalan_transaksi) > 0)
                                 <tr>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th></th>
-                                  <th><input type="number" class="form-control bg-default form-control-border" value="@rupiah($totaltarif)" readonly></th>
-                                  <th><input type="number" class="form-control bg-default form-control-border" value="@rupiah($totaljumlah)" readonly></th>
-                                  <th><input type="number" class="form-control bg-default form-control-border" value="@rupiah($totaltransaksi)" readonly></th>
+                                  <td colspan="7">Kategori : TINDAKAN POLI ({{count($rawatjalansatu->Rawatjalan_transaksi)}})</td>
                                 </tr>
-                              </tfoot> 
-                          </table>
-                        </div> 
-                      </div>
+                              @endif
+                              @foreach ($rawatjalansatu->Rawatjalan_transaksi as $itemrawatjalantransaksi)
+                                <tr>
+                                  <td>{{$noitem++}}</td>
+                                  <td>TINDAKAN POLI</td>
+                                  <td>{{$itemrawatjalantransaksi->notransaksi}}</td>
+                                  <td>{{$itemrawatjalantransaksi->namatransaksi}}</td>
+                                  <td><input type="number" class="form-control bg-white form-control-border text-right" value="@rupiah($itemrawatjalantransaksi->tarif)" readonly></td>
+                                  <td width="10"><input type="number" class="form-control bg-white form-control-border text-right" value="{{$itemrawatjalantransaksi->jumlah}}" readonly></td>
+                                  <td><input type="number" class="form-control bg-white form-control-border text-right" value="@rupiah($itemrawatjalantransaksi->tarif * $itemrawatjalantransaksi->jumlah)" readonly></td>                                  
+                                </tr>
+                                @php
+                                    $totaltarif = $totaltarif + $itemrawatjalantransaksi->tarif;
+                                    $totaljumlah = $totaljumlah + $itemrawatjalantransaksi->jumlah;
+                                    $totaltransaksi = $totaltransaksi + ($itemrawatjalantransaksi->tarif * $itemrawatjalantransaksi->jumlah);
+                                @endphp
+                              @endforeach  
+                                                              
+                            </tbody>
+                          @endisset
+                          <tfoot>
+                            <tr><th colspan="7"></th></tr>
+                            <tr>
+                              <th>{{$noitem-1}}</th>
+                              <th></th>
+                              <th></th>
+                              <th></th>
+                              <th><input type="number" class="form-control bg-default form-control-border text-right" value="@rupiah($totaltarif)" readonly></th>
+                              <th><input type="number" class="form-control bg-default form-control-border text-right" value="@rupiah($totaljumlah)" readonly></th>
+                              <th><input type="number" class="form-control bg-default form-control-border text-right" value="@rupiah($totaltransaksi)" readonly></th>
+                            </tr>
+                          </tfoot> 
+                            
+                        </table>
+                      </div> 
+                    </div>
                     <br>
-                  
+                      
                   </div>
                   <!-- /.card-body -->
                 </div>
@@ -348,6 +361,10 @@
   <!-- /.content-wrapper -->
 
   <script type="text/javascript">
+    $(document).ready(function() {
+      hitungsubtotalbiaya('chekbiaya');
+    });
+
     function pasien($norm, $namapasien) {
         document.getElementById("norm").value = $norm;
         document.getElementById("namapasien").value = $namapasien;
@@ -361,9 +378,19 @@
         $(".close").click();
     }
     
-    function selectfakturrj($faktur_rawatjalan){
-      window.location.href = "/Tagihan_RJ/selectfakturrj"+ $faktur_rawatjalan;
+    function selecttransaksirj($faktur_rawatjalan){
+      window.location.href = "/Tagihan_RJ/selectfakturrj"+ $faktur_rawatjalan;     
     }
+
+    function hitungsubtotalbiaya(name) {
+      const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+      var subtotal = 0;
+      checkboxes.forEach((checkbox) => {
+        subtotal = subtotal + eval(checkbox.value);
+      });
+      document.getElementById('subtotal').value = subtotal;
+    }
+
   </script>
 
 @endsection

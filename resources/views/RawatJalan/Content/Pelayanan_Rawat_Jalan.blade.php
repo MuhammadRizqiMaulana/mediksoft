@@ -59,7 +59,12 @@
                     <label>Tanggal Masuk</label>
                   </div>
                   <div class="col-8">
-                    <input type="datetime" class="form-control" placeholder="Tanggal Masuk" value="@isset($datas) {{$datas->tglmasuk}} @endisset" readonly >
+                    <div class="input-group date" name="tglpelayanan" id="tglpelayanan" data-target-input="nearest">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#tglpelayanan" value="@isset($datas) {{$datas->tglmasuk}} @endisset" disabled/>
+                      <div class="input-group-append" data-target="#tglpelayanan" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -98,7 +103,12 @@
                     <label>Tgl Pelayanan</label>
                   </div>
                   <div class="col-8">
-                    <input type="datetime" class="form-control" placeholder="Tanggal Pelayanan" value="{{$now}}" readonly >
+                    <div class="input-group date" name="tglpelayanan" id="reservationdatetime" data-target-input="nearest">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime" value="{{ date('d/m/Y H.i') }}" disabled/>
+                      <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
