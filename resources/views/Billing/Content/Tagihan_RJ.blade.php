@@ -195,8 +195,8 @@
                     </div>
                     <hr>
                     <div class="row">
-                      <div class="col-5"></div>
-                      <div class="col-7">
+                      <div class="col-4"></div>
+                      <div class="col-8">
                         <div class="form-group row">
                           <label for="subtotal" class="col-sm-4 col-form-label text-right">Sub Total</label>
                           <div class="col-sm-8">
@@ -206,7 +206,7 @@
                         <div class="form-group row">
                           <label for="diskpersen" class="col-sm-4 col-form-label text-right">Disk. Persen</label>
                           <div class="col-sm-2">
-                            <input type="number" class="form-control text-right" id="diskpersen" maxlength="3" value="0">
+                            <input type="number" class="form-control text-right" id="diskpersen" maxlength="3" value="0" oninput="hitungsubtotalbiaya('chekbiaya');">
                           </div>
                           <div class="col-sm-1">
                             <label class="col-form-label">%</label>
@@ -218,7 +218,7 @@
                         <div class="form-group row">
                           <label for="disknilai" class="col-sm-4 col-form-label text-right">Disk. Nilai</label>
                           <div class="col-sm-8">
-                            <input type="number" class="form-control text-right" id="disknilai" value="0">
+                            <input type="number" class="form-control text-right" id="disknilai" value="0" oninput="hitungsubtotalbiaya('chekbiaya');">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -385,10 +385,25 @@
     function hitungsubtotalbiaya(name) {
       const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
       var subtotal = 0;
+      var totaltagihan = 0;
+      var diskpersen = parseFloat(document.getElementById('diskpersen').value);
+      var disknilai = parseFloat(document.getElementById('disknilai').value);
+
       checkboxes.forEach((checkbox) => {
         subtotal = subtotal + eval(checkbox.value);
       });
+
+      var diskpersenhasil = (diskpersen / 100) * subtotal;
+      var disknilai = subtotal - disknilai - diskpersenhasil;
+      var totaltagihan = Math.round(disknilai / 1000) * 1000;
+      var pembulatandiskon = totaltagihan - disknilai;
+      var pembulatandiskonhasil = totaltagihan - pembulatandiskon;
+
       document.getElementById('subtotal').value = subtotal;
+      document.getElementById('diskpersenhasil').value = diskpersen;
+      document.getElementById('pembulatandiskon').value = pembulatandiskon;
+      document.getElementById('pembulatandiskonhasil').value = pembulatandiskonhasil;
+      document.getElementById('totaltagihan').value = totaltagihan;
     }
 
   </script>
