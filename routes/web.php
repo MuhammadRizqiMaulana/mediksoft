@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 /* ----- AksesPengguna -----*/
+use App\Http\Controllers\AksesPengguna\PenggunaController;
+use App\Http\Controllers\AksesPengguna\ProgramController;
 /* ----- AksesPengguna -----*/
 
 /* ----- Setup -----*/
@@ -92,6 +94,14 @@ Route::get('/', function () {
 Route::get('/AksesPengguna', function () {
     return view('AksesPengguna.Content.index');
 });
+
+Route::get('/Program', [ProgramController::class, 'index']);
+
+Route::get('/Pengguna', [PenggunaController::class, 'index']);
+Route::post('/Pengguna/store', [PenggunaController::class, 'store']);
+Route::get('/Pengguna/ubah{iduser}', [PenggunaController::class, 'ubah']);
+Route::post('/Pengguna/update{iduser}', [PenggunaController::class, 'update']);
+Route::get('/Pengguna/hapus{iduser}', [PenggunaController::class, 'hapus']);
 
 /* ----- AksesPengguna -----*/
 
