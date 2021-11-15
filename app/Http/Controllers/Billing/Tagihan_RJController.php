@@ -47,8 +47,8 @@ class Tagihan_RJController extends Controller
         $statuspulang = Statuspulang::all();
         $karyawan = Karyawan::all();
         
-        $rawatjalansatu = Rawatjalan::where('norm', $norm)->first();
-        $rawatjalanbanyak = Rawatjalan::where('norm', $norm)->get();
+        $rawatjalansatu = Rawatjalan::where('norm', $norm)->where('statustransaksi', 'proses')->first();
+        $rawatjalanbanyak = Rawatjalan::where('norm', $norm)->where('statustransaksi', 'proses')->get();
 
         /*$rawatjalantransaksi = DB::table('rawatjalan_transaksi')
                     ->join('rawatjalan', 'rawatjalan.faktur_rawatjalan', '=', 'rawatjalan_transaksi.faktur_rawatjalan')
@@ -134,6 +134,29 @@ class Tagihan_RJController extends Controller
             $data->diskonnominal = $request->diskonnominal;
             $data->diskonnilai = $request->diskonnilai;
             $data->save();
+
+            $faktur_rawatjalan = $request->input('faktur_rawatjalan');
+            
+            foreach($faktur_rawatjalan as $key => $item){
+                $biayatransaksi = 0;
+                $biaya = 0;
+                $rawatjalansatu = Rawatjalan::find($item);
+
+                foreach ($rawatjalansatu->Rawatjalan_transaksi as $key => $itemrjt) {
+                $biayatransaksi = $biayatransaksi + ($itemrjt->tarif * $itemrjt->jumlah);
+                }
+                $biaya = $biayatransaksi + ($rawatjalansatu->tarifdokter*1) + ($rawatjalansatu->administrasi*1);
+
+                $brjf = new Bayar_rjalan_faktur();
+                $brjf->nobayar_rjalan = "BRJ".$invoice->invoice;
+                $brjf->nourut = $key + 1;
+                $brjf->faktur_rawatjalan = $item;
+                $brjf->biaya = $biaya;
+                $brjf->save();
+
+                $rawatjalansatu->statustransaksi = 'bayar';
+                $rawatjalansatu->save();
+            }
 
             return redirect('/Tagihan_RJ')->with('alert-success','Data berhasil ditambahkan!');
             

@@ -32,26 +32,21 @@
           {{Session::get('alert-danger')}}
       </div>
     @endif
-
-    <ul>
-      @foreach($errors->all() as $error)
-        <li>{{ $error }}<li>
-      @endforeach
-    </ul>
     
 
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="card">
+          <form action="{{url('/Tagihan_RJ/store')}}" method="post"> 
+          {{csrf_field()}} 
           <div class="card-body">
             <div class="row">
                 <div class="col-4">
                   <!-- general form elements -->
                   <div class="card">
                     <div class="card-body">
-                      <form action="{{url('/Tagihan_RJ/store')}}" method="post"> 
-                        {{csrf_field()}}   
+                        
                       <!-- form start -->
                         <div class="form-group row">
                           <label for="tanggal" class="col-sm-4 col-form-label text-right">Tanggal</label>
@@ -128,25 +123,17 @@
                             </span>
                           @endif
                         </div>
-                        <div class="form-group" hidden>
-                          <input type="number" class="form-control text-right" name="diskonpersen" maxlength="3" value="0">
-                          <input type="number" class="form-control bg-light text-right" name="diskonnominal" value="0">
-                          <input type="number" class="form-control text-right" name="diskonnilai" value="0">
-                          <input type="number" class="form-control bg-light text-right" name="hasildiskon" value="0">
-                        </div>
-                                                
-                        <hr>
+                        
+                         <hr>
                         <div class="form-group text-center">
                           <a class="btn btn-app" href="">
                             <i class="fas fa-edit"></i> Pelayanan Poli
                           </a>
-                          <button class="btn btn-default text-center">
-                            <a class="users-list-name" href="">
+                          <button class="btn btn-default text-center" type="submit">
                               <img src="{{asset('images/icon/tagihanrj.png')}}"><br>
-                              Buat Tagihan</a>
+                              Buat Tagihan
                           </button>
                         </div>
-                      </form>
                     </div>
                     <!-- /.card-body -->
                   
@@ -189,17 +176,18 @@
                             
                               <tr>
                                 <td>{{$norj++}}</td>
-                                <td><input type="checkbox" name="chekbiaya" value="{{$biaya}}" checked onclick="hitungsubtotalbiaya('chekbiaya');"></td>
-                                <td>{{$item->faktur_rawatjalan}}</td>
+                                <td><input type="checkbox" name="chekbiaya[]" value="{{$biaya}}" data-valuetwo="{{$item->faktur_rawatjalan}}" checked onclick="hitungsubtotalbiaya('chekbiaya[]');" onchange="checkfaktur(this,'faktur_rawatjalan{{$urutanrjb}}');"></td>
+                                <td><input type="checkbox" id="faktur_rawatjalan{{$urutanrjb}}" name="faktur_rawatjalan[]" value="{{$item->faktur_rawatjalan}}" checked></td>
                                 <td>{{$item->tglmasuk}}</td>
                                 <td>{{$item->Poliklinik->nama}}</td>
                                 <td>{{$item->Dokter->nama}}</td>
                                 <td>{{$item->Perusahaan->namaprsh}}</td>
                                 <td class="text-right">@rupiah($biaya)</td>
                                 <td>
-                                  <button class="btn btn-outline-info btn-sm"
-                                  onclick="selecttransaksirj('{{$item->faktur_rawatjalan}}');"><i
-                                      class="fa fa-check"></i> Lihat Transaksi</button></td>
+                                  <a href="{{url('/Tagihan_RJ/selectfakturrj'.$item->faktur_rawatjalan)}}" class="btn btn-outline-info btn-sm"><i
+                                    class="fa fa-check"></i> Lihat Transaksi
+                                  </a>
+                                </td>
                               </tr>
                             @endforeach
                           @endisset
@@ -222,19 +210,19 @@
                         <div class="form-group row">
                           <label for="diskonpersen" class="col-sm-4 col-form-label text-right">Disk. Persen</label>
                           <div class="col-sm-2">
-                            <input type="number" class="form-control text-right" id="diskonpersen" maxlength="3" value="0" oninput="hitungsubtotalbiaya('chekbiaya');">
+                            <input type="number" class="form-control text-right" id="diskonpersen" name="diskonpersen" maxlength="3" value="0" oninput="hitungsubtotalbiaya('chekbiaya[]');">
                           </div>
                           <div class="col-sm-1">
                             <label class="col-form-label">%</label>
                           </div>
                           <div class="col-sm-5">
-                            <input type="number" class="form-control bg-light text-right" id="diskonnominal" value="0" readonly>
+                            <input type="number" class="form-control bg-light text-right" id="diskonnominal" name="diskonnominal" value="0" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="diskonnilai" class="col-sm-4 col-form-label text-right">Disk. Nilai</label>
                           <div class="col-sm-8">
-                            <input type="number" class="form-control text-right" id="diskonnilai" value="0" oninput="hitungsubtotalbiaya('chekbiaya');">
+                            <input type="number" class="form-control text-right" id="diskonnilai" name="diskonnilai" value="0" oninput="hitungsubtotalbiaya('chekbiaya[]');">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -246,7 +234,7 @@
                             <label class="col-form-label">+</label>
                           </div>
                           <div class="col-sm-5">
-                            <input type="number" class="form-control bg-light text-right" id="hasildiskon" value="0" readonly>
+                            <input type="number" class="form-control bg-light text-right" id="hasildiskon" name="hasildiskon" value="0" readonly>
                           </div>
                         </div>
                         <div class="form-group row">
@@ -367,6 +355,7 @@
           <div class="card-footer text-right">
             <button class="btn btn-outline-danger" type="button"><i class="fa fa-times"></i> Batal</button>
           </div>
+          </form>
         </div>
         <!-- /.row -->
       </div>
@@ -378,7 +367,7 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      hitungsubtotalbiaya('chekbiaya');
+      hitungsubtotalbiaya('chekbiaya[]');
     });
 
     function pasien($norm, $namapasien) {
@@ -393,11 +382,16 @@
         document.getElementById("namakasir").value = $nama;
         $(".close").click();
     }
-    
-    function selecttransaksirj($faktur_rawatjalan){
-      window.location.href = "/Tagihan_RJ/selectfakturrj"+ $faktur_rawatjalan;     
-    }
 
+    function checkfaktur(elements, namafaktur) {
+
+      if($(elements).prop("checked") == true){
+        $(`input[id="${namafaktur}"]`).prop('checked',true);
+      }else{
+        $(`input[id='${namafaktur}']`).prop('checked',false);
+      }
+    }
+    
     function hitungsubtotalbiaya(name) {
       const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
       var subtotal = 0;
