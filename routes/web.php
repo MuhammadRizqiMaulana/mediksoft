@@ -72,6 +72,8 @@ use App\Http\Controllers\Operasi\DokterBedahController;
 /* ----- Billing -----*/
 use App\Http\Controllers\Billing\Tagihan_RJController;
 use App\Http\Controllers\Billing\PembayaranRJController;
+use App\Http\Controllers\Billing\Data_DepositController;
+
 /* ----- Billing -----*/
 
 
@@ -347,6 +349,9 @@ Route::get('/PembayaranRJ', [PembayaranRJController::class, 'index']);
 Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'selectnorm']);
 Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
 Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
+
+Route::get('/Data_Deposit', [Data_DepositController::class, 'index']);
+
 
 /* ----- Billing -----*/
 
