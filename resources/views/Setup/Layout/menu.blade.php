@@ -57,10 +57,11 @@
                     <a class="btn btn-app" href="{{url('/Jaminan')}}">
                         <i class="far fa-building"></i> Jaminan
                     </a>
-
-                    <a class="btn btn-app" href="{{url('/Pengirim_Faskes')}}">
-                        <i class="fas fa-user-tie"></i> Pengirim / Faskes
-                    </a>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Pengirim_Faskes')}}">
+                          <img src="{{asset('images/icon/pengirim.png')}}"><br>
+                          Pengirim / Faskes</a>
+                    </button>
                     <a class="btn btn-app" href="{{url('/Bank')}}">
                         <i class="fas fa-landmark"></i> Bank
                     </a>
@@ -169,7 +170,7 @@
                     <a class="btn btn-app" href="{{url('/TindakanInap')}}">
                         <i class="fas fa-procedures"></i> Tindakan Inap
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/Administrasi')}}">
                         <i class="fas fa-clipboard"></i> Administrasi
                     </a>
 

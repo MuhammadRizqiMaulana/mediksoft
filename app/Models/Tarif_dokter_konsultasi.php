@@ -15,7 +15,7 @@ class Tarif_dokter_konsultasi extends Model
     							'tarif',
                                 'untukrs',
                                 'untukdokter',
-                                'idklam']; //field tabel
+                                'idklaim']; //field tabel
         public function Kelas() { //Kelas dimiliki oleh Tarif_dokter_poli
             return $this->belongsTo(Kelas::class,'kodekelas');
  		    //nama_modelTabelrelasinya,foreignkey di tabel Tarif_dokter_poli

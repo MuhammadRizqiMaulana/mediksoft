@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 /* ----- AksesPengguna -----*/
+use App\Http\Controllers\AksesPengguna\PenggunaController;
+use App\Http\Controllers\AksesPengguna\ProgramController;
 /* ----- AksesPengguna -----*/
 
 /* ----- Setup -----*/
@@ -67,6 +69,11 @@ use App\Http\Controllers\Operasi\GolonganOperasiController;
 use App\Http\Controllers\Operasi\DokterBedahController;
 /* ----- Operasi -----*/
 
+/* ----- Billing -----*/
+use App\Http\Controllers\Billing\Tagihan_RJController;
+use App\Http\Controllers\Billing\PembayaranRJController;
+/* ----- Billing -----*/
+
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +94,14 @@ Route::get('/', function () {
 Route::get('/AksesPengguna', function () {
     return view('AksesPengguna.Content.index');
 });
+
+Route::get('/Program', [ProgramController::class, 'index']);
+
+Route::get('/Pengguna', [PenggunaController::class, 'index']);
+Route::post('/Pengguna/store', [PenggunaController::class, 'store']);
+Route::get('/Pengguna/ubah{iduser}', [PenggunaController::class, 'ubah']);
+Route::post('/Pengguna/update{iduser}', [PenggunaController::class, 'update']);
+Route::get('/Pengguna/hapus{iduser}', [PenggunaController::class, 'hapus']);
 
 /* ----- AksesPengguna -----*/
 
@@ -316,4 +331,49 @@ Route::get('/Operasi', function () {
 
 Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
 Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
+Route::post('/DokterBedah/store', [DokterBedahController::class, 'store']);
+Route::get('/DokterBedah/ubah{iddokter},{jenisrawat}', [DokterBedahController::class, 'ubah']);
+Route::post('/DokterBedah/update{iddokter},{jenisrawat}', [DokterBedahController::class, 'update']);
+Route::get('/DokterBedah/hapus{iddokter},{jenisrawat}', [DokterBedahController::class, 'hapus']);
 /* ----- Operasi -----*/
+
+/* ----- Billing -----*/
+Route::get('/Billing', function () {
+    return view('Billing.Content.index');
+});
+
+Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
+Route::get('/PembayaranRJ', [PembayaranRJController::class, 'index']);
+Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'selectnorm']);
+Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
+Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
+
+/* ----- Billing -----*/
+
+/* ----- Laporan -----*/
+Route::get('/Laporan', function () {
+    return view('Laporan.Content.index');
+});
+
+/* ----- Laporan -----*/
+
+/* ----- BPJS -----*/
+Route::get('/BPJS', function () {
+    return view('BPJS.Content.index');
+});
+
+/* ----- BPJS -----*/
+
+/* ----- Akuntansi -----*/
+Route::get('/Akuntansi', function () {
+    return view('Akuntansi.Content.index');
+});
+
+/* ----- Akuntansi -----*/
+
+/* ----- Panduan -----*/
+Route::get('/Panduan', function () {
+    return view('Panduan.Content.index');
+});
+
+/* ----- Panduan -----*/
