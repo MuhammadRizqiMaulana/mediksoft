@@ -271,6 +271,8 @@ Route::get('/Update_Data_Pendaftaran_Pasien_Online', [Update_Data_Pendaftaran_Pa
 /* ----- RawatInap -----*/
 Route::get('/RawatInap', function () {
     return view('RawatInap.Content.index');
+Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
+
 });
 
 Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);

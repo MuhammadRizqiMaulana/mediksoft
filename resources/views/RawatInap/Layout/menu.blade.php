@@ -84,7 +84,7 @@
                     <a class="btn btn-app" href="{{url('/Ruang_Perawatan')}}">
                         <i class="fas fa-edit"></i> Ruang Perawatan
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/PemberianObat')}}">
                         <i class="fas fa-edit"></i> Pemberian Obat
                     </a>
                     <a class="btn btn-app" href="{{url('/PindahKamar')}}">
