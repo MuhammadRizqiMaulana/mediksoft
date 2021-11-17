@@ -98,10 +98,7 @@
                                 </div>
                                     <div class="form-group">
                                     <div class="row">
-                                      <div class="col">
-                                        <label>Nomor Tagihan</label>
-                                        <input type="text" name="" class="form-control" placeholder="Nomor Tagihan"> 
-                                      </div>
+                                      
                                       <div class="col">
                                         <label>NO. RM</label>
                                         <input type="text" name="" class="form-control" placeholder="NO. RM">

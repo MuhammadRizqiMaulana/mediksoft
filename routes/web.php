@@ -73,7 +73,7 @@ use App\Http\Controllers\Operasi\DokterBedahController;
 use App\Http\Controllers\Billing\Tagihan_RJController;
 use App\Http\Controllers\Billing\PembayaranRJController;
 use App\Http\Controllers\Billing\Data_DepositController;
-
+use App\Http\Controllers\Billing\Data_PembayaranRJController;
 /* ----- Billing -----*/
 
 
@@ -346,6 +346,7 @@ Route::get('/Billing', function () {
 
 Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
 Route::get('/PembayaranRJ', [PembayaranRJController::class, 'index']);
+Route::get('/Data_PembayaranRJ', [Data_PembayaranRJController::class, 'index']);
 Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'selectnorm']);
 Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
 Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
@@ -368,7 +369,7 @@ Route::get('/BPJS', function () {
 });
 
 /* ----- BPJS -----*/
-
+ 
 /* ----- Akuntansi -----*/
 Route::get('/Akuntansi', function () {
     return view('Akuntansi.Content.index');
