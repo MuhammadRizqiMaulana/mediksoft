@@ -89,9 +89,11 @@
               <a class="btn btn-app">
                 <i class="fas fa-edit"></i> Deposit
               </a>
-              <a class="btn btn-app" href="">
-                <i class="fas fa-edit"></i> Data Deposit
-              </a>          
+              <button class="btn btn-default text-center">
+                <a class="users-list-name" href="{{url('/Data_Deposit')}}">
+                  <img src="{{asset('images/icon/tagihanrj.png')}}"><br>
+                  Data Deposit</a>
+              </button>
             </div>
             <!-- /.card-body -->
           </div>
