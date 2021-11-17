@@ -9,6 +9,7 @@ use App\Models\Eklaimbpjs;
 use App\Models\Icd9;
 use App\Models\Poliklinik;
 use App\Models\Tarif_tindakan_poli;
+use App\Models\Kategoritransaksi;
 
 class TindakanPoliController extends Controller
 {
@@ -51,7 +52,7 @@ class TindakanPoliController extends Controller
 
         $count = Tarif_tindakan_poli::all()->count();
         $data = new Tarif_tindakan_poli();
-        $data->idtindakan = "TRJ".$invoice->invoice;
+        $data->idtindakan = "TRJ" . $invoice->invoice;
         $data->kodepoli = $request->kodepoli;
         $data->namatindakan = $request->namatindakan;
         $data->tarif = $request->tarif;
@@ -89,16 +90,13 @@ class TindakanPoliController extends Controller
         ];
 
         $this->validate($request, [
-            'idtindakan' => 'required|max:30',
-            'kodekategori' => 'required|',
-            'namatindakan' => 'required|',
             'idklaim' => 'required|max:30',
         ], $messages);
 
         $now = Carbon::now();
         $data = Tarif_tindakan_poli::find($idtindakan);
         $data->kodepoli = $request->kodepoli;
-        $data->namatindakan = $request->namatindakan;
+        $data->namatindakan = $request->namatindakanpoli;
         $data->tarif = $request->tarif;
         $data->untukrs = $request->untukrs;
         $data->untukdokter = $request->untukdokter;

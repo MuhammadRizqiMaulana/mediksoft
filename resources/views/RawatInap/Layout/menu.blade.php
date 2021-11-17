@@ -2,7 +2,7 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">DISPLAY</h5>
                     <div class="card-tools">
@@ -29,7 +29,7 @@
             </div>
 
             <!-- /.card -->
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">Pendaftaran</h5>
                     <div class="card-tools">
@@ -58,7 +58,7 @@
             </div>
 
             <!-- /.card -->
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">Perawatan</h5>
                     <div class="card-tools">
@@ -84,7 +84,7 @@
                     <a class="btn btn-app" href="{{url('/Ruang_Perawatan')}}">
                         <i class="fas fa-edit"></i> Ruang Perawatan
                     </a>
-                    <a class="btn btn-app">
+                    <a class="btn btn-app" href="{{url('/PemberianObat')}}">
                         <i class="fas fa-edit"></i> Pemberian Obat
                     </a>
                     <a class="btn btn-app" href="{{url('/PindahKamar')}}">
@@ -102,7 +102,7 @@
 
             </div>
             <!-- /.card -->
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">Riwayat</h5>
                     <div class="card-tools">
@@ -125,7 +125,7 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">INOS</h5>
                     <div class="card-tools">
