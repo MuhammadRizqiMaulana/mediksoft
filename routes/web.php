@@ -28,7 +28,7 @@ use App\Http\Controllers\Setup\TindakanInapController;
 use App\Http\Controllers\Setup\TindakanPoliController;
 
 
-/* ----- Setup -----*/
+/* ----- Setup -----* /
 
 /* ----- RekamMedis -----*/
 

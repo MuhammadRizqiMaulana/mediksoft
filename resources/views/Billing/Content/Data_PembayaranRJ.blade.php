@@ -104,32 +104,39 @@
 
 
 
-
-                <div class="row">
-                  <div class="col"><a class="btn btn-block btn-outline-success" href=" "><i class="fa fa-plus-circle"></i> Buat Tagihan</a></div>
+                 <div class="row">
+                  <div class="col"><a class="btn btn-block btn-outline-success" href=""><i class="fa fa-plus-circle"></i> Buat Tagihan</a></div>
                   <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i> Bayar</button></div>
                 </div>
                 <div class="row">
-                  <div class="col"><a class="btn btn-block btn-outline-success" href=" "><i class="fa fa-plus-circle"></i> Detai; Tagihan</a></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i> Detail Bayar</button></div>
+                  <div class="col"><a href="" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-clipboard-list"></i> Detail Tagihan</a></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-clipboard-list"></i> Detail Bayar</button></div>
+                </div>
+                
+                <div class="row">
+                  <div class="col">
+                    <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-minus-circle"></i> Hapus Tagihan</button></div>
+                  </div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-danger btn-sm"><i class="fa fa-minus-circle"></i> Hapus Bayar</button></div>
                 </div>
                 <div class="row">
-                  <div class="col"><a class="btn btn-block btn-outline-success" href=""><i class="fa fa-plus-circle"></i> Hapus Tagihan</a></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i>Hapus Bayar</button></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fa fa-print"></i> Cetak Nota</button></div>
+                  <div class="col"><button type="button" class="btn btn-block btn-outline-info btn-sm"><i class="fa fa-print"></i> Cetak kwetansi</button></div>
                 </div>
-                 <div class="row">
-                  <div class="col"><a class="btn btn-block btn-outline-success" href=""><i class="fa fa-print"></i> Cetak Nota</a></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-print"></i>Cetak Kwetansi</button></div>
-                </div>
+
+
                 <hr>
                 <div class="form-group">
-                  <div class="col"><a class="btn btn-block btn-outline-success" href=""><i class="fa fa-print"></i> Cetak data tagihan RJ</a></div>
-                
-                  <div class="col"><a class="btn btn-block btn-outline-success" href=""><i class="fa fa-print"></i> Layout data tagihan RJ</a></div>
-                
-                  <div class="col"><a class="btn btn-block btn-outline-success" href=""><i class="fa fa-print"></i> Cetak data rincian RJ</a></div>
-                
-                  <div class="col"><a class="btn btn-block btn-outline-success" href=""><i class="fa fa-print"></i> Layout data rincian RJ</a></div>
+                  <a class="btn btn-block btn-outline-success" href=""><i class=""></i> Cetak data tagihan RJ</a>
+                </div>
+                <div class="form-group">
+                  <a class="btn btn-block btn-outline-success" href=""><i class=""></i> Layout data tagihan RJ</a>
+                </div>
+                <div class="form-group">
+                 <a class="btn btn-block btn-outline-success" href=""><i class=""></i> Cetak data rincian RJ</a>
+                </div>
+                <div class="form-group">
+                  <a class="btn btn-block btn-outline-success" href=""><i class=""></i> Layout data rincian RJ</a>
                
                 </div>
                 
