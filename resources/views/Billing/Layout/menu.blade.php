@@ -30,7 +30,7 @@
               <a class="btn btn-app" href="{{url('/PembayaranRJ')}}">
                 <i class="fas fa-edit"></i> Pembayaran RJ
               </a>
-              <a class="btn btn-app" href="">
+             <a class="btn btn-app" href="{{url('/Data_PembayaranRJ')}}">
                 <i class="fas fa-edit"></i> Data Pembayaran RJ
               </a>
             </div>
