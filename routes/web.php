@@ -346,7 +346,7 @@ Route::get('/BPJS', function () {
 });
 
 /* ----- BPJS -----*/
-
+ 
 /* ----- Akuntansi -----*/
 Route::get('/Akuntansi', function () {
     return view('Akuntansi.Content.index');
