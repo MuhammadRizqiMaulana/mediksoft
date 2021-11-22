@@ -19,13 +19,13 @@
             <!-- /.card-header -->
             <div class="card-body">
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/program.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Management')}}">
+                  <img src="{{asset('images/icon/Indikator_RS.png')}}"><br>
                   Management</a>
               </button>
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/database.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Indikator_RS')}}">
+                  <img src="{{asset('images/icon/Indikator_RS.png')}}"><br>
                   Indikator RS</a>
               </button>
             </div>
@@ -50,13 +50,13 @@
             <!-- /.card-header -->
             <div class="card-body">
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/database.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Statistik')}}">
+                  <img src="{{asset('images/icon/Statistik.png')}}"><br>
                   Statistik</a>
               </button>
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/database.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Riwayat')}}">
+                  <img src="{{asset('images/icon/Riwayat.png')}}"><br>
                   Riwayat</a>
               </button>
             </div>
@@ -81,18 +81,18 @@
             <!-- /.card-header -->
             <div class="card-body">
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/database.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Perawatan')}}">
+                  <img src="{{asset('images/icon/Perawatan.png')}}"><br>
                   Perawatan</a>
               </button>
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/database.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Kecepatan_Pelayanan')}}">
+                  <img src="{{asset('images/icon/Kecepatan_Pelayanan.png')}}"><br>
                   Kecepatan Pelayanan</a>
               </button>
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/database.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Tindakan_Dokter')}}">
+                  <img src="{{asset('images/icon/Tindakan_Dokter.png')}}"><br>
                   Tindakan Dokter</a>
               </button>
             </div>
