@@ -189,7 +189,7 @@
                                         <div class="col-10">
                                             <select class="form-control" width="100%" name="kode" id="icd9">
                                                 @foreach ($icd9 as $item)
-                                                <option value="{{$item->nama}}">{{$item->nama}}</option>
+                                                <option value="{{$item->kode}}">{{$item->nama}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -283,7 +283,7 @@
                                         <div class="col-10">
                                             <input type="text" class="form-control" id="namatindakanpoli"
                                                 name="namatindakanpoli" placeholder="Nama Tindakan Poli"
-                                                value="{{$ubah->namatindakanpoli}}">
+                                                value="{{$ubah->namatindakan}}">
                                         </div>
                                     </div>
                                     @if ($errors->has('namatindakanpoli'))
@@ -346,7 +346,7 @@
                                             <select class="form-control" width="100%" name="kode" id="icd9">
                                                 <option value=""></option>
                                                 @foreach ($icd9 as $item)
-                                                <option value="{{$item->nama}}">{{$item->nama}}</option>
+                                                <option value="{{$item->icd9}}">{{$item->nama}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

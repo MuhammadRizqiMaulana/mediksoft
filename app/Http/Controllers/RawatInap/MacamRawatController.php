@@ -34,7 +34,7 @@ class MacamRawatController extends Controller
         ];
 
         $this->validate($request, [
-            'kode' => 'required|max:2',
+            'kode' => 'required|max:2|unique:macamrawat',
             'macamrawat' => 'required|max:20',
         ], $messages);
 

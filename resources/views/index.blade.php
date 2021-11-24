@@ -233,7 +233,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             "autoWidth": false,
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
-        
+        $('#table_modal_user_level').DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        $('#table_modal_rawatinap').DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+
         //Initialize Select2 Elements
         $('.select2').select2()
     });
