@@ -21,13 +21,16 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a class="btn btn-app" href="{{url('/Dokter')}}">
-                        <i class="fas fa-user-nurse"></i> Dokter
+                    <img src="{{asset('images/icon/Dokter.png')}}"><br> 
+                    Dokter
                     </a>
                     <a class="btn btn-app" href="{{url('/Karyawan')}}">
-                        <i class="fas fa-users"></i> Karyawan
+                    <img src="{{asset('images/icon/Karyawan.png')}}"><br>  
+                    Karyawan
                     </a>
                     <a class="btn btn-app" href="{{url('/Jabatan')}}">
-                        <i class="fas fa-chair"></i> Jabatan
+                    <img src="{{asset('images/icon/Jabatan.png')}}"><br>  
+                    Jabatan
                     </a>
 
                 </div>
@@ -55,7 +58,8 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a class="btn btn-app" href="{{url('/Jaminan')}}">
-                        <i class="far fa-building"></i> Jaminan
+                    <img src="{{asset('images/icon/Jaminan.png')}}"><br> 
+                    Jaminan
                     </a>
                     <button class="btn btn-default text-center">
                         <a class="users-list-name" href="{{url('/Pengirim_Faskes')}}">
@@ -63,7 +67,8 @@
                           Pengirim / Faskes</a>
                     </button>
                     <a class="btn btn-app" href="{{url('/Bank')}}">
-                        <i class="fas fa-landmark"></i> Bank
+                    <img src="{{asset('images/icon/Bank.png')}}"><br></i> 
+                    Bank
                     </a>
                 </div>
 
@@ -90,11 +95,13 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/Icd10')}}">
-                        <i class="fas fa-user"></i> ICD 10
+                    <a class="btn btn-app" href="{{url('/ICD_10')}}">
+                    <img src="{{asset('images/icon/ICD_10.png')}}"><br> 
+                    ICD 10
                     </a>
-                    <a class="btn btn-app" href="{{url('/Icd9')}}">
-                        <i class="far fa-user"></i> ICD 9
+                    <a class="btn btn-app" href="{{url('/ICD_9')}}">
+                    <img src="{{asset('images/icon/ICD_9.png')}}"><br>
+                    ICD 9
                     </a>
 
                 </div>
@@ -121,16 +128,16 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a class="btn btn-app" href="{{url('/Poli')}}">
-                        <i class="fas fa-clinic-medical"></i> Poli
+                    <img src="{{asset('images/icon/Poli.png')}}"><br> Poli
                     </a>
                     <a class="btn btn-app" href="{{url('/Kelas')}}">
-                        <i class="fas fa-procedures"></i> Kelas
+                    <img src="{{asset('images/icon/Kelas.png')}}"><br> Kelas
                     </a>
                     <a class="btn btn-app" href="{{url('/Ruang')}}">
-                        <i class="fas fa-edit"></i> Ruang
+                    <img src="{{asset('images/icon/Ruangan.png')}}"><br> Ruang
                     </a>
-                    <a class="btn btn-app" onclick="kamar();">
-                        <i class="fas fa-edit"></i> Kamar
+                    <a class="btn btn-app" onclick="Kamar();">
+                    <img src="{{asset('images/icon/Kamar.png')}}"><br> Kamar
                     </a>
 
                 </div>
@@ -155,23 +162,23 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/DokterPoli')}}">
-                        <i class="fas fa-user-md"></i> Dokter Poli
+                    <a class="btn btn-app" href="{{url('/Dokter_Poli')}}">
+                    <img src="{{asset('images/icon/Dokter_Poli.png')}}"><br> Dokter Poli
                     </a>
-                    <a class="btn btn-app" href="{{url('/DokterKonsultasi')}}">
-                        <i class="fas fa-notes-medical"></i> Dokter Konsultasi
+                    <a class="btn btn-app" href="{{url('/Dokter_Konsultasi')}}">
+                    <img src="{{asset('images/icon/Dokter_Konsultasi.png')}}"><br> Dokter Konsultasi
                     </a>
-                    <a class="btn btn-app" href="{{url('/DokterVisit')}}">
-                        <i class="fas fa-briefcase-medical"></i> Dokter Visit
+                    <a class="btn btn-app" href="{{url('/Dokter_Visit')}}">
+                    <img src="{{asset('images/icon/Dokter_Visit.png')}}"><br> Dokter Visit
                     </a>
-                    <a class="btn btn-app" href="{{url('/TindakanPoli')}}">
-                        <i class="fas fa-syringe"></i> Tindakan Poli
+                    <a class="btn btn-app" href="{{url('/Tindakan_Poli')}}">
+                    <img src="{{asset('images/icon/Tindakan_Poli.png')}}"><br> Tindakan Poli
                     </a>
-                    <a class="btn btn-app" href="{{url('/TindakanInap')}}">
-                        <i class="fas fa-procedures"></i> Tindakan Inap
+                    <a class="btn btn-app" href="{{url('/Tindakan_Inap')}}">
+                    <img src="{{asset('images/icon/Tindakan_Inap.png')}}"><br> Tindakan Inap
                     </a>
                     <a class="btn btn-app" href="{{url('/Administrasi')}}">
-                        <i class="fas fa-clipboard"></i> Administrasi
+                    <img src="{{asset('images/icon/Administrasi.png')}}"><br> Administrasi
                     </a>
 
                 </div>
