@@ -55,7 +55,7 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
+              <a class="btn btn-app" href="{{url('/RekeningRI')}}">
                 <i class="fas fa-edit"></i> Rekening RI
               </a>
               <a class="btn btn-app" href="">

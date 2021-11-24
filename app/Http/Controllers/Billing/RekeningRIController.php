@@ -9,7 +9,7 @@ class RekeningRIController extends Controller
 {
     public function index(){
     	
-       $datas = Bayar_rjalan::all();       
-    	return view('Billing.Content.RekeningRI',compact('datas'));
+            
+    	return view('Billing.Content.RekeningRI');
 	}
 }
