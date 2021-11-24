@@ -2,7 +2,7 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ">
                 <div class="card-header">
                     <h5 class="card-title">Pengaturan</h5>
                     <div class="card-tools">
@@ -37,7 +37,7 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">Data Pengguna</h5>
                     <div class="card-tools">
@@ -54,23 +54,29 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/Level_Pengguna')}}">
-                    <img src="{{asset('images/icon/Level_Pengguna.png')}}"><br> 
-                    Level Pengguna
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Pengguna')}}">
-                    <img src="{{asset('images/icon/Pengguna.png')}}"><br> 
-                    Pengguna
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Ganti_Password')}}">
-                    <img src="{{asset('images/icon/Ganti_Password.png')}}"><br>
-                     Ganti Password
-                    </a>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/LevelPengguna')}}">
+                            <img src="{{asset('images/icon/Level_Pengguna.png')}}"><br>
+                            Level Pengguna
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Pengguna')}}">
+                            <img src="{{asset('images/icon/Pengguna.png')}}"><br>
+                            Pengguna
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Ganti_Password')}}">
+                            <img src="{{asset('images/icon/Ganti_Password.png')}}"><br>
+                            Ganti Password
+                        </a>
+                    </button>
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title">Login User</h5>
                     <div class="card-tools">
@@ -87,20 +93,24 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                <a class="btn btn-app" href="{{url('/Login')}}">
-                    <img src="{{asset('images/icon/Login.png')}}"><br> 
-                    Login
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Logout')}}">
-                    <img src="{{asset('images/icon/Logout.png')}}"><br>
-                    Logout
-                    </a>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Login')}}">
+                            <img src="{{asset('images/icon/Login.png')}}"><br>
+                            Login
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Logout')}}">
+                            <img src="{{asset('images/icon/Logout.png')}}"><br>
+                            Logout
+                        </a>
+                    </button>
 
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <div class="card card-primary card-sm">
+            <div class="card card-primary card-sm ml-2">
                 <div class="card-header">
                     <h5 class="card-title"></h5>
                     <div class="card-tools">
@@ -117,10 +127,11 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                <a class="btn btn-app" href="{{url('/Keluar')}}">
-                    <img src="{{asset('images/icon/Keluar.png')}}"><br> Keluar
-                    </a>
-
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Keluar')}}">
+                            <img src="{{asset('images/icon/Keluar.png')}}"><br> Keluar
+                        </a>
+                    </button>
                 </div>
                 <!-- /.card-body -->
             </div>
