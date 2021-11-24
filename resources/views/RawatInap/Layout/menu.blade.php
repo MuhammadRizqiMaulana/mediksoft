@@ -49,7 +49,7 @@
                     <a class="btn btn-app" href="{{url('/Pendaftaran')}}">
                     <img src="{{asset('images/icon/Pendaftaran.png')}}"><br> Pendaftaran
                     </a>
-                    <a class="btn btn-app" href="{{url('Data_Pendaftaran')}}">
+                    <a class="btn btn-app" href="{{url('Data_Pendaftaran_Rawat_Inap')}}">
                     <img src="{{asset('images/icon/Data_Pendaftaran.png')}}"><br> Data Pendaftaran
                     </a>
 

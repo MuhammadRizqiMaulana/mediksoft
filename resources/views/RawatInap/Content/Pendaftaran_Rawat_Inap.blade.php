@@ -9,7 +9,7 @@
     <!-- /.menu -->
     <div class="container-fluid">
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h4 class="mb-0 text-gray-800">Pendataran Rawat Inap</h4>
+        <h4 class="mb-0 text-gray-800">Pendaftaran Rawat Inap</h4>
       </div>
     </div>
 
@@ -71,14 +71,12 @@
                   </div>
                   <div class="col-4">
                     <h6>Tanggal Masuk</h6>
-                    <div class="input-group date" name="tglmasuk" id="reservationdatetime" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime" value="{{ date('d/m/Y H.i') }}"/>
-                      <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
-                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                    </div>                 
+                    <input type="text" class="form-control" id="tglmasuk" name="tglmasuk" placeholder="Tanggal Masuk" value="{{ date('Y-m-d H:i:s') }}">                 
                   </div>
                   <div class="col-1 align-self-end text-right">
+                    <button type="button" onclick="tanggalsekarang();" class="btn btn-outline-info">
+                      <i class="fas fa-sync"></i>
+                    </button>
                   </div>
               </div>
               <br>
@@ -531,9 +529,23 @@
 
 <script type="text/javascript">
   function tanggalsekarang() {
-    const d = new Date("Y-m-d H:i:s");
-    document.getElementById("tglmasuk").value = d;
-  }
+      var d = new Date();
+
+      var month = d.getMonth()+1;
+      var day = d.getDate();
+      var hour = d.getHours();
+      var minute = d.getMinutes();
+      var second = d.getSeconds();
+
+      var output = d.getFullYear() + '-' +
+          (month<10 ? '0' : '') + month + '-' +
+          (day<10 ? '0' : '') + day + ' ' +
+          (hour<10 ? '0' : '') + hour + ':' +
+          (minute<10 ? '0' : '') + minute + ':' +
+          (second<10 ? '0' : '') + second;
+
+      document.getElementById("tglmasuk").value = output;
+    }
 
   function rawatjalan($faktur_rawatjalan, $norm, $namapasien, $tglmasuk) {
     document.getElementById("faktur_rawatjalan").value = $faktur_rawatjalan;

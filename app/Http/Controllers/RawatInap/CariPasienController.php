@@ -13,7 +13,7 @@ class CariPasienController extends Controller
 {
     public function index()
     {
-        $rawatinap = RawatInap::all();
+        $rawatinap = Rawatinap::all();
         $pasien = Pasien::all();
         return view('RawatInap.Content.CariPasien', compact('pasien', 'rawatinap'));
     }
