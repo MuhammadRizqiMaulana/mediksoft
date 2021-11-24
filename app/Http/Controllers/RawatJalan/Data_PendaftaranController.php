@@ -63,45 +63,56 @@ class Data_PendaftaranController extends Controller
 
     	], $messages);
 
-        $invoice = Rawatjalan::selectRaw('LPAD(CONVERT((COUNT("faktur_rawatjalan") + 1) , char(13)) , 13,"0") as invoice')->first();//membuat nomer urut
-        $kunjungan = Rawatjalan::where('norm',$request->norm)->count(); //kunjungan ke berapa?
+        try{
 
-        $tarifdokter = Tarif_dokter_poli::where('kodepoli', $request->kodepoli)->where('iddokter', $request->iddokter)->first();//mencari tarifdokterpoli
+            $invoice = Rawatjalan::selectRaw('LPAD(CONVERT((COUNT("faktur_rawatjalan") + 1) , char(13)) , 13,"0") as invoice')->first();//membuat nomer urut
+            $kunjungan = Rawatjalan::where('norm',$request->norm)->count(); //kunjungan ke berapa?
 
-        $data = new Rawatjalan();
-        $data->faktur_rawatjalan  = "RJ".$invoice->invoice;
-        $data->norm = $request->norm;
-        $data->tglmasuk = $request->tglmasuk;
-        $data->kodepoli = $request->kodepoli;
-        $data->iddokter = $request->iddokter;
-        $data->idprsh = $request->idprsh;
-        $data->kodefaskespengirim = $request->kodefaskespengirim;
+            $tarifdokter = Tarif_dokter_poli::where('kodepoli', $request->kodepoli)->where('iddokter', $request->iddokter)->first();//mencari tarifdokterpoli
 
-        $data->administrasi = $request->administrasi;
-        $data->tarifdokter = $tarifdokter->tarif;
-        $data->subtotal = $request->administrasi + $tarifdokter->tarif;
+            $data = new Rawatjalan();
+            $data->faktur_rawatjalan  = "RJ".$invoice->invoice;
+            $data->norm = $request->norm;
+            $data->tglmasuk = $request->tglmasuk;
+            $data->kodepoli = $request->kodepoli;
+            $data->iddokter = $request->iddokter;
+            $data->idprsh = $request->idprsh;
+            $data->kodefaskespengirim = $request->kodefaskespengirim;
 
-        $data->diagnosaawal = "";
-        $data->diagnosaakhir = "";
-        $data->prosedur1 = "";
-		$data->diskon = 0;
-		$data->inap = 0;  
-		$data->iduserpendaftaran = NULL;  
-		$data->iduserkasir = NULL;
-		$data->statustransaksi = "proses"; 
-		$data->kunjunganke = $kunjungan + 1;
-		$data->nosep = "";
-		$data->idklaimdokter = 0;
-		$data->idklaimadministrasi = 0;
-		$data->edukasiawal = "Tidak Disampaikan";
-		$data->edukasiawalket = "";
-		$data->edukasikepada = "Kalangan Pasien";
-		$data->hubdenganpasien = "";
-		$data->diagnosadengan = "";
+            $data->administrasi = $request->administrasi;
+            $data->tarifdokter = $tarifdokter->tarif;
+            $data->subtotal = $request->administrasi + $tarifdokter->tarif;
 
-    	$data->save();
+            $data->diagnosaawal = "";
+            $data->diagnosaakhir = "";
+            $data->prosedur1 = "";
+            $data->diskon = 0;
+            $data->inap = 0;  
+            $data->iduserpendaftaran = NULL;  
+            $data->iduserkasir = NULL;
+            $data->statustransaksi = "proses"; 
+            $data->kunjunganke = $kunjungan + 1;
+            $data->nosep = "";
+            $data->idklaimdokter = 0;
+            $data->idklaimadministrasi = 0;
+            $data->edukasiawal = "Tidak Disampaikan";
+            $data->edukasiawalket = "";
+            $data->edukasikepada = "Kalangan Pasien";
+            $data->hubdenganpasien = "";
+            $data->diagnosadengan = "";
 
-    	return redirect('/Data_Pendaftaran')->with('alert-success','Data berhasil ditambahkan!');
+            $data->save();
+
+            return redirect('/Data_Pendaftaran')->with('alert-success','Data berhasil ditambahkan!');
+        }
+         catch(\Exception $e){
+            
+            echo $e->getMessage();   // insert query
+             // do task when error
+            return redirect('/Data_Pendaftaran')->with('alert-danger','Data gagal ditambahkan!');
+            
+
+         }
     }
 
    	public function ubah($faktur_rawatjalan) {
