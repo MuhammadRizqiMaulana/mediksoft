@@ -5,7 +5,9 @@ namespace App\Http\Controllers\AksesPengguna;
 use App\Http\Controllers\Controller;
 use App\Models\Karyawan;
 use App\Models\User;
+use App\Models\User_level;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PenggunaController extends Controller
 {
@@ -14,15 +16,18 @@ class PenggunaController extends Controller
 
         $datas = User::all();
         $karyawan = Karyawan::all();
+        $user_level = User_level::all();
 
-        return view('AksesPengguna.Content.Pengguna', compact('datas', 'karyawan'));
+        return view('AksesPengguna.Content.Pengguna', compact('datas', 'karyawan', 'user_level'));
     }
     public function tambah()
     {
 
         $datas = User::all();
+        $karyawan = Karyawan::all();
+        $user_level = User_level::all();
 
-        return view('AksesPengguna.Content.Pengguna', compact('datas'));
+        return view('AksesPengguna.Content.Pengguna', compact('datas', 'karyawan', 'user_level'));
     }
     public function store(Request $request)
     {
@@ -41,9 +46,9 @@ class PenggunaController extends Controller
             'uname' => 'required|max:50',
             'nama' => 'required|max:50',
             'idkaryawan' => 'required|max:50',
-            'pwd' => 'required|max:50',
+            'pwd' => 'required|max:60',
             'idlevel' => 'required|max:50',
-            'aktif' => 'required|max:50',
+            'aktif' => 'nullable',
 
         ], $messages);
 
@@ -64,7 +69,8 @@ class PenggunaController extends Controller
         $datas = User::all();
         $ubah = User::find($iduser);
         $karyawan = Karyawan::all();
-        return view('AksesPengguna.Content.Pengguna', compact('datas', 'ubah', 'karyawan'));
+        $user_level = User_level::all();
+        return view('AksesPengguna.Content.Pengguna', compact('datas', 'ubah', 'karyawan', 'user_level'));
     }
     public function update($iduser, Request $request)
     {
@@ -82,18 +88,23 @@ class PenggunaController extends Controller
             'uname' => 'required|max:50',
             'nama' => 'required|max:50',
             'idkaryawan' => 'required|max:50',
-            'pwd' => 'required|max:50',
+            'pwd' => 'nullable|max:60',
             'idlevel' => 'required|max:50',
-            'aktif' => 'required|max:50',
+            'aktif' => 'nullable',
         ], $messages);
 
         $data = User::find($iduser);
         $data->uname = $request->uname;
         $data->nama = $request->nama;
         $data->idkaryawan = $request->idkaryawan;
-        $data->pwd = $request->pwd;
+        $data->pwd = Hash::make($request->pwd);
         $data->idlevel = $request->idlevel;
         $data->aktif = $request->aktif;
+        if ($request->pwd == null) {
+            $data->pwd = $data->pwd;
+        } else {
+            $data->pwd = $request->pwd;
+        }
         $data->save();
         return redirect('/Pengguna')->with('alert-success', 'Data berhasil diubah!');
     }

@@ -112,8 +112,8 @@
                                         </div>
                                         <div class="col-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="1" id="nonaktif"
-                                                    name="nonaktif">
+                                                <input class="form-check-input" type="checkbox" value="1" id="aktif"
+                                                    name="aktif">
                                                 <label class="form-check-label" for="nonaktif">
                                                     Aktif
                                                 </label>
@@ -145,8 +145,10 @@
                                     <label for="karyawan">Karyawan</label>
                                     <div class="row">
                                         <div class="col-10">
-                                            <input type="text" class="form-control" id="karyawan" name="karyawan"
-                                                placeholder="Karyawan">
+                                            <input type="text" class="form-control" id="idkaryawan" name="idkaryawan"
+                                                placeholder="Karyawan" hidden>
+                                            <input type="text" class="form-control" id="namakaryawan"
+                                                name="namakaryawan" placeholder="Karyawan" readonly>
                                         </div>
                                         <div class="col-2 text-right">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
@@ -165,19 +167,21 @@
                                     <label for="nama">Level Akses</label>
                                     <div class="row">
                                         <div class="col-10">
-                                            <input type="text" class="form-control" id="userlevel" name="userlevel"
-                                                placeholder="Level Akses">
+                                            <input type="text" class="form-control" id="idlevel" name="idlevel"
+                                                placeholder="Level" hidden>
+                                            <input type="text" class="form-control" id="namalevel" name="namalevel"
+                                                placeholder="Level" readonly>
                                         </div>
                                         <div class="col-2 text-right">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
-                                                data-target="#modal-userlevel">
+                                                data-target="#modal-user_level">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>
                                     </div>
-                                    @if ($errors->has('levelakses'))
+                                    @if ($errors->has('namalevel'))
                                     <span class="text-danger">
-                                        <p class="text-right">* {{ $errors->first('levelakses') }}</p>
+                                        <p class="text-right">* {{ $errors->first('namalevel') }}</p>
                                     </span>
                                     @endif
                                 </div>
@@ -222,14 +226,14 @@
                                     <label for="username">Username</label>
                                     <div class="row">
                                         <div class="col-7">
-                                            <input type="text" class="form-control" id="username" name="username"
-                                                placeholder="Username" value="{{$ubah->username}}">
+                                            <input type="text" class="form-control" id="uname" name="uname"
+                                                placeholder="Username" value="{{$ubah->uname}}">
                                         </div>
                                         <div class="col-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="1" id="nonaktif"
-                                                    name="nonaktif">
-                                                <label class="form-check-label" for="nonaktif">
+                                                <input class="form-check-input" type="checkbox" value="1" id="aktif"
+                                                    name="aktif" {{($ubah->aktif == 1)? 'checked':''}}>
+                                                <label class="form-check-label" for="aktif">
                                                     Aktif
                                                 </label>
                                             </div>
@@ -259,8 +263,11 @@
                                     <label for="karyawan">Karyawan</label>
                                     <div class="row">
                                         <div class="col-10">
-                                            <input type="text" class="form-control" id="karyawan" name="karyawan"
-                                                placeholder="Karyawan" value="{{$ubah->karyawan}}">
+                                            <input type="text" class="form-control" id="idkaryawan" name="idkaryawan"
+                                                placeholder="Karyawan" value="{{$ubah->Karyawan->idkaryawan}}" hidden>
+                                            <input type="text" class="form-control" id="namakaryawan"
+                                                name="namakaryawan" placeholder="Karyawan"
+                                                value="{{$ubah->Karyawan->nama}}" readonly>
                                         </div>
                                         <div class="col-2 text-right">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
@@ -279,12 +286,14 @@
                                     <label for="levelakses">Level Akses</label>
                                     <div class="row">
                                         <div class="col-10">
-                                            <input type="text" class="form-control" id="levelakses" name="levelakses"
-                                                placeholder="Level Akses" value="">
+                                            <input type="text" class="form-control" id="idlevel" name="idlevel"
+                                                placeholder="Level" value="{{$ubah->User_level->idlevel}}" hidden>
+                                            <input type="text" class="form-control" id="namalevel" name="namalevel"
+                                                placeholder="Level" value="{{$ubah->User_level->namalevel}}" readonly>
                                         </div>
                                         <div class="col-2 text-right">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
-                                                data-target="#modal-userlevel">
+                                                data-target="#modal-user_level">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>
@@ -295,8 +304,13 @@
                                     <label for="password">Password</label>
                                     <div class="row">
                                         <div class="col-10">
-                                            <input type="password" class="form-control" id="password" name="password"
-                                                placeholder="Password" value="{{$ubah->pwd}}">
+                                            <input type="password" class="form-control" id="password" name="pwd"
+                                                disabled="disabled" placeholder="Password">
+                                        </div>
+                                        <div class="col-3">
+                                            <input class="form-check-input" type="checkbox" value="1" id="aktif"
+                                                name="aktif" onchange="ubahpwd(this);">
+
                                         </div>
                                     </div>
                                     @if ($errors->has('pwd'))
@@ -306,11 +320,12 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="card-footer text-right">
+                                <button type="submit" class="btn btn-outline-primary"><i
+                                        class="fa fa-check"></i></button>
+                                <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i></button>
+                            </div>
                         </form>
-                        <div class="card-footer text-right">
-                            <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i></button>
-                            <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i></button>
-                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -324,5 +339,30 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
+<!-- Script Modal -->
+<script type="text/javascript">
+function karyawan($idkaryawan, $nama) {
+    document.getElementById('idkaryawan').value = $idkaryawan;
+    document.getElementById('namakaryawan').value = $nama;
+    $(".close").click();
+}
+
+function user_level($idlevel, $namalevel) {
+    document.getElementById('idlevel').value = $idlevel;
+    document.getElementById('namalevel').value = $namalevel;
+    $(".close").click();
+}
+
+function ubahpwd(elements) {
+    if ($(elements).prop("checked") == true) {
+        document.getElementById('password').disabled = false;
+    } else {
+        document.getElementById('password').disabled = true;
+    }
+}
+</script>
+
 
 @endsection

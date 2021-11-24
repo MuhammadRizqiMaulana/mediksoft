@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="col-2 text-left">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
-                                                data-target="#modal-caripasien">
+                                                data-target="#modal-rawatinap">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>
