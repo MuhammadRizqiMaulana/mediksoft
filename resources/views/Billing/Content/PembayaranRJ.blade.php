@@ -26,17 +26,14 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <div class="row d-flex justify-content-center">
-            
-               
-                <!-- /.col -->
-                
+          <div class="row d-flex justify-content-center">
+            <!-- /.col -->
+
                     <div class="col-5">
                     <!-- general form elements -->
                     <div class="card card-success card-outline" id="TambahDokter">
 
                         <div class="card-header">
-                           
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -62,14 +59,11 @@
                                     </div>
                                 </div>
                                     <div class="form-group">
-                                    
-                                      
+                       
                                       <div class="col">
                                         <label>NO. RM</label>
                                         <input type="text" name="" class="form-control" placeholder="NO. RM">
                                       </div>
-                                     
-                                   
 
                                     </div>
 
@@ -80,9 +74,7 @@
                                          <input type="text" name="" class="form-control" placeholder="Nama Pasien">
                                         
                                       </div>
-
-                                    
-                                    
+     
                                      <div class="form-group">
                                         <label>Total Tagihan</label>
                                         <input type="text" name="" class="form-control" placeholder="Total Tagihan"> 
@@ -97,9 +89,6 @@
                                          <input type="text" name="" class="form-control" placeholder="Jumlah Bayar">
                                        
                                       </div>
-                                    
-                                    
-
                                 <h3>Pembayaran</h3>
                                 <div class="form-group">
                                    
@@ -138,7 +127,6 @@
                                         <label>Nama Pembayaran</label>
                                         <input type="text" name="" class="form-control" placeholder="Pembayaran">
                                       </div>
-                                     
 
                                      <div class="form-group">
                                         <label>Ambil Deposit</label>
@@ -154,6 +142,7 @@
                                          <input type="text" name="" class="form-control" placeholder="Kembalian">
                                        
                                       </div>
+
                                     <div class="form-group">
                                     <label for="nama">Kasir</label>
                                     <div class="row">
@@ -168,10 +157,6 @@
                                       </div>
                                     </div>
                                 </div>
-
-                            </div>
-
-                             
                         </div>
 
 
