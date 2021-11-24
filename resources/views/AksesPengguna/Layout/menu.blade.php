@@ -54,14 +54,17 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/LevelPengguna')}}">
-                        <i class="fas fa-edit"></i> Level Pengguna
+                    <a class="btn btn-app" href="{{url('/Level_Pengguna')}}">
+                    <img src="{{asset('images/icon/Level_Pengguna.png')}}"><br> 
+                    Level Pengguna
                     </a>
                     <a class="btn btn-app" href="{{url('/Pengguna')}}">
-                        <i class="fas fa-edit"></i> Pengguna
+                    <img src="{{asset('images/icon/Pengguna.png')}}"><br> 
+                    Pengguna
                     </a>
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Ganti Password
+                    <a class="btn btn-app" href="{{url('/Ganti_Password')}}">
+                    <img src="{{asset('images/icon/Ganti_Password.png')}}"><br>
+                     Ganti Password
                     </a>
                 </div>
                 <!-- /.card-body -->
@@ -84,11 +87,13 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Login
+                <a class="btn btn-app" href="{{url('/Login')}}">
+                    <img src="{{asset('images/icon/Login.png')}}"><br> 
+                    Login
                     </a>
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Logout
+                    <a class="btn btn-app" href="{{url('/Logout')}}">
+                    <img src="{{asset('images/icon/Logout.png')}}"><br>
+                    Logout
                     </a>
 
                 </div>
@@ -112,8 +117,8 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Keluar
+                <a class="btn btn-app" href="{{url('/Keluar')}}">
+                    <img src="{{asset('images/icon/Keluar.png')}}"><br> Keluar
                     </a>
 
                 </div>

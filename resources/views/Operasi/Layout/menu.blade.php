@@ -18,14 +18,14 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Jenis Anestesi
+                    <a class="btn btn-app" href="{{url('/Jenis_Anestesi')}}">
+                    <img src="{{asset('images/icon/Jenis_Anestesi.png')}}"><br> Jenis Anestesi
                     </a>
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Spesialis Bedah
+                    <a class="btn btn-app" href="{{url('/Spesialis_Bedah')}}">
+                    <img src="{{asset('images/icon/Spesialis_Bedah.png')}}"><br> Spesialis Bedah
                     </a>
-                    <a class="btn btn-app" href="{{url('/GolonganOperasi')}}">
-                        <i class="fas fa-edit"></i> Golongan Operasi
+                    <a class="btn btn-app" href="{{url('/Golongan_Operasi')}}">
+                    <img src="{{asset('images/icon/Golongan_Operasi.png')}}"><br> Golongan Operasi
                     </a>
                 </div>
                 <!-- /.card-body -->
@@ -48,11 +48,11 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/DokterBedah')}}">
-                        <i class="fas fa-edit"></i> Dokter Bedah
+                    <a class="btn btn-app" href="{{url('/Dokter_Bedah')}}">
+                    <img src="{{asset('images/icon/Dokter_Bedah.png')}}"><br> Dokter Bedah
                     </a>
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Tarif Tindakan Operasi
+                    <a class="btn btn-app" href="{{url('/Tarif_Tindakan_Operasi')}}">
+                    <img src="{{asset('images/icon/Tarif_Tindakan_Operasi.png')}}"><br> Tarif Tindakan Operasi
                     </a>
                 </div>
                 <!-- /.card-body -->
@@ -75,11 +75,11 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Catat Operasi
+                    <a class="btn btn-app" href="{{url('/Catatan_Operasi')}}">
+                    <img src="{{asset('images/icon/Catatan_Operasi.png')}}"><br> Catat Operasi
                     </a>
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> Data Operasi
+                    <a class="btn btn-app" href="{{url('/Data_Operasi')}}">
+                    <img src="{{asset('images/icon/Data_Operasi.png')}}"><br> Data Operasi
                     </a>
 
                 </div>

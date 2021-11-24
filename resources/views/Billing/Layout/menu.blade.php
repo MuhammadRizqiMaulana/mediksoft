@@ -19,19 +19,19 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app" href="">
-                <i class="fas fa-edit"></i> Bayar RJ Terpisah
+              <a class="btn btn-app" href="{{url('/Bayar_RJ_Terpisah')}}">
+              <img src="{{asset('images/icon/Bayar_RJ_Terpisah.png')}}"><br> Bayar RJ Terpisah
               </a>
               <button class="btn btn-default text-center">
                 <a class="users-list-name" href="{{url('/Tagihan_RJ')}}">
                   <img src="{{asset('images/icon/tagihanrj.png')}}"><br>
                   Tagihan RJ</a>
               </button>
-              <a class="btn btn-app" href="{{url('/PembayaranRJ')}}">
-                <i class="fas fa-edit"></i> Pembayaran RJ
+              <a class="btn btn-app" href="{{url('/Pembayaran_RJ')}}">
+              <img src="{{asset('images/icon/Pembayaran_RJ.png')}}"><br> Pembayaran RJ
               </a>
-              <a class="btn btn-app" href="">
-                <i class="fas fa-edit"></i> Data Pembayaran RJ
+              <a class="btn btn-app" href="{{url('/Data_Pembayaran_RJ')}}">
+              <img src="{{asset('images/icon/Data_Pembayaran_RJ.png')}}"><br> Data Pembayaran RJ
               </a>
             </div>
             <!-- /.card-body -->
@@ -55,14 +55,14 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Rekening RI
+              <a class="btn btn-app" href="{{url('/Rekening_RI')}}">
+              <img src="{{asset('images/icon/Rekening_RI.png')}}"><br> Rekening RI
               </a>
-              <a class="btn btn-app" href="">
-                <i class="fas fa-edit"></i> Data Rekening RI
+              <a class="btn btn-app" href="{{url('/Data_Rekening_RI')}}">
+              <img src="{{asset('images/icon/Data_Rekening_RI.png')}}"><br> Data Rekening RI
               </a>
-              <a class="btn btn-app" href="">
-                <i class="fas fa-edit"></i> Pembayaran RI
+              <a class="btn btn-app" href="{{url('/Pembayaran_RI')}}">
+              <img src="{{asset('images/icon/Pembayaran_RI.png')}}"><br> Pembayaran RI
               </a>
             </div>
             <!-- /.card-body -->
@@ -86,11 +86,11 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Deposit
+              <a class="btn btn-app" href="{{url('/Deposit')}}">
+              <img src="{{asset('images/icon/Deposit.png')}}"><br> Deposit
               </a>
-              <a class="btn btn-app" href="">
-                <i class="fas fa-edit"></i> Data Deposit
+              <a class="btn btn-app" href="{{url('/Data_Deposit')}}">
+              <img src="{{asset('images/icon/Data_Deposit.png')}}"><br> Data Deposit
               </a>          
             </div>
             <!-- /.card-body -->
@@ -114,11 +114,11 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> Kas Harian
+              <a class="btn btn-app" href="{{url('/Kas_Harian')}}"> 
+              <img src="{{asset('images/icon/Kas_Harian.png')}}"><br> Kas Harian
               </a>
-              <a class="btn btn-app" href="">
-                <i class="fas fa-edit"></i> ganti Shift
+              <a class="btn btn-app" href="{{url('/Ganti_Shift')}}">
+              <img src="{{asset('images/icon/Ganti_Shift.png')}}"><br> ganti Shift
               </a>
             </div>
             <!-- /.card-body -->

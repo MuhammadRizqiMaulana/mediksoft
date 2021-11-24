@@ -20,13 +20,13 @@
             <!-- /.card-header -->
             <div class="card-body">
               <a class="btn btn-app" href="{{url('/Data_Pendaftaran')}}">
-                <i class="fas fa-edit"></i> Data Pendaftaran
+              <img src="{{asset('images/icon/Data_Pendaftaran.png')}}"><br> Data Pendaftaran
               </a>
-              <a class="btn btn-app" href="{{url('/Update_Data_Pendaftaran_Pasien_Online')}}">
-                <i class="fas fa-edit"></i> Update Pendaftaran Online
+              <a class="btn btn-app" href="{{url('/Update_Pendaftaran_Online')}}">
+              <img src="{{asset('images/icon/Update_Pendaftaran_Online.png')}}"><br> Update Pendaftaran Online
               </a>
-              <a class="btn btn-app" href="{{url('/Pendaftaran_Rawat_Inap')}}">
-                <i class="fas fa-edit"></i> Transfer RI
+              <a class="btn btn-app" href="{{url('/Transfer_RI')}}">
+              <img src="{{asset('images/icon/Transfer_RI.png')}}"><br> Transfer RI
               </a>
             </div>
             <!-- /.card-body -->
@@ -50,11 +50,11 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app">
-                <i class="fas fa-edit"></i> RM Rawat Jalan
+              <a class="btn btn-app" href="{{url('/RM_Rawat_Jalan')}}">
+              <img src="{{asset('images/icon/RM_Rawat_Jalan.png')}}"><br> RM Rawat Jalan
               </a>
-              <a class="btn btn-app" href="{{url('/Pelayanan_Rawat_Jalan')}}">
-                <i class="fas fa-edit"></i> Pelayanan Poli
+              <a class="btn btn-app" href="{{url('/Pelayanan_Poli')}}">
+              <img src="{{asset('images/icon/Pelayanan_Poli.png')}}"><br> Pelayanan Poli
               </a>
               
             </div>
@@ -79,8 +79,8 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app" href="{{url('/KamarKosong')}}">
-                <i class="fas fa-edit"></i> Kamar Kosong
+              <a class="btn btn-app" href="{{url('/Kamar_Kosong')}}">
+              <img src="{{asset('images/icon/Kamar_Kosong.png')}}"><br> Kamar Kosong
               </a>
               
             </div>
@@ -105,8 +105,8 @@
           
             <!-- /.card-header -->
             <div class="card-body">
-              <a class="btn btn-app" href="{{url('/PenggunaanObat')}}">
-                <i class="fas fa-edit"></i> Penggunaan Obat
+              <a class="btn btn-app" href="{{url('/Penggunaan_Obat')}}">
+              <img src="{{asset('images/icon/Penggunaan_Obat.png')}}"><br> Penggunaan Obat
               </a>
               
             </div>
