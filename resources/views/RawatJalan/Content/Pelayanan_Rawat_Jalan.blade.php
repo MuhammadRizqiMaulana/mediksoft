@@ -59,12 +59,7 @@
                     <label>Tanggal Masuk</label>
                   </div>
                   <div class="col-8">
-                    <div class="input-group date" name="tglpelayanan" id="tglpelayanan" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#tglpelayanan" value="@isset($datas) {{$datas->tglmasuk}} @endisset" disabled/>
-                      <div class="input-group-append" data-target="#tglpelayanan" data-toggle="datetimepicker">
-                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                    </div>
+                    <input type="text" class="form-control" id="tglmasuk" name="tglmasuk" placeholder="Tanggal Masuk" value="@isset($datas) {{$datas->tglmasuk}} @endisset" readonly>
                   </div>
                 </div>
                 <div class="row">
@@ -103,12 +98,12 @@
                     <label>Tgl Pelayanan</label>
                   </div>
                   <div class="col-8">
-                    <div class="input-group date" name="tglpelayanan" id="reservationdatetime" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime" value="{{ date('d/m/Y H.i') }}" disabled/>
-                      <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
-                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                    </div>
+                    <input type="text" class="form-control" id="tglpelayanan" name="tglpelayanan" placeholder="Tanggal Pelayanan" value="{{ date('Y-m-d H:i:s') }}" readonly>
+                  </div>
+                  <div class="col-1 text-right">
+                    <button type="button" onclick="tglpelayanan();" class="btn btn-outline-info">
+                        <i class="fas fa-calendar"></i>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -319,6 +314,44 @@
 
 
   <script type="text/javascript">
+    function tanggalsekarang() {
+      var d = new Date();
+
+      var month = d.getMonth()+1;
+      var day = d.getDate();
+      var hour = d.getHours();
+      var minute = d.getMinutes();
+      var second = d.getSeconds();
+
+      var output = d.getFullYear() + '-' +
+          (month<10 ? '0' : '') + month + '-' +
+          (day<10 ? '0' : '') + day + ' ' +
+          (hour<10 ? '0' : '') + hour + ':' +
+          (minute<10 ? '0' : '') + minute + ':' +
+          (second<10 ? '0' : '') + second;
+
+      document.getElementById("tglmasuk").value = output;
+    }
+
+    function tglpelayanan() {
+      var d = new Date();
+
+      var month = d.getMonth()+1;
+      var day = d.getDate();
+      var hour = d.getHours();
+      var minute = d.getMinutes();
+      var second = d.getSeconds();
+
+      var output = d.getFullYear() + '-' +
+          (month<10 ? '0' : '') + month + '-' +
+          (day<10 ? '0' : '') + day + ' ' +
+          (hour<10 ? '0' : '') + hour + ':' +
+          (minute<10 ? '0' : '') + minute + ':' +
+          (second<10 ? '0' : '') + second;
+
+      document.getElementById("tglpelayanan").value = output;
+    }
+
     function rawatjalan($faktur_rawatjalan) {
       document.getElementById("faktur_rawatjalan").value = $faktur_rawatjalan;
       $(".close").click();
