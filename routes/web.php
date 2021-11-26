@@ -363,7 +363,11 @@ Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJControlle
 Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
 Route::get('/RekeningRI', [RekeningRIController::class, 'index']);
 Route::get('/Deposit', [Data_DepositController::class, 'tambah']);
+Route::get('/Deposit/selecttambah{norm}', [Data_DepositController::class, 'selecttambah']);
+Route::get('/Deposit/lihatdetail{notrans}', [Data_DepositController::class, 'lihatdetail']);
 Route::get('/Data_Deposit', [Data_DepositController::class, 'index']);
+Route::post('/Data_Deposit/store', [Data_DepositController::class, 'store']);
+
 /* ----- Billing -----*/
 
 /* ----- Laporan -----*/

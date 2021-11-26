@@ -22,6 +22,15 @@
           {{Session::get('alert-success')}}
       </div>
     @endif
+    @if(\Session::has('alert-danger'))
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h6><i class="fas fa-sign-out-alt"></i><b> Gagal!!</b></h6>
+          {{Session::get('alert-danger')}}
+      </div>
+    @endif
     
 
     <!-- Main content -->
@@ -68,7 +77,7 @@
 
                 <div class="form-group">
                   <div class="row">
-                    <div class="col"><a class="btn btn-block btn-outline-success btn-sm" href="{{url('/Data_Deposit/tambah/#TambahDeposit')}}"><i class="fa fa-plus-circle"></i> Tambah</a></div>
+                    <div class="col"><a class="btn btn-block btn-outline-success btn-sm" href="{{url('/Deposit')}}"><i class="fa fa-plus-circle"></i> Tambah</a></div>
                     <div class="col">
                       <a href="javascript:alert('Silahkan pilih baris terlebih dahulu!');" id="tombollihatdetail" class="btn btn-block btn-outline-info btn-sm">
                         <i class="fas fa-clipboard-list"></i> Lihat Detail
@@ -187,7 +196,7 @@
 
 <script>
   function tombol($notrans){
-    $("a#tombollihatdetail").attr("href", "/Data_Deposit/lihatdetail"+ $notrans);
+    $("a#tombollihatdetail").attr("href", "/Deposit/lihatdetail"+ $notrans);
   }
 </script>
 @endsection
