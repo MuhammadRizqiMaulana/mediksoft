@@ -48,17 +48,17 @@
                     <div class="card-body">
                         
                       <!-- form start -->
-                        <div class="form-group row">
-                          <label for="tanggal" class="col-sm-4 col-form-label text-right">Tanggal</label>
-                          <div class="col-sm-8">
-                            <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                              <input type="text" name="tanggal" class="form-control datetimepicker-input" data-target="#reservationdatetime" value="{{ date('d/m/Y H.i') }}"/>
-                              <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
-                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                              </div>
-                            </div>
-                          </div>
+                      <div class="form-group row">
+                        <label for="norm" class="col-sm-4 col-form-label text-right">Tanggal</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" id="tanggal" name="tanggal" placeholder="Tanggal Masuk" value="{{ date('Y-m-d H:i:s') }}">
                         </div>
+                        <div class="col-sm-1">
+                          <button type="button" onclick="tanggalsekarang();" class="btn btn-outline-info" readonly>
+                            <i class="fas fa-sync"></i>
+                          </button>
+                        </div>
+                      </div>
                         <div class="form-group row">
                           <label for="norm" class="col-sm-4 col-form-label text-right">No. RM</label>
                           <div class="col-sm-6">
@@ -177,7 +177,7 @@
                               <tr>
                                 <td>{{$norj++}}</td>
                                 <td><input type="checkbox" name="chekbiaya[]" value="{{$biaya}}" data-valuetwo="{{$item->faktur_rawatjalan}}" checked onclick="hitungsubtotalbiaya('chekbiaya[]');" onchange="checkfaktur(this,'faktur_rawatjalan{{$urutanrjb}}');"></td>
-                                <td><input type="checkbox" id="faktur_rawatjalan{{$urutanrjb}}" name="faktur_rawatjalan[]" value="{{$item->faktur_rawatjalan}}" checked></td>
+                                <td><input type="checkbox" id="faktur_rawatjalan{{$urutanrjb}}" name="faktur_rawatjalan[]" value="{{$item->faktur_rawatjalan}}" checked hidden>{{$item->faktur_rawatjalan}}</td>
                                 <td>{{$item->tglmasuk}}</td>
                                 <td>{{$item->Poliklinik->nama}}</td>
                                 <td>{{$item->Dokter->nama}}</td>
@@ -369,6 +369,25 @@
     $(document).ready(function() {
       hitungsubtotalbiaya('chekbiaya[]');
     });
+
+    function tanggalsekarang() {
+      var d = new Date();
+
+      var month = d.getMonth()+1;
+      var day = d.getDate();
+      var hour = d.getHours();
+      var minute = d.getMinutes();
+      var second = d.getSeconds();
+
+      var output = d.getFullYear() + '-' +
+          (month<10 ? '0' : '') + month + '-' +
+          (day<10 ? '0' : '') + day + ' ' +
+          (hour<10 ? '0' : '') + hour + ':' +
+          (minute<10 ? '0' : '') + minute + ':' +
+          (second<10 ? '0' : '') + second;
+
+      document.getElementById("tanggal").value = output;
+    }
 
     function pasien($norm, $namapasien) {
         document.getElementById("norm").value = $norm;
