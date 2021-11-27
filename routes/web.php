@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 /* ----- AksesPengguna -----*/
 use App\Http\Controllers\AksesPengguna\PenggunaController;
 use App\Http\Controllers\AksesPengguna\ProgramController;
+use App\Http\Controllers\AksesPengguna\LevelPenggunaController;
 /* ----- AksesPengguna -----*/
 
 /* ----- Setup -----*/
@@ -26,6 +27,7 @@ use App\Http\Controllers\Setup\DokterKonsultasiController;
 use App\Http\Controllers\Setup\DokterVisitController;
 use App\Http\Controllers\Setup\TindakanInapController;
 use App\Http\Controllers\Setup\TindakanPoliController;
+use App\Http\Controllers\Setup\AdministrasiController;
 
 
 /* ----- Setup -----* /
@@ -99,6 +101,8 @@ Route::get('/AksesPengguna', function () {
 });
 
 Route::get('/Program', [ProgramController::class, 'index']);
+
+Route::get('/LevelPengguna', [LevelPenggunaController::class, 'index']);
 
 Route::get('/Pengguna', [PenggunaController::class, 'index']);
 Route::post('/Pengguna/store', [PenggunaController::class, 'store']);
@@ -221,6 +225,12 @@ Route::post('/TindakanPoli/store', [TindakanPoliController::class, 'store']);
 Route::get('/TindakanPoli/ubah{idtindakan}', [TindakanPoliController::class, 'ubah']);
 Route::post('/TindakanPoli/update{idtindakan}', [TindakanPoliController::class, 'update']);
 Route::get('/TindakanPoli/hapus{idtindakan}', [TindakanPoliController::class, 'hapus']);
+
+Route::get('/Administrasi', [AdministrasiController::class, 'index']);
+Route::post('/Administrasi/store', [AdministrasiController::class, 'store']);
+Route::get('/Administrasi/ubah{idadm}', [AdministrasiController::class, 'ubah']);
+Route::post('/Administrasi/update{idadm}', [AdministrasiController::class, 'update']);
+Route::get('/Administrasi/hapus{idadm}', [AdministrasiController::class, 'hapus']);
 
 /* ----- Setup -----*/
 
@@ -352,6 +362,7 @@ Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'select
 Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
 Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
 Route::get('/RekeningRI', [RekeningRIController::class, 'index']);
+Route::get('/Deposit', [Data_DepositController::class, 'tambah']);
 Route::get('/Data_Deposit', [Data_DepositController::class, 'index']);
 /* ----- Billing -----*/
 
@@ -382,3 +393,6 @@ Route::get('/Panduan', function () {
 });
 
 /* ----- Panduan -----*/
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

@@ -19,12 +19,12 @@
             <!-- /.card-header -->
             <div class="card-body">
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/program.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Data_Jurnal')}}">
+                  <img src="{{asset('images/icon/Data_Jurnal.png')}}"><br>
                   Data Jurnal</a>
               </button>
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
+                <a class="users-list-name" href="{{url('/Jurnal_Setting')}}">
                   <img src="{{asset('images/icon/program.png')}}"><br>
                   Jurnal Setting</a>
               </button>
@@ -50,8 +50,8 @@
             <!-- /.card-header -->
             <div class="card-body">
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/database.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Akuntansi_')}}">
+                  <img src="{{asset('images/icon/Akuntansi_.png')}}"><br>
                   Akuntansi</a>
               </button>
             </div>

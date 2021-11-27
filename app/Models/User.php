@@ -12,11 +12,25 @@ class User extends Model
     public $timestamps = false;
     protected $table        = 'user'; // nama tabel 
     protected $primaryKey   = 'iduser'; // primary key tabel 
-    protected $fillable     = ['uname', 
-    							'nama',
-                                'idkaryawan',
-                                'pwd',
-                                'idlevel',
-                                'aktif',
-                                'tgledit']; //field tabel
+    protected $fillable     = [
+        'uname',
+        'nama',
+        'idkaryawan',
+        'pwd',
+        'idlevel',
+        'aktif',
+        'tgledit'
+    ]; //field tabel
+
+    public function Karyawan()
+    { //Jabatan dimiliki oleh karyawan
+        return $this->belongsTo(Karyawan::class, 'idkaryawan');
+        //nama_modelTabelrelasinya,foreignkey di tabel Karyawan
+    }
+
+    public function User_level()
+    { //Jabatan dimiliki oleh karyawan
+        return $this->belongsTo(User_level::class, 'idlevel');
+        //nama_modelTabelrelasinya,foreignkey di tabel Karyawan
+    }
 }

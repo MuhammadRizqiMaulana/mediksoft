@@ -66,22 +66,26 @@
                 </form>
                 <hr>
 
-                <div class="row">
-                  <div class="col"><a class="btn btn-block btn-outline-success btn-sm" href="{{url('/Data_Deposit/tambah/#TambahDeposit')}}"><i class="fa fa-plus-circle"></i> Tambah</a></div>
-                  <div class="col">
-                    <a href="javascript:alert('Silahkan pilih baris terlebih dahulu!');" id="tombollihatdetail" class="btn btn-block btn-outline-info btn-sm">
-                      <i class="fas fa-clipboard-list"></i> Lihat Detail
-                    </a> 
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col"><a class="btn btn-block btn-outline-success btn-sm" href="{{url('/Data_Deposit/tambah/#TambahDeposit')}}"><i class="fa fa-plus-circle"></i> Tambah</a></div>
+                    <div class="col">
+                      <a href="javascript:alert('Silahkan pilih baris terlebih dahulu!');" id="tombollihatdetail" class="btn btn-block btn-outline-info btn-sm">
+                        <i class="fas fa-clipboard-list"></i> Lihat Detail
+                      </a> 
+                    </div>
                   </div>
                 </div>
-                <br>
-                <div class="row">
-                  <div class="col">
-                    <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#modal-datasaldodepositpasien">
-                      <i class="fa fa-search"></i> Lihat Saldo pasien
-                    </button>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col">
+                      <button type="button" class="btn btn-outline-info btn-block btn-sm" data-toggle="modal" data-target="#modal-datasaldodepositpasien">
+                        <i class="fas fa-clipboard-list"></i> Lihat Saldo pasien
+                      </button>
+                    </div>
                   </div>
                 </div>
+                
               </div>
               <!-- /.card-body -->              
             </div>
@@ -184,7 +188,6 @@
 <script>
   function tombol($notrans){
     $("a#tombollihatdetail").attr("href", "/Data_Deposit/lihatdetail"+ $notrans);
-    $("a#tombollihatsaldo").attr("href", "/Data_Deposit/lihatsaldo"+ $notrans);
   }
 </script>
 @endsection

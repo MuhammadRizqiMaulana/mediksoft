@@ -243,8 +243,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             "lengthChange": false,
             "autoWidth": false,
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
+        
         $('#table_modal_datasaldodepositpasien').DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        $('#table_modal_user_level').DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        $('#table_modal_rawatinap').DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,

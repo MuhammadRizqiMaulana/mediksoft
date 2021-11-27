@@ -19,14 +19,14 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/Pendaftaran_Rawat_Jalan')}}">
-                        <i class="fas fa-edit"></i> Pendaftaran
+                    <a class="btn btn-app" href="{{url('/Pendaftaran')}}">
+                    <img src="{{asset('images/icon/Pendaftaran.png')}}"><br> Pendaftaran
                     </a>
                     <a class="btn btn-app" href="{{url('/Pasien')}}">
-                        <i class="fas fa-edit"></i> Pasien
+                    <img src="{{asset('images/icon/Pasien.png')}}"><br> Pasien
                     </a>
                     <a class="btn btn-app" href="{{url('/Keanggotaan')}}">
-                        <i class="fas fa-edit"></i> Keanggotaan
+                    <img src="{{asset('images/icon/Keanggotaan.png')}}"><br> Keanggotaan
                     </a>
                 </div>
                 <!-- /.card-body -->
@@ -50,14 +50,14 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app">
-                        <i class="fas fa-edit"></i> RM Rawat Jalan
+                    <a class="btn btn-app" href="{{url('/RM_Rawat_Jalan')}}">
+                    <img src="{{asset('images/icon/RM_Rawat_Jalan.png')}}"><br> RM Rawat Jalan
                     </a>
-                    <a class="btn btn-app" href="{{url('/RM_RawatInap')}}">
-                        <i class="fas fa-edit"></i> RM Rawat Inap
+                    <a class="btn btn-app" href="{{url('/RM_Rawat_Inap')}}">
+                    <img src="{{asset('images/icon/RM_Rawat_Inap.png')}}"><br> RM Rawat Inap
                     </a>
-                    <a class="btn btn-app" href="{{url('/KamarKosong')}}">
-                        <i class="fas fa-edit"></i> Kamar Kosong
+                    <a class="btn btn-app" href="{{url('/Kamar_Kosong')}}">
+                    <img src="{{asset('images/icon/Kamar_Kosong.png')}}"><br> Kamar Kosong
                     </a>
                 </div>
                 <!-- /.card-body -->

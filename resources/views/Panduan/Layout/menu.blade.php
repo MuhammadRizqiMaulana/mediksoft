@@ -19,8 +19,8 @@
             <!-- /.card-header -->
             <div class="card-body">
               <button class="btn btn-default text-center">
-                <a class="users-list-name" href="">
-                  <img src="{{asset('images/icon/program.png')}}"><br>
+                <a class="users-list-name" href="{{url('/Panduan_Program')}}">
+                  <img src="{{asset('images/icon/Panduan_Program.png')}}"><br>
                   Panduan Program</a>
               </button>
             </div>

@@ -1175,8 +1175,8 @@
 <!-- Modal Tabel Data Kategori Transaksi -->
 
 <!-- Modal Tabel User Level -->
-@isset($userlevel)
-<div class="modal fade" id="modal-userlevel">
+@isset($user_level)
+<div class="modal fade" id="modal-user_level">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -1186,11 +1186,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table id="table_modal_userlevel" class="table table-bordered table-hover">
+                <table id="table_modal_user_level" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
+                            <th>Nama Level</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -1198,14 +1198,76 @@
                         @php
                         $no = 1;
                         @endphp
-                        @foreach ($userlevel as $item)
-                        <tr onclick="userlevel('{{$item->idlevel}}', '{{$item->nama}}');">
+                        @foreach ($user_level as $item)
+                        <tr onclick="user_level('{{$item->idlevel}}', '{{$item->namalevel}}');">
                             <td>{{$no++}}</td>
-                            <td>{{$item->nama}}</td>
+                            <td>{{$item->namalevel}}</td>
                             <td>
                                 <button class="btn btn-outline-info btn-sm"
-                                    onclick="userlevel('{{$item->idlevel}}', '{{$item->nama}}');"><i
+                                    onclick="user_level('{{$item->idlevel}}', '{{$item->namalevel}}');"><i
                                         class="fa fa-check"></i> Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel User Level -->
+
+<!-- Modal Tabel User Level -->
+@isset($rawatinap)
+<div class="modal fade" id="modal-rawatinap">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data Rawat Inap</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_rawatinap" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>No. Rawat Inap</th>
+                            <th>No RM</th>
+                            <th>Nama Pasien</th>
+                            <th>Kamar</th>
+                            <th>Kelas</th>
+                            <th>Ruang</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Perusahaan</th>
+                            <th>Alamat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $no = 1;
+                        @endphp
+                        @foreach ($rawatinap as $item)
+                        <tr onclick="rawatinap('{{$item->faktur_rawatinap}}');">
+                            <td>{{$no++}}</td>
+                            <td>{{$item->faktur_rawatinap}}</td>
+                            <td>{{$item->norm}}</td>
+                            <td>{{$item->Pasien->namapasien}}</td>
+                            <td>{{$item->Kamar->kodekamar}}</td>
+                            <td>{{$item->Kelas}}</td>
+                            <td>{{$item->Ruang}}</td>
+                            <td>{{$item->Pasien->jeniskelamin}}</td>
+                            <td>{{$item->Perusahaan->namaprsh}}</td>
+                            <td>{{$item->Pasien->alamat}}</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="rawatinap('{{$item->faktur_rawatinap}}');"><i class="fa fa-check"></i>
+                                    Pilih</button>
                             </td>
                         </tr>
                         @endforeach

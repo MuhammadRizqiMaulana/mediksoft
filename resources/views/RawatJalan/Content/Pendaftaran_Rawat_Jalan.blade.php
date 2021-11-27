@@ -46,11 +46,11 @@
                                     <label for="kelas">Tanggal Masuk</label>
                                     <div class="row">
                                         <div class="col-10">
-                                            <input type="datetime" class="form-control" id="tglmasuk" name="tglmasuk"
-                                                placeholder="Tanggal Masuk" value="{{$now}}">
+                                            <input type="text" class="form-control" id="tglmasuk" name="tglmasuk"
+                                                placeholder="Tanggal Masuk" value="{{ date('Y-m-d H:i:s') }}">
                                         </div>
                                         <div class="col-2 text-right">
-                                            <button type="button" class="btn btn-outline-info">
+                                            <button type="button" onclick="tanggalsekarang();" class="btn btn-outline-info">
                                                 <i class="fas fa-calendar"></i>
                                             </button>
                                         </div>
@@ -225,7 +225,7 @@
                                                 placeholder="Tanggal Masuk" value="{{$ubah->tglmasuk}}">
                                         </div>
                                         <div class="col-2 text-right">
-                                            <button type="button" class="btn btn-outline-info">
+                                            <button type="button" onclick="tanggalsekarang();" class="btn btn-outline-info">
                                                 <i class="fas fa-calendar"></i>
                                             </button>
                                         </div>
@@ -359,7 +359,7 @@
                                         <div class="col-6">
                                             <input type="number" class="form-control" id="administrasi"
                                                 name="administrasi" min="0" placeholder="Administrasi"
-                                                value="{{$ubah->administrasi}}">
+                                                value="@rupiah($ubah->administrasi)">
                                             @if ($errors->has('administrasi'))
                                             <span class="text-danger">
                                                 <p class="text-right">* {{ $errors->first('administrasi') }}</p>
@@ -576,6 +576,25 @@
 
 <!-- Script Modal -->
 <script type="text/javascript">
+    function tanggalsekarang() {
+      var d = new Date();
+
+      var month = d.getMonth()+1;
+      var day = d.getDate();
+      var hour = d.getHours();
+      var minute = d.getMinutes();
+      var second = d.getSeconds();
+
+      var output = d.getFullYear() + '-' +
+          (month<10 ? '0' : '') + month + '-' +
+          (day<10 ? '0' : '') + day + ' ' +
+          (hour<10 ? '0' : '') + hour + ':' +
+          (minute<10 ? '0' : '') + minute + ':' +
+          (second<10 ? '0' : '') + second;
+
+      document.getElementById("tglmasuk").value = output;
+    }
+
 function pasien($norm, $namapasien) {
     document.getElementById("norm").value = $norm;
     document.getElementById("namapasien").value = $namapasien;

@@ -113,11 +113,10 @@
                                     </span>
                                     @endif
                                 </div>
-
                                 <div class="form-group">
                                     <label for="jenisrawat">Jenis Rawat</label>
                                     <select class="form-control" name="jenisrawat">
-                                        <option value="">-Pilih Jenis Dokter-</option>
+                                        <option value="">-Pilih Jenis Rawat-</option>
                                         <option value="Rawat Jalan">Rawat Jalan</option>
                                         <option value="Rawat Inap">Rawat Inap</option>
                                     </select>
