@@ -208,7 +208,7 @@
                             <div class="col-4">
                                 <h6>Biaya Administrasi</h6>
                                 <input type="text" class="form-control" name="administrasi"
-                                    placeholder="Biaya Administrasi" value="50000">
+                                    placeholder="Biaya Administrasi" value="{{$adm->tarif}}">
                             </div>
                         </div>
 

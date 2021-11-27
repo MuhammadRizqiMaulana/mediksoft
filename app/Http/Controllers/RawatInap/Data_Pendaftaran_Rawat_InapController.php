@@ -18,19 +18,21 @@ use App\Models\Macamrawat;
 use App\Models\Jenismasuk;
 use App\Models\Kamar_terisi;
 use App\Models\Kamarkosong_temp;
-
+use App\Models\Adm;
 use Carbon\Carbon;
 
 class Data_Pendaftaran_Rawat_InapController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $datas = Rawatinap::all();
-           
-        return view('RawatInap.Content.Data_Pendaftaran_Rawat_Inap',compact('datas'));
+
+        return view('RawatInap.Content.Data_Pendaftaran_Rawat_Inap', compact('datas'));
     }
 
-    public function tambah(){
+    public function tambah()
+    {
 
         $rawatjalan = Rawatjalan::all();
         $kamar = Kamar::all();
@@ -40,11 +42,15 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
         //$icd10 = Icd10::all();
         $macamrawat = Macamrawat::all();
         $jenismasuk = Jenismasuk::all();
-           
-        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('rawatjalan','kamar','dokter','perusahaan','pasien','macamrawat','jenismasuk'));
+        $adm = Adm::where('jenisrawat', 'rawat inap')
+            ->where('jenispoli', 'rawat inap')
+            ->first();
+
+        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('rawatjalan', 'kamar', 'dokter', 'perusahaan', 'pasien', 'macamrawat', 'jenismasuk', 'adm'));
     }
 
-    public function store( Request $request) {
+    public function store(Request $request)
+    {
 
         $messages = [
             'required' => ':attribute masih kosong',
@@ -57,7 +63,7 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
             'between' => ':attribute diisi antara 0 sampai XXXXXXXX.XXXX digit',
         ];
 
-    	$this->validate($request, [
+        $this->validate($request, [
             'faktur_rawatjalan' => 'required|max:15',
             'norm' => 'required|max:10',
             'kodekamar' => 'required|max:10',
@@ -73,15 +79,15 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
             'telp_pj' => 'required|max:12',
             'administrasi' => 'required|numeric|between:0.0000,99999999.9999|min:0',
 
-    	], $messages);
+        ], $messages);
 
-        try{
+        try {
 
             $invoice = Rawatinap::selectRaw('LPAD(CONVERT((COUNT("faktur_rawatinap") + 1) , char(13)) , 13,"0") as invoice')->first();
-            $kunjungan = Rawatinap::where('norm',$request->norm)->count();
+            $kunjungan = Rawatinap::where('norm', $request->norm)->count();
 
             $data = new Rawatinap();
-            $data->faktur_rawatinap  = "RI".$invoice->invoice;
+            $data->faktur_rawatinap  = "RI" . $invoice->invoice;
             $data->faktur_rawatjalan = $request->faktur_rawatjalan;
             $data->norm = $request->norm;
             $data->kodekamar = $request->kodekamar;
@@ -103,7 +109,7 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
             $data->diagnosaakhir = "";
             $data->prosedur1 = "";
             $data->penyebab_luar = "";
-            $data->iduserpendaftaran = NULL;  
+            $data->iduserpendaftaran = NULL;
             $data->iduserkasir = NULL;
             $data->imunitas = "";
             $data->statuspulang = NULL;
@@ -134,7 +140,7 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
             //kamar_terisi
             $kamarterisi = new Kamar_terisi();
             $kamarterisi->kodekamar = $request->kodekamar;
-            $kamarterisi->faktur_rawatinap = "RI".$invoice->invoice;
+            $kamarterisi->faktur_rawatinap = "RI" . $invoice->invoice;
             $kamarterisi->tglmasukkamar = $request->tglmasuk;
             $kamarterisi->save();
 
@@ -144,19 +150,17 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
             $kamarkosong->save();
 
 
-            return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-success','Data berhasil ditambahkan!');
-        }
-         catch(\Exception $e){
-            
-            echo $e->getMessage();   // insert query
-             // do task when error
-            return redirect('/Data_Pendaftaran_Rawat_Inap/tambah')->with('alert-danger', $e);
-            
+            return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-success', 'Data berhasil ditambahkan!');
+        } catch (\Exception $e) {
 
+            echo $e->getMessage();   // insert query
+            // do task when error
+            return redirect('/Data_Pendaftaran_Rawat_Inap/tambah')->with('alert-danger', $e);
         }
     }
 
-    public function ubah($faktur_rawatinap){
+    public function ubah($faktur_rawatinap)
+    {
 
         $ubah = Rawatinap::find($faktur_rawatinap);
         $kamar = Kamar::all();
@@ -166,36 +170,36 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
         //$icd10 = Icd10::all();
         $macamrawat = Macamrawat::all();
         $jenismasuk = Jenismasuk::all();
-           
-        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('ubah','kamar','dokter','perusahaan','pasien','macamrawat','jenismasuk'));
+
+        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('ubah', 'kamar', 'dokter', 'perusahaan', 'pasien', 'macamrawat', 'jenismasuk'));
     }
 
-    public function hapus($faktur_rawatinap) {
-        try{
-            
-            $datas = Rawatinap::find($faktur_rawatinap);//mencari data rawatinap
+    public function hapus($faktur_rawatinap)
+    {
+        try {
+
+            $datas = Rawatinap::find($faktur_rawatinap); //mencari data rawatinap
             $kodekamar = $datas->kodekamar;
-            
+
             $kamarkosong = Kamarkosong_temp::where('keterangan', $kodekamar)->first();
-            $kamarkosong->sisakamar = $kamarkosong->sisakamar + 1;//menambahkan kembali kamar kosong
+            $kamarkosong->sisakamar = $kamarkosong->sisakamar + 1; //menambahkan kembali kamar kosong
             $kamarkosong->save();
-            
+
             //kamar_terisi
             $kamarterisi = Kamar_terisi::where('faktur_rawatinap', $faktur_rawatinap)->first();
             $kamarterisi->delete();
 
-            $datas->delete();//hapus rawatinap
+            $datas->delete(); //hapus rawatinap
 
-            return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-success','Data berhasil dihapus!');
-
-        }catch(\Exception $e){
+            return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-success', 'Data berhasil dihapus!');
+        } catch (\Exception $e) {
 
             return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-danger', $e);
         }
-    	
     }
 
-    public function detaildiagnosa($faktur_rawatinap){
+    public function detaildiagnosa($faktur_rawatinap)
+    {
 
         $lihat = Rawatinap::find($faktur_rawatinap);
         $kamar = Kamar::all();
@@ -205,11 +209,12 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
         //$icd10 = Icd10::all();
         $macamrawat = Macamrawat::all();
         $jenismasuk = Jenismasuk::all();
-           
-        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('lihat','kamar','dokter','perusahaan','pasien','macamrawat','jenismasuk'));
+
+        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('lihat', 'kamar', 'dokter', 'perusahaan', 'pasien', 'macamrawat', 'jenismasuk'));
     }
 
-    public function detailpendaftaran($faktur_rawatinap){
+    public function detailpendaftaran($faktur_rawatinap)
+    {
 
         $lihat = Rawatinap::find($faktur_rawatinap);
         $kamar = Kamar::all();
@@ -219,7 +224,7 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
         //$icd10 = Icd10::all();
         $macamrawat = Macamrawat::all();
         $jenismasuk = Jenismasuk::all();
-           
-        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('lihat','kamar','dokter','perusahaan','pasien','macamrawat','jenismasuk'));
+
+        return view('RawatInap.Content.Pendaftaran_Rawat_Inap', compact('lihat', 'kamar', 'dokter', 'perusahaan', 'pasien', 'macamrawat', 'jenismasuk'));
     }
 }
