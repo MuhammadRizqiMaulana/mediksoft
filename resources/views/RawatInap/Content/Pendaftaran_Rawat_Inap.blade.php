@@ -74,18 +74,13 @@
                                     placeholder="Nama Pasien" readonly>
                             </div>
                             <div class="col-4">
-                                <h6>Tanggal Masuk</h6>
-                                <div class="input-group date" name="tglmasuk" id="reservationdatetime"
-                                    data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" name="tglmasuk"
-                                        data-target="#reservationdatetime" value="{{ date('d/m/Y H.i') }}" />
-                                    <div class="input-group-append" data-target="#reservationdatetime"
-                                        data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                    </div>
-                                </div>
+                              <h6>Tanggal Masuk</h6>
+                              <input type="text" class="form-control" id="tglmasuk" name="tglmasuk" placeholder="Tanggal Masuk" value="{{ date('Y-m-d H:i:s') }}" readonly>                 
                             </div>
                             <div class="col-1 align-self-end text-right">
+                              <button type="button" onclick="tanggalsekarang();" class="btn btn-outline-info" readonly>
+                                <i class="fas fa-sync"></i>
+                              </button>
                             </div>
                         </div>
                         <br>
