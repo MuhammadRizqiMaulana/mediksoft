@@ -19,12 +19,12 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Jenis_Anestesi')}}">
+                        <a class="users-list-name" href="{{url('/JenisAnestesi')}}">
                             <img src="{{asset('images/icon/Jenis_Anestesi.png')}}"><br> Jenis Anestesi
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Spesialis_Bedah')}}">
+                        <a class="users-list-name" href="{{url('/SpesialisBedah')}}">
                             <img src="{{asset('images/icon/Spesialis_Bedah.png')}}"><br> Spesialis Bedah
                         </a>
                     </button>

@@ -70,6 +70,8 @@ use App\Http\Controllers\RawatInap\INOSController;
 use App\Http\Controllers\Operasi\GolonganOperasiController;
 use App\Http\Controllers\Operasi\DokterBedahController;
 use App\Http\Controllers\Operasi\Tarif_Tindakan_OperasiController;
+use App\Http\Controllers\Operasi\JenisAnestesiController;
+use App\Http\Controllers\Operasi\SpesialisBedahController;
 /* ----- Operasi -----*/
 
 /* ----- Billing -----*/
@@ -343,9 +345,9 @@ Route::get('/Operasi', function () {
 });
 
 Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
-
+Route::get('/JenisAnestesi', [JenisAnestesiController::class, 'index']);
+Route::get('/SpesialisBedah', [SpesialisBedahController::class, 'index']);
 Route::get('/Tarif_Tindakan_Operasi', [Tarif_Tindakan_OperasiController::class, 'index']);
-
 Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
 Route::post('/DokterBedah/store', [DokterBedahController::class, 'store']);
 Route::get('/DokterBedah/ubah{iddokter},{jenisrawat}', [DokterBedahController::class, 'ubah']);
@@ -365,6 +367,7 @@ Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'select
 Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
 Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
 Route::get('/RekeningRI', [RekeningRIController::class, 'index']);
+Route::get('/Deposit', [Data_DepositController::class, 'tambah']);
 Route::get('/Data_Deposit', [Data_DepositController::class, 'index']);
 /* ----- Billing -----*/
 

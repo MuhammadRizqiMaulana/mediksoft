@@ -28,8 +28,8 @@
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
                 <!-- /.col -->
-                <div class="col-6 ">
-                    @if(isset($ubah) == NULL & isset($lihat) == NULL)
+                <div class="col-7">
+                    @if(isset($ubah) == NULL & isset($lihatdetail) == NULL)
                     <!-- general form elements -->
                     <div class="card card-success card-outline" id="TambahDeposit">
                         <div class="card-header">
@@ -37,7 +37,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('/Data_Pendaftaran/store')}}" method="post">
+                        <form action="{{url('/Data_Deposit/store')}}" method="post">
                             {{csrf_field()}}
                             <div class="card-body">
 
@@ -381,7 +381,7 @@
                         </form>
                     </div>
                     <!-- /.card -->
-                    @elseif(isset($lihat) == !NULL)
+                    @elseif(isset($lihatdetail) == !NULL)
                     <!-- general form elements -->
                     <div class="card card-info card-outline" id="LihatPendaftaranRawatJalan">
                         <div class="card-header">
@@ -389,7 +389,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('/Data_Pendaftaran/lihat'.$lihat->faktur_rawatjalan)}}" method="post">
+                        <form action="{{url('/Data_Pendaftaran/lihat'.$lihatdetail->faktur_rawatjalan)}}" method="post">
                             {{csrf_field()}}
                             <div class="card-body">
 
@@ -399,7 +399,7 @@
                                     <div class="row">
                                         <div class="col-10">
                                             <input type="datetime" class="form-control" id="tglmasuk" name="tglmasuk"
-                                                placeholder="Tanggal Masuk" value="{{$lihat->tglmasuk}}" disabled>
+                                                placeholder="Tanggal Masuk" value="{{$lihatdetail->tglmasuk}}" disabled>
                                         </div>
                                         <div class="col-2 text-right">
                                             <button type="button" class="btn btn-outline-info" disabled>
@@ -420,12 +420,12 @@
                                         <div class="col-4">
                                             <label for="norm">No Rekam Medis</label>
                                             <input type="text" class="form-control" id="norm" name="norm"
-                                                placeholder="No Rekam Medis" value="{{$lihat->norm}}" disabled>
+                                                placeholder="No Rekam Medis" value="{{$lihatdetail->norm}}" disabled>
                                         </div>
                                         <div class="col-6">
                                             <label for="namapasien">Nama Pasien</label>
                                             <input type="text" class="form-control" id="namapasien" name="namapasien"
-                                                placeholder="Nama Pasien" value="{{$lihat->Pasien->namapasien}}"
+                                                placeholder="Nama Pasien" value="{{$lihatdetail->Pasien->namapasien}}"
                                                 disabled>
                                         </div>
                                         <div class="col-2 text-right align-self-end">
@@ -446,9 +446,9 @@
                                     <div class="row">
                                         <div class="col-10">
                                             <input type="text" class="form-control" id="poliklinik" name="kodepoli"
-                                                placeholder="Kode Poli" value="{{$lihat->kodepoli}}" hidden disabled>
+                                                placeholder="Kode Poli" value="{{$lihatdetail->kodepoli}}" hidden disabled>
                                             <input type="text" class="form-control" id="namapoli" name="namapoli"
-                                                placeholder="Nama Poli" value="{{$lihat->Poliklinik->nama}}" disabled>
+                                                placeholder="Nama Poli" value="{{$lihatdetail->Poliklinik->nama}}" disabled>
                                         </div>
                                         <div class="col-2 text-right">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
@@ -468,9 +468,9 @@
                                     <div class="row">
                                         <div class="col-10">
                                             <input type="text" class="form-control" id="dokter" name="iddokter"
-                                                placeholder="Dokter" value="{{$lihat->iddokter}}" hidden disabled>
+                                                placeholder="Dokter" value="{{$lihatdetail->iddokter}}" hidden disabled>
                                             <input type="text" class="form-control" id="namadokter" name="namadokter"
-                                                placeholder="Nama Dokter" value="{{$lihat->Dokter->nama}}" disabled>
+                                                placeholder="Nama Dokter" value="{{$lihatdetail->Dokter->nama}}" disabled>
                                         </div>
                                         <div class="col-2 text-right">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
@@ -490,9 +490,9 @@
                                     <div class="row">
                                         <div class="col-10">
                                             <input type="text" class="form-control" id="perusahaan" name="idprsh"
-                                                placeholder="Perusahaan" value="{{$lihat->idprsh}}" hidden disabled>
+                                                placeholder="Perusahaan" value="{{$lihatdetail->idprsh}}" hidden disabled>
                                             <input type="text" class="form-control" id="namaprsh" name="namaprsh"
-                                                placeholder="Nama Perusahaan" value="{{$lihat->Perusahaan->namaprsh}}"
+                                                placeholder="Nama Perusahaan" value="{{$lihatdetail->Perusahaan->namaprsh}}"
                                                 disabled>
                                         </div>
                                         <div class="col-2 text-right">
@@ -514,9 +514,9 @@
                                         <div class="col-10">
                                             <input type="text" class="form-control" id="faskes"
                                                 name="kodefaskespengirim" placeholder="Pengirim"
-                                                value="{{$lihat->kodefaskespengirim}}" hidden disabled>
+                                                value="{{$lihatdetail->kodefaskespengirim}}" hidden disabled>
                                             <input type="text" class="form-control" id="namafaskes" name="namafaskes"
-                                                placeholder="Nama Pengirim" value="{{$lihat->Faskes->namafaskes}}"
+                                                placeholder="Nama Pengirim" value="{{$lihatdetail->Faskes->namafaskes}}"
                                                 disabled>
                                         </div>
                                         <div class="col-2 text-right">
@@ -538,7 +538,7 @@
                                         <div class="col-6">
                                             <input type="number" class="form-control" id="administrasi"
                                                 name="administrasi" min="0" placeholder="Administrasi"
-                                                value="{{$lihat->administrasi}}" disabled>
+                                                value="{{$lihatdetail->administrasi}}" disabled>
                                             @if ($errors->has('administrasi'))
                                             <span class="text-danger">
                                                 <p class="text-right">* {{ $errors->first('administrasi') }}</p>

@@ -50,6 +50,7 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
+<<<<<<< HEAD
                     <button class="btn btn-default text-center">
                         <a class="users-list-name" href="{{url('/Data_Pendaftaran_Rawat_Inap/tambah')}}">
                             <img src="{{asset('images/icon/Pendaftaran.png')}}"><br> Pendaftaran
@@ -60,6 +61,15 @@
                             <img src="{{asset('images/icon/Data_Pendaftaran.png')}}"><br> Data Pendaftaran
                         </a>
                     </button>
+=======
+                    <a class="btn btn-app" href="{{url('/Pendaftaran')}}">
+                    <img src="{{asset('images/icon/Pendaftaran.png')}}"><br> Pendaftaran
+                    </a>
+                    <a class="btn btn-app" href="{{url('Data_Pendaftaran_Rawat_Inap')}}">
+                    <img src="{{asset('images/icon/Data_Pendaftaran.png')}}"><br> Data Pendaftaran
+                    </a>
+
+>>>>>>> 57c9fd3fa8e62c69a404e1f189b431608aeed4f9
                 </div>
                 <!-- /.card-body -->
             </div>

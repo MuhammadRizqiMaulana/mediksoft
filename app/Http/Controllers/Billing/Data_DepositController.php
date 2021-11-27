@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Billing;
+use carbon\Carbon;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -27,8 +28,10 @@ class Data_DepositController extends Controller
    public function lihatdetail(){
       $datas = Bayar_rjalan::all();       
       return view('Billing.Content.PembayaranRJ',compact('datas'));
-  }
+   }
 
-  public function lihatsaldo(){
-}
+   public function tambah(){ 
+      $now = Carbon::now();
+      return view('Billing.Content.Deposit',compact('now'));
+   }
 }
