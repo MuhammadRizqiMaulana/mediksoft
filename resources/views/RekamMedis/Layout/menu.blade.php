@@ -19,15 +19,21 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/Pendaftaran')}}">
-                    <img src="{{asset('images/icon/Pendaftaran.png')}}"><br> Pendaftaran
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Pasien')}}">
-                    <img src="{{asset('images/icon/Pasien.png')}}"><br> Pasien
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Keanggotaan')}}">
-                    <img src="{{asset('images/icon/Keanggotaan.png')}}"><br> Keanggotaan
-                    </a>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Pendaftaran')}}">
+                            <img src="{{asset('images/icon/Pendaftaran.png')}}"><br> Pendaftaran
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Pasien')}}">
+                            <img src="{{asset('images/icon/Pasien.png')}}"><br> Pasien
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Keanggotaan')}}">
+                            <img src="{{asset('images/icon/Keanggotaan.png')}}"><br> Keanggotaan
+                        </a>
+                    </button>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -50,15 +56,21 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/RM_Rawat_Jalan')}}">
-                    <img src="{{asset('images/icon/RM_Rawat_Jalan.png')}}"><br> RM Rawat Jalan
-                    </a>
-                    <a class="btn btn-app" href="{{url('/RM_Rawat_Inap')}}">
-                    <img src="{{asset('images/icon/RM_Rawat_Inap.png')}}"><br> RM Rawat Inap
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Kamar_Kosong')}}">
-                    <img src="{{asset('images/icon/Kamar_Kosong.png')}}"><br> Kamar Kosong
-                    </a>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Pendaftaran_Rawat_Jalan')}}">
+                            <img src="{{asset('images/icon/RM_Rawat_Jalan.png')}}"><br> RM Rawat Jalan
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/RM_RawatInap')}}">
+                            <img src="{{asset('images/icon/RM_Rawat_Inap.png')}}"><br> RM Rawat Inap
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/KamarKosong')}}">
+                            <img src="{{asset('images/icon/Kamar_Kosong.png')}}"><br> Kamar Kosong
+                        </a>
+                    </button>
                 </div>
                 <!-- /.card-body -->
             </div>

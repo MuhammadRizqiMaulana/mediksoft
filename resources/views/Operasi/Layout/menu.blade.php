@@ -18,15 +18,21 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/Jenis_Anestesi')}}">
-                    <img src="{{asset('images/icon/Jenis_Anestesi.png')}}"><br> Jenis Anestesi
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Spesialis_Bedah')}}">
-                    <img src="{{asset('images/icon/Spesialis_Bedah.png')}}"><br> Spesialis Bedah
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Golongan_Operasi')}}">
-                    <img src="{{asset('images/icon/Golongan_Operasi.png')}}"><br> Golongan Operasi
-                    </a>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/JenisAnestesi')}}">
+                            <img src="{{asset('images/icon/Jenis_Anestesi.png')}}"><br> Jenis Anestesi
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/SpesialisBedah')}}">
+                            <img src="{{asset('images/icon/Spesialis_Bedah.png')}}"><br> Spesialis Bedah
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/GolonganOperasi')}}">
+                            <img src="{{asset('images/icon/Golongan_Operasi.png')}}"><br> Golongan Operasi
+                        </a>
+                    </button>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -48,12 +54,16 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/Dokter_Bedah')}}">
-                    <img src="{{asset('images/icon/Dokter_Bedah.png')}}"><br> Dokter Bedah
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Tarif_Tindakan_Operasi')}}">
-                    <img src="{{asset('images/icon/Tarif_Tindakan_Operasi.png')}}"><br> Tarif Tindakan Operasi
-                    </a>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/DokterBedah')}}">
+                            <img src="{{asset('images/icon/Dokter_Bedah.png')}}"><br> Dokter Bedah
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Tarif_Tindakan_Operasi')}}">
+                            <img src="{{asset('images/icon/Tarif_Tindakan_Operasi.png')}}"><br> Tarif Tindakan Operasi
+                        </a>
+                    </button>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -75,13 +85,16 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="btn btn-app" href="{{url('/Catatan_Operasi')}}">
-                    <img src="{{asset('images/icon/Catatan_Operasi.png')}}"><br> Catat Operasi
-                    </a>
-                    <a class="btn btn-app" href="{{url('/Data_Operasi')}}">
-                    <img src="{{asset('images/icon/Data_Operasi.png')}}"><br> Data Operasi
-                    </a>
-
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Catatan_Operasi')}}">
+                            <img src="{{asset('images/icon/Catatan_Operasi.png')}}"><br> Catat Operasi
+                        </a>
+                    </button>
+                    <button class="btn btn-default text-center">
+                        <a class="users-list-name" href="{{url('/Data_Operasi')}}">
+                            <img src="{{asset('images/icon/Data_Operasi.png')}}"><br> Data Operasi
+                        </a>
+                    </button>
                 </div>
                 <!-- /.card-body -->
             </div>

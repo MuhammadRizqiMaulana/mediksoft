@@ -69,6 +69,9 @@ use App\Http\Controllers\RawatInap\INOSController;
 /* ----- Operasi -----*/
 use App\Http\Controllers\Operasi\GolonganOperasiController;
 use App\Http\Controllers\Operasi\DokterBedahController;
+use App\Http\Controllers\Operasi\Tarif_Tindakan_OperasiController;
+use App\Http\Controllers\Operasi\JenisAnestesiController;
+use App\Http\Controllers\Operasi\SpesialisBedahController;
 /* ----- Operasi -----*/
 
 /* ----- Billing -----*/
@@ -299,8 +302,7 @@ Route::get('/Update_Data_Pendaftaran_Pasien_Online', [Update_Data_Pendaftaran_Pa
 /* ----- RawatInap -----*/
 Route::get('/RawatInap', function () {
     return view('RawatInap.Content.index');
-Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
-
+    Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
 });
 
 Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
@@ -343,6 +345,9 @@ Route::get('/Operasi', function () {
 });
 
 Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
+Route::get('/JenisAnestesi', [JenisAnestesiController::class, 'index']);
+Route::get('/SpesialisBedah', [SpesialisBedahController::class, 'index']);
+Route::get('/Tarif_Tindakan_Operasi', [Tarif_Tindakan_OperasiController::class, 'index']);
 Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
 Route::post('/DokterBedah/store', [DokterBedahController::class, 'store']);
 Route::get('/DokterBedah/ubah{iddokter},{jenisrawat}', [DokterBedahController::class, 'ubah']);
@@ -383,7 +388,7 @@ Route::get('/BPJS', function () {
 });
 
 /* ----- BPJS -----*/
- 
+
 /* ----- Akuntansi -----*/
 Route::get('/Akuntansi', function () {
     return view('Akuntansi.Content.index');
