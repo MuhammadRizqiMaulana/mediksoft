@@ -18,12 +18,14 @@ use App\Models\Macamrawat;
 use App\Models\Jenismasuk;
 use App\Models\Kamar_terisi;
 use App\Models\Kamarkosong_temp;
+use App\Models\Adm;
 
 use Carbon\Carbon;
 
 class Transfer_RiController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $rawatjalan = Rawatjalan::all();
         $kamar = Kamar::all();
         $dokter = Dokter::all();
@@ -32,11 +34,15 @@ class Transfer_RiController extends Controller
         //$icd10 = Icd10::all();
         $macamrawat = Macamrawat::all();
         $jenismasuk = Jenismasuk::all();
-           
-        return view('RawatJalan.Content.Pendaftaran_Rawat_Inap', compact('rawatjalan','kamar','dokter','perusahaan','pasien','macamrawat','jenismasuk'));
+        $adm = Adm::where('jenisrawat', 'rawat inap')
+            ->where('jenispoli', 'rawat inap')
+            ->first();
+
+        return view('RawatJalan.Content.Pendaftaran_Rawat_Inap', compact('rawatjalan', 'kamar', 'dokter', 'perusahaan', 'pasien', 'macamrawat', 'jenismasuk', 'adm'));
     }
 
-    public function store( Request $request) {
+    public function store(Request $request)
+    {
 
         $messages = [
             'required' => ':attribute masih kosong',
@@ -49,7 +55,7 @@ class Transfer_RiController extends Controller
             'between' => ':attribute diisi antara 0 sampai XXXXXXXX.XXXX digit',
         ];
 
-    	$this->validate($request, [
+        $this->validate($request, [
             'faktur_rawatjalan' => 'required|max:15',
             'norm' => 'required|max:10',
             'kodekamar' => 'required|max:10',
@@ -65,15 +71,15 @@ class Transfer_RiController extends Controller
             'telp_pj' => 'required|max:12',
             'administrasi' => 'required|numeric|between:0.0000,99999999.9999|min:0',
 
-    	], $messages);
+        ], $messages);
 
-        try{
+        try {
 
             $invoice = Rawatinap::selectRaw('LPAD(CONVERT((COUNT("faktur_rawatinap") + 1) , char(13)) , 13,"0") as invoice')->first();
-            $kunjungan = Rawatinap::where('norm',$request->norm)->count();
+            $kunjungan = Rawatinap::where('norm', $request->norm)->count();
 
             $data = new Rawatinap();
-            $data->faktur_rawatinap  = "RI".$invoice->invoice;
+            $data->faktur_rawatinap  = "RI" . $invoice->invoice;
             $data->faktur_rawatjalan = $request->faktur_rawatjalan;
             $data->norm = $request->norm;
             $data->kodekamar = $request->kodekamar;
@@ -95,7 +101,7 @@ class Transfer_RiController extends Controller
             $data->diagnosaakhir = "";
             $data->prosedur1 = "";
             $data->penyebab_luar = "";
-            $data->iduserpendaftaran = NULL;  
+            $data->iduserpendaftaran = NULL;
             $data->iduserkasir = NULL;
             $data->imunitas = "";
             $data->statuspulang = NULL;
@@ -125,7 +131,7 @@ class Transfer_RiController extends Controller
             //kamar_terisi
             $kamarterisi = new Kamar_terisi();
             $kamarterisi->kodekamar = $request->kodekamar;
-            $kamarterisi->faktur_rawatinap = "RI".$invoice->invoice;
+            $kamarterisi->faktur_rawatinap = "RI" . $invoice->invoice;
             $kamarterisi->tglmasukkamar = $request->tglmasuk;
             $kamarterisi->save();
 
@@ -133,15 +139,12 @@ class Transfer_RiController extends Controller
             $kamarkosong = Kamarkosong_temp::find($request->kodekamar);
             $kamarkosong->sisakamar = $kamarkosong->sisakamar - 1;
             $kamarkosong->save();
-            return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-success','Data berhasil ditambahkan!');
-        }
-         catch(\Exception $e){
-            
-            echo $e->getMessage();   // insert query
-             // do task when error
-            return redirect('/Pendaftaran_Rawat_Inap')->with('alert-danger','Data gagal ditambahkan!');
-            
+            return redirect('/Data_Pendaftaran_Rawat_Inap')->with('alert-success', 'Data berhasil ditambahkan!');
+        } catch (\Exception $e) {
 
-         }
+            echo $e->getMessage();   // insert query
+            // do task when error
+            return redirect('/Pendaftaran_Rawat_Inap')->with('alert-danger', 'Data gagal ditambahkan!');
+        }
     }
 }
