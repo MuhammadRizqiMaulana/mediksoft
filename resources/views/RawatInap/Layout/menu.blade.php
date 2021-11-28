@@ -98,7 +98,7 @@
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Pemberian_Obat')}}">
+                        <a class="users-list-name" href="{{url('/Pemberian_Obat_Rawat_Inap ')}}">
                             <img src="{{asset('images/icon/Pemberian_Obat.png')}}"><br> Pemberian Obat
                         </a>
                     </button>

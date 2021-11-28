@@ -46,7 +46,9 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-3 text-right"><label>No Pendaftaran</label></div>
-                                        <div class="col-7"><input type="text" class="form-control" value="" readonly>
+                                        <div class="col-7"><input type="text" class="form-control"
+                                                value="@isset($selectrawatinap) {{$selectrawatinap->faktur_rawatinap}} @endisset"
+                                                readonly>
                                         </div>
                                         <div class="col-2 text-left">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
@@ -62,7 +64,9 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-3 text-right"><label>Nama Pasien</label></div>
-                                        <div class="col-9"><input type="text" class="form-control" value="" readonly>
+                                        <div class="col-9"><input type="text" class="form-control"
+                                                value="@isset($selectrawatinap) {{$selectrawatinap->Pasien->namapasien}} ({{$selectrawatinap->Pasien->norm}}) @endisset"
+                                                readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -76,24 +80,32 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-3 text-right mb-3"><label>Tanggal Masuk</label></div>
-                                    <div class="col-9"><input type="text" class="form-control" value="" readonly>
+                                    <div class="col-9"><input type="text" class="form-control"
+                                            value="@isset($selectrawatinap){{$selectrawatinap->tglmasuk}} @endisset"
+                                            readonly>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-3 text-right mb-3"><label>Kamar Lama</label></div>
-                                    <div class="col-9"><input type="text" class="form-control" value="" readonly>
+                                    <div class="col-9"><input type="text" class="form-control"
+                                            value="@isset($selectkamar){{$selectkamar->keterangan}} @endisset" readonly>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-3 text-right mb-3"><label>Ruangan / Kelas</label></div>
-                                    <div class="col-5"><input type="text" class="form-control" value="" readonly>
+                                    <div class="col-5"><input type="text" class="form-control"
+                                            value="@isset($selectkamar){{$selectkamar->Ruang->namaruang}} @endisset"
+                                            readonly>
                                     </div>
-                                    <div class="col-4"><input type="text" class="form-control" value="" readonly>
+                                    <div class="col-4"><input type="text" class="form-control"
+                                            value="@isset($selectkamar){{$selectkamar->Kelas->nama}} @endisset"
+                                            readonly>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-3 text-right mb-3"><label>Tarif</label></div>
-                                    <div class="col-9"><input type="number" class="form-control" value="" readonly>
+                                    <div class="col-9"><input type="text" class="form-control"
+                                            value="@isset($selectkamar)@rupiah($selectkamar->tarif) @endisset" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -145,6 +157,11 @@
 </div>
 <!-- /.content-wrapper -->
 <script>
+function rawatinap($faktur_rawatinap) {
+    $(".close").click();
+    window.location.href = "/PindahKamar/selectrawatinap" + $faktur_rawatinap;
+}
+
 function tombol($faktur_rawatinap) {
     //$("a#tombolubah").attr("href", "/Data_Pendaftaran/ubah"+ $faktur_rawatinap +"#UbahPendaftaranRawatJalan");
     $("a#tomboldetaildiagnosa").attr("href", "/Data_Pendaftaran_Rawat_Inap/detaildiagnosa" + $faktur_rawatinap);
