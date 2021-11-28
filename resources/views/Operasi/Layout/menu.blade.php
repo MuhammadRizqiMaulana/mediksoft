@@ -91,7 +91,7 @@
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Data_Operasi')}}">
+                        <a class="users-list-name" href="{{url('/DataOperasi')}}">
                             <img src="{{asset('images/icon/Data_Operasi.png')}}"><br> Data Operasi
                         </a>
                     </button>

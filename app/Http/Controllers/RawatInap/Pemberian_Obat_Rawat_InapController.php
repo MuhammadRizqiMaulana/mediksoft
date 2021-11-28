@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\RawatInap;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Pemnerian_Obat_Rawat_Inap extends Controller
+class Pemberian_Obat_Rawat_InapController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('RawatInap.Content.Pemberian_Obat_Rawat_Inap');
+    }
 }
