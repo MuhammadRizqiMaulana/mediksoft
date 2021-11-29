@@ -17,6 +17,13 @@ class JaminanController extends Controller
 
         return view('Setup.Content.Jaminan', compact('datas', 'idkategori'));
     }
+    public function cetakdatajaminan()
+    {
+
+        $datas = Perusahaan::all();
+
+        return view('Setup.Cetak.Cetak_Jaminan', compact('datas'));
+    }
     public function tambah()
     {
 

@@ -14,6 +14,13 @@ class Icd9Controller extends Controller
         $datas = Icd9::all();
         return view('Setup.Content.Icd9', compact('datas'));
     }
+    public function cetakdataicd9()
+    {
+
+        $datas = Icd9::all();
+
+        return view('Setup.Cetak.Cetak_Icd9', compact('datas'));
+    }
     public function tambah()
     {
 

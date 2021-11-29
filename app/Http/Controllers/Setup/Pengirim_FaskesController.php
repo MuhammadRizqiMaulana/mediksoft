@@ -10,21 +10,29 @@ use App\Models\Faskes;
 
 class Pengirim_FaskesController extends Controller
 {
-    public function index(){
-    	
+    public function index()
+    {
+
         $datas = Faskes::all();
-    	return view('Setup.Content.Pengirim_Faskes',compact('datas'));
+        return view('Setup.Content.Pengirim_Faskes', compact('datas'));
+    }
+    public function cetakdatapengirimfaskes()
+    {
+
+        $datas = Faskes::all();
+
+        return view('Setup.Cetak.Cetak_PengirimFaskes', compact('datas'));
+    }
+    public function tambah()
+    {
+
+        $datas = Faskes::all();
+
+        return view('Setup.Content.Pengirim_Faskes', compact('datas'));
     }
 
-    public function tambah() {
-
-        $datas = Faskes::all();         
-
-        return view('Setup.Content.Pengirim_Faskes',compact('datas'));
-        
-    }
-
-    public function store( Request $request) {
+    public function store(Request $request)
+    {
 
         $messages = [
             'required' => ':attribute masih kosong',
@@ -38,29 +46,30 @@ class Pengirim_FaskesController extends Controller
             'fee.min' => ':attribute tidak boleh kurang dari 0',
         ];
 
-    	$this->validate($request, [
-    		'namafaskes' => 'required|max:50',
+        $this->validate($request, [
+            'namafaskes' => 'required|max:50',
             'alamat' => 'required|max:200',
             'fee' => 'required|numeric|digits_between:0,15|min:0',
-    	], $messages);
+        ], $messages);
 
         $data = new Faskes();
         $data->namafaskes = $request->namafaskes;
         $data->alamat = $request->alamat;
         $data->fee = $request->fee;
-    	$data->save();
+        $data->save();
 
-    	return redirect('/Pengirim_Faskes')->with('alert-success','Data berhasil ditambahkan!');
+        return redirect('/Pengirim_Faskes')->with('alert-success', 'Data berhasil ditambahkan!');
     }
 
-   	public function ubah($kodefaskes) {
+    public function ubah($kodefaskes)
+    {
         $datas = Faskes::all();
         $ubah = Faskes::find($kodefaskes);
-        return view('Setup.Content.Pengirim_Faskes',compact('datas','ubah'));
-
+        return view('Setup.Content.Pengirim_Faskes', compact('datas', 'ubah'));
     }
 
-    public function update($kodefaskes, Request $request) {
+    public function update($kodefaskes, Request $request)
+    {
         $messages = [
             'required' => ':attribute masih kosong',
             'min' => ':attribute diisi minimal :min karakter',
@@ -73,24 +82,25 @@ class Pengirim_FaskesController extends Controller
             'fee.min' => ':attribute tidak boleh kurang dari 0',
         ];
 
-    	$this->validate($request, [
-    		'namafaskes' => 'required|max:50',
+        $this->validate($request, [
+            'namafaskes' => 'required|max:50',
             'alamat' => 'required|max:200',
             'fee' => 'required|numeric|between:0.0000,99999999.9999|min:0',
-    	], $messages);
+        ], $messages);
 
         $data = Faskes::find($kodefaskes);
         $data->namafaskes = $request->namafaskes;
         $data->alamat = $request->alamat;
         $data->fee = $request->fee;
-    	$data->save();
+        $data->save();
 
-        return redirect('/Pengirim_Faskes')->with('alert-success','Data berhasil diubah!');
+        return redirect('/Pengirim_Faskes')->with('alert-success', 'Data berhasil diubah!');
     }
 
-    public function hapus($kodefaskes) {
-    	$datas = Faskes::find($kodefaskes);
-    	$datas->delete();
-        return redirect('/Pengirim_Faskes')->with('alert-success','Data berhasil dihapus!');
+    public function hapus($kodefaskes)
+    {
+        $datas = Faskes::find($kodefaskes);
+        $datas->delete();
+        return redirect('/Pengirim_Faskes')->with('alert-success', 'Data berhasil dihapus!');
     }
 }

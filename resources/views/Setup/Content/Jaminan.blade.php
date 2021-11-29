@@ -38,8 +38,10 @@
                                     <a class="btn btn-outline-success btn-sm"
                                         href="{{url('Jaminan/#TambahJaminan')}}"><i class="fa fa-plus-circle"></i>
                                         Tambah</a>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm"><i
-                                            class="fa fa-print"></i> Cetak</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"><a
+                                            href="/Jaminan/cetakdatajaminan">
+                                            <i class="fa fa-print"></i> Cetak Data Jaminan
+                                        </a></button>
                                 </div>
                             </div>
 
