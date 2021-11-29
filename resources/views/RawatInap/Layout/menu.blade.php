@@ -138,7 +138,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="users-list-name" href="{{url('/Penggunaan_Obat')}}">
+                    <a class="users-list-name" href="{{url('/PenggunaanObatRI')}}">
                         <img src="{{asset('images/icon/Penggunaan_Obat.png')}}"><br> Penggunaan Obat
                     </a>
                 </div>

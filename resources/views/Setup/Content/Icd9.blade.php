@@ -37,8 +37,10 @@
                                     <h4>ICD 9</h4>
                                 </div>
                                 <div class="col-sm-6 text-right">
-                                    <button type="button" class="btn btn-outline-secondary btn-sm"><i
-                                            class="fa fa-print"></i> Cetak</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"><a
+                                            href="/Icd9/cetakdataicd9">
+                                            <i class="fa fa-print"></i> Cetak Data ICD 9
+                                        </a></button>
                                 </div>
                             </div>
 

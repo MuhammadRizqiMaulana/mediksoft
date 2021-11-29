@@ -13,22 +13,30 @@ use Carbon\Carbon;
 
 class KaryawanController extends Controller
 {
-    public function index(){
-    	
+    public function index()
+    {
+
         $datas = Karyawan::all();
         $jabatans = Jabatan::all();
-    	return view('Setup.Content.Karyawan',compact('datas','jabatans'));
+        return view('Setup.Content.Karyawan', compact('datas', 'jabatans'));
+    }
+    public function cetakdatakaryawan()
+    {
+
+        $datas = Karyawan::all();
+
+        return view('Setup.Cetak.Cetak_Karyawan', compact('datas'));
+    }
+    public function tambah()
+    {
+
+        $datas = Karyawan::all();
+
+        return view('Setup.Content.Karyawan', compact('datas'));
     }
 
-    public function tambah() {
-
-        $datas = Karyawan::all();         
-
-        return view('Setup.Content.Karyawan',compact('datas'));
-        
-    }
-
-    public function store( Request $request) {
+    public function store(Request $request)
+    {
 
         $messages = [
             'required' => ':attribute masih kosong',
@@ -40,8 +48,8 @@ class KaryawanController extends Controller
             'image' => ':attribute harus berupa gambar'
         ];
 
-    	$this->validate($request, [
-    		'nik' => 'required|max:20',
+        $this->validate($request, [
+            'nik' => 'required|max:20',
             'noktp' => 'nullable|max:30',
             'nama' => 'required|max:40',
             'jnskelamin' => 'required|max:30',
@@ -51,8 +59,8 @@ class KaryawanController extends Controller
             'tptlahir' => 'required|max:30',
             'tgllahir' => 'nullable|date',
             'goldarah' => 'required|max:2',
-            
-    	], $messages);
+
+        ], $messages);
 
         $now = Carbon::now();
 
@@ -68,22 +76,23 @@ class KaryawanController extends Controller
         $data->tptlahir = $request->tptlahir;
         $data->tgllahir = $request->tgllahir;
         $data->goldarah = $request->goldarah;
-        
-    	$data->save();
 
-    	return redirect('/Karyawan')->with('alert-success','Data berhasil ditambahkan!');
+        $data->save();
+
+        return redirect('/Karyawan')->with('alert-success', 'Data berhasil ditambahkan!');
     }
 
-   	public function ubah($idkaryawan ) {
+    public function ubah($idkaryawan)
+    {
         $datas = Karyawan::all();
         $ubah = Karyawan::find($idkaryawan);
         $jabatans = Jabatan::all();
 
-        return view('Setup.Content.Karyawan',compact('datas','ubah','jabatans'));
-
+        return view('Setup.Content.Karyawan', compact('datas', 'ubah', 'jabatans'));
     }
 
-    public function update($idkaryawan, Request $request) {
+    public function update($idkaryawan, Request $request)
+    {
         $messages = [
             'required' => ':attribute masih kosong',
             'min' => ':attribute diisi minimal :min karakter',
@@ -94,8 +103,8 @@ class KaryawanController extends Controller
             'image' => ':attribute harus berupa gambar'
         ];
 
-    	$this->validate($request, [
-    		'nik' => 'required|max:20',
+        $this->validate($request, [
+            'nik' => 'required|max:20',
             'noktp' => 'nullable|max:30',
             'nama' => 'required|max:40',
             'jnskelamin' => 'required|max:30',
@@ -106,7 +115,7 @@ class KaryawanController extends Controller
             'tgllahir' => 'nullable|date',
             'goldarah' => 'required|max:2',
 
-    	], $messages);
+        ], $messages);
 
         $now = Carbon::now();
 
@@ -122,14 +131,15 @@ class KaryawanController extends Controller
         $data->tptlahir = $request->tptlahir;
         $data->tgllahir = $request->tgllahir;
         $data->goldarah = $request->goldarah;
-    	$data->save();
+        $data->save();
 
-        return redirect('/Karyawan')->with('alert-success','Data berhasil diubah!');
+        return redirect('/Karyawan')->with('alert-success', 'Data berhasil diubah!');
     }
 
-    public function hapus($idkaryawan) {
-    	$datas = Karyawan::find($idkaryawan);
-    	$datas->delete();
-        return redirect('/Karyawan')->with('alert-success','Data berhasil dihapus!');
+    public function hapus($idkaryawan)
+    {
+        $datas = Karyawan::find($idkaryawan);
+        $datas->delete();
+        return redirect('/Karyawan')->with('alert-success', 'Data berhasil dihapus!');
     }
 }

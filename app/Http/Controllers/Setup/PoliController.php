@@ -8,20 +8,29 @@ use App\Models\Poliklinik;
 
 
 class PoliController extends Controller
-{ 
-    public function index(){
-    	
+{
+    public function index()
+    {
+
         $datas = Poliklinik::all();
-    	return view('Setup.Content.Poli',compact('datas'));
+        return view('Setup.Content.Poli', compact('datas'));
     }
-    public function tambah() {
+    public function cetakdatapoli()
+    {
 
-        $datas = Poliklinik::all();         
+        $datas = Poliklinik::all();
 
-        return view('Setup.Content.Poli',compact('datas'));
-        
+        return view('Setup.Cetak.Cetak_Poli', compact('datas'));
     }
-    public function store( Request $request) {
+    public function tambah()
+    {
+
+        $datas = Poliklinik::all();
+
+        return view('Setup.Content.Poli', compact('datas'));
+    }
+    public function store(Request $request)
+    {
 
         $messages = [
             'required' => ':attribute masih kosong',
@@ -29,56 +38,57 @@ class PoliController extends Controller
             'max' => ':attribute diisi maksimal :max karakter',
             'numeric' => ':attribute harus berupa angka',
             'unique' => ':attribute sudah ada',
-            
+
         ];
 
-    	$this->validate($request, [
-    		'kode' => 'required|max:50',
+        $this->validate($request, [
+            'kode' => 'required|max:50',
             'nama' => 'required|max:200',
             'jenispoli' => 'required',
-    	], $messages);
+        ], $messages);
 
         $data = new Poliklinik();
         $data->kode = $request->kode;
         $data->nama = $request->nama;
         $data->jenispoli = $request->jenispoli;
-    	$data->save();
+        $data->save();
 
-    	return redirect('/Poli')->with('alert-success','Data berhasil ditambahkan!');
+        return redirect('/Poli')->with('alert-success', 'Data berhasil ditambahkan!');
     }
-    public function ubah($kode) {
+    public function ubah($kode)
+    {
         $datas = Poliklinik::all();
         $ubah = Poliklinik::find($kode);
-        return view('Setup.Content.Poli',compact('datas','ubah'));
-
+        return view('Setup.Content.Poli', compact('datas', 'ubah'));
     }
-    public function update($kode, Request $request) {
+    public function update($kode, Request $request)
+    {
 
         $messages = [
             'required' => ':attribute masih kosong',
             'min' => ':attribute diisi minimal :min karakter',
             'max' => ':attribute diisi maksimal :max karakter',
             'unique' => ':attribute sudah ada',
-            
+
         ];
 
-    	$this->validate($request, [
-    		
+        $this->validate($request, [
+
             'nama' => 'required|max:200',
             'jenispoli' => 'required',
-    	], $messages);
+        ], $messages);
 
         $data = Poliklinik::find($kode);
-   
+
         $data->nama = $request->nama;
         $data->jenispoli = $request->jenispoli;
-    	$data->save();
-    	return redirect('/Poli')->with('alert-success','Data berhasil diubah!');
+        $data->save();
+        return redirect('/Poli')->with('alert-success', 'Data berhasil diubah!');
     }
-     public function hapus($kode) {
-    	$datas = Poliklinik::find($kode);
-    	$datas->delete();
-        return redirect('/Poli')->with('alert-success','Data berhasil dihapus!');
+    public function hapus($kode)
+    {
+        $datas = Poliklinik::find($kode);
+        $datas->delete();
+        return redirect('/Poli')->with('alert-success', 'Data berhasil dihapus!');
     }
-
 }

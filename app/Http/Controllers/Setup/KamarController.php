@@ -14,28 +14,38 @@ use App\Models\Kamarkosong_temp;
 
 class KamarController extends Controller
 {
-    public function index(){
-    	
+    public function index()
+    {
+
         $datas = Kamar::all();
         $eklaimbpjs = Eklaimbpjs::all();
         $kelas = Kelas::all();
         $ruang = Ruang::all();
 
-    	return view('Setup.Content.Kamar',compact('datas','kelas','ruang','eklaimbpjs'));
+        return view('Setup.Content.Kamar', compact('datas', 'kelas', 'ruang', 'eklaimbpjs'));
+    }
+    public function cetakdatakamar()
+    {
+
+        $datas = Kamar::all();
+        $kelas = Kelas::all();
+        $ruang = Ruang::all();
+        return view('Setup.Cetak.Cetak_Kamar', compact('datas', 'kelas', 'ruang'));
     }
 
-    public function tambah() {
+    public function tambah()
+    {
 
         $datas = Kamar::all();
         $eklaimbpjs = Eklaimbpjs::all();
         $eklaimbpjs = Kelas::all();
-        $ruang = Ruang::all();         
+        $ruang = Ruang::all();
 
-        return view('Setup.Content.Kamar',compact('datas','kelas','ruang','eklaimbpjs'));
-        
+        return view('Setup.Content.Kamar', compact('datas', 'kelas', 'ruang', 'eklaimbpjs'));
     }
 
-    public function store( Request $request) {
+    public function store(Request $request)
+    {
 
         $messages = [
             'required' => ':attribute masih kosong',
@@ -49,8 +59,8 @@ class KamarController extends Controller
             'min' => ':attribute tidak boleh kurang dari 0',
         ];
 
-    	$this->validate($request, [
-    		'kodekamar' => 'required|max:10|unique:kamar',
+        $this->validate($request, [
+            'kodekamar' => 'required|max:10|unique:kamar',
             'kodekelas' => 'nullable|max:2',
             'koderuang' => 'nullable|max:5',
             'keterangan' => 'nullable|max:50',
@@ -59,7 +69,7 @@ class KamarController extends Controller
             'tglaktif' => 'required|date',
             'jumlahbed' => 'required|max:4',
             'idklaim' => 'required|max:11',
-    	], $messages);
+        ], $messages);
 
         $data = new Kamar();
         $data->kodekamar = $request->kodekamar;
@@ -73,7 +83,7 @@ class KamarController extends Controller
         $data->dikirimkebpjs = "1";
         $data->idklaim = $request->idklaim;
         $data->pemakaitarif = "belum";
-    	$data->save();
+        $data->save();
 
         $selectkamar = Kamar::find($request->kodekamar);
 
@@ -88,21 +98,22 @@ class KamarController extends Controller
         $kamarkosong->namakamar = $selectkamar->keterangan;
         $kamarkosong->save();
 
-    	return redirect('/Kamar')->with('alert-success','Data berhasil ditambahkan!');
+        return redirect('/Kamar')->with('alert-success', 'Data berhasil ditambahkan!');
     }
 
-   	public function ubah($kodekamar) {
+    public function ubah($kodekamar)
+    {
         $datas = Kamar::all();
         $eklaimbpjs = Eklaimbpjs::all();
         $kelas = Kelas::all();
-        $ruang = Ruang::all();   
+        $ruang = Ruang::all();
         $ubah = Kamar::find($kodekamar);
 
-        return view('Setup.Content.Kamar',compact('datas','ubah','kelas','ruang','eklaimbpjs'));
-
+        return view('Setup.Content.Kamar', compact('datas', 'ubah', 'kelas', 'ruang', 'eklaimbpjs'));
     }
 
-    public function update($kodekamar, Request $request) {
+    public function update($kodekamar, Request $request)
+    {
         $messages = [
             'required' => ':attribute masih kosong',
             'min' => ':attribute diisi minimal :min karakter',
@@ -115,8 +126,8 @@ class KamarController extends Controller
             'min' => ':attribute tidak boleh kurang dari 0',
         ];
 
-    	$this->validate($request, [
-    		'kodekamar' => 'nullable|max:10',
+        $this->validate($request, [
+            'kodekamar' => 'nullable|max:10',
             'kodekelas' => 'nullable|max:2',
             'koderuang' => 'nullable|max:5',
             'keterangan' => 'nullable|max:50',
@@ -125,9 +136,9 @@ class KamarController extends Controller
             'tglaktif' => 'required|date',
             'jumlahbed' => 'required|max:4',
             'idklaim' => 'required|max:11'
-    	], $messages);
+        ], $messages);
 
-        try{
+        try {
             $data = Kamar::find($kodekamar);
             $data->kodekelas = $request->kodekelas;
             $data->koderuang = $request->koderuang;
@@ -141,37 +152,33 @@ class KamarController extends Controller
             $data->pemakaitarif = "belum";
             $data->save();
 
-            return redirect('/Kamar')->with('alert-success','Data berhasil diubah!');
-         }
-         catch(\Exception $e){
+            return redirect('/Kamar')->with('alert-success', 'Data berhasil diubah!');
+        } catch (\Exception $e) {
             // do task when error
-            return redirect('/Kamar')->with('alert-danger','Data gagal diubah diubah!');
+            return redirect('/Kamar')->with('alert-danger', 'Data gagal diubah diubah!');
             echo $e->getMessage();   // insert query
-            
-         }
 
-        
+        }
     }
 
-    public function hapus($kodekamar) {
-        try{
-            
+    public function hapus($kodekamar)
+    {
+        try {
+
             $datas = Kamar::find($kodekamar);
             $datas->delete();
-            
+
             $kamarkosong = Kamarkosong_temp::find($kodekamar);
             $kamarkosong->delete();
 
-            return redirect('/Kamar')->with('alert-success','Data berhasil dihapus!');
+            return redirect('/Kamar')->with('alert-success', 'Data berhasil dihapus!');
+        } catch (\Exception $e) {
 
-        }catch(\Exception $e){
-
-            return redirect('/Kamar')->with('alert-danger','Data gagal dihapus!');
+            return redirect('/Kamar')->with('alert-danger', 'Data gagal dihapus!');
         }
-    	
     }
 
-    public function kamar_kosong(){
-        
+    public function kamar_kosong()
+    {
     }
 }
