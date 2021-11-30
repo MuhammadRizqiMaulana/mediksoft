@@ -1220,7 +1220,7 @@
 @endisset
 <!-- Modal Tabel User Level -->
 
-<!-- Modal Tabel User Level -->
+<!-- Modal Tabel Rawat Inap -->
 @isset($rawatinap)
 <div class="modal fade" id="modal-rawatinap">
     <div class="modal-dialog modal-xl">
@@ -1280,6 +1280,75 @@
     <!-- /.modal-dialog -->
 </div>
 @endisset
-<!-- Modal Tabel User Level -->
+<!-- Modal Tabel Rawat Inap -->
+
+<!-- Modal Tabel Pembayaran Rawat jalan -->
+@isset($bayarrjalan)
+<div class="modal fade" id="modal-bayarrjalan">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data Pembayaran Rawat jalan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_bayarrjalan" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">No</th>
+                            <th rowspan="2">No. Bayar Rawat Jalan</th>
+                            <th colspan="2" style="text-align:center">Tanggal</th>
+                            <th rowspan="2">No. RM</th>
+                            <th rowspan="2">Nama Pasien</th>
+                            <th rowspan="2">Perusahaan / Jaminan</th>
+                            <th rowspan="2">Disk.</th>
+                            <th rowspan="2">+/- Disk.</th>
+                            <th rowspan="2">Tagihan</th>
+                            <th rowspan="2">Pembulatan Bayar</th>
+                            <th rowspan="2">Dibayar</th>
+                            <th rowspan="2">Aksi</th>
+                        </tr>
+                        <tr>
+                            <th>Tagihan</th>
+                            <th>Bayar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $no = 1;
+                        @endphp
+                        @foreach ($bayarrjalan as $item)
+                        <tr onclick="bayarrjalan('{{$item->nobayar_rjalan}}');">
+                            <td>{{$no++}}</td>
+                            <td>{{$item->nobayar_rjalan}}</td>
+                            <td>{{$item->tanggal}}</td>
+                            <td>{{$item->tanggalbayar}}</td>
+                            <td>{{$item->norm}}</td>
+                            <td>{{$item->Pasien->namapasien}}</td>
+                            <td></td>
+                            <td class="text-right">@rupiah($item->diskonnominal + $item->diskonnilai)</td>
+                            <td class="text-right">@rupiah((round($item->tagihan / 1000) * 1000) - $item->tagihan)</td>
+                            <td class="text-right">@rupiah($item->tagihan)</td>
+                            <td class="text-right">@rupiah($item->pembulatan)</td>
+                            <td class="text-right">@rupiah($item->bayar)</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="bayarrjalan('{{$item->nobayar_rjalan}}');"><i class="fa fa-check"></i>
+                                    Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel Pembayaran Rawat jalan -->
 
 <!-- /.modal -->

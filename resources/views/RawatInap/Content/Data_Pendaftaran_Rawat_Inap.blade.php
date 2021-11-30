@@ -152,7 +152,7 @@
                     <th rowspan="2">Kode Kamar</th>
                     <th rowspan="2">Kelas</th>
                     <th rowspan="2">Ruang</th>
-                    <th colspan="2">Tanggal</th>
+                    <th colspan="2" style="text-align:center">Tanggal</th>
                     <th rowspan="2">Perusahaan</th>
                     <th rowspan="2">Dokter</th>
                     <th rowspan="2">Status</th>

@@ -207,7 +207,6 @@ class Data_PendaftaranController extends Controller
     {
 
         $datas = Rawatjalan::all();
-
         return view('RawatJalan.Cetak.Cetak_Data_Pendaftaran', compact('datas'));
     }
 
