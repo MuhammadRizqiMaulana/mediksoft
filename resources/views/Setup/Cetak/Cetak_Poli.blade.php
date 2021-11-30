@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Medikasoft - Detak Data POLIKLINIK</title>
+    <title>Medikasoft - Cetak Data POLIKLINIK</title>
 </head>
 
 <body onload="window.print()">

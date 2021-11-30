@@ -28,7 +28,7 @@ class DokterPoliController extends Controller
     public function cetakdatadokterpoli()
     {
 
-        $datas = Dokter::all();
+        $datas = Tarif_dokter_poli::all();
         $poliklinik = Poliklinik::all();
 
         return view('Setup.Cetak.Cetak_DokterPoli', compact('datas', 'poliklinik'));

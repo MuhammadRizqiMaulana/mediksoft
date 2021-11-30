@@ -39,8 +39,10 @@
                                     <a class="btn btn-outline-success btn-sm"
                                         href="{{url('Keanggotaan/#TambahAnggota')}}"><i class="fa fa-plus-circle"></i>
                                         Tambah</a>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm"><i
-                                            class="fa fa-print"></i> Cetak</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"><a
+                                            href="/Keanggotaan/cetakdatakeanggotaan">
+                                            <i class="fa fa-print"></i> Cetak
+                                        </a></button>
                                 </div>
                             </div>
 

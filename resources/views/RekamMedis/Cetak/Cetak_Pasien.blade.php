@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Medikasoft - Cetak Data KAMAR</title>
+    <title>Medikasoft - Cetak Data PASIEN</title>
 </head>
 
 <body onload="window.print()">
@@ -18,7 +18,7 @@
     </table>
     <br>
     <center>
-        <h4><strong>DATA KAMAR </strong></h4>
+        <h4><strong>DATA PASIEN </strong></h4>
     </center>
     <br>
 
@@ -27,9 +27,9 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kelas</th>
-                    <th>Ruang</th>
-                    <th>Tarif</th>
+                    <th>No RM</th>
+                    <th>Nama Pasien</th>
+                    <th>Alamat</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,13 +39,9 @@
                 @foreach ($datas as $item)
                 <tr>
                     <td align="right">{{$no++}}</td>
-                    <td>
-                        @if(isset($item->Kelas)){{$item->Kelas->nama}}@endif
-                    </td>
-                    <td>
-                        @if(isset($item->Ruang)){{$item->Ruang->namaruang}}@endif
-                    </td>
-                    <td>{{$item->tarif}}</td>
+                    <td>{{$item->norm}}</td>
+                    <td>{{$item->namapasien}}</td>
+                    <td>{{$item->alamat}}</td>
                 </tr>
                 @endforeach
 
