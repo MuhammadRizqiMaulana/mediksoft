@@ -14,6 +14,13 @@ class DokterController extends Controller
         $datas = Dokter::all();
         return view('Setup.Content.Dokter', compact('datas'));
     }
+    public function cetakdatadokter()
+    {
+
+        $datas = Dokter::all();
+
+        return view('Setup.Cetak.Cetak_Dokter', compact('datas'));
+    }
     public function tambah()
     {
 
@@ -43,17 +50,17 @@ class DokterController extends Controller
             'img' => 'nullable|image',
             'nikd' => 'required|max:13',
         ], $messages);
-        
+
         if (isset($request->img)) {
             $file = $request->file('img'); // menyimpan data gambar yang diupload ke variabel $file
-            $nama_file = time()."_".$file->getClientOriginalName();
-            $file->move('images/Ttd_Dokter',$nama_file); // isi dengan nama folder tempat kemana file diupload
+            $nama_file = time() . "_" . $file->getClientOriginalName();
+            $file->move('images/Ttd_Dokter', $nama_file); // isi dengan nama folder tempat kemana file diupload
         }
 
         $invoice = Dokter::selectRaw('LPAD(CONVERT((COUNT("iddokter") + 1) , char(3)) , 3,"0") as invoice')->first();
 
         $data = new Dokter();
-        $data->iddokter = "DR".$invoice->invoice;
+        $data->iddokter = "DR" . $invoice->invoice;
         $data->nama = $request->nama;
         $data->alamat = $request->alamat;
         $data->jeniskelamin = $request->jeniskelamin;
@@ -63,10 +70,10 @@ class DokterController extends Controller
         $data->nikd = $request->nikd;
         if ($request->img == null) {
             $data->img = $data->img;
-        }else{
+        } else {
             $data->img = $nama_file;
         }
-        
+
         $data->save();
 
         return redirect('/Dokter')->with('alert-success', 'Data berhasil ditambahkan!');

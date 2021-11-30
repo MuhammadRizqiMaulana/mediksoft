@@ -1223,7 +1223,7 @@
 <!-- Modal Tabel Rawat Inap -->
 @isset($rawatinap)
 <div class="modal fade" id="modal-rawatinap">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Data Rawat Inap</h4>

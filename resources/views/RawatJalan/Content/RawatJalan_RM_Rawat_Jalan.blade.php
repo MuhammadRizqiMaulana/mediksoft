@@ -5,11 +5,11 @@
 <div class="content-wrapper">
 
     <!-- Menu -->
-    @include('RawatInap.Layout.menu')
+    @include('RawatJalan.Layout.menu')
     <!-- /.menu -->
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h4 class="mb-0 text-gray-800">Data Penggunaan Obat Rawat Inap</h4>
+            <h4 class="mb-0 text-gray-800">Rekam Medis Rawat Jalan</h4>
         </div>
     </div>
 
@@ -34,26 +34,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <!-- form start -->
-                            <form action="{{url('//')}}" method="post">
-                                {{csrf_field()}}
-                                <div class="form-group">
-
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <select class="form-control" width="100%" name="idklaim" id="">
-
-                                                <option value="Pilih Laporan">Pilih Laporan</option>
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                    @if ($errors->has(''))
-                                    <span class="text-danger">
-                                        <p class="text-right">* {{ $errors->first('') }}</p>
-                                    </span>
-                                    @endif
-                                </div>
+                            <form action="" method="post">
                                 <div class="row">
                                     <div class="col-9">
                                         <div class="row">
@@ -65,8 +46,12 @@
                                             <div class="col-8"><input type="date" class="form-control"></div>
                                         </div>
                                     </div>
+                                    <div class="col-3">
+                                        <a class="btn btn-block btn-outline-info btn-lg">
+                                            <i class="fas fa-filter"></i> Filter
+                                        </a>
+                                    </div>
                                 </div>
-                                <br>
                                 <div class="row">
                                     <div class="col-3"><button type="button"
                                             class="btn btn-block btn-outline-success"><i
@@ -90,57 +75,59 @@
                                                 class="fas fa-calendar-plus"></i></button></div>
                                 </div>
                                 <br>
-                                <div class="form-group">
-                                    <label>Dokter Jaga</label>
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <select class="form-control" width="100%" name="idklaim" id="">
+                                <div class="row">
+                                    <div class="col-sm-6"><a href="" id=""
+                                            class="btn btn-block btn-outline-secondary btn-sm"><i
+                                                class="fa fa-edit"></i> Ubah</a></div>
 
-                                                <option value=""> </option>
-
-                                            </select>
-                                        </div>
-                                        <div class="col-2 text-right">
-                                            <button type="button" class="btn btn-outline-info" data-toggle="modal"
-                                                data-target="#modal-">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    @if ($errors->has(''))
-                                    <span class="text-danger">
-                                        <p class="text-right">* {{ $errors->first('') }}</p>
-                                    </span>
-                                    @endif
                                 </div>
                                 <div class="row">
-                                    <div class="col-6"><button type="button"
-                                            class="btn btn-block btn-outline-primary"></i> Pratinjau</button></div>
-                                    <div class="col-6"><button type="button"
-                                            class="btn btn-block btn-outline-primary"></i> Layout</button></div>
+                                    <div class="col"><button type="button"
+                                            class="btn btn-block btn-outline-info btn-sm"><i
+                                                class="fas fa-clipboard-list"></i> Lihat Detail</button>
+                                    </div>
+                                    <div class="col"><button type="button"
+                                            class="btn btn-block btn-outline-info btn-sm"><i class="fa fa-print"></i>
+                                            Cetak Data Pendaftaran</button>
+                                    </div>
                                 </div>
-
-
+                                <br>
                             </form>
-                            <hr>
-
                         </div>
-                        <!-- /.card-body -->
-
-                        <!-- /.card-footer -->
                     </div>
-                    <!-- /.card -->
+                    <!-- /.card-body -->
                 </div>
+                <!-- /.card -->
+
                 <!-- /.col -->
                 <div class="col-8">
                     <div class="card">
-                        <div class="card-header">
-
-
-                        </div>
                         <div class="card-body">
+                            <table id="example1" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Jam</th>
+                                        <th>No RM</th>
+                                        <th>Nama Pasien</th>
+                                        <th>Alamat</th>
+                                        <th>Jumlah Kunjungan</th>
+                                        <th>Kunjungan Terakhihr</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                            </table>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -148,11 +135,12 @@
                 </div>
                 <!-- /.col -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

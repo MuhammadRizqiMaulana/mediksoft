@@ -58,7 +58,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/RM_Rawat_Jalan')}}">
+                        <a class="users-list-name" href="{{url('/RawatJalan_RM_Rawat_Jalan')}}">
                             <img src="{{asset('images/icon/RM_Rawat_Jalan.png')}}"><br> RM Rawat Jalan
                         </a>
                     </button>

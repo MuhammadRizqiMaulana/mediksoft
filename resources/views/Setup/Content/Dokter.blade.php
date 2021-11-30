@@ -37,8 +37,10 @@
                                 <div class="col-sm-6 text-right">
                                     <a class="btn btn-outline-success btn-sm" href="{{url('Dokter/#TambahDokter')}}"><i
                                             class="fa fa-plus-circle"></i> Tambah</a>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm"><i
-                                            class="fa fa-print"></i> Cetak</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"><a
+                                            href="/Dokter/cetakdatadokter">
+                                            <i class="fa fa-print"></i> Cetak Data Dokter
+                                        </a></button>
                                 </div>
                             </div>
 
@@ -247,7 +249,7 @@
                                             <h5 class="card-title">Tanda Tangan</h5>
                                         </div>
                                         <div class="card-content">
-                                            <div class="card-body"> 
+                                            <div class="card-body">
                                                 <input type="file" name="img" class="image-preview-filepond">
                                             </div>
                                         </div>

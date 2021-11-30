@@ -154,7 +154,7 @@
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" onclick="Kamar();">
+                        <a class="users-list-name" href="{{url('/Kamar')}}">
                             <img src="{{asset('images/icon/Kamar.png')}}"><br> Kamar
                         </a>
                     </button>

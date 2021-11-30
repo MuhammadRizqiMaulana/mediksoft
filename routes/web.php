@@ -39,6 +39,7 @@ use App\Http\Controllers\RekamMedis\PasienController;
 use App\Http\Controllers\RekamMedis\Pendaftaran_Rawat_JalanController;
 use App\Http\Controllers\RekamMedis\RawatInapController;
 use App\Http\Controllers\RekamMedis\KamarKosongController;
+use App\Http\Controllers\RekamMedis\RM_RawatJalanController;
 
 /* ----- RekamMedis -----*/
 
@@ -50,6 +51,7 @@ use App\Http\Controllers\RawatJalan\PenggunaanObatController;
 use App\Http\Controllers\RawatJalan\Pelayanan_PoliController;
 use App\Http\Controllers\RawatJalan\Transfer_RiController;
 use App\Http\Controllers\RawatJalan\Update_Data_Pendaftaran_Pasien_OnlineController;
+use App\Http\Controllers\RawatJalan\RawatJalan_RM_Rawat_JalanController;
 
 /* ----- RawatJalan -----*/
 
@@ -63,6 +65,7 @@ use App\Http\Controllers\RawatInap\CariPasienController;
 use App\Http\Controllers\RawatInap\MacamRawatController;
 use App\Http\Controllers\RawatInap\PindahKamarController;
 use App\Http\Controllers\RawatInap\INOSController;
+use App\Http\Controllers\RawatInap\Pemberian_Obat_Rawat_InapController;
 
 /* ----- RawatInap -----*/
 
@@ -72,6 +75,7 @@ use App\Http\Controllers\Operasi\DokterBedahController;
 use App\Http\Controllers\Operasi\Tarif_Tindakan_OperasiController;
 use App\Http\Controllers\Operasi\JenisAnestesiController;
 use App\Http\Controllers\Operasi\SpesialisBedahController;
+use App\Http\Controllers\Operasi\DataOperasiController;
 /* ----- Operasi -----*/
 
 /* ----- Billing -----*/
@@ -235,6 +239,17 @@ Route::get('/Administrasi/ubah{idadm}', [AdministrasiController::class, 'ubah'])
 Route::post('/Administrasi/update{idadm}', [AdministrasiController::class, 'update']);
 Route::get('/Administrasi/hapus{idadm}', [AdministrasiController::class, 'hapus']);
 
+Route::get('/Jaminan/cetakdatajaminan', [JaminanController::class, 'cetakdatajaminan']);
+Route::get('/Icd9/cetakdataicd9', [Icd9Controller::class, 'cetakdataicd9']);
+Route::get('/Dokter/cetakdatadokter', [DokterController::class, 'cetakdatadokter']);
+Route::get('/Kelas/cetakdatakelas', [KelasController::class, 'cetakdatakelas']);
+Route::get('/Poli/cetakdatapoli', [PoliController::class, 'cetakdatapoli']);
+Route::get('/Bank/cetakdatabank', [BankController::class, 'cetakdatabank']);
+Route::get('/Pengirim_Faskes/cetakdatapengirimfaskes', [Pengirim_FaskesController::class, 'cetakdatapengirimfaskes']);
+Route::get('/Karyawan/cetakdatakaryawan', [KaryawanController::class, 'cetakdatakaryawan']);
+Route::get('/Ruang/cetakdataruang', [RuangController::class, 'cetakdataruang']);
+Route::get('/Kamar/cetakdatakamar', [KamarController::class, 'cetakdatakamar']);
+Route::get('/DokterPoli/cetakdatadokterpoli', [DokterPoliController::class, 'cetakdatadokterpoli']);
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
@@ -256,6 +271,7 @@ Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
 
 Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index']);
 Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store']);
+Route::get('/RM_RawatJalan', [RM_RawatJalanController::class, 'index']);
 Route::get('/RM_RawatInap', [RawatInapController::class, 'index']);
 Route::post('/RM_RawatInap/store', [RawatInapController::class, 'store']);
 Route::get('/KamarKosong', [KamarKosongController::class, 'index']);
@@ -280,6 +296,7 @@ Route::get('/Data_Pendaftaran/cetakdatapendaftaran', [Data_PendaftaranController
 Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
 
 Route::get('/PenggunaanObat', [PenggunaanObatController::class, 'index']);
+Route::get('/RawatJalan_RM_Rawat_Jalan', [RawatJalan_RM_Rawat_JalanController::class, 'index']);
 
 Route::get('/Data_Pendaftaran/suratketerangansakit{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansakit']);
 Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansehat']);
@@ -319,8 +336,11 @@ Route::get('/Ubah_Kamar{faktur_rawatinap}', [Ubah_KamarController::class, 'index
 Route::post('/Ubah_Kamar/update{faktur_rawatinap}', [Ubah_KamarController::class, 'update']);
 
 Route::get('/PindahKamar', [PindahKamarController::class, 'index']);
+Route::get('/PindahKamar/selectrawatinap{faktur_rawatinap}', [PindahKamarController::class, 'selectfakturri']);
 
 Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
+
+Route::get('/Pemnerian_Obat_Rawat_Inap', [Pemnerian_Obat_Rawat_InapController::class, 'index']);
 
 Route::get('/CariPasien', [CariPasienController::class, 'index']);
 Route::post('/CariPasien/store', [CariPasienController::class, 'store']);
@@ -347,6 +367,7 @@ Route::get('/Operasi', function () {
 Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
 Route::get('/JenisAnestesi', [JenisAnestesiController::class, 'index']);
 Route::get('/SpesialisBedah', [SpesialisBedahController::class, 'index']);
+Route::get('/DataOperasi', [DataOperasiController::class, 'index']);
 Route::get('/Tarif_Tindakan_Operasi', [Tarif_Tindakan_OperasiController::class, 'index']);
 Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
 Route::post('/DokterBedah/store', [DokterBedahController::class, 'store']);
