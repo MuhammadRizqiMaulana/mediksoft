@@ -25,7 +25,7 @@
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Update_Pendaftaran_Online')}}">
+                        <a class="users-list-name" href="{{url('/Update_Data_Pendaftaran_Pasien_Online')}}">
                             <img src="{{asset('images/icon/Update_Pendaftaran_Online.png')}}"><br> Update Pendaftaran
                             Online
                         </a>

@@ -206,7 +206,7 @@ class Data_PendaftaranController extends Controller
 
         $datas = Rawatjalan::all();
            
-        return view('RawatJalan.Content.Cetak_Data_Pendaftaran',compact('datas'));
+        return view('RawatJalan.Cetak.Cetak_Data_Pendaftaran',compact('datas'));
     }
 
     public function suratketerangansakit($faktur_rawatjalan) {
