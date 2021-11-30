@@ -21,6 +21,14 @@ class TindakanPoliController extends Controller
         $datas = Tarif_tindakan_poli::all();
         return view('Setup.Content.TindakanPoli', compact('poliklinik', 'icd9', 'eklaimbpjs', 'datas'));
     }
+    public function cetakdatatindakanpoli()
+    {
+
+        $datas = Tarif_tindakan_poli::all();
+        $poliklinik = Poliklinik::all();
+
+        return view('Setup.Cetak.Cetak_TindakanPoli', compact('datas', 'poliklinik'));
+    }
     public function tambah()
     {
 

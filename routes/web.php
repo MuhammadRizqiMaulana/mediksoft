@@ -250,6 +250,7 @@ Route::get('/Karyawan/cetakdatakaryawan', [KaryawanController::class, 'cetakdata
 Route::get('/Ruang/cetakdataruang', [RuangController::class, 'cetakdataruang']);
 Route::get('/Kamar/cetakdatakamar', [KamarController::class, 'cetakdatakamar']);
 Route::get('/DokterPoli/cetakdatadokterpoli', [DokterPoliController::class, 'cetakdatadokterpoli']);
+Route::get('/TindakanPoli/cetakdatatindakanpoli', [TindakanPoliController::class, 'cetakdatatindakanpoli']);
 /* ----- Setup -----*/
 
 /* ----- RekamMedis -----*/
@@ -275,6 +276,9 @@ Route::get('/RM_RawatJalan', [RM_RawatJalanController::class, 'index']);
 Route::get('/RM_RawatInap', [RawatInapController::class, 'index']);
 Route::post('/RM_RawatInap/store', [RawatInapController::class, 'store']);
 Route::get('/KamarKosong', [KamarKosongController::class, 'index']);
+
+Route::get('/Pasien/cetakdatapasien', [PasienController::class, 'cetakdatapasien']);
+Route::get('/Keanggotaan/cetakdatakeanggotaan', [KeanggotaanController::class, 'cetakdatakeanggotaan']);
 
 /* ----- RekamMedis -----*/
 

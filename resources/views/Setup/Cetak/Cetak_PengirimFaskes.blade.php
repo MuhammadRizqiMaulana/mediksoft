@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Medikasoft - Detak Data PENGIRIM FASKES</title>
+    <title>Medikasoft - Cetak Data PENGIRIM FASKES</title>
 </head>
 
 <body onload="window.print()">

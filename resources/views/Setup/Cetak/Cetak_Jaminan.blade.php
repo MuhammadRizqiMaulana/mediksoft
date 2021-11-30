@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Medikasoft - Detak Data Perushaan / Jaminan</title>
+    <title>Medikasoft - Cetak Data Perushaan / Jaminan</title>
 </head>
 
 <body onload="window.print()">

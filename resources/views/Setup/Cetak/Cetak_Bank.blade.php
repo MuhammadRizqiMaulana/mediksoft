@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Medikasoft - Detak Data BANK</title>
+    <title>Medikasoft - Cetak Data BANK</title>
 </head>
 
 <body onload="window.print()">

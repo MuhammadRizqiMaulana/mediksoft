@@ -80,11 +80,21 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-3 text-right mb-3"><label>Tanggal Masuk</label></div>
-                                    <div class="col-9"><input type="text" class="form-control"
-                                            value="@isset($selectrawatinap){{$selectrawatinap->tglmasuk}} @endisset"
-                                            readonly>
+                                    <div class="col-9">
+                                        <div class="input-group date" name="tglmasuk" id="tglmasuk"
+                                            data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input"
+                                                data-target="#tglmasuk"
+                                                value="@isset($selectrawatinap){{$selectrawatinap->tglmasuk}} @endisset"
+                                                disabled />
+                                            <div class="input-group-append" data-target="#tglmasuk"
+                                                data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-3 text-right mb-3"><label>Kamar Lama</label></div>
                                     <div class="col-9"><input type="text" class="form-control"
@@ -114,12 +124,29 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-3 text-right mb-3"><label>Tanggal Masuk</label></div>
-                                    <div class="col-9"><input type="text" class="form-control" value="">
+                                    <div class="col-9">
+                                        <div class="input-group date" name="tglmasuk" id="tglmasuk"
+                                            data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input"
+                                                data-target="#tglmasuk" value="" />
+                                            <div class="input-group-append" data-target="#tglmasuk"
+                                                data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-3 text-right mb-3"><label>Kamar Baru</label></div>
-                                    <div class="col-9"><select name="kodekamar" class="form-control"></select></div>
+                                <div class="row mb-2">
+                                    <div class="col-3 text-right"><label>Ubah ke kamar</label></div>
+                                    <div class="col-9">
+                                        <select name="kodekamar" class="form-control">
+                                            @foreach ($kamar as $item)
+                                            <option value="{{$item->kodekamar}}">{{$item->kodekamar}} |
+                                                {{$item->Ruang->namaruang}} | {{$item->Kelas->nama}} | {{$item->tarif}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-3 text-right mb-3"><label>Ruangan / Kelas</label></div>

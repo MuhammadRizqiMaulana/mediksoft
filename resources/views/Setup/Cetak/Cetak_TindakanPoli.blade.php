@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Medikasoft - Cetak Data Dokter POLI</title>
+    <title>Medikasoft - Cetak Data TINDAKAN POLI</title>
 </head>
 
 <body onload="window.print()">
@@ -18,7 +18,7 @@
     </table>
     <br>
     <center>
-        <h4><strong>DATA DOKTER POLI </strong></h4>
+        <h4><strong>DATA TINDAKAN POLI </strong></h4>
     </center>
     <br>
 
@@ -26,10 +26,16 @@
         <table align="center" border="1" width="1000px">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Poli</th>
-                    <th>Nama Dokter</th>
-                    <th>Tarif</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Poli</th>
+                    <th rowspan="2">Nama Tindakan</th>
+                    <th colspan="4">Tarif</th>
+                </tr>
+                <tr>
+                    <th align="center">RS</th>
+                    <th align="center">Dokter</th>
+                    <th align="center">Paramedis</th>
+                    <th align="center">Tarif</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,8 +46,11 @@
                 <tr>
                     <td align="right">{{$no++}}</td>
                     <td>{{$item->Poliklinik->nama}}</td>
-                    <td>{{$item->Dokter->nama}}</td>
-                    <td>{{$item->tarif}}</td>
+                    <td>{{$item->namatindakan}}</td>
+                    <td align="right">{{$item->untukrs}}</td>
+                    <td align="right">{{$item->untukdokter}}</td>
+                    <td align="right">{{$item->untukparamedis}}</td>
+                    <td align="right">{{$item->tarif}}</td>
                 </tr>
                 @endforeach
             </tbody>
