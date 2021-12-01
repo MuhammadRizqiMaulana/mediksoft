@@ -1,5 +1,9 @@
 <html>
 
+<head>
+    <title>Medikasoft</title>
+</head>
+
 <body onload="window.print()">
     <table align="center">
         <tr>
