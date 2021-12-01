@@ -77,18 +77,17 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col">
-                                        <a href="/Data_Pendaftaran/cetakdatapendaftaran"
-                                            class="btn btn-block btn-outline-secondary btn-sm">
-                                            <i class="fa fa-print"></i> Cetak Data Pendaftaran
+                                    <div class="col-12">
+                                        <a href="/RM_RawatInap/cetakdatarmrawatinap"
+                                            class="btn btn-block btn-outline-primary btn-sm">
+                                            <i class="fas fa-edit"></i> Cetak
                                         </a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col">
-                                        <a href="/Data_Pendaftaran/cetakdatapendaftaran"
-                                            class="btn btn-block btn-outline-primary btn-sm">
+                                        <a href="" class="btn btn-block btn-outline-primary btn-sm">
                                             <i class="fas fa-edit"></i> Diagnosa Pasien
                                         </a>
                                     </div>

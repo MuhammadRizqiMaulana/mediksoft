@@ -19,7 +19,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Kamar_Kosong')}}">
+                        <a class="users-list-name" href="{{url('/KamarKosong')}}">
                             <img src="{{asset('images/icon/Kamar_Kosong.png')}}"><br> Kamar Kosong
                         </a>
                     </button>

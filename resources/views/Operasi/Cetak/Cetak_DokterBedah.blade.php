@@ -5,29 +5,29 @@
 </head>
 
 <body onload="window.print()">
-    <table>
+    <table align="center">
         <tr>
-            <td rowspan="2">LOGO Rumah Sakit</td>
-            <td>Nama Rumah Sakit</td>
 
+            <td>Nama Rumah Sakit</td>
         </tr>
         <tr>
-            <td>AlamatRumah Sakit</td>
-            <td>No Telp Rumah Sakit</td>
+            <td>AlamatRumah Sakit - Telp</td>
         </tr>
     </table>
     <br>
     <center>
-        <h4><strong>DATA TARIF DOKTER POLI </strong></h4>
+        <h4><strong>DATA TARIF DOKTER BEDAH</strong></h4>
     </center>
     <br>
 
-    <div class="col">
+    <div class="col-12">
         <table align="center" border="1" width="1000px">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Poli</th>
+                    <th>Kelas</th>
+                    <th>Gol. OP</th>
+                    <th>Jenis Rawat</th>
                     <th>Nama Dokter</th>
                     <th>Tarif</th>
                 </tr>
@@ -39,14 +39,18 @@
                 @foreach ($datas as $item)
                 <tr>
                     <td align="right">{{$no++}}</td>
-                    <td>{{$item->Poliklinik->nama}}</td>
-                    <td>{{$item->Dokter->nama}}</td>
+                    <td>Nama Kelas</td>
+                    <td>Golongan Operasi</td>
+                    <td>{{$item->jenisrawat}}</td>
+                    <td>{{$item->Dokter->nama}}</td>>
                     <td>{{$item->tarif}}</td>
                 </tr>
                 @endforeach
+
             </tbody>
         </table>
     </div>
+
 </body>
 
 </html>

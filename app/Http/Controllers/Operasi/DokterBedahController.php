@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tarif_dokter_bedah;
 use App\Models\Dokter;
+use App\Models\Op_golongan;
 use Illuminate\Support\Facades\DB;
 
 class DokterBedahController extends Controller
@@ -17,7 +18,15 @@ class DokterBedahController extends Controller
         $datas = Tarif_dokter_bedah::all();
         return view('Operasi.Content.DokterBedah', compact('dokter', 'datas'));
     }
+    public function cetakdatadokterbedah()
+    {
 
+        $datas = Tarif_dokter_bedah::all();
+        $dokter = Dokter::all();
+        $op_golongan = Op_golongan::all();
+
+        return view('Operasi.Cetak.Cetak_DokterBedah', compact('datas', 'dokter', 'op_golongan'));
+    }
     public function tambah()
     {
 
