@@ -1,9 +1,5 @@
 <html>
 
-<head>
-    <title>Medikasoft - Cetak Data PASIEN</title>
-</head>
-
 <body onload="window.print()">
     <table>
         <tr>

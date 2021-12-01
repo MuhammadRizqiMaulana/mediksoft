@@ -362,6 +362,8 @@ Route::get('/Status_Pulang', function () {
     return view('RawatInap.Content.Status_Pulang');
 });
 
+Route::get('/Data_Pendaftaran_Rawat_Inap/cetakdatapendaftaranrawatinap', [Data_Pendaftaran_Rawat_InapController::class, 'cetakdatapendaftaranrawatinap']);
+
 /* ----- RawatInap -----*/
 
 /* ----- Operasi -----*/

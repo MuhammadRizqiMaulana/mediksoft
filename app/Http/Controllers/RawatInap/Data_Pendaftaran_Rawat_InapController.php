@@ -30,7 +30,11 @@ class Data_Pendaftaran_Rawat_InapController extends Controller
 
         return view('RawatInap.Content.Data_Pendaftaran_Rawat_Inap', compact('datas'));
     }
-
+    public function cetakdatapendaftaranrawatinap()
+    {
+        $datas = Rawatinap::all();
+        return view('RawatInap.Cetak.Cetak_DataPendaftaranRawatInap', compact('datas'));
+    }
     public function tambah()
     {
 
