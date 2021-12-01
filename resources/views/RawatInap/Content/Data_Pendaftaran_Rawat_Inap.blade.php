@@ -145,7 +145,7 @@
                                 <div class="col">
                                     <button type="button" class="btn btn-outline-secondary btn-sm"><a
                                             href="/Data_Pendaftaran_Rawat_Inap/cetakdatapendaftaranrawatinap">
-                                            <i class="fa fa-print"></i> Cetak
+                                            <i class="fa fa-print"></i> Cetak Pendaftaran Rawat Inap
                                         </a></button>
                                     <div class="col"><button type="button"
                                             class="btn btn-block btn-outline-info btn-sm"><i

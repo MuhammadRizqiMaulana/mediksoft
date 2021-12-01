@@ -18,7 +18,10 @@
     </table>
     <br>
     <center>
-        <h4><strong>DATA TARIF DOKTER POLI </strong></h4>
+        <h4><strong>REKAM MEDIS RAWAT INAP </strong></h4>
+    </center>
+    <center>
+        <h4><strong>Tanggal </strong></h4>
     </center>
     <br>
 
@@ -27,9 +30,14 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Poli</th>
-                    <th>Nama Dokter</th>
-                    <th>Tarif</th>
+                    <th>No RM</th>
+                    <th>Nama Pasien</th>
+                    <th>Umur</th>
+                    <th>Alamat</th>
+                    <th>Diagnosa</th>
+                    <th>Diagnosa Keluar</th>
+                    <th>Tanggal Masuk</th>
+                    <th>Tanggal Keluar</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,14 +47,21 @@
                 @foreach ($datas as $item)
                 <tr>
                     <td align="right">{{$no++}}</td>
-                    <td>{{$item->Poliklinik->nama}}</td>
-                    <td>{{$item->Dokter->nama}}</td>
-                    <td>{{$item->tarif}}</td>
+                    <td>{{$item->norm}}</td>
+                    <td>{{$item->Pasien->namapasien}}</td>
+                    <td>{{$item->Pasien->jeniskelamin}}</td>
+                    <td>{{$item->Pasien->alamat}}</td>
+                    <td>{{$item->diagnosaawal}}</td>
+                    <td>{{$item->diagnosaakhir}}</td>
+                    <td>{{$item->tglmasuk}}</td>
+                    <td>{{$item->tglkeluar}}</td>
                 </tr>
                 @endforeach
+
             </tbody>
         </table>
     </div>
+
 </body>
 
 </html>

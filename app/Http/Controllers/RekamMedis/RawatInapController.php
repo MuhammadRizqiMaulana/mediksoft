@@ -12,8 +12,14 @@ class RawatInapController extends Controller
     public function index()
     {
         $datas = Rawatinap::all();
-        $rawatinap = Rawatinap::all();
         $pasien = Pasien::all();
-        return view('RekamMedis.Content.RM_RawatInap', compact('pasien', 'rawatinap', 'datas'));
+        return view('RekamMedis.Content.RM_RawatInap', compact('pasien', 'datas'));
+    }
+    public function cetakdatarmrawatinap()
+    {
+
+        $datas = Rawatinap::all();
+        $pasien = Pasien::all();
+        return view('RekamMedis.Cetak.Cetak_RMRawatInap', compact('datas', 'pasien'));
     }
 }

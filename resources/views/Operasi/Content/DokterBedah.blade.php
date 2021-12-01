@@ -39,8 +39,10 @@
                                         href="{{url('DokterBedah/#TambahDokterBedah')}}"><i
                                             class="fa fa-plus-circle"></i>
                                         Tambah</a>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm"><i
-                                            class="fa fa-print"></i> Cetak</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"><a
+                                            href="/DokterBedah/cetakdatadokterbedah">
+                                            <i class="fa fa-print"></i> Cetak
+                                        </a></button>
                                 </div>
                             </div>
 

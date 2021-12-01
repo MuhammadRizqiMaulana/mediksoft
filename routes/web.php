@@ -280,7 +280,7 @@ Route::get('/KamarKosong', [KamarKosongController::class, 'index']);
 
 Route::get('/Pasien/cetakdatapasien', [PasienController::class, 'cetakdatapasien']);
 Route::get('/Keanggotaan/cetakdatakeanggotaan', [KeanggotaanController::class, 'cetakdatakeanggotaan']);
-
+Route::get('/RM_RawatInap/cetakdatarmrawatinap', [RawatInapController::class, 'cetakdatarmrawatinap']);
 /* ----- RekamMedis -----*/
 
 /* ----- RawatJalan -----*/
@@ -381,6 +381,8 @@ Route::post('/DokterBedah/store', [DokterBedahController::class, 'store']);
 Route::get('/DokterBedah/ubah{iddokter},{jenisrawat}', [DokterBedahController::class, 'ubah']);
 Route::post('/DokterBedah/update{iddokter},{jenisrawat}', [DokterBedahController::class, 'update']);
 Route::get('/DokterBedah/hapus{iddokter},{jenisrawat}', [DokterBedahController::class, 'hapus']);
+
+Route::get('/DokterBedah/cetakdatadokterbedah', [DokterBedahController::class, 'cetakdatadokterbedah']);
 /* ----- Operasi -----*/
 
 /* ----- Billing -----*/

@@ -63,7 +63,7 @@
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Pelayanan_Poli')}}">
+                        <a class="users-list-name" href="{{url('/Pelayanan_Rawat_Jalan')}}">
                             <img src="{{asset('images/icon/Pelayanan_Poli.png')}}"><br> Pelayanan Poli
                         </a>
                     </button>
@@ -90,7 +90,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Kamar_Kosong')}}">
+                        <a class="users-list-name" href="{{url('/KamarKosong')}}">
                             <img src="{{asset('images/icon/Kamar_Kosong.png')}}"><br> Kamar Kosong
                         </a>
                     </button>
@@ -117,7 +117,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Penggunaan_Obat')}}">
+                        <a class="users-list-name" href="{{url('/PenggunaanObat')}}">
                             <img src="{{asset('images/icon/Penggunaan_Obat.png')}}"><br> Penggunaan Obat
                         </a>
                     </button>
