@@ -22,8 +22,16 @@
           {{Session::get('alert-success')}}
       </div>
     @endif
+    @if(\Session::has('alert-danger'))
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h6><i class="fas fa-sign-out-alt"></i><b> Gagal!!</b></h6>
+          {{Session::get('alert-danger')}}
+      </div>
+    @endif
     
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -147,47 +155,45 @@
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-hover">
                   <thead>
-                 <tr>
-                    <th rowspan="2">No Bayar</th>
-                    <th colspan="2">Tanggal</th>
-                    <th rowspan="2">No RM</th>
-                    <th rowspan="2">Nama Pasien</th>
-                    <th rowspan="2">Perusahaan/Jaminan</th>
-                    <th rowspan="2">Disk</th>
-                    <th rowspan="2">+/-Disk</th>
-                    <th rowspan="6">Tagihan</th>
-                    <th rowspan="2">Pembulatan Bayar</th>
-                    <th rowspan="2">Di Bayar</th>
-                    
-                  </tr>
-                  <tr>
-                    <th>Tagihan</th>
-                    <th>Bayar</th>
-                  
-                  </tr>
-                 </thead>
-                 <tbody>
-                   @foreach ($datas as $item)
-                                    <tr>
-                                        <td>{{$item->nobayar_rjalan}}</td>
-                                        <td>{{$item->tanggal}}</td>
-                                        <td>{{$item->norm}}</td>
-                                        <td>{{$item->namapembayar}}</td>
-                                        <td>{{$item->diskonpersen}}</td>
-                                        <td>{{$item->diskonnilai}}</td>
-                                        <td>{{$item->tagihan}}</td>
-                                        <td>{{$item->pembulatan}}</td>
-                                        <td>{{$item->bayar}}</td>
-                                        
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                      <td>{{$item->tagihan}}</td>
-                                      <td>{{$item->tanggalbayar}}</td>
-                                    </tr>
-                                    @endforeach
-                 </tbody>
-                                   
+                    <tr>
+                        <th rowspan="2">No</th>
+                        <th rowspan="2">No. Bayar Rawat Jalan</th>
+                        <th colspan="2" style="text-align:center">Tanggal</th>
+                        <th rowspan="2">No. RM</th>
+                        <th rowspan="2">Nama Pasien</th>
+                        <th rowspan="2">Perusahaan / Jaminan</th>
+                        <th rowspan="2">Disk.</th>
+                        <th rowspan="2">+/- Disk.</th>
+                        <th rowspan="2">Tagihan</th>
+                        <th rowspan="2">Pembulatan Bayar</th>
+                        <th rowspan="2">Dibayar</th>
+                    </tr>
+                    <tr>
+                        <th>Tagihan</th>
+                        <th>Bayar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      @php
+                      $no = 1;
+                      @endphp
+                      @foreach ($datas as $item)
+                      <tr>
+                          <td>{{$no++}}</td>
+                          <td>{{$item->nobayar_rjalan}}</td>
+                          <td>{{$item->tanggal}}</td>
+                          <td>{{$item->tanggalbayar}}</td>
+                          <td>{{$item->norm}}</td>
+                          <td>{{$item->Pasien->namapasien}}</td>
+                          <td></td>
+                          <td class="text-right">@rupiah($item->diskonnominal + $item->diskonnilai)</td>
+                          <td class="text-right">@rupiah((round($item->tagihan / 1000) * 1000) - $item->tagihan)</td>
+                          <td class="text-right">@rupiah($item->tagihan)</td>
+                          <td class="text-right">@rupiah($item->pembulatan)</td>
+                          <td class="text-right">@rupiah($item->bayar)</td>
+                      </tr>
+                      @endforeach
+                  </tbody>
                 </table>
               </div>
               <!-- /.card-body -->

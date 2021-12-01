@@ -29,12 +29,12 @@
                             Tagihan RJ</a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Pembayaran_RJ')}}">
+                        <a class="users-list-name" href="{{url('/PembayaranRJ')}}">
                             <img src="{{asset('images/icon/Pembayaran_RJ.png')}}"><br> Pembayaran RJ
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Data_Pembayaran_RJ')}}">
+                        <a class="users-list-name" href="{{url('/Data_PembayaranRJ')}}">
                             <img src="{{asset('images/icon/Data_Pembayaran_RJ.png')}}"><br> Data Pembayaran RJ
                         </a>
                     </button>
@@ -61,7 +61,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Rekening_RI')}}">
+                        <a class="users-list-name" href="{{url('/RekeningRI')}}">
                             <img src="{{asset('images/icon/Rekening_RI.png')}}"><br> Rekening RI
                         </a>
                     </button>
