@@ -5,31 +5,33 @@
 </head>
 
 <body onload="window.print()">
-    <table>
+    <table align="center">
         <tr>
-            <td rowspan="2">LOGO Rumah Sakit</td>
-            <td>Nama Rumah Sakit</td>
 
+            <td>Nama Rumah Sakit</td>
         </tr>
         <tr>
-            <td>AlamatRumah Sakit</td>
-            <td>No Telp Rumah Sakit</td>
+            <td>AlamatRumah Sakit - Telp</td>
         </tr>
     </table>
     <br>
     <center>
-        <h4><strong>DATA DOKTER POLI </strong></h4>
+        <h4><strong>DATA PENDAFTARAN RAWAT INAP</strong></h4>
     </center>
     <br>
 
-    <div class="col">
+    <div class="col-12">
         <table align="center" border="1" width="1000px">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Poli</th>
+                    <th>No Faktur</th>
+                    <th>Tanggal</th>
+                    <th>Nama Pasien</th>
                     <th>Nama Dokter</th>
-                    <th>Tarif</th>
+                    <th>Nama Kamar</th>
+                    <th>Perusahaan</th>
+                    <th>Status Bayar</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,14 +41,20 @@
                 @foreach ($datas as $item)
                 <tr>
                     <td align="right">{{$no++}}</td>
-                    <td>{{$item->Poliklinik->nama}}</td>
+                    <td>{{$item->faktur_rawatinap}}</td>
+                    <td>{{$item->tglmasuk}}</td>
+                    <td>{{$item->Pasien->namapasien}}</td>
                     <td>{{$item->Dokter->nama}}</td>
-                    <td>{{$item->tarif}}</td>
+                    <td>{{$item->kodekamar}}</td>
+                    <td>{{$item->Perusahaan->namaprsh}}</td>
+                    <td>{{$item->statustransaksi}}</td>
                 </tr>
                 @endforeach
+
             </tbody>
         </table>
     </div>
+
 </body>
 
 </html>

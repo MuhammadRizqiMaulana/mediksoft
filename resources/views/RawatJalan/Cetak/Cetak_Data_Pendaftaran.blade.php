@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Medikasoft - Detak Data Pendaftaran Rawat jalan</title>
+    <title>Medikasoft</title>
 </head>
 
 <body onload="window.print()">
@@ -24,7 +24,7 @@
     <br>
 
     <div class="col-12">
-        <table border="1">
+        <table align="center" border="1" width="1000px">
             <thead>
                 <tr>
                     <th>No</th>
@@ -43,7 +43,7 @@
                 @endphp
                 @foreach ($datas as $item)
                 <tr>
-                    <td>{{$no++}}</td>
+                    <td align="right">{{$no++}}</td>
                     <td>{{$item->faktur_rawatjalan}}</td>
                     <td>{{$item->tglmasuk}}</td>
                     <td>{{$item->Pasien->namapasien}}</td>

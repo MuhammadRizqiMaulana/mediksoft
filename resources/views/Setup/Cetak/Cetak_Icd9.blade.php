@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Medikasoft - Cetak Data ICD 9</title>
+    <title>Medikasoft</title>
 </head>
 
 <body onload="window.print()">
