@@ -66,6 +66,7 @@ use App\Http\Controllers\RawatInap\MacamRawatController;
 use App\Http\Controllers\RawatInap\PindahKamarController;
 use App\Http\Controllers\RawatInap\INOSController;
 use App\Http\Controllers\RawatInap\Pemberian_Obat_Rawat_InapController;
+use App\Http\Controllers\RawatInap\AnamnesaController;
 
 /* ----- RawatInap -----*/
 
@@ -323,11 +324,11 @@ Route::get('/Update_Data_Pendaftaran_Pasien_Online', [Update_Data_Pendaftaran_Pa
 /* ----- RawatInap -----*/
 Route::get('/RawatInap', function () {
     return view('RawatInap.Content.index');
-    Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
 });
-
+Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
 Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
 Route::get('/RuteObat', [RuteObatController::class, 'index']);
+Route::get('/Anamnesa', [AnamnesaController::class, 'index']);
 Route::get('/Data_Pendaftaran_Rawat_Inap', [Data_Pendaftaran_Rawat_InapController::class, 'index']);
 Route::get('/Data_Pendaftaran_Rawat_Inap/tambah', [Data_Pendaftaran_Rawat_InapController::class, 'tambah']);
 Route::post('/Data_Pendaftaran_Rawat_Inap/store', [Data_Pendaftaran_Rawat_InapController::class, 'store']);
