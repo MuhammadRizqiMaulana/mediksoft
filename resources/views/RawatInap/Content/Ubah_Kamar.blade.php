@@ -43,57 +43,58 @@
               <!-- Baris ke 1-->
               <div class="row">
                 <div class="col">
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >No Pendaftaran</label></div>
-                      <div class="col-9"><input type="text" class="form-control" value="{{$ubah->faktur_rawatinap}}" readonly></div>
+                  <div class="form-group row">
+                    <label for="nopendaftaran" class="col-sm-3 col-form-label text-right">No Pendaftaran</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" value="{{$ubah->faktur_rawatinap}}" readonly>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Pasien</label></div>
-                      <div class="col-9"><input type="text" class="form-control" value="{{$ubah->Pasien->namapasien}}" readonly></div>
+                  <div class="form-group row">
+                    <label for="pasien" class="col-sm-3 col-form-label text-right">Pasien</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" value="{{$ubah->Pasien->namapasien}}" readonly>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Kode Kamar</label></div>
-                      <div class="col-9"><input type="text" class="form-control" value="{{$ubah->kodekamar}}" readonly></div>
+                  <div class="form-group row">
+                    <label for="kodekamarlama" class="col-sm-3 col-form-label text-right">Kode Kamar</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" value="{{$ubah->kodekamar}}" readonly>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Ruang</label></div>
-                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                  <div class="form-group row">
+                    <label for="ruangkamarlama" class="col-sm-3 col-form-label text-right">Ruang</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" value="" readonly>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Tanggal Masuk Kamar</label></div>
-                      <div class="col-9">
-                        <div class="input-group date" name="tglmasuk" id="tglmasuk" data-target-input="nearest">
-                          <input type="text" class="form-control datetimepicker-input" data-target="#tglmasuk" value="{{$ubah->tglmasuk}}" disabled/>
-                          <div class="input-group-append" data-target="#tglmasuk" data-toggle="datetimepicker">
-                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                          </div>
+                  <div class="form-group row">
+                    <label for="tglmasuk" class="col-sm-3 col-form-label text-right">Tanggal Masuk Kamar</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="tglmasuk" name="tglmasuk" placeholder="Tanggal Masuk Kamar" value="{{$ubah->tglmasuk}}" readonly>
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-outline-info" disabled>
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                   </div>
                 </div>
                 <!-- /.col -->
                 <div class="col">
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Kelas Kamar</label></div>
-                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                    <div class="form-group row">
+                      <label for="kelaskamarlama" class="col-sm-3 col-form-label text-right">Kelas Kamar</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" value="" readonly>
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Tarif Kamar</label></div>
-                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                    <div class="form-group row">
+                      <label for="tarifkamarlama" class="col-sm-3 col-form-label text-right">Tarif Kamar</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" value="" readonly>
+                      </div>
                     </div>
-                  </div>
                 </div>
                 <!-- /.col -->
               </div>
@@ -102,37 +103,35 @@
               <!-- Baris ke 2-->
               <div class="row">
                 <div class="col">
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Ubah ke kamar</label></div>
-                      <div class="col-9">
-                        <select name="kodekamar" class="form-control">
-                          @foreach ($kamar as $item)
-                              <option value="{{$item->kodekamar}}">{{$item->kodekamar}} | {{$item->Ruang->namaruang}} | {{$item->Kelas->nama}} | {{$item->tarif}}</option>
-                          @endforeach
-                        </select>
-                      </div>
+                  <div class="form-group row">
+                    <label for="kodekamarbaru" class="col-sm-3 col-form-label text-right">Ubah ke kamar</label>
+                    <div class="col-sm-9">
+                      <select id="kodekamarbaru" name="kodekamar" class="form-control">
+                        @foreach ($kamar as $item)
+                            <option value="{{$item->kodekamar}}">{{$item->kodekamar}} | {{$item->Ruang->namaruang}} | {{$item->Kelas->nama}} | @rupiah($item->tarif)</option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Kelas Kamar</label></div>
-                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                  <div class="form-group row">
+                    <label for="kelaskamarbaru" class="col-sm-3 col-form-label text-right">Kelas Kamar</label>
+                    <div class="col-sm-9">
+                      <input type="text" id="kelaskamarbaru" class="form-control" value="">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Ruang</label></div>
-                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                  <div class="form-group row">
+                    <label for="ruangkamarbaru" class="col-sm-3 col-form-label text-right">Ruang</label>
+                    <div class="col-sm-9">
+                      <input type="text" id="ruangkamarbaru" class="form-control" value="">
                     </div>
                   </div>
                 </div>
                 <!-- /.col -->
                 <div class="col">
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-3 text-right"><label >Tarif</label></div>
-                      <div class="col-9"><input type="text" class="form-control" value="" readonly></div>
+                  <div class="form-group row">
+                    <label for="tarifkamarbaru" class="col-sm-3 col-form-label text-right">Tarif</label>
+                    <div class="col-sm-9">
+                      <input type="text" id="tarifkamarbaru" class="form-control" value="" readonly>
                     </div>
                   </div>
                 </div>
@@ -160,6 +159,7 @@
   </div>
   <!-- /.content-wrapper -->
 <script>
+
   function tombol($faktur_rawatinap){
     //$("a#tombolubah").attr("href", "/Data_Pendaftaran/ubah"+ $faktur_rawatinap +"#UbahPendaftaranRawatJalan");
     $("a#tomboldetaildiagnosa").attr("href", "/Data_Pendaftaran_Rawat_Inap/detaildiagnosa"+ $faktur_rawatinap);

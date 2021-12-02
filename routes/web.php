@@ -392,14 +392,21 @@ Route::get('/Billing', function () {
 
 Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
 Route::get('/PembayaranRJ', [PembayaranRJController::class, 'index']);
+Route::get('/PembayaranRJ/selectbayarrjalan{nobayar_rjalan}', [PembayaranRJController::class, 'selectbayarrjalan']);
+Route::post('/PembayaranRJ/store', [PembayaranRJController::class, 'store']);
+
 Route::get('/Data_PembayaranRJ', [Data_PembayaranRJController::class, 'index']);
+
 Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'selectnorm']);
 Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
 Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
+
 Route::get('/RekeningRI', [RekeningRIController::class, 'index']);
+
 Route::get('/Deposit', [Data_DepositController::class, 'tambah']);
 Route::get('/Deposit/selecttambah{norm}', [Data_DepositController::class, 'selecttambah']);
 Route::get('/Deposit/lihatdetail{notrans}', [Data_DepositController::class, 'lihatdetail']);
+
 Route::get('/Data_Deposit', [Data_DepositController::class, 'index']);
 Route::post('/Data_Deposit/store', [Data_DepositController::class, 'store']);
 
