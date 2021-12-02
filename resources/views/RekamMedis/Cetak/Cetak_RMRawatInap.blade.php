@@ -49,7 +49,7 @@
                     <td align="right">{{$no++}}</td>
                     <td>{{$item->norm}}</td>
                     <td>{{$item->Pasien->namapasien}}</td>
-                    <td>{{$item->Pasien->jeniskelamin}}</td>
+                    <td>{{$item->Pasien->tgllahir}}</td>
                     <td>{{$item->Pasien->alamat}}</td>
                     <td>{{$item->diagnosaawal}}</td>
                     <td>{{$item->diagnosaakhir}}</td>
