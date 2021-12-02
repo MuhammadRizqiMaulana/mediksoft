@@ -18,7 +18,7 @@
     </table>
     <br>
     <center>
-        <h4><strong>DATA TINDAKAN POLI </strong></h4>
+        <h4><strong>DATA TARIF TINDAKAN POLI </strong></h4>
     </center>
     <br>
 
