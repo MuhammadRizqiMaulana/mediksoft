@@ -5,7 +5,7 @@
 <div class="content-wrapper">
 
     <!-- Menu -->
-    @include('RawatJalan.Layout.menu')
+    @include('Billing.Layout.menu')
     <!-- /.menu -->
 
     @if(\Session::has('alert-success'))

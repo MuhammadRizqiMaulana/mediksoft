@@ -15,7 +15,6 @@ class Bayar_rjalan extends Model
     protected $primaryKey   = 'nobayar_rjalan'; // primary key tabel 
     protected $fillable     = ['tanggal', 
     							'norm',
-                                'namapembayar',
                                 'memo',
                                 'tagihan',
                                 'tanggalbayar',

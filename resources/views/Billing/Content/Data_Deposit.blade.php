@@ -5,7 +5,7 @@
 <div class="content-wrapper">
 
     <!-- Menu -->
-    @include('RawatInap.Layout.menu')
+    @include('Billing.Layout.menu')
     <!-- /.menu -->
     <div class="container-fluid">
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -182,7 +182,7 @@
                             <td>{{$no++}}</td>
                             <td>{{$item->norm}}</td>
                             <td>{{$item->Pasien->namapasien}}</td>
-                            <td style="text-align:center">@rupiah($item->masuk - $item->keluar)</td>
+                            <td style="text-align:right">@rupiah($item->masuk - $item->keluar)</td>
                         </tr>
                         @endforeach
                     </tbody>
