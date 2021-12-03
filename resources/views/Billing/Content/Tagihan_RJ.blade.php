@@ -126,9 +126,11 @@
                         
                          <hr>
                         <div class="form-group text-center">
-                          <a class="btn btn-app" href="">
-                            <i class="fas fa-edit"></i> Pelayanan Poli
-                          </a>
+                          <button class="btn btn-default text-center">
+                            <a class="users-list-name" href="javascript:alert('Silahkan pilih baris data!');" id="tombolpelayananpoli">
+                              <img src="{{asset('images/icon/Pelayanan_Poli.png')}}"><br> Pelayanan Poli
+                            </a>
+                          </button>
                           <button class="btn btn-default text-center" type="submit">
                               <img src="{{asset('images/icon/tagihanrj.png')}}"><br>
                               Buat Tagihan
@@ -177,7 +179,7 @@
                               <tr>
                                 <td>{{$norj++}}</td>
                                 <td><input type="checkbox" name="chekbiaya[]" value="{{$biaya}}" data-valuetwo="{{$item->faktur_rawatjalan}}" checked onclick="hitungsubtotalbiaya('chekbiaya[]');" onchange="checkfaktur(this,'faktur_rawatjalan{{$urutanrjb}}');"></td>
-                                <td><input type="checkbox" id="faktur_rawatjalan{{$urutanrjb}}" name="faktur_rawatjalan[]" value="{{$item->faktur_rawatjalan}}" checked hidden>{{$item->faktur_rawatjalan}}</td>
+                                <td onclick="tombol('{{$item->faktur_rawatjalan}}');"><input type="checkbox" id="faktur_rawatjalan{{$urutanrjb}}" name="faktur_rawatjalan[]" value="{{$item->faktur_rawatjalan}}" checked hidden>{{$item->faktur_rawatjalan}}</td>
                                 <td>{{$item->tglmasuk}}</td>
                                 <td>{{$item->Poliklinik->nama}}</td>
                                 <td>{{$item->Dokter->nama}}</td>
@@ -438,6 +440,10 @@
       document.getElementsByName('diskonnominal')[0].setAttribute("value", diskonnominal);
       document.getElementsByName('diskonnilai')[0].setAttribute("value", diskonnilai);
       document.getElementsByName('hasildiskon')[0].setAttribute("value", hasildiskon);
+    }
+
+    function tombol($faktur_rawatjalan){
+      $("a#tombolpelayananpoli").attr("href", "/Pelayanan_Rawat_Jalan/select"+ $faktur_rawatjalan);
     }
 
   </script>
