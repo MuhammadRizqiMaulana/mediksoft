@@ -88,7 +88,7 @@
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Rute_Obat')}}">
+                        <a class="users-list-name" href="{{url('/RuteObat')}}">
                             <img src="{{asset('images/icon/Rute_Obat.png')}}"><br> Rute Obat
                         </a>
                     </button>

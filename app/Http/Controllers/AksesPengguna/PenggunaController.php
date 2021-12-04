@@ -43,7 +43,7 @@ class PenggunaController extends Controller
 
         $this->validate($request, [
 
-            'uname' => 'required|max:50',
+            'uname' => 'required|max:50|unique:user',
             'nama' => 'required|max:50',
             'idkaryawan' => 'required|max:50',
             'pwd' => 'required|max:60',

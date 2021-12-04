@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
     use HasFactory;
     public $timestamps = false;
@@ -22,6 +23,13 @@ class User extends Model
         'tgledit'
     ]; //field tabel
 
+    
+    
+    public function getAuthPassword()
+    {
+        return $this->pwd;
+    }
+    
     public function Karyawan()
     { //Jabatan dimiliki oleh karyawan
         return $this->belongsTo(Karyawan::class, 'idkaryawan');

@@ -86,7 +86,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Catatan_Operasi')}}">
+                        <a class="users-list-name" href="#">
                             <img src="{{asset('images/icon/Catatan_Operasi.png')}}"><br> Catat Operasi
                         </a>
                     </button>
