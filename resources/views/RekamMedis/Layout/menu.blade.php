@@ -20,7 +20,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Pendaftaran')}}">
+                        <a class="users-list-name" href="{{url('/Pendaftaran_Rawat_Jalan')}}">
                             <img src="{{asset('images/icon/Pendaftaran.png')}}"><br> Pendaftaran
                         </a>
                     </button>

@@ -31,7 +31,7 @@
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Transfer_RI')}}">
+                        <a class="users-list-name" href="{{url('/Pendaftaran_Rawat_Inap')}}">
                             <img src="{{asset('images/icon/Transfer_RI.png')}}"><br> Transfer RI
                         </a>
                     </button>

@@ -102,6 +102,7 @@ class Data_PendaftaranController extends Controller
             $data->edukasikepada = "Kalangan Pasien";
             $data->hubdenganpasien = "";
             $data->diagnosadengan = "";
+            
 
             $data->save();
 

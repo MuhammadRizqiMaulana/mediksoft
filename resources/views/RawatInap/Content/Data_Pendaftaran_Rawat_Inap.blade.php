@@ -146,17 +146,22 @@
                                     <button type="button" class="btn btn-outline-secondary btn-sm"><a
                                             href="/Data_Pendaftaran_Rawat_Inap/cetakdatapendaftaranrawatinap">
                                             <i class="fa fa-print"></i> Cetak Pendaftaran Rawat Inap
-                                        </a></button>
-                                    <div class="col"><button type="button"
-                                            class="btn btn-block btn-outline-info btn-sm"><i
-                                                class="fas fa-clipboard-list"></i> Resume Medis</button></div>
+                                        </a>
+                                    </button>
                                 </div>
-                                <div class="row">
-                                    <div class="col"><button type="button"
-                                            class="btn btn-block btn-outline-info btn-sm"><i
-                                                class="fas fa-clipboard-list"></i> Surat Bukti Pelayanan RI</button>
-                                    </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-block btn-outline-info btn-sm"><i
+                                                class="fas fa-clipboard-list"></i> Resume Medis
+                                    </button>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button" class="btn btn-block btn-outline-info btn-sm"><i
+                                                class="fas fa-clipboard-list"></i> Surat Bukti Pelayanan RI
+                                    </button>
+                                </div>
+                            </div>
                                 <br>
                                 <div class="row">
                                     <div class="col">
@@ -178,11 +183,11 @@
 
                                 </div>
 
-                            </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
+                        <!-- /.card-body -->
                     </div>
+                    <!-- /.card -->
+                </div>
                     <!-- /.col -->
                     <div class="col-8">
                         <div class="card">
@@ -239,10 +244,10 @@
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
-                </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
 
     </section>
     <!-- /.content -->

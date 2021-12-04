@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AksesPengguna\PenggunaController;
 use App\Http\Controllers\AksesPengguna\ProgramController;
 use App\Http\Controllers\AksesPengguna\LevelPenggunaController;
+use App\Http\Controllers\AksesPengguna\LoginController;
+
 /* ----- AksesPengguna -----*/
 
 /* ----- Setup -----*/
@@ -99,346 +101,362 @@ use App\Http\Controllers\Billing\RekeningRIController;
 |
 */
 
-Route::get('/', function () {
-    return view('AksesPengguna.Content.index');
+
+
+/* ----- Login -----*/
+Route::get('/Login', [LoginController::class, 'index'])->name('login');
+Route::post('/Postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+Route::get('/Logout', [LoginController::class, 'logout'])->name('logout');
+/* ----- Login -----*/
+
+Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
+
+    Route::get('/', function () {
+        return view('AksesPengguna.Content.index');
+    });
+
+    /* ----- AksesPengguna -----*/
+    Route::get('/AksesPengguna', function () {
+        return view('AksesPengguna.Content.index');
+    });
+
+    Route::get('/Program', [ProgramController::class, 'index']);
+
+    Route::get('/Program', [ProgramController::class, 'index']);
+
+    Route::get('/LevelPengguna', [LevelPenggunaController::class, 'index']);
+
+    Route::get('/Pengguna', [PenggunaController::class, 'index']);
+    Route::post('/Pengguna/store', [PenggunaController::class, 'store']);
+    Route::get('/Pengguna/ubah{iduser}', [PenggunaController::class, 'ubah']);
+    Route::post('/Pengguna/update{iduser}', [PenggunaController::class, 'update']);
+    Route::get('/Pengguna/hapus{iduser}', [PenggunaController::class, 'hapus']);
+
+    /* ----- AksesPengguna -----*/
+
+    /* ----- Setup -----*/
+    Route::get('/Setup', function () {
+        return view('Setup.Content.index');
+    });
+    Route::get('/Pengirim_Faskes', [Pengirim_FaskesController::class, 'index']);
+    //Route::get('/Pengirim_Faskes/tambah', [Pengirim_FaskesController::class, 'tambah']);
+    Route::post('/Pengirim_Faskes/store', [Pengirim_FaskesController::class, 'store']);
+    Route::get('/Pengirim_Faskes/ubah{kodefaskes}', [Pengirim_FaskesController::class, 'ubah']);
+    Route::post('/Pengirim_Faskes/update{kodefaskes}', [Pengirim_FaskesController::class, 'update']);
+    Route::get('/Pengirim_Faskes/hapus{kodefaskes}', [Pengirim_FaskesController::class, 'hapus']);
+
+    Route::get('/Poli', [PoliController::class, 'index']);
+    Route::post('/Poli/store', [PoliController::class, 'store']);
+    Route::get('/Poli/ubah{kode}', [PoliController::class, 'ubah']);
+    Route::post('/Poli/update{kode}', [PoliController::class, 'update']);
+    Route::get('/Poli/hapus{kode}', [PoliController::class, 'hapus']);
+
+    Route::get('/Kelas', [KelasController::class, 'index']);
+    Route::post('/Kelas/store', [KelasController::class, 'store']);
+    Route::get('/Kelas/ubah{kodekelas}', [KelasController::class, 'ubah']);
+    Route::post('/Kelas/update{kodekelas}', [KelasController::class, 'update']);
+    Route::get('/Kelas/hapus{kodekelas}', [KelasController::class, 'hapus']);
+
+    Route::get('/Bank', [BankController::class, 'index']);
+    Route::post('/Bank/store', [BankController::class, 'store']);
+    Route::get('/Bank/ubah{idbank}', [BankController::class, 'ubah']);
+    Route::post('/Bank/update{idbank}', [BankController::class, 'update']);
+    Route::get('/Bank/hapus{idbank}', [BankController::class, 'hapus']);
+
+    Route::get('/Dokter', [DokterController::class, 'index']);
+    Route::post('/Dokter/store', [DokterController::class, 'store']);
+    Route::get('/Dokter/ubah{iddokter}', [DokterController::class, 'ubah']);
+    Route::post('/Dokter/update{iddokter}', [DokterController::class, 'update']);
+    Route::get('/Dokter/hapus{iddokter}', [DokterController::class, 'hapus']);
+
+    Route::get('/Icd10', [Icd10Controller::class, 'index']);
+    Route::post('/Icd10/store', [Icd10Controller::class, 'store']);
+    Route::get('/Icd10/ubah{kode}', [Icd10Controller::class, 'ubah']);
+    Route::post('/Icd10/update{kode}', [Icd10Controller::class, 'update']);
+    Route::get('/Icd10/hapus{kode}', [Icd10Controller::class, 'hapus']);
+
+    Route::get('/Icd9', [Icd9Controller::class, 'index']);
+    Route::post('/Icd9/store', [Icd9Controller::class, 'store']);
+    Route::get('/Icd9/ubah{kode}', [Icd9Controller::class, 'ubah']);
+    Route::post('/Icd9/update{kode}', [Icd9Controller::class, 'update']);
+    Route::get('/Icd9/hapus{kode}', [Icd9Controller::class, 'hapus']);
+
+    Route::get('/Jabatan', [JabatanController::class, 'index']);
+    Route::post('/Jabatan/store', [JabatanController::class, 'store']);
+    Route::get('/Jabatan/ubah{id}', [JabatanController::class, 'ubah']);
+    Route::post('/Jabatan/update{id}', [JabatanController::class, 'update']);
+    Route::get('/Jabatan/hapus{id}', [JabatanController::class, 'hapus']);
+
+    Route::get('/Jaminan', [JaminanController::class, 'index']);
+    Route::post('/Jaminan/store', [JaminanController::class, 'store']);
+    Route::get('/Jaminan/ubah{idprsh}', [JaminanController::class, 'ubah']);
+    Route::post('/Jaminan/update{idprsh}', [JaminanController::class, 'update']);
+    Route::get('/Jaminan/hapus{idprsh}', [JaminanController::class, 'hapus']);
+
+    Route::get('/Perusahaankategori', [PerusahaankategoriController::class, 'index']);
+    Route::post('/Perusahaankategori/store', [PerusahaankategoriController::class, 'store']);
+    Route::get('/Perusahaankategori/ubah{idkategori}', [PerusahaankategoriController::class, 'ubah']);
+    Route::post('/Perusahaankategori/update{idkategori}', [PerusahaankategoriController::class, 'update']);
+    Route::get('/Perusahaankategori/hapus{idkategori}', [PerusahaankategoriController::class, 'hapus']);
+
+    Route::get('/Ruang', [RuangController::class, 'index']);
+    Route::post('/Ruang/store', [RuangController::class, 'store']);
+    Route::get('/Ruang/ubah{koderuang}', [RuangController::class, 'ubah']);
+    Route::post('/Ruang/update{koderuang}', [RuangController::class, 'update']);
+    Route::get('/Ruang/hapus{koderuang}', [RuangController::class, 'hapus']);
+
+    Route::get('/Kamar', [KamarController::class, 'index']);
+    Route::post('/Kamar/store', [KamarController::class, 'store']);
+    Route::get('/Kamar/ubah{kodekamar}', [KamarController::class, 'ubah']);
+    Route::post('/Kamar/update{kodekamar}', [KamarController::class, 'update']);
+    Route::get('/Kamar/hapus{kodekamar}', [KamarController::class, 'hapus']);
+
+    Route::get('/Karyawan', [KaryawanController::class, 'index']);
+    //Route::get('/Karyawan/tambah', [KaryawanController::class, 'tambah']);
+    Route::post('/Karyawan/store', [KaryawanController::class, 'store']);
+    Route::get('/Karyawan/ubah{idkaryawan}', [KaryawanController::class, 'ubah']);
+    Route::post('/Karyawan/update{idkaryawan}', [KaryawanController::class, 'update']);
+    Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus']);
+
+    Route::get('/DokterPoli', [DokterPoliController::class, 'index']);
+    Route::post('/DokterPoli/store', [DokterPoliController::class, 'store']);
+    Route::get('/DokterPoli/ubah{kodepoli},{iddokter}', [DokterPoliController::class, 'ubah']);
+    Route::post('/DokterPoli/update{kodepoli},{iddokter}', [DokterPoliController::class, 'update']);
+    Route::get('/DokterPoli/hapus{kodepoli},{iddokter}', [DokterPoliController::class, 'hapus']);
+
+    Route::get('/DokterKonsultasi', [DokterKonsultasiController::class, 'index']);
+    Route::post('/DokterKonsultasi/store', [DokterKonsultasiController::class, 'store']);
+    Route::get('/DokterKonsultasi/ubah{iddokter}', [DokterKonsultasiController::class, 'ubah']);
+    Route::post('/DokterKonsultasi/update{iddokter}', [DokterKonsultasiController::class, 'update']);
+    Route::get('/DokterKonsultasi/hapus{iddokter}', [DokterKonsultasiController::class, 'hapus']);
+
+    Route::get('/DokterVisit', [DokterVisitController::class, 'index']);
+    Route::post('/DokterVisit/store', [DokterVisitController::class, 'store']);
+    Route::get('/DokterVisit/ubah{iddokter}', [DokterVisitController::class, 'ubah']);
+    Route::post('/DokterVisit/update{iddokter}', [DokterVisitController::class, 'update']);
+    Route::get('/DokterVisit/hapus{iddokter}', [DokterVisitController::class, 'hapus']);
+
+    Route::get('/TindakanInap', [TindakanInapController::class, 'index']);
+    Route::post('/TindakanInap/store', [TindakanInapController::class, 'store']);
+    Route::get('/TindakanInap/ubah{idtindakan}', [TindakanInapController::class, 'ubah']);
+    Route::post('/TindakanInap/update{idtindakan}', [TindakanInapController::class, 'update']);
+    Route::get('/TindakanInap/hapus{idtindakan}', [TindakanInapController::class, 'hapus']);
+
+    Route::get('/TindakanPoli', [TindakanPoliController::class, 'index']);
+    Route::post('/TindakanPoli/store', [TindakanPoliController::class, 'store']);
+    Route::get('/TindakanPoli/ubah{idtindakan}', [TindakanPoliController::class, 'ubah']);
+    Route::post('/TindakanPoli/update{idtindakan}', [TindakanPoliController::class, 'update']);
+    Route::get('/TindakanPoli/hapus{idtindakan}', [TindakanPoliController::class, 'hapus']);
+
+    Route::get('/Administrasi', [AdministrasiController::class, 'index']);
+    Route::post('/Administrasi/store', [AdministrasiController::class, 'store']);
+    Route::get('/Administrasi/ubah{idadm}', [AdministrasiController::class, 'ubah']);
+    Route::post('/Administrasi/update{idadm}', [AdministrasiController::class, 'update']);
+    Route::get('/Administrasi/hapus{idadm}', [AdministrasiController::class, 'hapus']);
+
+    Route::get('/Jaminan/cetakdatajaminan', [JaminanController::class, 'cetakdatajaminan']);
+    Route::get('/Icd9/cetakdataicd9', [Icd9Controller::class, 'cetakdataicd9']);
+    Route::get('/Dokter/cetakdatadokter', [DokterController::class, 'cetakdatadokter']);
+    Route::get('/Kelas/cetakdatakelas', [KelasController::class, 'cetakdatakelas']);
+    Route::get('/Poli/cetakdatapoli', [PoliController::class, 'cetakdatapoli']);
+    Route::get('/Bank/cetakdatabank', [BankController::class, 'cetakdatabank']);
+    Route::get('/Pengirim_Faskes/cetakdatapengirimfaskes', [Pengirim_FaskesController::class, 'cetakdatapengirimfaskes']);
+    Route::get('/Karyawan/cetakdatakaryawan', [KaryawanController::class, 'cetakdatakaryawan']);
+    Route::get('/Ruang/cetakdataruang', [RuangController::class, 'cetakdataruang']);
+    Route::get('/Kamar/cetakdatakamar', [KamarController::class, 'cetakdatakamar']);
+    Route::get('/DokterPoli/cetakdatadokterpoli', [DokterPoliController::class, 'cetakdatadokterpoli']);
+    Route::get('/TindakanPoli/cetakdatatindakanpoli', [TindakanPoliController::class, 'cetakdatatindakanpoli']);
+    /* ----- Setup -----*/
+
+    /* ----- RekamMedis -----*/
+    Route::get('/RekamMedis', function () {
+        return view('RekamMedis.Content.index');
+    });
+
+    Route::get('/Keanggotaan', [KeanggotaanController::class, 'index']);
+    Route::post('/Keanggotaan/store', [KeanggotaanController::class, 'store']);
+    Route::get('/Keanggotaan/ubah{idkeanggotaan}', [KeanggotaanController::class, 'ubah']);
+    Route::post('/Keanggotaan/update{idkeanggotaan}', [KeanggotaanController::class, 'update']);
+    Route::get('/keanggotaan/hapus{idkeanggotaan}', [KeanggotaanController::class, 'hapus']);
+
+    Route::get('/Pasien', [PasienController::class, 'index']);
+    Route::post('/Pasien/store', [PasienController::class, 'store']);
+    Route::get('/Pasien/ubah{norm}', [PasienController::class, 'ubah']);
+    Route::post('/Pasien/update{norm}', [PasienController::class, 'update']);
+    Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
+
+    Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index']);
+    Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store']);
+    Route::get('/RM_RawatJalan', [RM_RawatJalanController::class, 'index']);
+    Route::get('/RM_RawatInap', [RawatInapController::class, 'index']);
+    Route::post('/RM_RawatInap/store', [RawatInapController::class, 'store']);
+    Route::get('/KamarKosong', [KamarKosongController::class, 'index']);
+
+    Route::get('/Pasien/cetakdatapasien', [PasienController::class, 'cetakdatapasien']);
+    Route::get('/Keanggotaan/cetakdatakeanggotaan', [KeanggotaanController::class, 'cetakdatakeanggotaan']);
+    Route::get('/RM_RawatInap/cetakdatarmrawatinap', [RawatInapController::class, 'cetakdatarmrawatinap']);
+    /* ----- RekamMedis -----*/
+
+    /* ----- RawatJalan -----*/
+    Route::get('/RawatJalan', function () {
+        return view('RawatJalan.Content.index');
+    });
+    Route::get('/Data_Pendaftaran', [Data_PendaftaranController::class, 'index']);
+    Route::get('/Data_Pendaftaran/tambah', [Data_PendaftaranController::class, 'tambah']);
+    Route::post('/Data_Pendaftaran/store', [Data_PendaftaranController::class, 'store']);
+    Route::get('/Data_Pendaftaran/ubah{faktur_rawatjalan}', [Data_PendaftaranController::class, 'ubah']);
+    Route::post('/Data_Pendaftaran/update{faktur_rawatjalan}', [Data_PendaftaranController::class, 'update']);
+    Route::get('/Data_Pendaftaran/hapus{faktur_rawatjalan}', [Data_PendaftaranController::class, 'hapus']);
+    Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'lihat']);
+    Route::get('/Riwayat_Resume_Medis_Pasien', [Riwayat_Resume_Medis_PasienController::class, 'index']);
+
+    Route::get('/Data_Pendaftaran/cetakdatapendaftaran', [Data_PendaftaranController::class, 'cetakdatapendaftaran']);
+
+    Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
+
+    Route::get('/PenggunaanObat', [PenggunaanObatController::class, 'index']);
+    Route::get('/RawatJalan_RM_Rawat_Jalan', [RawatJalan_RM_Rawat_JalanController::class, 'index']);
+
+    Route::get('/Data_Pendaftaran/suratketerangansakit{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansakit']);
+    Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansehat']);
+
+    Route::get('/Pelayanan_Rawat_Jalan', [Pelayanan_PoliController::class, 'index']);
+    Route::get('/Pelayanan_Rawat_Jalan/select{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'selectrawatjalan']);
+    Route::post('/Pelayanan_Rawat_Jalan/store', [Pelayanan_PoliController::class, 'store']);
+    Route::post('/Pelayanan_Rawat_Jalan/update{notransaksi}', [Pelayanan_PoliController::class, 'update']);
+    Route::get('/Pelayanan_Rawat_Jalan/hapus{notransaksi},{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'hapus']);
+
+    Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
+    Route::post('/Pendaftaran_Rawat_Inap/store', [Transfer_RiController::class, 'store']);
+
+    Route::get('/Update_Data_Pendaftaran_Pasien_Online', [Update_Data_Pendaftaran_Pasien_OnlineController::class, 'index']);
+
+
+    /* ----- RawatJalan -----*/
+
+
+    /* ----- RawatInap -----*/
+    Route::get('/RawatInap', function () {
+        return view('RawatInap.Content.index');
+    });
+    Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
+    Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
+    Route::get('/RuteObat', [RuteObatController::class, 'index']);
+    Route::get('/Anamnesa', [AnamnesaController::class, 'index']);
+    Route::get('/Data_Pendaftaran_Rawat_Inap', [Data_Pendaftaran_Rawat_InapController::class, 'index']);
+    Route::get('/Data_Pendaftaran_Rawat_Inap/tambah', [Data_Pendaftaran_Rawat_InapController::class, 'tambah']);
+    Route::post('/Data_Pendaftaran_Rawat_Inap/store', [Data_Pendaftaran_Rawat_InapController::class, 'store']);
+    Route::get('/Data_Pendaftaran_Rawat_Inap/ubah{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'ubah']);
+    Route::get('/Data_Pendaftaran_Rawat_Inap/detaildiagnosa{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detaildiagnosa']);
+    Route::get('/Data_Pendaftaran_Rawat_Inap/detailpendaftaran{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detailpendaftaran']);
+    Route::get('/Data_Pendaftaran_Rawat_Inap/hapus{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'hapus']);
+
+    Route::get('/Ubah_Kamar{faktur_rawatinap}', [Ubah_KamarController::class, 'index']);
+    Route::post('/Ubah_Kamar/update{faktur_rawatinap}', [Ubah_KamarController::class, 'update']);
+
+    Route::get('/PindahKamar', [PindahKamarController::class, 'index']);
+    Route::get('/PindahKamar/selectrawatinap{faktur_rawatinap}', [PindahKamarController::class, 'selectfakturri']);
+
+    Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
+
+    Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
+
+    Route::get('/CariPasien', [CariPasienController::class, 'index']);
+    Route::post('/CariPasien/store', [CariPasienController::class, 'store']);
+
+    Route::get('/MacamRawat', [MacamRawatController::class, 'index']);
+    Route::post('/MacamRawat/store', [MacamRawatController::class, 'store']);
+    Route::get('/MacamRawat/ubah{kode}', [MacamRawatController::class, 'ubah']);
+    Route::post('/MacamRawat/update{kode}', [MacamRawatController::class, 'update']);
+    Route::get('/MacamRawat/hapus{kode}', [MacamRawatController::class, 'hapus']);
+
+    Route::get('/INOS', [INOSController::class, 'index']);
+
+    Route::get('/Status_Pulang', function () {
+        return view('RawatInap.Content.Status_Pulang');
+    });
+
+    Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
+
+    Route::get('/Data_Pendaftaran_Rawat_Inap/cetakdatapendaftaranrawatinap', [Data_Pendaftaran_Rawat_InapController::class, 'cetakdatapendaftaranrawatinap']);
+
+    /* ----- RawatInap -----*/
+
+    /* ----- Operasi -----*/
+    Route::get('/Operasi', function () {
+        return view('Operasi.Content.index');
+    });
+
+    Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
+    Route::get('/JenisAnestesi', [JenisAnestesiController::class, 'index']);
+    Route::get('/SpesialisBedah', [SpesialisBedahController::class, 'index']);
+    Route::get('/DataOperasi', [DataOperasiController::class, 'index']);
+    Route::get('/Tarif_Tindakan_Operasi', [Tarif_Tindakan_OperasiController::class, 'index']);
+    Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
+    Route::post('/DokterBedah/store', [DokterBedahController::class, 'store']);
+    Route::get('/DokterBedah/ubah{iddokter},{jenisrawat}', [DokterBedahController::class, 'ubah']);
+    Route::post('/DokterBedah/update{iddokter},{jenisrawat}', [DokterBedahController::class, 'update']);
+    Route::get('/DokterBedah/hapus{iddokter},{jenisrawat}', [DokterBedahController::class, 'hapus']);
+
+    Route::get('/DokterBedah/cetakdatadokterbedah', [DokterBedahController::class, 'cetakdatadokterbedah']);
+    /* ----- Operasi -----*/
+
+    /* ----- Billing -----*/
+    Route::get('/Billing', function () {
+        return view('Billing.Content.index');
+    });
+
+    Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
+    Route::get('/PembayaranRJ', [PembayaranRJController::class, 'index']);
+    Route::get('/PembayaranRJ/selectbayarrjalan{nobayar_rjalan}', [PembayaranRJController::class, 'selectbayarrjalan']);
+    Route::post('/PembayaranRJ/store', [PembayaranRJController::class, 'store']);
+
+    Route::get('/Data_PembayaranRJ', [Data_PembayaranRJController::class, 'index']);
+
+    Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'selectnorm']);
+    Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
+    Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
+
+    Route::get('/RekeningRI', [RekeningRIController::class, 'index']);
+
+    Route::get('/Deposit', [Data_DepositController::class, 'tambah']);
+    Route::get('/Deposit/selecttambah{norm}', [Data_DepositController::class, 'selecttambah']);
+    Route::get('/Deposit/lihatdetail{notrans}', [Data_DepositController::class, 'lihatdetail']);
+
+    Route::get('/Data_Deposit', [Data_DepositController::class, 'index']);
+    Route::post('/Data_Deposit/store', [Data_DepositController::class, 'store']);
+
+    /* ----- Billing -----*/
+
+    /* ----- Laporan -----*/
+    Route::get('/Laporan', function () {
+        return view('Laporan.Content.index');
+    });
+
+    /* ----- Laporan -----*/
+
+    /* ----- BPJS -----*/
+    Route::get('/BPJS', function () {
+        return view('BPJS.Content.index');
+    });
+
+    /* ----- BPJS -----*/
+
+    /* ----- Akuntansi -----*/
+    Route::get('/Akuntansi', function () {
+        return view('Akuntansi.Content.index');
+    });
+
+    /* ----- Akuntansi -----*/
+
+    /* ----- Panduan -----*/
+    Route::get('/Panduan', function () {
+        return view('Panduan.Content.index');
+    });
+
+    /* ----- Panduan -----*/
+
+
+/* ----- Penutup Middleware -----*/
 });
-
-/* ----- AksesPengguna -----*/
-Route::get('/AksesPengguna', function () {
-    return view('AksesPengguna.Content.index');
-});
-
-Route::get('/Program', [ProgramController::class, 'index']);
-
-Route::get('/LevelPengguna', [LevelPenggunaController::class, 'index']);
-
-Route::get('/Pengguna', [PenggunaController::class, 'index']);
-Route::post('/Pengguna/store', [PenggunaController::class, 'store']);
-Route::get('/Pengguna/ubah{iduser}', [PenggunaController::class, 'ubah']);
-Route::post('/Pengguna/update{iduser}', [PenggunaController::class, 'update']);
-Route::get('/Pengguna/hapus{iduser}', [PenggunaController::class, 'hapus']);
-
-/* ----- AksesPengguna -----*/
-
-/* ----- Setup -----*/
-Route::get('/Setup', function () {
-    return view('Setup.Content.index');
-});
-Route::get('/Pengirim_Faskes', [Pengirim_FaskesController::class, 'index']);
-//Route::get('/Pengirim_Faskes/tambah', [Pengirim_FaskesController::class, 'tambah']);
-Route::post('/Pengirim_Faskes/store', [Pengirim_FaskesController::class, 'store']);
-Route::get('/Pengirim_Faskes/ubah{kodefaskes}', [Pengirim_FaskesController::class, 'ubah']);
-Route::post('/Pengirim_Faskes/update{kodefaskes}', [Pengirim_FaskesController::class, 'update']);
-Route::get('/Pengirim_Faskes/hapus{kodefaskes}', [Pengirim_FaskesController::class, 'hapus']);
-
-Route::get('/Poli', [PoliController::class, 'index']);
-Route::post('/Poli/store', [PoliController::class, 'store']);
-Route::get('/Poli/ubah{kode}', [PoliController::class, 'ubah']);
-Route::post('/Poli/update{kode}', [PoliController::class, 'update']);
-Route::get('/Poli/hapus{kode}', [PoliController::class, 'hapus']);
-
-Route::get('/Kelas', [KelasController::class, 'index']);
-Route::post('/Kelas/store', [KelasController::class, 'store']);
-Route::get('/Kelas/ubah{kodekelas}', [KelasController::class, 'ubah']);
-Route::post('/Kelas/update{kodekelas}', [KelasController::class, 'update']);
-Route::get('/Kelas/hapus{kodekelas}', [KelasController::class, 'hapus']);
-
-Route::get('/Bank', [BankController::class, 'index']);
-Route::post('/Bank/store', [BankController::class, 'store']);
-Route::get('/Bank/ubah{idbank}', [BankController::class, 'ubah']);
-Route::post('/Bank/update{idbank}', [BankController::class, 'update']);
-Route::get('/Bank/hapus{idbank}', [BankController::class, 'hapus']);
-
-Route::get('/Dokter', [DokterController::class, 'index']);
-Route::post('/Dokter/store', [DokterController::class, 'store']);
-Route::get('/Dokter/ubah{iddokter}', [DokterController::class, 'ubah']);
-Route::post('/Dokter/update{iddokter}', [DokterController::class, 'update']);
-Route::get('/Dokter/hapus{iddokter}', [DokterController::class, 'hapus']);
-
-Route::get('/Icd10', [Icd10Controller::class, 'index']);
-Route::post('/Icd10/store', [Icd10Controller::class, 'store']);
-Route::get('/Icd10/ubah{kode}', [Icd10Controller::class, 'ubah']);
-Route::post('/Icd10/update{kode}', [Icd10Controller::class, 'update']);
-Route::get('/Icd10/hapus{kode}', [Icd10Controller::class, 'hapus']);
-
-Route::get('/Icd9', [Icd9Controller::class, 'index']);
-Route::post('/Icd9/store', [Icd9Controller::class, 'store']);
-Route::get('/Icd9/ubah{kode}', [Icd9Controller::class, 'ubah']);
-Route::post('/Icd9/update{kode}', [Icd9Controller::class, 'update']);
-Route::get('/Icd9/hapus{kode}', [Icd9Controller::class, 'hapus']);
-
-Route::get('/Jabatan', [JabatanController::class, 'index']);
-Route::post('/Jabatan/store', [JabatanController::class, 'store']);
-Route::get('/Jabatan/ubah{id}', [JabatanController::class, 'ubah']);
-Route::post('/Jabatan/update{id}', [JabatanController::class, 'update']);
-Route::get('/Jabatan/hapus{id}', [JabatanController::class, 'hapus']);
-
-Route::get('/Jaminan', [JaminanController::class, 'index']);
-Route::post('/Jaminan/store', [JaminanController::class, 'store']);
-Route::get('/Jaminan/ubah{idprsh}', [JaminanController::class, 'ubah']);
-Route::post('/Jaminan/update{idprsh}', [JaminanController::class, 'update']);
-Route::get('/Jaminan/hapus{idprsh}', [JaminanController::class, 'hapus']);
-
-Route::get('/Perusahaankategori', [PerusahaankategoriController::class, 'index']);
-Route::post('/Perusahaankategori/store', [PerusahaankategoriController::class, 'store']);
-Route::get('/Perusahaankategori/ubah{idkategori}', [PerusahaankategoriController::class, 'ubah']);
-Route::post('/Perusahaankategori/update{idkategori}', [PerusahaankategoriController::class, 'update']);
-Route::get('/Perusahaankategori/hapus{idkategori}', [PerusahaankategoriController::class, 'hapus']);
-
-Route::get('/Ruang', [RuangController::class, 'index']);
-Route::post('/Ruang/store', [RuangController::class, 'store']);
-Route::get('/Ruang/ubah{koderuang}', [RuangController::class, 'ubah']);
-Route::post('/Ruang/update{koderuang}', [RuangController::class, 'update']);
-Route::get('/Ruang/hapus{koderuang}', [RuangController::class, 'hapus']);
-
-Route::get('/Kamar', [KamarController::class, 'index']);
-Route::post('/Kamar/store', [KamarController::class, 'store']);
-Route::get('/Kamar/ubah{kodekamar}', [KamarController::class, 'ubah']);
-Route::post('/Kamar/update{kodekamar}', [KamarController::class, 'update']);
-Route::get('/Kamar/hapus{kodekamar}', [KamarController::class, 'hapus']);
-
-Route::get('/Karyawan', [KaryawanController::class, 'index']);
-//Route::get('/Karyawan/tambah', [KaryawanController::class, 'tambah']);
-Route::post('/Karyawan/store', [KaryawanController::class, 'store']);
-Route::get('/Karyawan/ubah{idkaryawan}', [KaryawanController::class, 'ubah']);
-Route::post('/Karyawan/update{idkaryawan}', [KaryawanController::class, 'update']);
-Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus']);
-
-Route::get('/DokterPoli', [DokterPoliController::class, 'index']);
-Route::post('/DokterPoli/store', [DokterPoliController::class, 'store']);
-Route::get('/DokterPoli/ubah{kodepoli},{iddokter}', [DokterPoliController::class, 'ubah']);
-Route::post('/DokterPoli/update{kodepoli},{iddokter}', [DokterPoliController::class, 'update']);
-Route::get('/DokterPoli/hapus{kodepoli},{iddokter}', [DokterPoliController::class, 'hapus']);
-
-Route::get('/DokterKonsultasi', [DokterKonsultasiController::class, 'index']);
-Route::post('/DokterKonsultasi/store', [DokterKonsultasiController::class, 'store']);
-Route::get('/DokterKonsultasi/ubah{iddokter}', [DokterKonsultasiController::class, 'ubah']);
-Route::post('/DokterKonsultasi/update{iddokter}', [DokterKonsultasiController::class, 'update']);
-Route::get('/DokterKonsultasi/hapus{iddokter}', [DokterKonsultasiController::class, 'hapus']);
-
-Route::get('/DokterVisit', [DokterVisitController::class, 'index']);
-Route::post('/DokterVisit/store', [DokterVisitController::class, 'store']);
-Route::get('/DokterVisit/ubah{iddokter}', [DokterVisitController::class, 'ubah']);
-Route::post('/DokterVisit/update{iddokter}', [DokterVisitController::class, 'update']);
-Route::get('/DokterVisit/hapus{iddokter}', [DokterVisitController::class, 'hapus']);
-
-Route::get('/TindakanInap', [TindakanInapController::class, 'index']);
-Route::post('/TindakanInap/store', [TindakanInapController::class, 'store']);
-Route::get('/TindakanInap/ubah{idtindakan}', [TindakanInapController::class, 'ubah']);
-Route::post('/TindakanInap/update{idtindakan}', [TindakanInapController::class, 'update']);
-Route::get('/TindakanInap/hapus{idtindakan}', [TindakanInapController::class, 'hapus']);
-
-Route::get('/TindakanPoli', [TindakanPoliController::class, 'index']);
-Route::post('/TindakanPoli/store', [TindakanPoliController::class, 'store']);
-Route::get('/TindakanPoli/ubah{idtindakan}', [TindakanPoliController::class, 'ubah']);
-Route::post('/TindakanPoli/update{idtindakan}', [TindakanPoliController::class, 'update']);
-Route::get('/TindakanPoli/hapus{idtindakan}', [TindakanPoliController::class, 'hapus']);
-
-Route::get('/Administrasi', [AdministrasiController::class, 'index']);
-Route::post('/Administrasi/store', [AdministrasiController::class, 'store']);
-Route::get('/Administrasi/ubah{idadm}', [AdministrasiController::class, 'ubah']);
-Route::post('/Administrasi/update{idadm}', [AdministrasiController::class, 'update']);
-Route::get('/Administrasi/hapus{idadm}', [AdministrasiController::class, 'hapus']);
-
-Route::get('/Jaminan/cetakdatajaminan', [JaminanController::class, 'cetakdatajaminan']);
-Route::get('/Icd9/cetakdataicd9', [Icd9Controller::class, 'cetakdataicd9']);
-Route::get('/Dokter/cetakdatadokter', [DokterController::class, 'cetakdatadokter']);
-Route::get('/Kelas/cetakdatakelas', [KelasController::class, 'cetakdatakelas']);
-Route::get('/Poli/cetakdatapoli', [PoliController::class, 'cetakdatapoli']);
-Route::get('/Bank/cetakdatabank', [BankController::class, 'cetakdatabank']);
-Route::get('/Pengirim_Faskes/cetakdatapengirimfaskes', [Pengirim_FaskesController::class, 'cetakdatapengirimfaskes']);
-Route::get('/Karyawan/cetakdatakaryawan', [KaryawanController::class, 'cetakdatakaryawan']);
-Route::get('/Ruang/cetakdataruang', [RuangController::class, 'cetakdataruang']);
-Route::get('/Kamar/cetakdatakamar', [KamarController::class, 'cetakdatakamar']);
-Route::get('/DokterPoli/cetakdatadokterpoli', [DokterPoliController::class, 'cetakdatadokterpoli']);
-Route::get('/TindakanPoli/cetakdatatindakanpoli', [TindakanPoliController::class, 'cetakdatatindakanpoli']);
-/* ----- Setup -----*/
-
-/* ----- RekamMedis -----*/
-Route::get('/RekamMedis', function () {
-    return view('RekamMedis.Content.index');
-});
-
-Route::get('/Keanggotaan', [KeanggotaanController::class, 'index']);
-Route::post('/Keanggotaan/store', [KeanggotaanController::class, 'store']);
-Route::get('/Keanggotaan/ubah{idkeanggotaan}', [KeanggotaanController::class, 'ubah']);
-Route::post('/Keanggotaan/update{idkeanggotaan}', [KeanggotaanController::class, 'update']);
-Route::get('/keanggotaan/hapus{idkeanggotaan}', [KeanggotaanController::class, 'hapus']);
-
-Route::get('/Pasien', [PasienController::class, 'index']);
-Route::post('/Pasien/store', [PasienController::class, 'store']);
-Route::get('/Pasien/ubah{norm}', [PasienController::class, 'ubah']);
-Route::post('/Pasien/update{norm}', [PasienController::class, 'update']);
-Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
-
-Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index']);
-Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store']);
-Route::get('/RM_RawatJalan', [RM_RawatJalanController::class, 'index']);
-Route::get('/RM_RawatInap', [RawatInapController::class, 'index']);
-Route::post('/RM_RawatInap/store', [RawatInapController::class, 'store']);
-Route::get('/KamarKosong', [KamarKosongController::class, 'index']);
-
-Route::get('/Pasien/cetakdatapasien', [PasienController::class, 'cetakdatapasien']);
-Route::get('/Keanggotaan/cetakdatakeanggotaan', [KeanggotaanController::class, 'cetakdatakeanggotaan']);
-Route::get('/RM_RawatInap/cetakdatarmrawatinap', [RawatInapController::class, 'cetakdatarmrawatinap']);
-/* ----- RekamMedis -----*/
-
-/* ----- RawatJalan -----*/
-Route::get('/RawatJalan', function () {
-    return view('RawatJalan.Content.index');
-});
-Route::get('/Data_Pendaftaran', [Data_PendaftaranController::class, 'index']);
-Route::get('/Data_Pendaftaran/tambah', [Data_PendaftaranController::class, 'tambah']);
-Route::post('/Data_Pendaftaran/store', [Data_PendaftaranController::class, 'store']);
-Route::get('/Data_Pendaftaran/ubah{faktur_rawatjalan}', [Data_PendaftaranController::class, 'ubah']);
-Route::post('/Data_Pendaftaran/update{faktur_rawatjalan}', [Data_PendaftaranController::class, 'update']);
-Route::get('/Data_Pendaftaran/hapus{faktur_rawatjalan}', [Data_PendaftaranController::class, 'hapus']);
-Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'lihat']);
-Route::get('/Riwayat_Resume_Medis_Pasien', [Riwayat_Resume_Medis_PasienController::class, 'index']);
-
-Route::get('/Data_Pendaftaran/cetakdatapendaftaran', [Data_PendaftaranController::class, 'cetakdatapendaftaran']);
-
-Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
-
-Route::get('/PenggunaanObat', [PenggunaanObatController::class, 'index']);
-Route::get('/RawatJalan_RM_Rawat_Jalan', [RawatJalan_RM_Rawat_JalanController::class, 'index']);
-
-Route::get('/Data_Pendaftaran/suratketerangansakit{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansakit']);
-Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansehat']);
-
-Route::get('/Pelayanan_Rawat_Jalan', [Pelayanan_PoliController::class, 'index']);
-Route::get('/Pelayanan_Rawat_Jalan/select{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'selectrawatjalan']);
-Route::post('/Pelayanan_Rawat_Jalan/store', [Pelayanan_PoliController::class, 'store']);
-Route::post('/Pelayanan_Rawat_Jalan/update{notransaksi}', [Pelayanan_PoliController::class, 'update']);
-Route::get('/Pelayanan_Rawat_Jalan/hapus{notransaksi},{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'hapus']);
-
-Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
-Route::post('/Pendaftaran_Rawat_Inap/store', [Transfer_RiController::class, 'store']);
-
-Route::get('/Update_Data_Pendaftaran_Pasien_Online', [Update_Data_Pendaftaran_Pasien_OnlineController::class, 'index']);
-
-
-/* ----- RawatJalan -----*/
-
-
-/* ----- RawatInap -----*/
-Route::get('/RawatInap', function () {
-    return view('RawatInap.Content.index');
-});
-Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
-Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
-Route::get('/RuteObat', [RuteObatController::class, 'index']);
-Route::get('/Anamnesa', [AnamnesaController::class, 'index']);
-Route::get('/Data_Pendaftaran_Rawat_Inap', [Data_Pendaftaran_Rawat_InapController::class, 'index']);
-Route::get('/Data_Pendaftaran_Rawat_Inap/tambah', [Data_Pendaftaran_Rawat_InapController::class, 'tambah']);
-Route::post('/Data_Pendaftaran_Rawat_Inap/store', [Data_Pendaftaran_Rawat_InapController::class, 'store']);
-Route::get('/Data_Pendaftaran_Rawat_Inap/ubah{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'ubah']);
-Route::get('/Data_Pendaftaran_Rawat_Inap/detaildiagnosa{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detaildiagnosa']);
-Route::get('/Data_Pendaftaran_Rawat_Inap/detailpendaftaran{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detailpendaftaran']);
-Route::get('/Data_Pendaftaran_Rawat_Inap/hapus{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'hapus']);
-
-Route::get('/Ubah_Kamar{faktur_rawatinap}', [Ubah_KamarController::class, 'index']);
-Route::post('/Ubah_Kamar/update{faktur_rawatinap}', [Ubah_KamarController::class, 'update']);
-
-Route::get('/PindahKamar', [PindahKamarController::class, 'index']);
-Route::get('/PindahKamar/selectrawatinap{faktur_rawatinap}', [PindahKamarController::class, 'selectfakturri']);
-
-Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
-
-Route::get('/Pemnerian_Obat_Rawat_Inap', [Pemnerian_Obat_Rawat_InapController::class, 'index']);
-
-Route::get('/CariPasien', [CariPasienController::class, 'index']);
-Route::post('/CariPasien/store', [CariPasienController::class, 'store']);
-
-Route::get('/MacamRawat', [MacamRawatController::class, 'index']);
-Route::post('/MacamRawat/store', [MacamRawatController::class, 'store']);
-Route::get('/MacamRawat/ubah{kode}', [MacamRawatController::class, 'ubah']);
-Route::post('/MacamRawat/update{kode}', [MacamRawatController::class, 'update']);
-Route::get('/MacamRawat/hapus{kode}', [MacamRawatController::class, 'hapus']);
-
-Route::get('/INOS', [INOSController::class, 'index']);
-
-Route::get('/Status_Pulang', function () {
-    return view('RawatInap.Content.Status_Pulang');
-});
-
-Route::get('/Data_Pendaftaran_Rawat_Inap/cetakdatapendaftaranrawatinap', [Data_Pendaftaran_Rawat_InapController::class, 'cetakdatapendaftaranrawatinap']);
-
-/* ----- RawatInap -----*/
-
-/* ----- Operasi -----*/
-Route::get('/Operasi', function () {
-    return view('Operasi.Content.index');
-});
-
-Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
-Route::get('/JenisAnestesi', [JenisAnestesiController::class, 'index']);
-Route::get('/SpesialisBedah', [SpesialisBedahController::class, 'index']);
-Route::get('/DataOperasi', [DataOperasiController::class, 'index']);
-Route::get('/Tarif_Tindakan_Operasi', [Tarif_Tindakan_OperasiController::class, 'index']);
-Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
-Route::post('/DokterBedah/store', [DokterBedahController::class, 'store']);
-Route::get('/DokterBedah/ubah{iddokter},{jenisrawat}', [DokterBedahController::class, 'ubah']);
-Route::post('/DokterBedah/update{iddokter},{jenisrawat}', [DokterBedahController::class, 'update']);
-Route::get('/DokterBedah/hapus{iddokter},{jenisrawat}', [DokterBedahController::class, 'hapus']);
-
-Route::get('/DokterBedah/cetakdatadokterbedah', [DokterBedahController::class, 'cetakdatadokterbedah']);
-/* ----- Operasi -----*/
-
-/* ----- Billing -----*/
-Route::get('/Billing', function () {
-    return view('Billing.Content.index');
-});
-
-Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
-Route::get('/PembayaranRJ', [PembayaranRJController::class, 'index']);
-Route::get('/PembayaranRJ/selectbayarrjalan{nobayar_rjalan}', [PembayaranRJController::class, 'selectbayarrjalan']);
-Route::post('/PembayaranRJ/store', [PembayaranRJController::class, 'store']);
-
-Route::get('/Data_PembayaranRJ', [Data_PembayaranRJController::class, 'index']);
-
-Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'selectnorm']);
-Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
-Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
-
-Route::get('/RekeningRI', [RekeningRIController::class, 'index']);
-
-Route::get('/Deposit', [Data_DepositController::class, 'tambah']);
-Route::get('/Deposit/selecttambah{norm}', [Data_DepositController::class, 'selecttambah']);
-Route::get('/Deposit/lihatdetail{notrans}', [Data_DepositController::class, 'lihatdetail']);
-
-Route::get('/Data_Deposit', [Data_DepositController::class, 'index']);
-Route::post('/Data_Deposit/store', [Data_DepositController::class, 'store']);
-
-/* ----- Billing -----*/
-
-/* ----- Laporan -----*/
-Route::get('/Laporan', function () {
-    return view('Laporan.Content.index');
-});
-
-/* ----- Laporan -----*/
-
-/* ----- BPJS -----*/
-Route::get('/BPJS', function () {
-    return view('BPJS.Content.index');
-});
-
-/* ----- BPJS -----*/
-
-/* ----- Akuntansi -----*/
-Route::get('/Akuntansi', function () {
-    return view('Akuntansi.Content.index');
-});
-
-/* ----- Akuntansi -----*/
-
-/* ----- Panduan -----*/
-Route::get('/Panduan', function () {
-    return view('Panduan.Content.index');
-});
-
-/* ----- Panduan -----*/
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+/* ----- Penutup Middleware -----*/

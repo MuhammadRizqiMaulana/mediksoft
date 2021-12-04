@@ -19,7 +19,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Bayar_RJ_Terpisah')}}">
+                        <a class="users-list-name" href="#">
                             <img src="{{asset('images/icon/Bayar_RJ_Terpisah.png')}}"><br> Bayar RJ Terpisah
                         </a>
                     </button>
@@ -61,17 +61,17 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/RekeningRI')}}">
+                        <a class="users-list-name" href="#">
                             <img src="{{asset('images/icon/Rekening_RI.png')}}"><br> Rekening RI
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Data_Rekening_RI')}}">
+                        <a class="users-list-name" href="#">
                             <img src="{{asset('images/icon/Data_Rekening_RI.png')}}"><br> Data Rekening RI
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Pembayaran_RI')}}">
+                        <a class="users-list-name" href="#">
                             <img src="{{asset('images/icon/Pembayaran_RI.png')}}"><br> Pembayaran RI
                         </a>
                     </button>
@@ -130,12 +130,12 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Kas_Harian')}}">
+                        <a class="users-list-name" href="#">
                             <img src="{{asset('images/icon/Kas_Harian.png')}}"><br> Kas Harian
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Ganti_Shift')}}">
+                        <a class="users-list-name" href="#">
                             <img src="{{asset('images/icon/Ganti_Shift.png')}}"><br> ganti Shift
                         </a>
                     </button>

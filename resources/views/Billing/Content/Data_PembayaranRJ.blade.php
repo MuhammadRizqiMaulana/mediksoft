@@ -81,18 +81,17 @@
                 </form>
                 <hr>
                 <div class="form-group">
-                <div class="row">
-                    <label>Dari Jam</label>
-                    <input type="time" name=""> 
-                     <label>sd</label>
-                    <input type="time" name="">
-                </div>
+                  <div class="row">
+                    <div class="col"><label>Dari Jam</label></div>
+                    <div class="col"><input type="time" class="form-control" name=""></div>
+                    <div class="col"><label>sd</label></div>
+                    <div class="col"><input type="time" class="form-control" name=""></div>
+      
+                  </div>
                 </div>
                   <div class="form-group">
                    <label for="nama">Sortir</label>
                        <select class="form-control" width="100%" name="" id="">
-
-                           
                             <option> 1</option>
                             <option> 1</option>
                             <option> 1</option>
@@ -103,9 +102,9 @@
                 <div class="form-group">
                 <div class="row">
                     <label>Dari Jam</label>
-                    <input type="time" name=""> 
+                    <input type="time" class="" name=""> 
                      <label>sd</label>
-                    <input type="time" name="">
+                    <input type="time" class="" name="">
                 </div>
                 </div>
                 <hr>
@@ -190,7 +189,7 @@
                           <td class="text-right">@rupiah((round($item->tagihan / 1000) * 1000) - $item->tagihan)</td>
                           <td class="text-right">@rupiah($item->tagihan)</td>
                           <td class="text-right">@rupiah($item->pembulatan)</td>
-                          <td class="text-right">@rupiah($item->bayar)</td>
+                          <td class="text-right">@rupiah($item->tagihan - $item->pembulatan)</td>
                       </tr>
                       @endforeach
                   </tbody>
