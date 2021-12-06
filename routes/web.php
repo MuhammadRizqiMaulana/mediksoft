@@ -7,6 +7,7 @@ use App\Http\Controllers\AksesPengguna\PenggunaController;
 use App\Http\Controllers\AksesPengguna\ProgramController;
 use App\Http\Controllers\AksesPengguna\LevelPenggunaController;
 use App\Http\Controllers\AksesPengguna\LoginController;
+use App\Http\Controllers\AksesPengguna\UbahPasswordController;
 
 /* ----- AksesPengguna -----*/
 
@@ -104,12 +105,13 @@ use App\Http\Controllers\Billing\RekeningRIController;
 
 
 /* ----- Login -----*/
+
 Route::get('/Login', [LoginController::class, 'index'])->name('login');
 Route::post('/Postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 Route::get('/Logout', [LoginController::class, 'logout'])->name('logout');
 /* ----- Login -----*/
 
-Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
+Route::group(['middleware' => ['auth', 'idlevel:1,2']], function () {
 
     Route::get('/', function () {
         return view('AksesPengguna.Content.index');
@@ -119,13 +121,10 @@ Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
     Route::get('/AksesPengguna', function () {
         return view('AksesPengguna.Content.index');
     });
-
+    Route::get('/UbahPassword', [UbahPasswordController::class, 'index']);
     Route::get('/Program', [ProgramController::class, 'index']);
-
     Route::get('/Program', [ProgramController::class, 'index']);
-
     Route::get('/LevelPengguna', [LevelPenggunaController::class, 'index']);
-
     Route::get('/Pengguna', [PenggunaController::class, 'index']);
     Route::post('/Pengguna/store', [PenggunaController::class, 'store']);
     Route::get('/Pengguna/ubah{iduser}', [PenggunaController::class, 'ubah']);
@@ -457,6 +456,6 @@ Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
     /* ----- Panduan -----*/
 
 
-/* ----- Penutup Middleware -----*/
+    /* ----- Penutup Middleware -----*/
 });
 /* ----- Penutup Middleware -----*/
