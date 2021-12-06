@@ -46,10 +46,11 @@
                   {{csrf_field()}}
 
                   <div class="form-group">
-                        <input class="form-check-input" type="checkbox" value="" id="" name="">
-                              <label for="nama">Sortir Berdasarkan Tanggal Bayar</label>
-                             
-                      </div>
+                    <div class="col">
+                      <input class="form-check-input" type="checkbox" value="" id="" name="">
+                      <label for="nama">Sortir Berdasarkan Tanggal Bayar</label>
+                    </div>
+                  </div>
 
                   <div class="row">
                     <div class="col-9">
@@ -64,8 +65,8 @@
                     </div>
                     <div class="col-3">
                       <a class="btn btn-block btn-outline-info btn-lg" >
-                          <i class="fas fa-filter"></i> Filter
-                        </a>
+                        <i class="fas fa-filter"></i> Filter
+                      </a>
                     </div>
                   </div>
                   <div class="row">
@@ -86,32 +87,21 @@
                     <div class="col"><input type="time" class="form-control" name=""></div>
                     <div class="col"><label>sd</label></div>
                     <div class="col"><input type="time" class="form-control" name=""></div>
-      
                   </div>
                 </div>
-                  <div class="form-group">
-                   <label for="nama">Sortir</label>
-                       <select class="form-control" width="100%" name="" id="">
-                            <option> 1</option>
-                            <option> 1</option>
-                            <option> 1</option>
-                            <option> 1</option>         
-                  </div>
-                
+                <div class="form-group row">
+                  <button class="btn btn-block btn-default">Sortir >></button>
+                </div>                     
 
-                <div class="form-group">
-                <div class="row">
-                    <label>Dari Jam</label>
-                    <input type="time" class="" name=""> 
-                     <label>sd</label>
-                    <input type="time" class="" name="">
-                </div>
-                </div>
                 <hr>
 
                  <div class="row">
-                  <div class="col"><a class="btn btn-block btn-outline-success" href=""><i class="fa fa-plus-circle"></i> Buat Tagihan</a></div>
-                  <div class="col"><button type="button" class="btn btn-block btn-outline-success "><i class="fa fa-plus-circle"></i> Bayar</button></div>
+                  <div class="col"><a class="btn btn-block btn-outline-success" href="{{url('/Tagihan_RJ')}}"><i class="fa fa-plus-circle"></i> Buat Tagihan</a></div>
+                  <div class="col">
+                    <a href="javascript:alert('Silahkan pilih baris terlebih dahulu!');" id="tombolbayar" class="btn btn-block btn-outline-success">
+                      <i class="fa fa-plus-circle"></i> bayar
+                    </a> 
+                  </div>
                 </div>
                 <div class="row">                  
                   <div class="col"><button type="button" class="btn btn-block btn-outline-primary btn-sm"><i class="fas fa-clipboard-list"></i> Detail Tagihan</button></div>
@@ -140,9 +130,8 @@
                 </div>
                 <div class="form-group">
                   <a class="btn btn-block btn-outline-success" href=""><i class=""></i> Layout data rincian RJ</a>
-               
                 </div>
-               
+              </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -177,7 +166,7 @@
                       $no = 1;
                       @endphp
                       @foreach ($datas as $item)
-                      <tr>
+                      <tr onclick="tombol('{{$item->nobayar_rjalan}}')">
                           <td>{{$no++}}</td>
                           <td>{{$item->nobayar_rjalan}}</td>
                           <td>{{$item->tanggal}}</td>
@@ -208,5 +197,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+  <script>
+    function tombol($nobayar_rjalan){
+      $("a#tombolbayar").attr("href", "/PembayaranRJ/selectbayarrjalan"+ $nobayar_rjalan);
+    }
+  </script>
 @endsection

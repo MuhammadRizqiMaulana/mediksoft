@@ -265,7 +265,7 @@
                                         <div class="form-group row">
                                             <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
                                             <div class="col-sm-8">
-                                            <input type="datetime-local" class="form-control" id="tanggal" name="tanggal" placeholder="Tanggal" value="{{$lihatdetail->tanggal}}" disabled>
+                                            <input type="datetime" class="form-control" id="tanggal" name="tanggal" placeholder="Tanggal" value="{{$lihatdetail->tanggal}}" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group row">
