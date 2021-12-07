@@ -13,7 +13,7 @@
           <i class="far fa-clock"></i> : {{ date('H.i') }}
       </div>
       <div class="col-3">
-        <i class="far fa-user"></i> Login : {{ auth()->user()->uname }}
+        <i class="far fa-user"></i> Login : {{(Auth::check()) ? auth()->user()->nama : ''}}
       </div>
       <div class="col-4">
         <i class="far fa-id-card"></i> User Lisensi : PT Global Eushanosoft

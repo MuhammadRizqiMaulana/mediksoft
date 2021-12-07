@@ -19,6 +19,6 @@ class CekLevel
         if(in_array($request->user()->idlevel, $levels)){
             return $next($request);
         }
-        return redirect('/');
+        return redirect()->back()->with('alert-danger-login','Anda tidak diperkenankan mengakses menu ini');
     }
 }

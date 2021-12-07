@@ -136,6 +136,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <script>
     $(function() {
+        
         $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,
@@ -298,7 +299,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     });
     </script>
 
-
+@if(\Session::has('alert-danger-login'))
+    <div id="toastsContainerBottomRight" class="toasts-bottom-right fixed">
+        <div class="toast alert-dismissible bg-danger fade show" role="toast" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="mr-auto">Error</strong>
+            </div>
+            <div class="toast-body">{{Session::get('alert-danger-login')}}</div>
+        </div>
+    </div>
+@endif
 
 </body>
 
