@@ -355,6 +355,8 @@ Route::group(['middleware' => ['auth', 'idlevel:1,2']], function () {
 
     Route::get('/PindahKamar', [PindahKamarController::class, 'index']);
     Route::get('/PindahKamar/selectrawatinap{faktur_rawatinap}', [PindahKamarController::class, 'selectfakturri']);
+    Route::post('/PindahKamar/update{kodekamar}', [PindahKamarController::class, 'update']);
+    Route::get('/PindahKamar/ubah{kodekamar}', [PindahKamarController::class, 'ubah']);
 
     Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
 
