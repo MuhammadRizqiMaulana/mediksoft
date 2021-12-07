@@ -1,6 +1,7 @@
 <?php
 namespace App\Providers;
 
+
 class CustomUserProvider extends EloquentUserProvider
 {
     /**

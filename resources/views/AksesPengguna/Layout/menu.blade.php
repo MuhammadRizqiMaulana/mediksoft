@@ -18,8 +18,8 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Program')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest>
+                        <a class="users-list-name" href="{{url('/Program')}}" onclick="return false;">
                             <img src="{{asset('images/icon/program.png')}}"><br>
                             Program</a>
                     </button>
@@ -54,20 +54,20 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/LevelPengguna')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest>
+                        <a class="users-list-name" href="{{url('/LevelPengguna')}}"  onclick="return false;">
                             <img src="{{asset('images/icon/Level_Pengguna.png')}}"><br>
                             Level Pengguna
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Pengguna')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest>
+                        <a class="users-list-name" href="{{url('/Pengguna')}}" @guest onclick="return false;" @endguest>
                             <img src="{{asset('images/icon/Pengguna.png')}}"><br>
                             Pengguna
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Ganti_Password')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest>
+                        <a class="users-list-name" href="{{url('/Ganti_Password')}}" onclick="return false;">
                             <img src="{{asset('images/icon/Ganti_Password.png')}}"><br>
                             Ganti Password
                         </a>
@@ -99,8 +99,8 @@
                             Login
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Logout')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest>
+                        <a class="users-list-name" href="{{url('/Logout')}}" @guest onclick="return false;" @endguest >
                             <img src="{{asset('images/icon/Logout.png')}}"><br>
                             Logout
                         </a>

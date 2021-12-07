@@ -102,15 +102,14 @@ use App\Http\Controllers\Billing\RekeningRIController;
 */
 
 
-
 /* ----- Login -----*/
 Route::get('/Login', [LoginController::class, 'index'])->name('login');
 Route::post('/Postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
-Route::get('/Logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/Logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth','idlevel:1,2,3,4,5,6,7,10');
 /* ----- Login -----*/
 
-Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
-
+//Route::group(['middleware' => ['auth','idlevel:1']], function(){
+//});
     Route::get('/', function () {
         return view('AksesPengguna.Content.index');
     });
@@ -120,17 +119,15 @@ Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
         return view('AksesPengguna.Content.index');
     });
 
-    Route::get('/Program', [ProgramController::class, 'index']);
+    Route::get('/Program', [ProgramController::class, 'index'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Program', [ProgramController::class, 'index']);
+    Route::get('/LevelPengguna', [LevelPenggunaController::class, 'index'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/LevelPengguna', [LevelPenggunaController::class, 'index']);
-
-    Route::get('/Pengguna', [PenggunaController::class, 'index']);
-    Route::post('/Pengguna/store', [PenggunaController::class, 'store']);
-    Route::get('/Pengguna/ubah{iduser}', [PenggunaController::class, 'ubah']);
-    Route::post('/Pengguna/update{iduser}', [PenggunaController::class, 'update']);
-    Route::get('/Pengguna/hapus{iduser}', [PenggunaController::class, 'hapus']);
+    Route::get('/Pengguna', [PenggunaController::class, 'index'])->middleware('idlevel:1,4');
+    Route::post('/Pengguna/store', [PenggunaController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Pengguna/ubah{iduser}', [PenggunaController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Pengguna/update{iduser}', [PenggunaController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Pengguna/hapus{iduser}', [PenggunaController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
     /* ----- AksesPengguna -----*/
 
@@ -138,134 +135,135 @@ Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
     Route::get('/Setup', function () {
         return view('Setup.Content.index');
     });
-    Route::get('/Pengirim_Faskes', [Pengirim_FaskesController::class, 'index']);
+
+    Route::get('/Pengirim_Faskes', [Pengirim_FaskesController::class, 'index'])->middleware('auth','idlevel:1,4');
     //Route::get('/Pengirim_Faskes/tambah', [Pengirim_FaskesController::class, 'tambah']);
-    Route::post('/Pengirim_Faskes/store', [Pengirim_FaskesController::class, 'store']);
-    Route::get('/Pengirim_Faskes/ubah{kodefaskes}', [Pengirim_FaskesController::class, 'ubah']);
-    Route::post('/Pengirim_Faskes/update{kodefaskes}', [Pengirim_FaskesController::class, 'update']);
-    Route::get('/Pengirim_Faskes/hapus{kodefaskes}', [Pengirim_FaskesController::class, 'hapus']);
+    Route::post('/Pengirim_Faskes/store', [Pengirim_FaskesController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Pengirim_Faskes/ubah{kodefaskes}', [Pengirim_FaskesController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Pengirim_Faskes/update{kodefaskes}', [Pengirim_FaskesController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Pengirim_Faskes/hapus{kodefaskes}', [Pengirim_FaskesController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Poli', [PoliController::class, 'index']);
-    Route::post('/Poli/store', [PoliController::class, 'store']);
-    Route::get('/Poli/ubah{kode}', [PoliController::class, 'ubah']);
-    Route::post('/Poli/update{kode}', [PoliController::class, 'update']);
-    Route::get('/Poli/hapus{kode}', [PoliController::class, 'hapus']);
+    Route::get('/Poli', [PoliController::class, 'index'])->middleware('auth','idlevel:1,2,4,5,6,7');
+    Route::post('/Poli/store', [PoliController::class, 'store'])->middleware('auth','idlevel:1,2,4');
+    Route::get('/Poli/ubah{kode}', [PoliController::class, 'ubah'])->middleware('auth','idlevel:1,2,4');
+    Route::post('/Poli/update{kode}', [PoliController::class, 'update'])->middleware('auth','idlevel:1,2,4');
+    Route::get('/Poli/hapus{kode}', [PoliController::class, 'hapus'])->middleware('auth','idlevel:1,2,4');
 
-    Route::get('/Kelas', [KelasController::class, 'index']);
-    Route::post('/Kelas/store', [KelasController::class, 'store']);
-    Route::get('/Kelas/ubah{kodekelas}', [KelasController::class, 'ubah']);
-    Route::post('/Kelas/update{kodekelas}', [KelasController::class, 'update']);
-    Route::get('/Kelas/hapus{kodekelas}', [KelasController::class, 'hapus']);
+    Route::get('/Kelas', [KelasController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Kelas/store', [KelasController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Kelas/ubah{kodekelas}', [KelasController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Kelas/update{kodekelas}', [KelasController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Kelas/hapus{kodekelas}', [KelasController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Bank', [BankController::class, 'index']);
-    Route::post('/Bank/store', [BankController::class, 'store']);
-    Route::get('/Bank/ubah{idbank}', [BankController::class, 'ubah']);
-    Route::post('/Bank/update{idbank}', [BankController::class, 'update']);
-    Route::get('/Bank/hapus{idbank}', [BankController::class, 'hapus']);
+    Route::get('/Bank', [BankController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Bank/store', [BankController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Bank/ubah{idbank}', [BankController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Bank/update{idbank}', [BankController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Bank/hapus{idbank}', [BankController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Dokter', [DokterController::class, 'index']);
-    Route::post('/Dokter/store', [DokterController::class, 'store']);
-    Route::get('/Dokter/ubah{iddokter}', [DokterController::class, 'ubah']);
-    Route::post('/Dokter/update{iddokter}', [DokterController::class, 'update']);
-    Route::get('/Dokter/hapus{iddokter}', [DokterController::class, 'hapus']);
+    Route::get('/Dokter', [DokterController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Dokter/store', [DokterController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Dokter/ubah{iddokter}', [DokterController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Dokter/update{iddokter}', [DokterController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Dokter/hapus{iddokter}', [DokterController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Icd10', [Icd10Controller::class, 'index']);
-    Route::post('/Icd10/store', [Icd10Controller::class, 'store']);
-    Route::get('/Icd10/ubah{kode}', [Icd10Controller::class, 'ubah']);
-    Route::post('/Icd10/update{kode}', [Icd10Controller::class, 'update']);
-    Route::get('/Icd10/hapus{kode}', [Icd10Controller::class, 'hapus']);
+    Route::get('/Icd10', [Icd10Controller::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Icd10/store', [Icd10Controller::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Icd10/ubah{kode}', [Icd10Controller::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Icd10/update{kode}', [Icd10Controller::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Icd10/hapus{kode}', [Icd10Controller::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Icd9', [Icd9Controller::class, 'index']);
-    Route::post('/Icd9/store', [Icd9Controller::class, 'store']);
-    Route::get('/Icd9/ubah{kode}', [Icd9Controller::class, 'ubah']);
-    Route::post('/Icd9/update{kode}', [Icd9Controller::class, 'update']);
-    Route::get('/Icd9/hapus{kode}', [Icd9Controller::class, 'hapus']);
+    Route::get('/Icd9', [Icd9Controller::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Icd9/store', [Icd9Controller::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Icd9/ubah{kode}', [Icd9Controller::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Icd9/update{kode}', [Icd9Controller::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Icd9/hapus{kode}', [Icd9Controller::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Jabatan', [JabatanController::class, 'index']);
-    Route::post('/Jabatan/store', [JabatanController::class, 'store']);
-    Route::get('/Jabatan/ubah{id}', [JabatanController::class, 'ubah']);
-    Route::post('/Jabatan/update{id}', [JabatanController::class, 'update']);
-    Route::get('/Jabatan/hapus{id}', [JabatanController::class, 'hapus']);
+    Route::get('/Jabatan', [JabatanController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Jabatan/store', [JabatanController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Jabatan/ubah{id}', [JabatanController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Jabatan/update{id}', [JabatanController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Jabatan/hapus{id}', [JabatanController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Jaminan', [JaminanController::class, 'index']);
-    Route::post('/Jaminan/store', [JaminanController::class, 'store']);
-    Route::get('/Jaminan/ubah{idprsh}', [JaminanController::class, 'ubah']);
-    Route::post('/Jaminan/update{idprsh}', [JaminanController::class, 'update']);
-    Route::get('/Jaminan/hapus{idprsh}', [JaminanController::class, 'hapus']);
+    Route::get('/Jaminan', [JaminanController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Jaminan/store', [JaminanController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Jaminan/ubah{idprsh}', [JaminanController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Jaminan/update{idprsh}', [JaminanController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Jaminan/hapus{idprsh}', [JaminanController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Perusahaankategori', [PerusahaankategoriController::class, 'index']);
-    Route::post('/Perusahaankategori/store', [PerusahaankategoriController::class, 'store']);
-    Route::get('/Perusahaankategori/ubah{idkategori}', [PerusahaankategoriController::class, 'ubah']);
-    Route::post('/Perusahaankategori/update{idkategori}', [PerusahaankategoriController::class, 'update']);
-    Route::get('/Perusahaankategori/hapus{idkategori}', [PerusahaankategoriController::class, 'hapus']);
+    Route::get('/Perusahaankategori', [PerusahaankategoriController::class, 'index'])->middleware('auth','idlevel:1');
+    Route::post('/Perusahaankategori/store', [PerusahaankategoriController::class, 'store'])->middleware('auth','idlevel:1');
+    Route::get('/Perusahaankategori/ubah{idkategori}', [PerusahaankategoriController::class, 'ubah'])->middleware('auth','idlevel:1');
+    Route::post('/Perusahaankategori/update{idkategori}', [PerusahaankategoriController::class, 'update'])->middleware('auth','idlevel:1');
+    Route::get('/Perusahaankategori/hapus{idkategori}', [PerusahaankategoriController::class, 'hapus'])->middleware('auth','idlevel:1');
 
-    Route::get('/Ruang', [RuangController::class, 'index']);
-    Route::post('/Ruang/store', [RuangController::class, 'store']);
-    Route::get('/Ruang/ubah{koderuang}', [RuangController::class, 'ubah']);
-    Route::post('/Ruang/update{koderuang}', [RuangController::class, 'update']);
-    Route::get('/Ruang/hapus{koderuang}', [RuangController::class, 'hapus']);
+    Route::get('/Ruang', [RuangController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Ruang/store', [RuangController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Ruang/ubah{koderuang}', [RuangController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Ruang/update{koderuang}', [RuangController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Ruang/hapus{koderuang}', [RuangController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Kamar', [KamarController::class, 'index']);
-    Route::post('/Kamar/store', [KamarController::class, 'store']);
-    Route::get('/Kamar/ubah{kodekamar}', [KamarController::class, 'ubah']);
-    Route::post('/Kamar/update{kodekamar}', [KamarController::class, 'update']);
-    Route::get('/Kamar/hapus{kodekamar}', [KamarController::class, 'hapus']);
+    Route::get('/Kamar', [KamarController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Kamar/store', [KamarController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Kamar/ubah{kodekamar}', [KamarController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Kamar/update{kodekamar}', [KamarController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Kamar/hapus{kodekamar}', [KamarController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Karyawan', [KaryawanController::class, 'index']);
-    //Route::get('/Karyawan/tambah', [KaryawanController::class, 'tambah']);
-    Route::post('/Karyawan/store', [KaryawanController::class, 'store']);
-    Route::get('/Karyawan/ubah{idkaryawan}', [KaryawanController::class, 'ubah']);
-    Route::post('/Karyawan/update{idkaryawan}', [KaryawanController::class, 'update']);
-    Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus']);
+    Route::get('/Karyawan', [KaryawanController::class, 'index'])->middleware('auth','idlevel:1,4');
+    //Route::get('/Karyawan/tambah', [KaryawanController::class, 'tambah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Karyawan/store', [KaryawanController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Karyawan/ubah{idkaryawan}', [KaryawanController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Karyawan/update{idkaryawan}', [KaryawanController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Karyawan/hapus{idkaryawan}', [KaryawanController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/DokterPoli', [DokterPoliController::class, 'index']);
-    Route::post('/DokterPoli/store', [DokterPoliController::class, 'store']);
-    Route::get('/DokterPoli/ubah{kodepoli},{iddokter}', [DokterPoliController::class, 'ubah']);
-    Route::post('/DokterPoli/update{kodepoli},{iddokter}', [DokterPoliController::class, 'update']);
-    Route::get('/DokterPoli/hapus{kodepoli},{iddokter}', [DokterPoliController::class, 'hapus']);
+    Route::get('/DokterPoli', [DokterPoliController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/DokterPoli/store', [DokterPoliController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/DokterPoli/ubah{kodepoli},{iddokter}', [DokterPoliController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/DokterPoli/update{kodepoli},{iddokter}', [DokterPoliController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/DokterPoli/hapus{kodepoli},{iddokter}', [DokterPoliController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/DokterKonsultasi', [DokterKonsultasiController::class, 'index']);
-    Route::post('/DokterKonsultasi/store', [DokterKonsultasiController::class, 'store']);
-    Route::get('/DokterKonsultasi/ubah{iddokter}', [DokterKonsultasiController::class, 'ubah']);
-    Route::post('/DokterKonsultasi/update{iddokter}', [DokterKonsultasiController::class, 'update']);
-    Route::get('/DokterKonsultasi/hapus{iddokter}', [DokterKonsultasiController::class, 'hapus']);
+    Route::get('/DokterKonsultasi', [DokterKonsultasiController::class, 'index'])->middleware('auth','idlevel:1,2,4');
+    Route::post('/DokterKonsultasi/store', [DokterKonsultasiController::class, 'store'])->middleware('auth','idlevel:1,2,4');
+    Route::get('/DokterKonsultasi/ubah{iddokter}', [DokterKonsultasiController::class, 'ubah'])->middleware('auth','idlevel:1,2,4');
+    Route::post('/DokterKonsultasi/update{iddokter}', [DokterKonsultasiController::class, 'update'])->middleware('auth','idlevel:1,2,4');
+    Route::get('/DokterKonsultasi/hapus{iddokter}', [DokterKonsultasiController::class, 'hapus'])->middleware('auth','idlevel:1,2,4');
 
-    Route::get('/DokterVisit', [DokterVisitController::class, 'index']);
-    Route::post('/DokterVisit/store', [DokterVisitController::class, 'store']);
-    Route::get('/DokterVisit/ubah{iddokter}', [DokterVisitController::class, 'ubah']);
-    Route::post('/DokterVisit/update{iddokter}', [DokterVisitController::class, 'update']);
-    Route::get('/DokterVisit/hapus{iddokter}', [DokterVisitController::class, 'hapus']);
+    Route::get('/DokterVisit', [DokterVisitController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/DokterVisit/store', [DokterVisitController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/DokterVisit/ubah{iddokter}', [DokterVisitController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/DokterVisit/update{iddokter}', [DokterVisitController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/DokterVisit/hapus{iddokter}', [DokterVisitController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/TindakanInap', [TindakanInapController::class, 'index']);
-    Route::post('/TindakanInap/store', [TindakanInapController::class, 'store']);
-    Route::get('/TindakanInap/ubah{idtindakan}', [TindakanInapController::class, 'ubah']);
-    Route::post('/TindakanInap/update{idtindakan}', [TindakanInapController::class, 'update']);
-    Route::get('/TindakanInap/hapus{idtindakan}', [TindakanInapController::class, 'hapus']);
+    Route::get('/TindakanInap', [TindakanInapController::class, 'index'])->middleware('auth','idlevel:1,2,4');
+    Route::post('/TindakanInap/store', [TindakanInapController::class, 'store'])->middleware('auth','idlevel:1,2,4');
+    Route::get('/TindakanInap/ubah{idtindakan}', [TindakanInapController::class, 'ubah'])->middleware('auth','idlevel:1,2,4');
+    Route::post('/TindakanInap/update{idtindakan}', [TindakanInapController::class, 'update'])->middleware('auth','idlevel:1,2,4');
+    Route::get('/TindakanInap/hapus{idtindakan}', [TindakanInapController::class, 'hapus'])->middleware('auth','idlevel:1,2,4');
 
-    Route::get('/TindakanPoli', [TindakanPoliController::class, 'index']);
-    Route::post('/TindakanPoli/store', [TindakanPoliController::class, 'store']);
-    Route::get('/TindakanPoli/ubah{idtindakan}', [TindakanPoliController::class, 'ubah']);
-    Route::post('/TindakanPoli/update{idtindakan}', [TindakanPoliController::class, 'update']);
-    Route::get('/TindakanPoli/hapus{idtindakan}', [TindakanPoliController::class, 'hapus']);
+    Route::get('/TindakanPoli', [TindakanPoliController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/TindakanPoli/store', [TindakanPoliController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/TindakanPoli/ubah{idtindakan}', [TindakanPoliController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/TindakanPoli/update{idtindakan}', [TindakanPoliController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/TindakanPoli/hapus{idtindakan}', [TindakanPoliController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Administrasi', [AdministrasiController::class, 'index']);
-    Route::post('/Administrasi/store', [AdministrasiController::class, 'store']);
-    Route::get('/Administrasi/ubah{idadm}', [AdministrasiController::class, 'ubah']);
-    Route::post('/Administrasi/update{idadm}', [AdministrasiController::class, 'update']);
-    Route::get('/Administrasi/hapus{idadm}', [AdministrasiController::class, 'hapus']);
+    Route::get('/Administrasi', [AdministrasiController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Administrasi/store', [AdministrasiController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Administrasi/ubah{idadm}', [AdministrasiController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Administrasi/update{idadm}', [AdministrasiController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/Administrasi/hapus{idadm}', [AdministrasiController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Jaminan/cetakdatajaminan', [JaminanController::class, 'cetakdatajaminan']);
-    Route::get('/Icd9/cetakdataicd9', [Icd9Controller::class, 'cetakdataicd9']);
-    Route::get('/Dokter/cetakdatadokter', [DokterController::class, 'cetakdatadokter']);
-    Route::get('/Kelas/cetakdatakelas', [KelasController::class, 'cetakdatakelas']);
-    Route::get('/Poli/cetakdatapoli', [PoliController::class, 'cetakdatapoli']);
-    Route::get('/Bank/cetakdatabank', [BankController::class, 'cetakdatabank']);
-    Route::get('/Pengirim_Faskes/cetakdatapengirimfaskes', [Pengirim_FaskesController::class, 'cetakdatapengirimfaskes']);
-    Route::get('/Karyawan/cetakdatakaryawan', [KaryawanController::class, 'cetakdatakaryawan']);
-    Route::get('/Ruang/cetakdataruang', [RuangController::class, 'cetakdataruang']);
-    Route::get('/Kamar/cetakdatakamar', [KamarController::class, 'cetakdatakamar']);
-    Route::get('/DokterPoli/cetakdatadokterpoli', [DokterPoliController::class, 'cetakdatadokterpoli']);
-    Route::get('/TindakanPoli/cetakdatatindakanpoli', [TindakanPoliController::class, 'cetakdatatindakanpoli']);
+    Route::get('/Jaminan/cetakdatajaminan', [JaminanController::class, 'cetakdatajaminan'])->middleware('auth','idlevel:1,4');
+    Route::get('/Icd9/cetakdataicd9', [Icd9Controller::class, 'cetakdataicd9'])->middleware('auth','idlevel:1,4');
+    Route::get('/Dokter/cetakdatadokter', [DokterController::class, 'cetakdatadokter'])->middleware('auth','idlevel:1,4');
+    Route::get('/Kelas/cetakdatakelas', [KelasController::class, 'cetakdatakelas'])->middleware('auth','idlevel:1,4');
+    Route::get('/Poli/cetakdatapoli', [PoliController::class, 'cetakdatapoli'])->middleware('auth','idlevel:1,2,4');
+    Route::get('/Bank/cetakdatabank', [BankController::class, 'cetakdatabank'])->middleware('auth','idlevel:1,4');
+    Route::get('/Pengirim_Faskes/cetakdatapengirimfaskes', [Pengirim_FaskesController::class, 'cetakdatapengirimfaskes'])->middleware('auth','idlevel:1,4');
+    Route::get('/Karyawan/cetakdatakaryawan', [KaryawanController::class, 'cetakdatakaryawan'])->middleware('auth','idlevel:1,4');
+    Route::get('/Ruang/cetakdataruang', [RuangController::class, 'cetakdataruang'])->middleware('auth','idlevel:1,4');
+    Route::get('/Kamar/cetakdatakamar', [KamarController::class, 'cetakdatakamar'])->middleware('auth','idlevel:1,4');
+    Route::get('/DokterPoli/cetakdatadokterpoli', [DokterPoliController::class, 'cetakdatadokterpoli'])->middleware('auth','idlevel:1,4');
+    Route::get('/TindakanPoli/cetakdatatindakanpoli', [TindakanPoliController::class, 'cetakdatatindakanpoli'])->middleware('auth','idlevel:1,4');
     /* ----- Setup -----*/
 
     /* ----- RekamMedis -----*/
@@ -273,63 +271,63 @@ Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
         return view('RekamMedis.Content.index');
     });
 
-    Route::get('/Keanggotaan', [KeanggotaanController::class, 'index']);
-    Route::post('/Keanggotaan/store', [KeanggotaanController::class, 'store']);
-    Route::get('/Keanggotaan/ubah{idkeanggotaan}', [KeanggotaanController::class, 'ubah']);
-    Route::post('/Keanggotaan/update{idkeanggotaan}', [KeanggotaanController::class, 'update']);
-    Route::get('/keanggotaan/hapus{idkeanggotaan}', [KeanggotaanController::class, 'hapus']);
+    Route::get('/Keanggotaan', [KeanggotaanController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/Keanggotaan/store', [KeanggotaanController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/Keanggotaan/ubah{idkeanggotaan}', [KeanggotaanController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/Keanggotaan/update{idkeanggotaan}', [KeanggotaanController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/keanggotaan/hapus{idkeanggotaan}', [KeanggotaanController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Pasien', [PasienController::class, 'index']);
-    Route::post('/Pasien/store', [PasienController::class, 'store']);
-    Route::get('/Pasien/ubah{norm}', [PasienController::class, 'ubah']);
-    Route::post('/Pasien/update{norm}', [PasienController::class, 'update']);
-    Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus']);
+    Route::get('/Pasien', [PasienController::class, 'index'])->middleware('auth','idlevel:1,2,4,5');
+    Route::post('/Pasien/store', [PasienController::class, 'store'])->middleware('auth','idlevel:1,2,4,5');
+    Route::get('/Pasien/ubah{norm}', [PasienController::class, 'ubah'])->middleware('auth','idlevel:1,2,4,5');
+    Route::post('/Pasien/update{norm}', [PasienController::class, 'update'])->middleware('auth','idlevel:1,2,4,5');
+    Route::get('/Pasien/hapus{norm}', [PasienController::class, 'hapus'])->middleware('auth','idlevel:1,2,4,5');
 
-    Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index']);
-    Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store']);
-    Route::get('/RM_RawatJalan', [RM_RawatJalanController::class, 'index']);
-    Route::get('/RM_RawatInap', [RawatInapController::class, 'index']);
-    Route::post('/RM_RawatInap/store', [RawatInapController::class, 'store']);
-    Route::get('/KamarKosong', [KamarKosongController::class, 'index']);
+    Route::get('/Pendaftaran_Rawat_Jalan', [Pendaftaran_Rawat_JalanController::class, 'index'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::post('/Pendaftaran_Rawat_Jalan/store', [Pendaftaran_Rawat_JalanController::class, 'store'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::get('/RM_RawatJalan', [RM_RawatJalanController::class, 'index'])->middleware('auth','idlevel:1,2,3,4,5,7');
+    Route::get('/RM_RawatInap', [RawatInapController::class, 'index'])->middleware('auth','idlevel:1,2,3,5,7');
+    //Route::post('/RM_RawatInap/store', [RawatInapController::class, 'store'])->middleware('auth','idlevel:1,2,3,5,7');
+    Route::get('/KamarKosong', [KamarKosongController::class, 'index'])->middleware('auth','idlevel:1,2,3,5,6,7,10');
 
-    Route::get('/Pasien/cetakdatapasien', [PasienController::class, 'cetakdatapasien']);
-    Route::get('/Keanggotaan/cetakdatakeanggotaan', [KeanggotaanController::class, 'cetakdatakeanggotaan']);
-    Route::get('/RM_RawatInap/cetakdatarmrawatinap', [RawatInapController::class, 'cetakdatarmrawatinap']);
+    Route::get('/Pasien/cetakdatapasien', [PasienController::class, 'cetakdatapasien'])->middleware('auth','idlevel:1,4');
+    Route::get('/Keanggotaan/cetakdatakeanggotaan', [KeanggotaanController::class, 'cetakdatakeanggotaan'])->middleware('auth','idlevel:1,4');
+    Route::get('/RM_RawatInap/cetakdatarmrawatinap', [RawatInapController::class, 'cetakdatarmrawatinap'])->middleware('auth','idlevel:1,2,3,4,5,7');
     /* ----- RekamMedis -----*/
 
     /* ----- RawatJalan -----*/
     Route::get('/RawatJalan', function () {
         return view('RawatJalan.Content.index');
     });
-    Route::get('/Data_Pendaftaran', [Data_PendaftaranController::class, 'index']);
-    Route::get('/Data_Pendaftaran/tambah', [Data_PendaftaranController::class, 'tambah']);
-    Route::post('/Data_Pendaftaran/store', [Data_PendaftaranController::class, 'store']);
-    Route::get('/Data_Pendaftaran/ubah{faktur_rawatjalan}', [Data_PendaftaranController::class, 'ubah']);
-    Route::post('/Data_Pendaftaran/update{faktur_rawatjalan}', [Data_PendaftaranController::class, 'update']);
-    Route::get('/Data_Pendaftaran/hapus{faktur_rawatjalan}', [Data_PendaftaranController::class, 'hapus']);
-    Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'lihat']);
-    Route::get('/Riwayat_Resume_Medis_Pasien', [Riwayat_Resume_Medis_PasienController::class, 'index']);
+    Route::get('/Data_Pendaftaran', [Data_PendaftaranController::class, 'index'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::get('/Data_Pendaftaran/tambah', [Data_PendaftaranController::class, 'tambah'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::post('/Data_Pendaftaran/store', [Data_PendaftaranController::class, 'store'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::get('/Data_Pendaftaran/ubah{faktur_rawatjalan}', [Data_PendaftaranController::class, 'ubah'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::post('/Data_Pendaftaran/update{faktur_rawatjalan}', [Data_PendaftaranController::class, 'update'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::get('/Data_Pendaftaran/hapus{faktur_rawatjalan}', [Data_PendaftaranController::class, 'hapus'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::get('/Data_Pendaftaran/lihat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'lihat'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::get('/Riwayat_Resume_Medis_Pasien', [Riwayat_Resume_Medis_PasienController::class, 'index'])->middleware('auth','idlevel:1,2,4,6');
 
-    Route::get('/Data_Pendaftaran/cetakdatapendaftaran', [Data_PendaftaranController::class, 'cetakdatapendaftaran']);
+    Route::get('/Data_Pendaftaran/cetakdatapendaftaran', [Data_PendaftaranController::class, 'cetakdatapendaftaran'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
 
-    Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index']);
+    Route::get('/Rekam_Medis_Rawat_Jalan/index{faktur_rawatjalan}', [Rekam_Medis_Rawat_JalanController::class, 'index'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/PenggunaanObat', [PenggunaanObatController::class, 'index']);
-    Route::get('/RawatJalan_RM_Rawat_Jalan', [RawatJalan_RM_Rawat_JalanController::class, 'index']);
+    Route::get('/PenggunaanObat', [PenggunaanObatController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/RawatJalan_RM_Rawat_Jalan', [RawatJalan_RM_Rawat_JalanController::class, 'index'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Data_Pendaftaran/suratketerangansakit{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansakit']);
-    Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansehat']);
+    Route::get('/Data_Pendaftaran/suratketerangansakit{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansakit'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
+    Route::get('/Data_Pendaftaran/suratketerangansehat{faktur_rawatjalan}', [Data_PendaftaranController::class, 'suratketerangansehat'])->middleware('auth','idlevel:1,2,4,5,6,7,10');
 
-    Route::get('/Pelayanan_Rawat_Jalan', [Pelayanan_PoliController::class, 'index']);
-    Route::get('/Pelayanan_Rawat_Jalan/select{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'selectrawatjalan']);
-    Route::post('/Pelayanan_Rawat_Jalan/store', [Pelayanan_PoliController::class, 'store']);
-    Route::post('/Pelayanan_Rawat_Jalan/update{notransaksi}', [Pelayanan_PoliController::class, 'update']);
-    Route::get('/Pelayanan_Rawat_Jalan/hapus{notransaksi},{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'hapus']);
+    Route::get('/Pelayanan_Rawat_Jalan', [Pelayanan_PoliController::class, 'index'])->middleware('auth','idlevel:1,4,5,6,7');
+    Route::get('/Pelayanan_Rawat_Jalan/select{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'selectrawatjalan'])->middleware('auth','idlevel:1,4,5,6,7');
+    Route::post('/Pelayanan_Rawat_Jalan/store', [Pelayanan_PoliController::class, 'store'])->middleware('auth','idlevel:1,4,5,6,7');
+    Route::post('/Pelayanan_Rawat_Jalan/update{notransaksi}', [Pelayanan_PoliController::class, 'update'])->middleware('auth','idlevel:1,4,5,6,7');
+    Route::get('/Pelayanan_Rawat_Jalan/hapus{notransaksi},{faktur_rawatjalan}', [Pelayanan_PoliController::class, 'hapus'])->middleware('auth','idlevel:1,4,5,6,7');
 
-    Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index']);
-    Route::post('/Pendaftaran_Rawat_Inap/store', [Transfer_RiController::class, 'store']);
+    Route::get('/Pendaftaran_Rawat_Inap', [Transfer_RiController::class, 'index'])->middleware('auth','idlevel:1,3,4,5,6,7');
+    Route::post('/Pendaftaran_Rawat_Inap/store', [Transfer_RiController::class, 'store'])->middleware('auth','idlevel:1,3,4,5,6,7');
 
-    Route::get('/Update_Data_Pendaftaran_Pasien_Online', [Update_Data_Pendaftaran_Pasien_OnlineController::class, 'index']);
+    Route::get('/Update_Data_Pendaftaran_Pasien_Online', [Update_Data_Pendaftaran_Pasien_OnlineController::class, 'index'])->middleware('auth','idlevel:1,4,5,7,10');
 
 
     /* ----- RawatJalan -----*/
@@ -339,46 +337,46 @@ Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
     Route::get('/RawatInap', function () {
         return view('RawatInap.Content.index');
     });
-    Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
-    Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
-    Route::get('/RuteObat', [RuteObatController::class, 'index']);
-    Route::get('/Anamnesa', [AnamnesaController::class, 'index']);
-    Route::get('/Data_Pendaftaran_Rawat_Inap', [Data_Pendaftaran_Rawat_InapController::class, 'index']);
-    Route::get('/Data_Pendaftaran_Rawat_Inap/tambah', [Data_Pendaftaran_Rawat_InapController::class, 'tambah']);
-    Route::post('/Data_Pendaftaran_Rawat_Inap/store', [Data_Pendaftaran_Rawat_InapController::class, 'store']);
-    Route::get('/Data_Pendaftaran_Rawat_Inap/ubah{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'ubah']);
-    Route::get('/Data_Pendaftaran_Rawat_Inap/detaildiagnosa{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detaildiagnosa']);
-    Route::get('/Data_Pendaftaran_Rawat_Inap/detailpendaftaran{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detailpendaftaran']);
-    Route::get('/Data_Pendaftaran_Rawat_Inap/hapus{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'hapus']);
+    Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/RuteObat', [RuteObatController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/Anamnesa', [AnamnesaController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/Data_Pendaftaran_Rawat_Inap', [Data_Pendaftaran_Rawat_InapController::class, 'index'])->middleware('auth','idlevel:1,4,3,5,6,7,10');
+    Route::get('/Data_Pendaftaran_Rawat_Inap/tambah', [Data_Pendaftaran_Rawat_InapController::class, 'tambah'])->middleware('auth','idlevel:1,4,3,5,6,7,10');
+    Route::post('/Data_Pendaftaran_Rawat_Inap/store', [Data_Pendaftaran_Rawat_InapController::class, 'store'])->middleware('auth','idlevel:1,4,3,5,6,7,10');
+    Route::get('/Data_Pendaftaran_Rawat_Inap/ubah{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'ubah'])->middleware('auth','idlevel:1,4,3,5,6,7,10');
+    Route::get('/Data_Pendaftaran_Rawat_Inap/detaildiagnosa{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detaildiagnosa'])->middleware('auth','idlevel:1,4,3,5,6,7,10');
+    Route::get('/Data_Pendaftaran_Rawat_Inap/detailpendaftaran{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'detailpendaftaran'])->middleware('auth','idlevel:1,4,3,5,6,7,10');
+    Route::get('/Data_Pendaftaran_Rawat_Inap/hapus{faktur_rawatinap}', [Data_Pendaftaran_Rawat_InapController::class, 'hapus'])->middleware('auth','idlevel:1,4,3,5,6,7,10');
 
-    Route::get('/Ubah_Kamar{faktur_rawatinap}', [Ubah_KamarController::class, 'index']);
-    Route::post('/Ubah_Kamar/update{faktur_rawatinap}', [Ubah_KamarController::class, 'update']);
+    Route::get('/Ubah_Kamar{faktur_rawatinap}', [Ubah_KamarController::class, 'index'])->middleware('auth','idlevel:1,4,6');
+    Route::post('/Ubah_Kamar/update{faktur_rawatinap}', [Ubah_KamarController::class, 'update'])->middleware('auth','idlevel:1,4,6');
 
-    Route::get('/PindahKamar', [PindahKamarController::class, 'index']);
-    Route::get('/PindahKamar/selectrawatinap{faktur_rawatinap}', [PindahKamarController::class, 'selectfakturri']);
+    Route::get('/PindahKamar', [PindahKamarController::class, 'index'])->middleware('auth','idlevel:1,3,4,6');
+    Route::get('/PindahKamar/selectrawatinap{faktur_rawatinap}', [PindahKamarController::class, 'selectfakturri'])->middleware('auth','idlevel:1,3,4,6');
 
-    Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
+    Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index'])->middleware('auth','idlevel:1,3,4,6');
 
-    Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index']);
+    Route::get('/Pemberian_Obat_Rawat_Inap', [Pemberian_Obat_Rawat_InapController::class, 'index'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/CariPasien', [CariPasienController::class, 'index']);
-    Route::post('/CariPasien/store', [CariPasienController::class, 'store']);
+    Route::get('/CariPasien', [CariPasienController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/CariPasien/store', [CariPasienController::class, 'store'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/MacamRawat', [MacamRawatController::class, 'index']);
-    Route::post('/MacamRawat/store', [MacamRawatController::class, 'store']);
-    Route::get('/MacamRawat/ubah{kode}', [MacamRawatController::class, 'ubah']);
-    Route::post('/MacamRawat/update{kode}', [MacamRawatController::class, 'update']);
-    Route::get('/MacamRawat/hapus{kode}', [MacamRawatController::class, 'hapus']);
+    Route::get('/MacamRawat', [MacamRawatController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/MacamRawat/store', [MacamRawatController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/MacamRawat/ubah{kode}', [MacamRawatController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/MacamRawat/update{kode}', [MacamRawatController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/MacamRawat/hapus{kode}', [MacamRawatController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/INOS', [INOSController::class, 'index']);
+    Route::get('/INOS', [INOSController::class, 'index'])->middleware('auth','idlevel:1,4');
 
     Route::get('/Status_Pulang', function () {
         return view('RawatInap.Content.Status_Pulang');
-    });
+    })->middleware('auth','idlevel:1,4,6');
 
-    Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
+    Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/Data_Pendaftaran_Rawat_Inap/cetakdatapendaftaranrawatinap', [Data_Pendaftaran_Rawat_InapController::class, 'cetakdatapendaftaranrawatinap']);
+    Route::get('/Data_Pendaftaran_Rawat_Inap/cetakdatapendaftaranrawatinap', [Data_Pendaftaran_Rawat_InapController::class, 'cetakdatapendaftaranrawatinap'])->middleware('auth','idlevel:1,3,4,5,7,10');
 
     /* ----- RawatInap -----*/
 
@@ -387,18 +385,18 @@ Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
         return view('Operasi.Content.index');
     });
 
-    Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index']);
-    Route::get('/JenisAnestesi', [JenisAnestesiController::class, 'index']);
-    Route::get('/SpesialisBedah', [SpesialisBedahController::class, 'index']);
-    Route::get('/DataOperasi', [DataOperasiController::class, 'index']);
-    Route::get('/Tarif_Tindakan_Operasi', [Tarif_Tindakan_OperasiController::class, 'index']);
-    Route::get('/DokterBedah', [DokterBedahController::class, 'index']);
-    Route::post('/DokterBedah/store', [DokterBedahController::class, 'store']);
-    Route::get('/DokterBedah/ubah{iddokter},{jenisrawat}', [DokterBedahController::class, 'ubah']);
-    Route::post('/DokterBedah/update{iddokter},{jenisrawat}', [DokterBedahController::class, 'update']);
-    Route::get('/DokterBedah/hapus{iddokter},{jenisrawat}', [DokterBedahController::class, 'hapus']);
+    Route::get('/GolonganOperasi', [GolonganOperasiController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/JenisAnestesi', [JenisAnestesiController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/SpesialisBedah', [SpesialisBedahController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/DataOperasi', [DataOperasiController::class, 'index'])->middleware('auth','idlevel:1,3,4,6,7,10');
+    Route::get('/Tarif_Tindakan_Operasi', [Tarif_Tindakan_OperasiController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/DokterBedah', [DokterBedahController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::post('/DokterBedah/store', [DokterBedahController::class, 'store'])->middleware('auth','idlevel:1,4');
+    Route::get('/DokterBedah/ubah{iddokter},{jenisrawat}', [DokterBedahController::class, 'ubah'])->middleware('auth','idlevel:1,4');
+    Route::post('/DokterBedah/update{iddokter},{jenisrawat}', [DokterBedahController::class, 'update'])->middleware('auth','idlevel:1,4');
+    Route::get('/DokterBedah/hapus{iddokter},{jenisrawat}', [DokterBedahController::class, 'hapus'])->middleware('auth','idlevel:1,4');
 
-    Route::get('/DokterBedah/cetakdatadokterbedah', [DokterBedahController::class, 'cetakdatadokterbedah']);
+    Route::get('/DokterBedah/cetakdatadokterbedah', [DokterBedahController::class, 'cetakdatadokterbedah'])->middleware('auth','idlevel:1,4');
     /* ----- Operasi -----*/
 
     /* ----- Billing -----*/
@@ -406,25 +404,24 @@ Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
         return view('Billing.Content.index');
     });
 
-    Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index']);
-    Route::get('/PembayaranRJ', [PembayaranRJController::class, 'index']);
-    Route::get('/PembayaranRJ/selectbayarrjalan{nobayar_rjalan}', [PembayaranRJController::class, 'selectbayarrjalan']);
-    Route::post('/PembayaranRJ/store', [PembayaranRJController::class, 'store']);
+    Route::get('/Tagihan_RJ', [Tagihan_RJController::class, 'index'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
+    Route::get('/PembayaranRJ', [PembayaranRJController::class, 'index'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
+    Route::get('/PembayaranRJ/selectbayarrjalan{nobayar_rjalan}', [PembayaranRJController::class, 'selectbayarrjalan'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
+    Route::post('/PembayaranRJ/store', [PembayaranRJController::class, 'store'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
 
-    Route::get('/Data_PembayaranRJ', [Data_PembayaranRJController::class, 'index']);
+    Route::get('/Data_PembayaranRJ', [Data_PembayaranRJController::class, 'index'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
 
-    Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'selectnorm']);
-    Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj']);
-    Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store']);
+    Route::get('/Tagihan_RJ/selectnorm{norm}', [Tagihan_RJController::class, 'selectnorm'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
+    Route::get('/Tagihan_RJ/selectfakturrj{faktur_rawatjalan}', [Tagihan_RJController::class, 'selectfakturrj'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
+    Route::post('/Tagihan_RJ/store', [Tagihan_RJController::class, 'store'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
 
-    Route::get('/RekeningRI', [RekeningRIController::class, 'index']);
+    Route::get('/RekeningRI', [RekeningRIController::class, 'index'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
+    Route::get('/Deposit', [Data_DepositController::class, 'tambah'])->middleware('auth','idlevel:1')->middleware('auth','idlevel:1,4,6');
+    Route::get('/Deposit/selecttambah{norm}', [Data_DepositController::class, 'selecttambah'])->middleware('auth','idlevel:1,4,6');
+    Route::get('/Deposit/lihatdetail{notrans}', [Data_DepositController::class, 'lihatdetail'])->middleware('auth','idlevel:1,4,6');
 
-    Route::get('/Deposit', [Data_DepositController::class, 'tambah']);
-    Route::get('/Deposit/selecttambah{norm}', [Data_DepositController::class, 'selecttambah']);
-    Route::get('/Deposit/lihatdetail{notrans}', [Data_DepositController::class, 'lihatdetail']);
-
-    Route::get('/Data_Deposit', [Data_DepositController::class, 'index']);
-    Route::post('/Data_Deposit/store', [Data_DepositController::class, 'store']);
+    Route::get('/Data_Deposit', [Data_DepositController::class, 'index'])->middleware('auth','idlevel:1,4,6');
+    Route::post('/Data_Deposit/store', [Data_DepositController::class, 'store'])->middleware('auth','idlevel:1,4,6');
 
     /* ----- Billing -----*/
 
@@ -458,5 +455,5 @@ Route::group(['middleware' => ['auth','idlevel:1,2']], function(){
 
 
 /* ----- Penutup Middleware -----*/
-});
+//});
 /* ----- Penutup Middleware -----*/
