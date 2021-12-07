@@ -7,6 +7,8 @@ use App\Http\Controllers\AksesPengguna\PenggunaController;
 use App\Http\Controllers\AksesPengguna\ProgramController;
 use App\Http\Controllers\AksesPengguna\LevelPenggunaController;
 use App\Http\Controllers\AksesPengguna\LoginController;
+use App\Http\Controllers\AksesPengguna\UbahPasswordController;
+
 
 /* ----- AksesPengguna -----*/
 
@@ -103,6 +105,7 @@ use App\Http\Controllers\Billing\RekeningRIController;
 
 
 /* ----- Login -----*/
+
 Route::get('/Login', [LoginController::class, 'index'])->name('login');
 Route::post('/Postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 Route::get('/Logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth','idlevel:1,2,3,4,5,6,7,10');
@@ -110,6 +113,7 @@ Route::get('/Logout', [LoginController::class, 'logout'])->name('logout')->middl
 
 //Route::group(['middleware' => ['auth','idlevel:1']], function(){
 //});
+
     Route::get('/', function () {
         return view('AksesPengguna.Content.index');
     });
@@ -118,6 +122,9 @@ Route::get('/Logout', [LoginController::class, 'logout'])->name('logout')->middl
     Route::get('/AksesPengguna', function () {
         return view('AksesPengguna.Content.index');
     });
+
+    Route::post('/UbahPassword/update{iduser}', [UbahPasswordController::class, 'update'])->middleware('auth','idlevel:1,2,3,4,5,6,7,10');
+    Route::get('/UbahPassword{iduser}', [UbahPasswordController::class, 'ubah'])->middleware('auth','idlevel:1,2,3,4,5,6,7,10');
 
     Route::get('/Program', [ProgramController::class, 'index'])->middleware('auth','idlevel:1,4');
 
@@ -354,6 +361,8 @@ Route::get('/Logout', [LoginController::class, 'logout'])->name('logout')->middl
 
     Route::get('/PindahKamar', [PindahKamarController::class, 'index'])->middleware('auth','idlevel:1,3,4,6');
     Route::get('/PindahKamar/selectrawatinap{faktur_rawatinap}', [PindahKamarController::class, 'selectfakturri'])->middleware('auth','idlevel:1,3,4,6');
+    Route::post('/PindahKamar/update{kodekamar}', [PindahKamarController::class, 'update'])->middleware('auth','idlevel:1,3,4,6');
+    Route::get('/PindahKamar/ubah{kodekamar}', [PindahKamarController::class, 'ubah'])->middleware('auth','idlevel:1,3,4,6');
 
     Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index'])->middleware('auth','idlevel:1,3,4,6');
 
@@ -375,6 +384,7 @@ Route::get('/Logout', [LoginController::class, 'logout'])->name('logout')->middl
     })->middleware('auth','idlevel:1,4,6');
 
     Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index'])->middleware('auth','idlevel:1,4');
+    Route::get('/MacamRawat/cetakdatamacamrawat', [MacamRawatController::class, 'cetakdatamacamrawat'])->middleware('auth','idlevel:1,4');
 
     Route::get('/Data_Pendaftaran_Rawat_Inap/cetakdatapendaftaranrawatinap', [Data_Pendaftaran_Rawat_InapController::class, 'cetakdatapendaftaranrawatinap'])->middleware('auth','idlevel:1,3,4,5,7,10');
 
@@ -456,4 +466,5 @@ Route::get('/Logout', [LoginController::class, 'logout'])->name('logout')->middl
 
 /* ----- Penutup Middleware -----*/
 //});
+    
 /* ----- Penutup Middleware -----*/

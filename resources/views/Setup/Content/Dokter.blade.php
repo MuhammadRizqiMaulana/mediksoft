@@ -32,7 +32,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4 class="fas fa-user-nurse"> Data Dokter</h4>
+                                    <h4><i class="fas fa-user-nurse"></i> Data Dokter</h4>
                                 </div>
                                 <div class="col-sm-6 text-right">
                                     <a class="btn btn-outline-success btn-sm" href="{{url('Dokter/#TambahDokter')}}"><i

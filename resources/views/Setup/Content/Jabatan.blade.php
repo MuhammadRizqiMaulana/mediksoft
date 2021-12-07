@@ -32,7 +32,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4 class="fas fa-chair"> Jabatan</h4>
+                                    <h4><i class="fas fa-chair"></i> Jabatan</h4>
                                 </div>
                                 <div class="col-sm-6 text-right">
                                     <a class="btn btn-outline-success btn-sm"

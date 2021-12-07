@@ -67,7 +67,7 @@
                         </a>
                     </button>
                     <button class="btn btn-default text-center" @guest disabled @endguest>
-                        <a class="users-list-name" href="{{url('/Ganti_Password')}}" onclick="return false;">
+                        <a class="users-list-name" href="{{url('/UbahPassword'.auth()->user()->iduser )}}" @guest onclick="return false;" @endguest>
                             <img src="{{asset('images/icon/Ganti_Password.png')}}"><br>
                             Ganti Password
                         </a>

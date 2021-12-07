@@ -128,7 +128,8 @@
                                         <td>{{$item->norm}}</td>
                                         <td>{{$item->Pasien->namapasien}}</td>
                                         <td>{{$item->Pasien->jeniskelamin}}</td>
-                                        <td>{{$item->Pasien->namapasien}}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->Pasien->tgllahir)->diffInYears(\Carbon\Carbon::now())}}
+                                        </td>
                                         <td>{{$item->Pasien->alamat}}</td>
                                         <td>{{$item->diagnosaawal}}</td>
                                         <td>{{$item->diagnosaakhir}}</td>

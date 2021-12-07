@@ -32,7 +32,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4 class="far fa-building"> Data Perusahaan / Jaminan</h4>
+                                    <h4><i class="far fa-building"></i> Data Perusahaan / Jaminan</h4>
                                 </div>
                                 <div class="col-sm-6 text-right">
                                     <a class="btn btn-outline-success btn-sm"

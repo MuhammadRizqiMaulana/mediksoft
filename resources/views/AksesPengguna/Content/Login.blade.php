@@ -1,90 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Medikasoft</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Medikasoft</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+
+    <style>
+    body {
+        background-image: url("images/bg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover
+    }
+    </style>
 </head>
+
 <body class="hold-transition login-page">
-<div class="login-box">
-  
-  <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
-    </div>
-    <!-- Pesan Error -->
-    @if(\Session::has('alert-success'))
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <h6><i class="fas fa-sign-out-alt"></i><b> Success!!</b></h6>
-        {{Session::get('alert-success')}}
-    </div>
-    @endif
-    @if(\Session::has('alert-danger'))
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <h6><i class="fas fa-sign-out-alt"></i><b> Gagal!!</b></h6>
-        {{Session::get('alert-danger')}}
-    </div>
-    @endif
-    <!-- /.Pesan Error -->
+    <div class="login-box">
 
-    <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-
-      <form action="{{route('postlogin')}}" method="post">
-        {{csrf_field()}}
-        <div class="input-group mb-3">
-          <input type="text" name="uname" class="form-control" placeholder="Username">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header">
+                Login
             </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" name="pwd" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+            <!-- Pesan Error -->
+            @if(\Session::has('alert-success'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h6><i class="fas fa-sign-out-alt"></i><b> Success!!</b></h6>
+                {{Session::get('alert-success')}}
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
+            @endif
+            @if(\Session::has('alert-danger'))
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h6><i class="fas fa-sign-out-alt"></i><b> Gagal!!</b></h6>
+                {{Session::get('alert-danger')}}
+            </div>
+            @endif
+            <!-- /.Pesan Error -->
 
+            <div class="card-body">
+                <p class="login-box-msg"><img src="{{asset('images/key.png')}}"></p>
+                <form action=" {{route('postlogin')}}" method="post">
+                    {{csrf_field()}}
+                    <div class="input-group mb-3">
+                        <input type="text" name="uname" class="form-control" placeholder="Username">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" name="pwd" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i>
+                                OK</button>
+                            <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
     </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
-</div>
-<!-- /.login-box -->
+    <!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+    <!-- jQuery -->
+    <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 </body>
+
 </html>

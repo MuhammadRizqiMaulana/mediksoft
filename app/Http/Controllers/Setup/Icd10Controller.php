@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Icd10_stp;
 use Illuminate\Http\Request;
 use App\Models\Icd10;
+use App\Models\Icd10_mordibitas;
 
 class Icd10Controller extends Controller
 {
@@ -13,7 +14,16 @@ class Icd10Controller extends Controller
     {
 
         $datas = Icd10::all();
-        return view('Setup.Content.Icd10', compact('datas'));
+        $icd10_mordibitas = Icd10_mordibitas::all();
+        $icd10_stp = Icd10_stp::all();
+        return view('Setup.Content.Icd10', compact('datas', 'icd10_mordibitas', 'icd10_stp'));
+    }
+    public function cetakdataicd10()
+    {
+
+        $datas = Icd10::all();
+
+        return view('Setup.Cetak.Cetak_Icd10', compact('datas'));
     }
 
     public function store(Request $request)
@@ -41,7 +51,9 @@ class Icd10Controller extends Controller
     {
         $datas = Icd10::all();
         $ubah = Icd10::find($kode);
-        return view('Setup.Content.Icd10', compact('datas', 'ubah'));
+        $icd10_mordibitas = Icd10_mordibitas::all();
+        $icd10_stp = Icd10_stp::all();
+        return view('Setup.Content.Icd10', compact('datas', 'ubah', 'icd10_mordibitas', 'icd10_stp'));
     }
     public function update($kode, Request $request)
     {

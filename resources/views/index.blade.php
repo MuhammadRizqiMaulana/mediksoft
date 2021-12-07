@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
-    
+
     <!-- Membuat date picker Tempusdominus -->
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
@@ -62,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- REQUIRED SCRIPTS -->
 
-    
+
     <!-- Bootstrap 4 -->
     <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- AdminLTE App -->
@@ -233,6 +233,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
             "autoWidth": false,
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
+        $('#table_modal_Icd10_mordibitas').DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        $('#table_modal_icd10_stp').DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+
         $('#table_modal_rawatjalan').DataTable({
             "responsive": true,
             "lengthChange": false,
@@ -244,7 +257,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             "lengthChange": false,
             "autoWidth": false,
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        
+
         $('#table_modal_datasaldodepositpasien').DataTable({
             "responsive": true,
             "lengthChange": false,
@@ -278,8 +291,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
 
         //Date and time picker
-        $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+        $('#reservationdatetime').datetimepicker({
+            icons: {
+                time: 'far fa-clock'
+            }
         });
+    });
     </script>
 
 @if(\Session::has('alert-danger-login'))

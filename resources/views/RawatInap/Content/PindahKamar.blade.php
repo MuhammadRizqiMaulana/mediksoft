@@ -37,7 +37,9 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card">
-                <form action="" method="post">
+                <form
+                    action="@isset($selectrawatinap){{url('/PindahKamar/update'.$selectrawatinap->faktur_rawatinap)}}@endisset"
+                    method="post">
                     {{csrf_field()}}
                     <div class="card-body">
                         <!-- Baris ke 1-->
@@ -125,21 +127,14 @@
                                 <div class="row">
                                     <div class="col-3 text-right mb-3"><label>Tanggal Masuk</label></div>
                                     <div class="col-9">
-                                        <div class="input-group date" name="tglmasuk" id="tglmasuk"
-                                            data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input"
-                                                data-target="#tglmasuk" value="" />
-                                            <div class="input-group-append" data-target="#tglmasuk"
-                                                data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
+                                        <input type="datetime-local" class="form-control" name="tglmasuk" value="" />
                                     </div>
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col-3 text-right"><label>Ubah ke kamar</label></div>
                                     <div class="col-9">
                                         <select name="kodekamar" class="form-control">
+                                            <option value="" hidden>Pilih Kamar</option>
                                             @foreach ($kamar as $item)
                                             <option value="{{$item->kodekamar}}">{{$item->kodekamar}} |
                                                 {{$item->Ruang->namaruang}} | {{$item->Kelas->nama}} | {{$item->tarif}}
