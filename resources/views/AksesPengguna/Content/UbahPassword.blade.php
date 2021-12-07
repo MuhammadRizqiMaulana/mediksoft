@@ -8,20 +8,15 @@
     @include('AksesPengguna.Layout.menu')
     <!-- /.menu -->
 
-    @if(\Session::has('alert-success'))
+    @if(\Session::has('alert-danger'))
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h6><i class="fas fa-sign-out-alt"></i><b> Success!!</b></h6>
-        {{Session::get('alert-success')}}
+        <h6><i class="fas fa-sign-out-alt"></i><b> Gagal!!</b></h6>
+        {{Session::get('alert-danger')}}
     </div>
     @endif
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
 
     <!-- Main content -->
     <section class="content">
@@ -43,7 +38,7 @@
                                     <label for="pwdlama" class="col-sm-4 col-form-label text-left">Password
                                         Lama</label>
                                     <div class="col-sm-8">
-                                        <input type="password" class="form-control" name="pwd"
+                                        <input type="password" class="form-control" name="pwdlama"
                                             placeholder="Password Lama" value="">
                                     </div>
                                 </div>
@@ -51,7 +46,7 @@
                                     <label for="pwdlama" class="col-sm-4 col-form-label text-left">Password
                                         Baru</label>
                                     <div class="col-sm-8">
-                                        <input type="password" class="form-control" name="pwd"
+                                        <input type="password" class="form-control" id="pwdbaru" name="pwdbaru"
                                             placeholder="Password Baru" value="">
                                     </div>
                                 </div>
@@ -59,14 +54,15 @@
                                     <label for="pwdlama" class="col-sm-4 col-form-label text-left">Ulangi Password
                                         Baru</label>
                                     <div class="col-sm-8">
-                                        <input type="password" class="form-control" name="pwd"
-                                            placeholder="Ulangi Password Baru" value="">
+                                        <input type="password" class="form-control" id="ulangpwdbaru"
+                                            name="ulangpwdbaru" placeholder="Ulangi Password Baru" value="">
                                     </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer text-right">
-                                <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check">
+                                <button type="submit" id="btnSubmit" class="btn btn-outline-primary"><i
+                                        class="fa fa-check">
                                         Simpan</i></button>
                                 <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times">
                                         Batal</i></button>
@@ -82,4 +78,17 @@
 </div>
 <!-- /.content-wrapper -->
 
+<script>
+$(function() {
+    $("#btnSubmit").click(function() {
+        var password = $("#pwdbaru").val();
+        var confirmPassword = $("#ulangpwdbaru").val();
+        if (password != confirmPassword) {
+            alert("Password baru tidak sama");
+            return false;
+        }
+        return true;
+    });
+});
+</script>
 @endsection

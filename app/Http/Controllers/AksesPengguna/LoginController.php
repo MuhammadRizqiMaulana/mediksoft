@@ -11,7 +11,8 @@ use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('AksesPengguna/Content/Login');
     }
 
@@ -25,8 +26,9 @@ class LoginController extends Controller
     //    return $request->only($this->username(), 'uname');
     //}
 
-    public function postlogin(Request $request){
-        
+    public function postlogin(Request $request)
+    {
+
         $messages = [
             'required' => ':attribute masih kosong',
             'min' => ':attribute diisi minimal :min karakter',
@@ -43,12 +45,12 @@ class LoginController extends Controller
         ], $messages);
 
         //$request->validate([
-          //  $this->username() => 'required|string',
-            //'uname' => 'required|string',
+        //  $this->username() => 'required|string',
+        //'uname' => 'required|string',
         //]);
 
         $credentials = $request->only('uname', 'pwd');
-        if(Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
             $user = User::where('uname', $request->uname)->first();
             if ($user->aktif == 1) {
                 return redirect('/')->with('alert-success', 'Berhasil Login!');
@@ -61,6 +63,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/Login')->with('alert-success', 'Anda Berhasil Logout!');
+        return redirect('/')->with('alert-success', 'Anda Berhasil Logout!');
     }
 }
