@@ -9,6 +9,7 @@ use App\Http\Controllers\AksesPengguna\LevelPenggunaController;
 use App\Http\Controllers\AksesPengguna\LoginController;
 use App\Http\Controllers\AksesPengguna\UbahPasswordController;
 
+
 /* ----- AksesPengguna -----*/
 
 /* ----- Setup -----*/
@@ -121,7 +122,9 @@ Route::group(['middleware' => ['auth', 'idlevel:1,2']], function () {
     Route::get('/AksesPengguna', function () {
         return view('AksesPengguna.Content.index');
     });
-    Route::get('/UbahPassword', [UbahPasswordController::class, 'index']);
+
+    Route::post('/UbahPassword/update{iduser}', [UbahPasswordController::class, 'update']);
+    Route::get('/UbahPassword{iduser}', [UbahPasswordController::class, 'ubah']);
     Route::get('/Program', [ProgramController::class, 'index']);
     Route::get('/Program', [ProgramController::class, 'index']);
     Route::get('/LevelPengguna', [LevelPenggunaController::class, 'index']);

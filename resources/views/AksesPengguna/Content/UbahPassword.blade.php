@@ -36,14 +36,14 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="post">
+                        <form action="{{url('/UbahPassword/update'.$ubah->iduser)}}" method="post">
                             {{csrf_field()}}
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="pwdlama" class="col-sm-4 col-form-label text-left">Password
                                         Lama</label>
                                     <div class="col-sm-8">
-                                        <input type="password" class="form-control" id="" name=" "
+                                        <input type="password" class="form-control" name="pwd"
                                             placeholder="Password Lama" value="">
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     <label for="pwdlama" class="col-sm-4 col-form-label text-left">Password
                                         Baru</label>
                                     <div class="col-sm-8">
-                                        <input type="password" class="form-control" id="" name=" "
+                                        <input type="password" class="form-control" name="pwd"
                                             placeholder="Password Baru" value="">
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                     <label for="pwdlama" class="col-sm-4 col-form-label text-left">Ulangi Password
                                         Baru</label>
                                     <div class="col-sm-8">
-                                        <input type="password" class="form-control" id="" name=" "
+                                        <input type="password" class="form-control" name="pwd"
                                             placeholder="Ulangi Password Baru" value="">
                                     </div>
                                 </div>
