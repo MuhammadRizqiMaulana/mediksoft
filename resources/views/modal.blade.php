@@ -674,42 +674,88 @@
     <!-- /.modal-dialog -->
 </div>
 @endisset
-<!-- Modal Tabel ICD 10 -->
 
-<!-- Modal Tabel ICD 10 Mordabitas -->
-@isset($Icd10_mordabitas)
-<div class="modal fade" id="modal-Icd10_mordabitas">
+<!-- Modal Tabel ICD 10 -->
+@isset($icd10)
+<div class="modal fade" id="modal-icd10">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">ICD 10 Mordabitas</h4>
+                <h4 class="modal-title">Data ICD 10</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <table id="table_modal_Icd10_mordabitas" class="table table-bordered table-hover">
+                <table id="table_modal_icd10" class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>Kode ICD</th>
+                            <th>Nama Diagnosa</th>
+                            <th>Gol Sebab Sakit</th>
+                            <th>Nama STP</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($icd10 as $item)
+                        <tr>
+                            <td>{{$item->kode}}</td>
+                            <td>{{$item->nama}}</td>
+                            <td>{{isset($item->Icd10_mordibitas) ? $item->Icd10_mordibitas->golsebabsakit : '' }}</td>
+                            <td>{{isset($item->Icd10_stp) ? $item->Icd10_stp->namastp : '' }}</td>
+                            <td>
+                                <button class="btn btn-outline-info btn-sm"
+                                    onclick="icd10('{{$item->kode}}', '{{$item->nama}}');"><i class="fa fa-check"></i>
+                                    Pilih</button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endisset
+<!-- Modal Tabel ICD 10 -->
+
+<!-- Modal Tabel ICD 10 Mordabitas -->
+@isset($icd10_mordibitas)
+<div class="modal fade" id="modal-Icd10_mordibitas">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ICD 10 Mordibitas</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="table_modal_Icd10_mordibitas" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
                             <th>No DTD</th>
                             <th>No Terinci</th>
                             <th>Gol Sebab Sakit</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php
                         $no = 1;
                         @endphp
-                        @foreach ($Icd10_mordabitas as $item)
+                        @foreach ($icd10_mordibitas as $item)
                         <tr>
                             <td>{{$no++}}</td>
-                            <td>{{$nodtd}}</td>
+                            <td>{{$item->nodtd}}</td>
                             <td>{{$item->noterinci}}</td>
                             <td>{{$item->golsebabsakit}}</td>
                             <td>
                                 <button class="btn btn-outline-info btn-sm"
-                                    onclick="Icd10_mordabitas('{{$item->nodtd}}', '{{$item->golsebabsakit}}');"><i
+                                    onclick="Icd10_mordabitas('{{$item->idmordibitas}}', '{{$item->golsebabsakit}}');"><i
                                         class="fa fa-check"></i> Pilih</button>
                             </td>
                         </tr>
@@ -726,7 +772,7 @@
 <!-- Modal Tabel ICD 10 Mordabitas -->
 
 <!-- Modal Tabel ICD 10 STP -->
-@isset($Icd10_stp)
+@isset($icd10_stp)
 <div class="modal fade" id="modal-Icd10_stp">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -749,14 +795,14 @@
                         @php
                         $no = 1;
                         @endphp
-                        @foreach ($Icd10_stp as $item)
+                        @foreach ($icd10_stp as $item)
                         <tr>
                             <td>{{$no++}}</td>
-                            <td>{{$kodestp}}</td>
+                            <td>{{$item->kodestp}}</td>
                             <td>{{$item->namastp}}</td>
                             <td>
                                 <button class="btn btn-outline-info btn-sm"
-                                    onclick="Icd10_stp('{{$item->kodestp}}', '{{$item->namastp}}');"><i
+                                    onclick="Icd10_stp('{{$item->idstp}}', '{{$item->namastp}}');"><i
                                         class="fa fa-check"></i> Pilih</button>
                             </td>
                         </tr>

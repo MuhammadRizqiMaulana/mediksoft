@@ -14,6 +14,13 @@ class MacamRawatController extends Controller
         $datas = MacamRawat::all();
         return view('RawatInap.Content.MacamRawat', compact('datas'));
     }
+    public function cetakdatamacamrawat()
+    {
+
+        $datas = MacamRawat::all();
+
+        return view('RawatInap.Cetak.Cetak_MacamRawat', compact('datas'));
+    }
     public function tambah()
     {
 

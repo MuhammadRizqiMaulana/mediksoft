@@ -376,6 +376,7 @@ Route::group(['middleware' => ['auth', 'idlevel:1,2']], function () {
     });
 
     Route::get('/PenggunaanObatRI', [PenggunaanObatRIController::class, 'index']);
+    Route::get('/MacamRawat/cetakdatamacamrawat', [MacamRawatController::class, 'cetakdatamacamrawat']);
 
     Route::get('/Data_Pendaftaran_Rawat_Inap/cetakdatapendaftaranrawatinap', [Data_Pendaftaran_Rawat_InapController::class, 'cetakdatapendaftaranrawatinap']);
 

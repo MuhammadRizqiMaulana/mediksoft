@@ -32,11 +32,13 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4 class="fas fa-user-nurse"> Data ICD 10</h4>
+                                    <h4><i class="fas fa-user-nurse"></i> Data ICD 10</h4>
                                 </div>
                                 <div class="col-sm-6 text-right">
-                                    <button type="button" class="btn btn-outline-secondary btn-sm"><i
-                                            class="fa fa-print"></i> Cetak</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"><a
+                                            href="/Icd10/cetakdataicd10">
+                                            <i class="fa fa-print"></i> Cetak
+                                        </a></button>
                                 </div>
                             </div>
 
@@ -55,8 +57,7 @@
                                 <tbody>
 
                                     @foreach ($datas as $item)
-                                    <tr
-                                        onclick="ubahIcd10('{{$item->kode}}','{{$item->nama}}','@isset({{$item->idmordibitas}}){{$item->idmordibitas}}@endisset','@isset({{$item->Icd10_mordibitas}}){{$item->Icd10_mordibitas->golsebabsakit}}@endisset','{{$item->idstp}}')">
+                                    <tr onclick=>
 
                                         <td>{{$item-> kode}}</td>
                                         <td>{{$item->nama}}</td>
@@ -122,19 +123,25 @@
                                                 value="@isset($ubah){{$ubah->idmordibitas}}@endisset" hidden>
                                             <select class="form-control" width="100%" id="icd10_mordibitas">
                                                 @foreach ($icd10_mordibitas as $item)
-                                                <option value="{{$item->nodtd}}">{{$item->nodtd}}</option>
+                                                <option value="{{$item->idmordibitas}}" @isset($ubah->
+                                                    Icd10_mordibitas){{($ubah->Icd10_mordibitas->idmordibitas ==
+                                                    $item->idmordibitas) ?
+                                                    "selected":""}}@endisset>
+                                                    {{$item->idmordibitas}}
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="col-2 text-right">
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
-                                                data-target="#modal-Icd10_mordabitas">
+                                                data-target="#modal-Icd10_mordibitas">
                                                 <i class="fa fa-search"></i>
                                             </button>
                                         </div>
+                                        <label>Golongan Sebab Sakit</label>
                                         <input type="text" class="form-control" id="golsebabsakit" name="golsebabsakit"
                                             placeholder="Nama Diagnosa"
-                                            value="@isset($ubah){{$ubah->Icd10_mordibitas->golsebabsakit}}@endisset">
+                                            value="@isset($ubah->Icd10_mordibitas){{$ubah->Icd10_mordibitas->golsebabsakit}}@endisset">
                                     </div>
                                     @if ($errors->has('golsebabsakit'))
                                     <span class="text-danger">
@@ -146,9 +153,11 @@
                                     <label>STP</label>
                                     <div class="row">
                                         <div class="col-10">
-                                            <select class="form-control" width="100%" id="Icd10_stp">
-                                                @foreach ($Icd10_stp as $item)
-                                                <option value="@isset($ubah){{$item->idstp}}@endisset" ->
+                                            <select class="form-control" width="100%" id="icd10_stp">
+                                                @foreach ($icd10_stp as $item)
+                                                <option value="{{$item->idstp}}" @isset($ubah->
+                                                    Icd10_stp){{($ubah->Icd10_stp->idstp == $item->idstp) ?
+                                                    "selected":""}}@endisset>
                                                     {{$item->namastp}}
                                                 </option>
                                                 @endforeach
@@ -194,9 +203,22 @@ function ubahIcd10($kode, $nama, $idmordibitas, $golsebabsakit, $idstp) {
     $("#form-ubahIcd10").attr("action", "/Icd10/update" + $kode);
     document.getElementById("kode").value = $kode;
     document.getElementById("namadiagnosa").value = $nama;
-    document.getElementById("icd10_mordibitas").value = $tariftindakanpoli;
+    document.getElementById("Icd10_mordibitas").value = $tariftindakanpoli;
     document.getElementById("golsebabsakit").value = $golsebabsakit;
     document.getElementById("Icd10_stp").value = $idstp;
+}
+
+function Icd10_mordabitas($idmordibitas, $golsebabsakit) {
+    document.getElementById("icd10_mordibitas").value = $idmordibitas;
+    document.getElementById("golsebabsakit").value = $golsebabsakit;
+
+    $(".close").click();
+}
+
+function Icd10_stp($idstp, $namastp) {
+    document.getElementById("icd10_stp").value = $idstp;
+
+    $(".close").click();
 }
 </script>
 
