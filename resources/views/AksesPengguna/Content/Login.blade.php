@@ -79,8 +79,7 @@
                         <div class="col text-right">
                             <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i>
                                 OK</button>
-                            <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i> Cancel
-                            </button>
+                            <a href="{{url('/')}}" class="btn btn-outline-danger"><i class="fa fa-times"></i> Cancel</a>
                         </div>
                     </div>
                 </form>

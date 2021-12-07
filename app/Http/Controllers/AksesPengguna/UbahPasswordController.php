@@ -4,6 +4,9 @@ namespace App\Http\Controllers\AksesPengguna;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Hash;
+use Session;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class UbahPasswordController extends Controller
@@ -31,15 +34,21 @@ class UbahPasswordController extends Controller
         ];
 
         $this->validate($request, [
+            'pwdlama' => 'required',
+            'pwdbaru' => 'required',
+            'ulangpwdbaru' => 'required',
+        ]);
 
-            'pwd' => 'required|max:50',
-
-        ], $messages);
-
-        $data = User::find($iduser);
-        $data->pwd = bcrypt($request->pwd);
-
-        $data->save();
-        return redirect('/Logout')->with('alert-danger', 'Password berhasil diubah. Silahkan Login Kembali!');
+        $hashedPassword = Auth::user()->pwd;
+        if (Hash::check($request->pwdlama, $hashedPassword)) {
+            $users = User::find(Auth::user()->iduser);
+            $users->pwd = bcrypt($request->pwdbaru);
+            $users->save();
+            //session()->flash('message', 'password updated successfully');
+            return redirect('/Login')->with('alert-success', 'Password berhasil diganti, silahkan Login kembali!');
+        } else {
+            //session()->flash('message', 'kata sandi lama tidak cocok');
+            return redirect()->back()->with('alert-danger', 'kata sandi lama tidak cocok');
+        }
     }
 }
