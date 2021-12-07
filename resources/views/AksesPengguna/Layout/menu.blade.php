@@ -67,7 +67,7 @@
                         </a>
                     </button>
                     <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/UbahPassword')}}">
+                        <a class="users-list-name" href="{{url('/UbahPassword'.auth()->user()->iduser )}}">
                             <img src="{{asset('images/icon/Ganti_Password.png')}}"><br>
                             Ganti Password
                         </a>

@@ -9,6 +9,7 @@ use App\Http\Controllers\AksesPengguna\LevelPenggunaController;
 use App\Http\Controllers\AksesPengguna\LoginController;
 use App\Http\Controllers\AksesPengguna\UbahPasswordController;
 
+
 /* ----- AksesPengguna -----*/
 
 /* ----- Setup -----*/
@@ -121,7 +122,9 @@ Route::group(['middleware' => ['auth', 'idlevel:1,2']], function () {
     Route::get('/AksesPengguna', function () {
         return view('AksesPengguna.Content.index');
     });
-    Route::get('/UbahPassword', [UbahPasswordController::class, 'index']);
+
+    Route::post('/UbahPassword/update{iduser}', [UbahPasswordController::class, 'update']);
+    Route::get('/UbahPassword{iduser}', [UbahPasswordController::class, 'ubah']);
     Route::get('/Program', [ProgramController::class, 'index']);
     Route::get('/Program', [ProgramController::class, 'index']);
     Route::get('/LevelPengguna', [LevelPenggunaController::class, 'index']);
@@ -355,6 +358,8 @@ Route::group(['middleware' => ['auth', 'idlevel:1,2']], function () {
 
     Route::get('/PindahKamar', [PindahKamarController::class, 'index']);
     Route::get('/PindahKamar/selectrawatinap{faktur_rawatinap}', [PindahKamarController::class, 'selectfakturri']);
+    Route::post('/PindahKamar/update{kodekamar}', [PindahKamarController::class, 'update']);
+    Route::get('/PindahKamar/ubah{kodekamar}', [PindahKamarController::class, 'ubah']);
 
     Route::get('/Ruang_Perawatan', [Ruang_PerawatanController::class, 'index']);
 
