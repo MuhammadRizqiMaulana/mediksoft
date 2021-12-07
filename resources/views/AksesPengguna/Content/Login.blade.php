@@ -76,14 +76,12 @@
                     </div>
 
                     <div class="row">
-                        <!-- /.col -->
-                        <div class="col-4 center">
-                            <button type="submit" class="btn btn-primary btn-block">OK</button>
+                        <div class="col text-right">
+                            <button type="submit" class="btn btn-outline-primary"><i class="fa fa-check"></i>
+                                OK</button>
+                            <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times"></i> Cancel
+                            </button>
                         </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Cancel</button>
-                        </div>
-                        <!-- /.col -->
                     </div>
                 </form>
 

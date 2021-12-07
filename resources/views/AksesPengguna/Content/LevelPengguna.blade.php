@@ -36,10 +36,6 @@
                                 <div class="col-sm-6">
                                     <h4>Level Pengguna</h4>
                                 </div>
-                                <div class="col-sm-6 text-right">
-                                    <button type="button" class="btn btn-outline-secondary btn-sm"><i
-                                            class="fa fa-print"></i> Cetak</button>
-                                </div>
                             </div>
 
                         </div>

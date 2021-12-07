@@ -28,33 +28,40 @@
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
                 <!-- /.col -->
-
                 <div class="col-5">
                     <!-- general form elements -->
-                    <div class="card card-success card-outline" id="TambahDokter">
-
+                    <div class="card card-success card-outline" id="">
                         <div class="card-header">
+                            Ganti Password
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form method="post">
                             {{csrf_field()}}
                             <div class="card-body">
-                                <h3>Ganti Password</h3>
                                 <div class="form-group row">
-                                    <label for="pwdlama" class="col-sm-4 col-form-label text-right">Password
+                                    <label for="pwdlama" class="col-sm-4 col-form-label text-left">Password
                                         Lama</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="" name=" "
-                                            placeholder="Password Lama"
-                                            value="@isset($selectbayarrjalan) {{$selectbayarrjalan->norm}} @endisset"
-                                            readonly>
+                                        <input type="password" class="form-control" id="" name=" "
+                                            placeholder="Password Lama" value="">
                                     </div>
-                                    @if ($errors->has('norm'))
-                                    <span class="text-danger">
-                                        <p class="text-right">* {{ $errors->first('norm') }}</p>
-                                    </span>
-                                    @endif
+                                </div>
+                                <div class="form-group row">
+                                    <label for="pwdlama" class="col-sm-4 col-form-label text-left">Password
+                                        Baru</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="" name=" "
+                                            placeholder="Password Baru" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="pwdlama" class="col-sm-4 col-form-label text-left">Ulangi Password
+                                        Baru</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="" name=" "
+                                            placeholder="Ulangi Password Baru" value="">
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -64,15 +71,12 @@
                                 <button type="reset" class="btn btn-outline-danger"><i class="fa fa-times">
                                         Batal</i></button>
                             </div>
-
                         </form>
                     </div>
-
                 </div>
+                <!-- /.row -->
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
+            <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>
