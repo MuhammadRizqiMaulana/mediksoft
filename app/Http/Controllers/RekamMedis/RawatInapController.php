@@ -5,6 +5,7 @@ namespace App\Http\Controllers\RekamMedis;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pasien;
+use App\Models\Icd10;
 use App\Models\Rawatinap;
 
 class RawatInapController extends Controller
@@ -13,7 +14,8 @@ class RawatInapController extends Controller
     {
         $datas = Rawatinap::all();
         $pasien = Pasien::all();
-        return view('RekamMedis.Content.RM_RawatInap', compact('pasien', 'datas'));
+        $icd10 = Icd10::all();
+        return view('RekamMedis.Content.RM_RawatInap', compact('pasien', 'datas', 'icd10'));
     }
     public function cetakdatarmrawatinap()
     {
