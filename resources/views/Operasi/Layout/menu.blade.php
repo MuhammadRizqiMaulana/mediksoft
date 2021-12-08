@@ -18,18 +18,21 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/JenisAnestesi')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/JenisAnestesi')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Jenis_Anestesi.png')}}"><br> Jenis Anestesi
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/SpesialisBedah')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/SpesialisBedah')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Spesialis_Bedah.png')}}"><br> Spesialis Bedah
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/GolonganOperasi')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/GolonganOperasi')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Golongan_Operasi.png')}}"><br> Golongan Operasi
                         </a>
                     </button>
@@ -54,13 +57,15 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/DokterBedah')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/DokterBedah')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Dokter_Bedah.png')}}"><br> Dokter Bedah
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Tarif_Tindakan_Operasi')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Tarif_Tindakan_Operasi')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Tarif_Tindakan_Operasi.png')}}"><br> Tarif Tindakan Operasi
                         </a>
                     </button>
@@ -85,13 +90,15 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="#">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Catatan_Operasi.png')}}"><br> Catat Operasi
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/DataOperasi')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/DataOperasi')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Data_Operasi.png')}}"><br> Data Operasi
                         </a>
                     </button>

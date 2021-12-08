@@ -18,13 +18,15 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Data_Jurnal')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Data_Jurnal.png')}}"><br>
                             Data Jurnal</a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Jurnal_Setting')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/program.png')}}"><br>
                             Jurnal Setting</a>
                     </button>
@@ -49,8 +51,9 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Akuntansi_')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Akuntansi_.png')}}"><br>
                             Akuntansi</a>
                     </button>

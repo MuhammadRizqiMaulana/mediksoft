@@ -18,23 +18,27 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="#">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Bayar_RJ_Terpisah.png')}}"><br> Bayar RJ Terpisah
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Tagihan_RJ')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Tagihan_RJ')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/tagihanrj.png')}}"><br>
                             Tagihan RJ</a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/PembayaranRJ')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/PembayaranRJ')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Pembayaran_RJ.png')}}"><br> Pembayaran RJ
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Data_PembayaranRJ')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Data_PembayaranRJ')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Data_Pembayaran_RJ.png')}}"><br> Data Pembayaran RJ
                         </a>
                     </button>
@@ -60,18 +64,21 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="#">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Rekening_RI.png')}}"><br> Rekening RI
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="#">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Data_Rekening_RI.png')}}"><br> Data Rekening RI
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="#">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Pembayaran_RI.png')}}"><br> Pembayaran RI
                         </a>
                     </button>
@@ -97,13 +104,15 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Deposit')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Deposit')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Deposit.png')}}"><br> Deposit
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Data_Deposit')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Data_Deposit')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Data_Deposit.png')}}"><br> Data Deposit
                         </a>
                     </button>
@@ -129,13 +138,15 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="#">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Kas_Harian.png')}}"><br> Kas Harian
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="#">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Ganti_Shift.png')}}"><br> ganti Shift
                         </a>
                     </button>

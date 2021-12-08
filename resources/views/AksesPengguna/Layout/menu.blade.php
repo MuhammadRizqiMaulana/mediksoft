@@ -96,8 +96,8 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Login')}}">
+                    <button class="btn btn-default text-center" @auth disabled @endauth>
+                        <a class="users-list-name" href="{{url('/Login')}}" @auth onclick="return false;" @endauth>
                             <img src="{{asset('images/icon/Login.png')}}"><br>
                             Login
                         </a>

@@ -18,13 +18,15 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/KamarKosong')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/KamarKosong')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Kamar_Kosong.png')}}"><br> Kamar Kosong
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/CariPasien')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/CariPasien')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Cari_Pasien.png')}}"><br> Cari Pasien
                         </a>
                     </button>
@@ -50,13 +52,15 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Data_Pendaftaran_Rawat_Inap/tambah')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Data_Pendaftaran_Rawat_Inap/tambah')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Pendaftaran.png')}}"><br> Pendaftaran
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('Data_Pendaftaran_Rawat_Inap')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('Data_Pendaftaran_Rawat_Inap')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Data_Pendaftaran.png')}}"><br> Data Pendaftaran
                         </a>
                     </button>
@@ -82,38 +86,45 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/MacamRawat')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/MacamRawat')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Macam_Rawat.png')}}"><br> Macam rawat
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/RuteObat')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/RuteObat')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Rute_Obat.png')}}"><br> Rute Obat
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Ruang_Perawatan')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Ruang_Perawatan')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Ruang_Perawatan.png')}}"><br> Ruang Perawatan
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Pemberian_Obat_Rawat_Inap')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Pemberian_Obat_Rawat_Inap')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Pemberian_Obat.png')}}"><br> Pemberian Obat
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/PindahKamar')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/PindahKamar')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Pindah_Kamar.png')}}"><br> Pindah Kamar
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Anamnesa')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest  >
+                        <a class="users-list-name" href="{{url('/Anamnesa')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Anamnesa.png')}}"><br> Anamnesa
                         </a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Status_Pulang')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Status_Pulang')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Status_Pulang.png')}}"><br> Status Pulang
                         </a>
                     </button>
@@ -138,9 +149,12 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a class="users-list-name" href="{{url('/PenggunaanObatRI')}}">
-                        <img src="{{asset('images/icon/Penggunaan_Obat.png')}}"><br> Penggunaan Obat
-                    </a>
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/PenggunaanObatRI')}}" @guest onclick="return false;"
+                        @endguest>
+                            <img src="{{asset('images/icon/Penggunaan_Obat.png')}}"><br> Penggunaan Obat
+                        </a>
+                    </button>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -162,8 +176,9 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Penggunaan_Obat')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="{{url('/Penggunaan_Obat')}}" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/INOS.png')}}"><br> INOS
                         </a>
                     </button>
