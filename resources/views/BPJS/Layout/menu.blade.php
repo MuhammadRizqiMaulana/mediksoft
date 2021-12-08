@@ -18,33 +18,39 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Referensi')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Referensi.png')}}"><br>
                             Referensi</a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Peserta')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Peserta.png')}}"><br>
                             Peserta</a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/SEP')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/SEP.png')}}"><br>
                             SEP (Surat Eligibitas Peserta)</a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Rujukan')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Rujukan.png')}}"><br>
                             Rujukan</a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Fasilitas_Kesehatan')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Fasilitas_Kesehatan.png')}}"><br>
                             Fasilitas Kesehatan</a>
                     </button>
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/Server_BPJS')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/Server_BPJS.png')}}"><br>
                             Server BPJS</a>
                     </button>
@@ -69,8 +75,9 @@
 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <button class="btn btn-default text-center">
-                        <a class="users-list-name" href="{{url('/E_Klaim_BPJS')}}">
+                    <button class="btn btn-default text-center" @guest disabled @endguest >
+                        <a class="users-list-name" href="#" @guest onclick="return false;"
+                    @endguest>
                             <img src="{{asset('images/icon/E_Klaim_BPJS.png')}}"><br>
                             E-KLAIM BPJS</a>
                     </button>

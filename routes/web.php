@@ -462,9 +462,3 @@ Route::get('/Logout', [LoginController::class, 'logout'])->name('logout')->middl
     });
 
     /* ----- Panduan -----*/
-
-
-/* ----- Penutup Middleware -----*/
-//});
-    
-/* ----- Penutup Middleware -----*/
